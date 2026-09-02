@@ -6,7 +6,7 @@ import { BrandMark } from "@/components/brand-mark";
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "/", label: "Work", match: (path: string) => path === "/" || path === "/home-alt" || path === "/home-f1" || path.startsWith("/work") },
+  { href: "/#selected-work", label: "Work", match: (path: string) => path.startsWith("/work") },
   { href: "/notes", label: "Notes", match: (path: string) => path.startsWith("/notes") },
   { href: "/about", label: "About", match: (path: string) => path.startsWith("/about") },
 ];
@@ -14,6 +14,8 @@ const links = [
 export function SiteHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [workInView, setWorkInView] = useState(false);
+  const isHome = pathname === "/" || pathname === "/home-alt" || pathname === "/home-f1";
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 24);
@@ -21,6 +23,27 @@ export function SiteHeader() {
     window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);
   }, []);
+
+  useEffect(() => {
+    if (!isHome) {
+      setWorkInView(false);
+      return;
+    }
+
+    const workSection = document.getElementById("selected-work");
+    if (!workSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setWorkInView(entry.isIntersecting),
+      { rootMargin: "-22% 0px -48% 0px", threshold: 0 },
+    );
+
+    observer.observe(workSection);
+    return () => observer.disconnect();
+  }, [isHome]);
+
+  const isLinkActive = (link: (typeof links)[number]) =>
+    link.label === "Work" ? (isHome ? workInView : link.match(pathname)) : link.match(pathname);
 
   return (
     <header className="site-header" data-scrolled={scrolled}>
@@ -31,7 +54,7 @@ export function SiteHeader() {
 
       <nav className="primary-nav" aria-label="Primary navigation">
         {links.map((link) => (
-          <Link key={link.href} href={link.href} aria-current={link.match(pathname) ? "page" : undefined}>
+          <Link key={link.href} href={link.href} aria-current={isLinkActive(link) ? "page" : undefined}>
             {link.label}
           </Link>
         ))}
@@ -47,7 +70,11 @@ export function SiteHeader() {
       <details className="mobile-menu">
         <summary>INDEX / MENU</summary>
         <nav aria-label="Mobile navigation">
-          {links.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} aria-current={isLinkActive(link) ? "page" : undefined}>
+              {link.label}
+            </Link>
+          ))}
           <Link href="/resume">Résumé</Link>
           <Link href="/contact" aria-current={pathname.startsWith("/contact") ? "page" : undefined}>Let&apos;s talk</Link>
         </nav>
