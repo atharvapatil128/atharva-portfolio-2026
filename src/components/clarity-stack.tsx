@@ -13,8 +13,9 @@ export function ClarityStack() {
     <div className="clarity-stack" data-separated={separated}>
       <motion.div
         className="stack-layer stack-research"
-        animate={separated ? { x: -58, y: -20, rotate: -3 } : { x: 0, y: 0, rotate: 7 }}
-        transition={spring}
+        initial={reduceMotion ? false : { x: -72, y: 20, rotate: -2, opacity: 0, filter: "blur(8px)" }}
+        animate={separated ? { x: -58, y: -20, rotate: -3, opacity: 1, filter: "blur(0px)" } : { x: 0, y: 0, rotate: 7, opacity: 1, filter: "blur(0px)" }}
+        transition={separated ? spring : { ...spring, delay: 0.12 }}
       >
         <span>CASE STUDY / STREAMING HELPER</span>
         <Link href="/work/streaming-helper">Choosing together, faster <b>↗</b></Link>
@@ -22,8 +23,9 @@ export function ClarityStack() {
 
       <motion.div
         className="stack-layer stack-constraints"
-        animate={separated ? { x: 56, y: -42, rotate: 3 } : { x: 0, y: 0, rotate: -7 }}
-        transition={spring}
+        initial={reduceMotion ? false : { x: 70, y: -42, rotate: 2, opacity: 0, filter: "blur(8px)" }}
+        animate={separated ? { x: 56, y: -42, rotate: 3, opacity: 1, filter: "blur(0px)" } : { x: 0, y: 0, rotate: -7, opacity: 1, filter: "blur(0px)" }}
+        transition={separated ? spring : { ...spring, delay: 0.2 }}
       >
         <span>CASE STUDY / MEAD</span>
         <Link href="/work/mead">Care, made more legible <b>↗</b></Link>
@@ -31,8 +33,9 @@ export function ClarityStack() {
 
       <motion.div
         className="stack-layer stack-decisions"
-        animate={separated ? { x: 72, y: 52, rotate: -2 } : { x: 0, y: 0, rotate: 5 }}
-        transition={spring}
+        initial={reduceMotion ? false : { x: 80, y: 46, rotate: 0, opacity: 0, filter: "blur(8px)" }}
+        animate={separated ? { x: 72, y: 52, rotate: -2, opacity: 1, filter: "blur(0px)" } : { x: 0, y: 0, rotate: 5, opacity: 1, filter: "blur(0px)" }}
+        transition={separated ? spring : { ...spring, delay: 0.28 }}
       >
         <span>FIELD NOTE / AI WORKFLOW</span>
         <Link href="/notes/building-this-portfolio">Building this portfolio <b>↗</b></Link>
@@ -41,6 +44,9 @@ export function ClarityStack() {
       <motion.button
         type="button"
         className="resolved-card"
+        initial={reduceMotion ? false : { y: 32, scale: 0.94, opacity: 0, filter: "blur(10px)" }}
+        animate={{ y: 0, scale: 1, opacity: 1, filter: "blur(0px)" }}
+        transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 250, damping: 28, delay: 0.36 }}
         drag={reduceMotion ? false : true}
         dragSnapToOrigin
         dragElastic={0.16}

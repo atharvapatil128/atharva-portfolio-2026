@@ -2,6 +2,12 @@ node_modules/
 .next/
 .edge-qa/
 tmp/
+.agent/
+.agents/
+.claude/
+.codex/
+.cursor/
+.gemini/
 *.tsbuildinfo
 *-qa.png
 *-qa-final.png

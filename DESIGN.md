@@ -202,7 +202,7 @@ The recurring silhouette is a rounded field containing precise internal geometry
 
 ### Navigation
 
-The desktop header is a compact bordered field with Atharva's geometric AP/apex mark, centered primary navigation, a green live-availability signal, and one high-contrast Let's Talk action. Active and hovered routes receive a contained surface and short underline; the contact action inverts to acid while on the contact route. On mobile, a native disclosure exposes Work, Notes, About, Résumé, and Let's Talk in a floating field with 44px rows.
+The desktop header is a sticky porcelain rail with Atharva's geometric AP/apex mark, centered segmented navigation, a green live-availability signal, and one high-contrast Let's Talk action. It compresses slightly after scrolling and gains measured depth without transparency or glass. Active routes receive a contained surface, short underline, and signal dot; the contact control reverses its black/orange split treatment on the contact route. On mobile, a native disclosure exposes Work, Notes, About, Résumé, and Let's Talk in a floating field with 44px rows.
 
 ### Clarity Stack
 
@@ -222,7 +222,11 @@ Personal cards connect build logs, karting, running, outdoors, and travel to con
 
 ### Contact Signal and Footer
 
-The contact visual is a pointer-responsive telemetry field with a small AP kart signal; it expresses availability without replacing the actual contact routes. The footer is the final authored moment: an atmospheric signal field, a direct closing statement, one contact action, and grouped identity/navigation details inspired by the clarity—not the literal styling—of Luma's closing composition.
+The contact visual is a pointer-responsive telemetry field with a small AP kart signal; it expresses availability without replacing the actual contact routes. The light footer remains within the Porcelain/White visual world: a direct left-aligned closing statement is paired with a living canvas field of orange, cobalt, and graphite signals. The dots drift continuously and respond to pointer movement, translating Luma's sense of an active closing field into the portfolio's own system rather than borrowing its dark styling.
+
+### Motion
+
+The hero is the primary authored entrance. Its content becomes clear first, while the Clarity Stack's evidence layers arrive from distinct directions, resolve their blur, and assemble around the foreground decision surface. The sticky header transitions only when scroll state changes; the footer signal field provides slow ambient motion and a local pointer response. All three experiences become static under reduced-motion preferences.
 
 ### Case-Study Structure
 
