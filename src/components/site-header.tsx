@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandMark } from "@/components/brand-mark";
 import { useEffect, useState } from "react";
+import type { MouseEvent } from "react";
 
 const links = [
   { href: "/#selected-work", label: "Work", match: (path: string) => path.startsWith("/work") },
@@ -45,9 +46,20 @@ export function SiteHeader() {
   const isLinkActive = (link: (typeof links)[number]) =>
     link.label === "Work" ? (isHome ? workInView : link.match(pathname)) : link.match(pathname);
 
+  const handleHomeClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (pathname !== "/" || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    event.preventDefault();
+    window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  };
+
   return (
     <header className="site-header" data-scrolled={scrolled}>
-      <Link className="identity" href="/" aria-label="Atharva Patil, home">
+      <Link className="identity" href="/" aria-label="Atharva Patil, home" onClick={handleHomeClick}>
         <BrandMark className="brand-mark" />
         <span className="identity-name">ATHARVA PATIL</span>
       </Link>
