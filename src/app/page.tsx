@@ -28,7 +28,6 @@ export default function HomePage() {
             <Link className="button button-quiet" href="/resume">Résumé</Link>
           </div>
           <div className="hero-meta mono"><span>BASED IN INDIANAPOLIS</span><span>OPEN TO RELOCATE</span></div>
-          <p className="hero-proof mono">COMPLEXITY → STRUCTURE → CONFIDENCE</p>
         </div>
         <ClarityStack />
         </section>

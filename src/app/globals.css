@@ -171,7 +171,6 @@ p { text-wrap: pretty; }
 .button-quiet { background: var(--surface); }
 .button-quiet:hover { border-color: var(--ink); }
 .location { position: absolute; top: 426px; right: 0; }
-.hero-proof { position: absolute; left: 0; bottom: 8px; }
 
 .clarity-stack { position: relative; width: 520px; height: 540px; justify-self: end; margin-top: 42px; }
 .stack-layer, .resolved-card { position: absolute; overflow: hidden; border-radius: 26px; }
@@ -734,7 +733,6 @@ p { text-wrap: pretty; }
 .hero-meta { display: flex; gap: 22px; margin-top: 28px; color: var(--text-secondary); }
 .hero-meta span + span { padding-left: 22px; border-left: 1px solid var(--line); }
 .location { display: none; }
-.hero-proof { bottom: 4px; color: var(--text-tertiary); }
 
 .stack-layer { z-index: 2; padding: 18px 19px; }
 .stack-layer > span { position: static; display: block; }

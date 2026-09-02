@@ -2,36 +2,10 @@
 
 import { useEffect, useRef } from "react";
 
-type SignalBar = {
-  x: number;
-  y: number;
-  homeX: number;
-  homeY: number;
-  vx: number;
-  vy: number;
-  baseHeight: number;
-  phase: number;
-  tone: 0 | 1 | 2 | 3;
-};
+type Tone = 0 | 1 | 2 | 3 | 4;
+type SignalBar = { x: number; y: number; homeX: number; homeY: number; vx: number; vy: number; baseWidth: number; baseHeight: number; baseAlpha: number; phase: number; tone: Tone };
 
-type WakeBar = { x: number; y: number; vx: number; vy: number; offsetX: number; offsetY: number; phase: number };
-
-const fallbackClusters = [
-  { x: -0.09, y: 0.17, columns: 15, rows: 4, gapX: 11, gapY: 14 },
-  { x: 0.34, y: 0.055, columns: 10, rows: 3, gapX: 12, gapY: 14 },
-  { x: 0.83, y: 0.045, columns: 12, rows: 4, gapX: 11, gapY: 14 },
-  { x: 0.925, y: 0.46, columns: 7, rows: 7, gapX: 12, gapY: 14 },
-  { x: 0.44, y: 0.76, columns: 12, rows: 4, gapX: 11, gapY: 14 },
-  { x: -0.025, y: 0.84, columns: 8, rows: 3, gapX: 12, gapY: 14 },
-] as const;
-
-const compactClusters = [
-  { x: 0.62, y: 0.035, columns: 8, rows: 2, gapX: 10, gapY: 13 },
-  { x: -0.06, y: 0.56, columns: 7, rows: 2, gapX: 10, gapY: 13 },
-  { x: 0.82, y: 0.9, columns: 7, rows: 3, gapX: 10, gapY: 13 },
-] as const;
-
-const palette = ["#365de4", "#ff5a18", "#d6ff63", "#858b96"] as const;
+const palette = ["#365de4", "#ff5a18", "#d6ff63", "#9aaeff", "#858b96"] as const;
 
 export function HeroSignalField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -49,16 +23,50 @@ export function HeroSignalField() {
     let height = 0;
     let ratio = 1;
     let bars: SignalBar[] = [];
-    let wake: WakeBar[] = [];
     let frame = 0;
     let visible = true;
 
-    const chooseTone = (column: number, row: number, cluster: number): 0 | 1 | 2 | 3 => {
-      const key = column * 11 + row * 17 + cluster * 23;
-      if (key % 31 === 0) return 1;
-      if (key % 43 === 0) return 2;
-      if (key % 7 === 0) return 3;
-      return 0;
+    const addBar = (homeX: number, homeY: number, baseWidth: number, baseHeight: number, tone: Tone, baseAlpha: number, phase: number) => {
+      if (homeX < 10 || homeX > width - 10 || homeY < 10 || homeY > height - 10) return;
+      bars.push({ x: homeX, y: homeY, homeX, homeY, vx: 0, vy: 0, baseWidth, baseHeight, tone, baseAlpha, phase });
+    };
+
+    const buildRail = (x: number, y: number, scale = 1) => {
+      for (let column = 0; column < 17; column += 1) addBar(x + column * 9 * scale, y, 6 * scale, 8 * scale, column === 15 ? 3 : 0, .62, column * .31);
+      for (let column = 0; column < 11; column += 1) addBar(x + (5 + column) * 9 * scale, y + 15 * scale, 6 * scale, 8 * scale, column === 10 ? 3 : 0, .54, 1 + column * .29);
+      for (let column = 0; column < 6; column += 1) addBar(x + (column * 3 + 1) * 9 * scale, y + 34 * scale, 2 * scale, 7 * scale, 2, .42, 2 + column);
+    };
+
+    const buildCascade = (x: number, y: number, scale = 1) => {
+      for (let column = 0; column < 6; column += 1) {
+        const count = column < 2 ? column + 1 : Math.max(1, 5 - column);
+        for (let row = 0; row < count; row += 1) {
+          const tone: Tone = column === 4 && row === 0 ? 1 : row === count - 1 ? 3 : 0;
+          addBar(x + column * 12 * scale, y + column * 11 * scale + row * 14 * scale, 4 * scale, (8 + column * 3) * scale, tone, .58, column * .7 + row);
+        }
+      }
+      addBar(x + 16 * scale, y + 52 * scale, 2 * scale, 12 * scale, 2, .5, 6);
+      addBar(x + 76 * scale, y + 72 * scale, 2 * scale, 9 * scale, 2, .42, 7);
+    };
+
+    const buildTrail = (x: number, y: number, scale = 1) => {
+      for (let index = 0; index < 8; index += 1) {
+        const tone: Tone = index === 4 ? 1 : index < 6 ? 3 : 0;
+        addBar(x + index * 14 * scale, y - Math.sin((index / 7) * Math.PI) * 36 * scale, 5 * scale, (7 + index * 1.8) * scale, tone, .58, index * .8);
+      }
+      addBar(x - 14 * scale, y + 6 * scale, 2 * scale, 11 * scale, 2, .4, 8);
+      addBar(x + 112 * scale, y - 4 * scale, 2 * scale, 8 * scale, 2, .38, 9);
+    };
+
+    const buildOrb = (centerX: number, centerY: number, scale = 1) => {
+      for (let index = -7; index <= 7; index += 1) {
+        const normalized = index / 7;
+        const silhouette = Math.sqrt(Math.max(0, 1 - normalized * normalized));
+        const barHeight = (20 + silhouette * 70) * scale;
+        addBar(centerX + index * 9 * scale + 3 * scale, centerY + 5 * scale, 5 * scale, barHeight * .82, 3, .3, index * .42);
+        addBar(centerX + index * 9 * scale, centerY, 6 * scale, barHeight, index === 6 ? 1 : 0, .72, 2 + index * .4);
+      }
+      for (const index of [-9, -8, 8, 9]) addBar(centerX + index * 9 * scale, centerY, 2 * scale, (18 - Math.abs(index) * .8) * scale, 2, .42, 4 + index);
     };
 
     const build = () => {
@@ -70,53 +78,19 @@ export function HeroSignalField() {
       canvas.height = Math.max(1, Math.round(height * ratio));
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
       bars = [];
-      const headline = canvas.closest(".hero")?.querySelector("h1")?.getBoundingClientRect();
-      const localHeadline = headline ? {
-        left: headline.left - box.left,
-        right: headline.right - box.left,
-        top: headline.top - box.top,
-        bottom: headline.bottom - box.top,
-      } : null;
-      const layoutClusters = width < 700
-        ? compactClusters.map((cluster) => ({ ...cluster, x: cluster.x * width, y: cluster.y * height }))
-        : localHeadline
-          ? [
-              { x: localHeadline.left - 74, y: localHeadline.top + 38, columns: 5, rows: 4, gapX: 10, gapY: 13 },
-              { x: localHeadline.left + 158, y: localHeadline.top - 62, columns: 10, rows: 3, gapX: 11, gapY: 13 },
-              { x: localHeadline.right + 26, y: localHeadline.top + 12, columns: 8, rows: 3, gapX: 11, gapY: 13 },
-              { x: localHeadline.right + 22, y: localHeadline.bottom - 42, columns: 6, rows: 4, gapX: 11, gapY: 13 },
-            ]
-          : fallbackClusters.map((cluster) => ({ ...cluster, x: cluster.x * width, y: cluster.y * height }));
-      layoutClusters.forEach((cluster, clusterIndex) => {
-        for (let row = 0; row < cluster.rows; row += 1) {
-          for (let column = 0; column < cluster.columns; column += 1) {
-            const homeX = cluster.x + column * cluster.gapX;
-            const homeY = cluster.y + row * cluster.gapY;
-            if (homeX < -8 || homeX > width + 8 || homeY < -8 || homeY > height + 8) continue;
-            bars.push({
-              x: homeX,
-              y: homeY,
-              homeX,
-              homeY,
-              vx: 0,
-              vy: 0,
-              baseHeight: 5 + ((column + row * 2 + clusterIndex) % 4) * 2.2,
-              phase: column * 0.48 + row * 0.72 + clusterIndex,
-              tone: chooseTone(column, row, clusterIndex),
-            });
-          }
-        }
-      });
 
-      const wakeColumns = 7;
-      const wakeRows = 5;
-      wake = [];
-      for (let row = 0; row < wakeRows; row += 1) {
-        for (let column = 0; column < wakeColumns; column += 1) {
-          const offsetX = (column - (wakeColumns - 1) / 2) * 11;
-          const offsetY = (row - (wakeRows - 1) / 2) * 13;
-          wake.push({ x: width / 2, y: height / 2, vx: 0, vy: 0, offsetX, offsetY, phase: column * 0.7 + row * 0.4 });
-        }
+      const headline = canvas.closest(".hero")?.querySelector("h1")?.getBoundingClientRect();
+      const local = headline ? { left: headline.left - box.left, right: headline.right - box.left, top: headline.top - box.top, bottom: headline.bottom - box.top } : { left: width * .05, right: width * .46, top: height * .18, bottom: height * .46 };
+
+      if (width < 700) {
+        buildRail(Math.max(24, width - 142), Math.max(20, local.top - 54), .72);
+        buildTrail(28, Math.min(height - 220, local.bottom + 285), .72);
+        buildOrb(width - 74, height - 105, .55);
+      } else {
+        buildRail(local.left + 36, Math.max(28, local.top - 76));
+        buildCascade(Math.min(width - 118, local.right + 104), Math.max(54, local.top - 28));
+        buildTrail(local.left + 250, height - 122);
+        buildOrb(Math.min(width - 120, Math.max(local.right + 125, width * .51)), height - 154);
       }
       if (reduced || coarse) requestAnimationFrame(() => draw(performance.now()));
     };
@@ -125,54 +99,34 @@ export function HeroSignalField() {
       context.globalAlpha = Math.max(0, Math.min(1, alpha));
       context.fillStyle = color;
       context.beginPath();
-      context.roundRect(x - barWidth / 2, y - barHeight / 2, barWidth, barHeight, Math.min(2, barWidth / 2));
+      context.roundRect(x - barWidth / 2, y - barHeight / 2, barWidth, barHeight, Math.min(2.5, barWidth / 2));
       context.fill();
     };
 
     const draw = (time = 0) => {
       context.clearRect(0, 0, width, height);
       if (!visible) return;
-      const seconds = time * 0.001;
-      pointer.x += (pointer.targetX - pointer.x) * 0.2;
-      pointer.y += (pointer.targetY - pointer.y) * 0.2;
-      pointer.strength += ((pointer.active ? 1 : 0) - pointer.strength) * 0.09;
+      const seconds = time * .001;
+      pointer.x += (pointer.targetX - pointer.x) * .16;
+      pointer.y += (pointer.targetY - pointer.y) * .16;
+      pointer.strength += ((pointer.active ? 1 : 0) - pointer.strength) * .08;
 
       for (const bar of bars) {
-        const ambientX = reduced ? 0 : Math.sin(seconds * 1.3 + bar.phase) * 1.7;
-        const ambientY = reduced ? 0 : Math.cos(seconds * 1.05 + bar.phase) * 2.4;
+        const ambientX = reduced ? 0 : Math.sin(seconds * .72 + bar.phase) * 1.2;
+        const ambientY = reduced ? 0 : Math.cos(seconds * .58 + bar.phase) * 1.8;
         const dx = bar.x - pointer.x;
         const dy = bar.y - pointer.y;
         const distance = Math.sqrt(dx * dx + dy * dy) || 1;
-        const reach = 155;
-        const proximity = pointer.strength * Math.max(0, 1 - distance / reach);
-        const force = proximity * proximity * 3.6;
-        bar.vx += (bar.homeX + ambientX - bar.x) * 0.055 + (dx / distance) * force;
-        bar.vy += (bar.homeY + ambientY - bar.y) * 0.055 + (dy / distance) * force;
-        bar.vx *= 0.82;
-        bar.vy *= 0.82;
+        const proximity = pointer.strength * Math.max(0, 1 - distance / 175);
+        const force = proximity * proximity * 1.8;
+        bar.vx += (bar.homeX + ambientX - bar.x) * .06 + (dx / distance) * force;
+        bar.vy += (bar.homeY + ambientY - bar.y) * .06 + (dy / distance) * force;
+        bar.vx *= .84;
+        bar.vy *= .84;
         bar.x += bar.vx;
         bar.y += bar.vy;
-        const speed = Math.min(1, Math.sqrt(bar.vx * bar.vx + bar.vy * bar.vy) / 4);
-        const barHeight = bar.baseHeight + proximity * 22 + speed * 6;
-        const alpha = 0.34 + (bar.tone === 0 ? 0.28 : 0.18) + proximity * 0.32;
-        roundedBar(bar.x, bar.y, 4, barHeight, palette[bar.tone], alpha);
+        roundedBar(bar.x, bar.y, bar.baseWidth, bar.baseHeight + proximity * 13, palette[bar.tone], bar.baseAlpha + proximity * .22);
       }
-
-      wake.forEach((bar, index) => {
-        const lag = 0.035 + (index % 7) * 0.004;
-        const targetX = pointer.x + bar.offsetX + Math.sin(seconds * 2 + bar.phase) * 2;
-        const targetY = pointer.y + bar.offsetY + Math.cos(seconds * 1.7 + bar.phase) * 2;
-        bar.vx += (targetX - bar.x) * lag;
-        bar.vy += (targetY - bar.y) * lag;
-        bar.vx *= 0.76;
-        bar.vy *= 0.76;
-        bar.x += bar.vx;
-        bar.y += bar.vy;
-        const centerDistance = Math.sqrt(bar.offsetX * bar.offsetX + bar.offsetY * bar.offsetY);
-        const centerWeight = Math.max(0.18, 1 - centerDistance / 72);
-        const tone = index % 17 === 0 ? 1 : index % 23 === 0 ? 2 : 0;
-        roundedBar(bar.x, bar.y, 4, 8 + centerWeight * 18, palette[tone], pointer.strength * (0.22 + centerWeight * 0.55));
-      });
       context.globalAlpha = 1;
       if (!reduced && !coarse) frame = requestAnimationFrame(draw);
     };
@@ -198,7 +152,7 @@ export function HeroSignalField() {
       if (visible && (reduced || coarse)) draw(performance.now());
       else if (visible) { cancelAnimationFrame(frame); frame = requestAnimationFrame(draw); }
       else cancelAnimationFrame(frame);
-    }, { threshold: 0.01 });
+    }, { threshold: .01 });
     const resizeObserver = new ResizeObserver(build);
 
     resizeObserver.observe(canvas);
