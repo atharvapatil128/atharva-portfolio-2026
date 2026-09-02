@@ -14,9 +14,12 @@ const links = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [workInView, setWorkInView] = useState(false);
   const isHome = pathname === "/" || pathname === "/home-alt" || pathname === "/home-f1";
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 24);
@@ -44,7 +47,7 @@ export function SiteHeader() {
   }, [isHome]);
 
   const isLinkActive = (link: (typeof links)[number]) =>
-    link.label === "Work" ? (isHome ? workInView : link.match(pathname)) : link.match(pathname);
+    mounted && (link.label === "Work" ? (isHome ? workInView : link.match(pathname)) : link.match(pathname));
 
   const handleHomeClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (pathname !== "/" || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -74,7 +77,7 @@ export function SiteHeader() {
 
       <div className="header-actions">
         <span className="availability"><i aria-hidden="true" />AVAILABLE</span>
-        <Link className="nav-cta" href="/contact" aria-current={pathname.startsWith("/contact") ? "page" : undefined}>
+        <Link className="nav-cta" href="/contact" aria-current={mounted && pathname.startsWith("/contact") ? "page" : undefined}>
           <span>LET&apos;S TALK</span><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 14 14 4M7 4h7v7" /></svg>
         </Link>
       </div>
@@ -88,7 +91,7 @@ export function SiteHeader() {
             </Link>
           ))}
           <Link href="/resume">Résumé</Link>
-          <Link href="/contact" aria-current={pathname.startsWith("/contact") ? "page" : undefined}>Let&apos;s talk</Link>
+          <Link href="/contact" aria-current={mounted && pathname.startsWith("/contact") ? "page" : undefined}>Let&apos;s talk</Link>
         </nav>
       </details>
     </header>
