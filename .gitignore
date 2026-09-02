@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.edge-qa/
+tmp/
+*.tsbuildinfo
+*-qa.png
+*-qa-final.png
+.DS_Store
+Thumbs.db
