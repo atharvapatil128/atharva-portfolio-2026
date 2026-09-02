@@ -3,6 +3,7 @@ import { ClarityStack } from "@/components/clarity-stack";
 import { HeroReveal } from "@/components/hero-reveal";
 import { HeroSignalField } from "@/components/hero-signal-field";
 import { HomeSections } from "@/components/home-sections";
+import { SignalCursor } from "@/components/signal-cursor";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -13,13 +14,14 @@ export default function HomePage() {
       <main>
         <section className="hero section-pad" aria-labelledby="hero-title">
         <HeroSignalField />
+        <SignalCursor />
         <div className="hero-copy">
           <HeroReveal>
             <h1 id="hero-title" className="t-stagger-line t-stagger-line--1">
-              I design complex products<br />{" "}so they feel obvious.
+              I take fuzzy problems all the way to something people can use.
             </h1>
             <p className="hero-summary t-stagger-line t-stagger-line--2">
-              Product designer shaping clear, dependable experiences across consumer and enterprise systems.
+              I&apos;m Atharva, a product designer with a background in HCI and computer science. I research, prototype, test, and sometimes write the front end too.
             </p>
           </HeroReveal>
           <p className="availability-line mono"><i aria-hidden="true" />AVAILABLE FOR PRODUCT DESIGN ROLES · 2026</p>

@@ -8,7 +8,7 @@ export function HomeSections() {
   return (
     <>
       <section className="selected-work section-pad" id="selected-work" aria-labelledby="work-title">
-        <div className="section-heading"><h2 id="work-title">Selected work</h2><p className="mono">THREE CASE STUDIES · FOCUS REVEALS THE SYSTEM</p></div>
+        <div className="section-heading"><h2 id="work-title">Selected work</h2><p className="mono">SHIPPED WORK, RESEARCH, AND DECISIONS THAT CHANGED</p></div>
         <ProjectDeck />
       </section>
       <section className="notes-section section-pad" aria-labelledby="notes-title">
@@ -25,8 +25,8 @@ export function HomeSections() {
       </section>
       <section className="paddock section-pad" id="beyond-work" aria-labelledby="paddock-title">
         <div className="paddock-heading">
-          <h2 id="paddock-title">What sharpens my eye</h2>
-          <p>Fast feedback on a track. Patience on a long run. Curiosity while building. These are the places my product instincts get trained.</p>
+          <h2 id="paddock-title">Things I make when nobody asked</h2>
+          <p>Experiments, side quests, visual ideas, AI-assisted builds, and whatever I&apos;m currently curious about.</p>
         </div>
         <PaddockField />
         <p className="paddock-instruction mono">DRAG TO EXPLORE · EACH STORY OPENS SOMEWHERE</p>

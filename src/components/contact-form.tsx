@@ -26,7 +26,7 @@ export function ContactForm() {
       <div className="contact-form-head">
         <div>
           <span className="mono">DIRECT LINE / AVAILABLE</span>
-          <h2>Start with the useful part.</h2>
+          <h2>Tell me what you&apos;re working through.</h2>
         </div>
         <span className="form-status mono"><i aria-hidden="true" />OPEN</span>
       </div>
@@ -51,7 +51,7 @@ export function ContactForm() {
 
       <div className="contact-form-foot">
         <p aria-live="polite">{status}</p>
-        <button className="button button-signal" type="submit">Compose email <span aria-hidden="true">↗</span></button>
+        <button className="button button-signal" type="submit">Send it my way <span aria-hidden="true">↗</span></button>
       </div>
     </form>
   );

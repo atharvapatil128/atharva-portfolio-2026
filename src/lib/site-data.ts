@@ -20,7 +20,7 @@ export const projects: Project[] = [
   {
     slug: "streaming-helper",
     name: "Streaming Helper",
-    descriptor: "Decide together, faster.",
+    descriptor: "Taking “what should we watch?” from a graduate capstone to a working product.",
     category: "Consumer product · Capstone and product",
     role: "Independent product designer",
     period: "Semester-long capstone · 2026",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
   {
     slug: "mead",
     name: "MEAD",
-    descriptor: "Making engagement legible in advanced dementia.",
+    descriptor: "Exploring continuity, identity, and care for people living with advanced dementia.",
     category: "Care research · Six-day sprint",
     role: "Research, strategy, prototyping, and visual design",
     period: "May 2025",
@@ -83,7 +83,7 @@ export const projects: Project[] = [
   {
     slug: "field-maintenance",
     name: "Field Maintenance",
-    descriptor: "Secure logging where the work happens.",
+    descriptor: "Designing a clearer maintenance workflow with input from 40+ embassy stakeholders.",
     category: "Enterprise operations · U.S. Department of State",
     role: "UX strategist and design consultant",
     period: "February–June 2025",

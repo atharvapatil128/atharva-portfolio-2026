@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Instrument_Sans } from "next/font/google";
-import { SignalCursor } from "@/components/signal-cursor";
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
@@ -23,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s — Atharva Patil",
   },
   description:
-    "Product designer and AI-native builder turning complex consumer and enterprise systems into clear, dependable experiences.",
+    "Atharva Patil is a product designer with a background in HCI and computer science who works across research, prototyping, testing, and front-end implementation.",
 };
 
 export const viewport: Viewport = {
@@ -42,7 +41,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           hidden
           data-design-contract="THESIS: evidence-led clarity over portfolio spectacle. OWN-WORLD: porcelain canvas, soft-black ink, cobalt structure, orange decisions, precise rounded fields. STORY: understand Atharva, scan the work, choose depth. FIRST VIEWPORT: identity and action left; draggable complexity-to-clarity system right. FORM: approved Precision Paddock / Cobalt Circuit comp. SEED: cobalt-clarity-stack-40-125. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance"
         />
-        <SignalCursor />
         {children}
       </body>
     </html>

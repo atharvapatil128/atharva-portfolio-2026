@@ -2,14 +2,16 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ContactForm } from "@/components/contact-form";
+import { IntroDotField } from "@/components/intro-dot-field";
 
 export default function ContactPage() {
   return (
     <>
       <SiteHeader />
       <main>
-        <section className="contact-hero section-pad">
-        <div><h1>Let&apos;s make the complicated feel inevitable.</h1><p>I&apos;m interested in product design roles and collaborations where careful thinking, strong interaction design, and real implementation all matter.</p></div>
+        <section className="contact-hero top-stage section-pad">
+        <IntroDotField variant="contact" />
+        <div><h1>Have something interesting—or slightly complicated?</h1><p>Tell me what you&apos;re working through. I&apos;m always happy to compare notes, talk product, or hear about a good team.</p></div>
         <ContactForm />
         </section>
         <section className="contact-routes section-pad">

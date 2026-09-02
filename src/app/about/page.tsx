@@ -2,16 +2,18 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { TelemetryPanel } from "@/components/telemetry-panel";
+import { IntroDotField } from "@/components/intro-dot-field";
 
 export default function AboutPage() {
   return (
     <>
       <SiteHeader />
       <main>
-        <section className="about-hero section-pad">
+        <section className="about-hero top-stage section-pad">
+        <IntroDotField variant="about" />
         <div>
-          <h1>Product designer, builder, and lifelong student of fast feedback.</h1>
-          <p>I work across research, interaction design, prototyping, and AI-assisted building to turn complicated systems into products people can trust.</p>
+          <h1>I ask a lot of “why” questions. Then I make something and see if I was right.</h1>
+          <p>I like staying close to a problem—from the first messy conversations through prototypes, feedback, implementation, and whatever needs fixing next. A rationale helps, but it doesn&apos;t make a design correct. People using it get the final vote.</p>
           <div className="hero-actions"><Link className="button button-signal" href="/resume">View résumé</Link><Link className="button button-quiet" href="/contact">Start a conversation</Link></div>
         </div>
         <TelemetryPanel />

@@ -2,13 +2,15 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { notes } from "@/lib/site-data";
+import { IntroDotField } from "@/components/intro-dot-field";
 
 export default function NotesPage() {
   return (
     <>
       <SiteHeader />
       <main>
-        <section className="editorial-hero section-pad">
+        <section className="editorial-hero top-stage section-pad">
+        <IntroDotField variant="notes" />
         <h1>Notes from the work, the track,<br />and everything between.</h1>
         <p>Shorter reads about product judgment, AI-assisted workflows, karting, running, and the messy middle between an idea and something real.</p>
         </section>

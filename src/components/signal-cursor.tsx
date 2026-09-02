@@ -70,8 +70,9 @@ export function SignalCursor() {
     }
 
     const resize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
+      const box = canvas.getBoundingClientRect();
+      width = box.width;
+      height = box.height;
       ratio = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.max(1, Math.round(width * ratio));
       canvas.height = Math.max(1, Math.round(height * ratio));
@@ -127,38 +128,38 @@ export function SignalCursor() {
     const onPointerMove = (event: PointerEvent) => {
       const target = event.target instanceof Element ? event.target : null;
       const excluded = Boolean(target?.closest(excludedSelector));
-      cursor.targetX = event.clientX;
-      cursor.targetY = event.clientY;
-      targetOpacity = excluded ? 0 : 1;
+      const box = canvas.getBoundingClientRect();
+      const inside = event.clientX >= box.left && event.clientX <= box.right && event.clientY >= box.top && event.clientY <= box.bottom;
+      cursor.targetX = event.clientX - box.left;
+      cursor.targetY = event.clientY - box.top;
+      targetOpacity = inside && !excluded ? 1 : 0;
 
-      if (!initialized) {
+      if (inside && !initialized) {
         initialized = true;
-        cursor.x = event.clientX;
-        cursor.y = event.clientY;
-        lastTargetX = event.clientX;
-        lastTargetY = event.clientY;
-        bars.forEach((bar) => { bar.x = event.clientX + bar.offsetX; bar.y = event.clientY; });
+        cursor.x = cursor.targetX;
+        cursor.y = cursor.targetY;
+        lastTargetX = cursor.targetX;
+        lastTargetY = cursor.targetY;
+        bars.forEach((bar) => { bar.x = cursor.targetX + bar.offsetX; bar.y = cursor.targetY; });
       }
     };
-    const onPointerLeave = () => { targetOpacity = 0; };
     const onVisibility = () => {
       running = !document.hidden;
       if (running) { cancelAnimationFrame(frame); frame = requestAnimationFrame(draw); }
       else cancelAnimationFrame(frame);
     };
 
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(canvas);
     resize();
-    window.addEventListener("resize", resize, { passive: true });
     window.addEventListener("pointermove", onPointerMove, { passive: true });
-    document.documentElement.addEventListener("pointerleave", onPointerLeave, { passive: true });
     document.addEventListener("visibilitychange", onVisibility);
     frame = requestAnimationFrame(draw);
 
     return () => {
       cancelAnimationFrame(frame);
-      window.removeEventListener("resize", resize);
+      resizeObserver.disconnect();
       window.removeEventListener("pointermove", onPointerMove);
-      document.documentElement.removeEventListener("pointerleave", onPointerLeave);
       document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
