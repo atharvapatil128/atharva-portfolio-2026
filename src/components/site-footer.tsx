@@ -13,7 +13,6 @@ export function SiteFooter() {
         </div>
         <div className="footer-motion">
           <FooterSignalField />
-          <span className="footer-motion-label mono">SIGNALS ALIGN WHEN YOU MOVE</span>
         </div>
       </div>
       <div className="footer-base">

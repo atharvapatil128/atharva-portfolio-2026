@@ -57,10 +57,10 @@ export function FooterSignalField() {
         const x = baseX + wave * 0.35 + (distance ? (dx / distance) * influence * 20 : 0);
         const y = baseY + Math.cos(t * 0.8 + point.phase) * 3 + (distance ? (dy / distance) * influence * 20 : 0);
         const focus = Math.max(0, 1 - Math.abs(point.x - 0.7) * 2.2);
-        const radius = 1.15 + focus * 0.8 + influence * 1.2;
+        const radius = 0.9 + focus * 0.48 + influence * 0.85;
         context.beginPath();
         context.arc(x, y, radius, 0, Math.PI * 2);
-        context.fillStyle = point.tone === 1 ? `rgba(255,90,24,${0.32 + focus * 0.42})` : point.tone === 2 ? `rgba(54,93,228,${0.24 + focus * 0.34})` : `rgba(17,19,24,${0.08 + focus * 0.14})`;
+        context.fillStyle = point.tone === 1 ? `rgba(255,90,24,${0.17 + focus * 0.24})` : point.tone === 2 ? `rgba(54,93,228,${0.12 + focus * 0.2})` : `rgba(17,19,24,${0.045 + focus * 0.085})`;
         context.fill();
       }
       if (!reduceMotion) frame = requestAnimationFrame(draw);
