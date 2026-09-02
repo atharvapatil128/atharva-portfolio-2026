@@ -127,6 +127,19 @@ export function HeroSignalField() {
         bar.y += bar.vy;
         roundedBar(bar.x, bar.y, bar.baseWidth, bar.baseHeight + proximity * 13, palette[bar.tone], bar.baseAlpha + proximity * .22);
       }
+
+      if (pointer.strength > .015) {
+        for (let index = -6; index <= 6; index += 1) {
+          const normalized = index / 6;
+          const silhouette = Math.sqrt(Math.max(0, 1 - normalized * normalized));
+          const cursorHeight = 14 + silhouette * 52;
+          const x = pointer.x + index * 8;
+          roundedBar(x + 2, pointer.y + 3, 4, cursorHeight * .78, palette[3], pointer.strength * .25);
+          roundedBar(x, pointer.y, 5, cursorHeight, index === 5 ? palette[1] : palette[0], pointer.strength * .78);
+        }
+        roundedBar(pointer.x - 63, pointer.y, 2, 12, palette[2], pointer.strength * .42);
+        roundedBar(pointer.x + 63, pointer.y, 2, 12, palette[2], pointer.strength * .42);
+      }
       context.globalAlpha = 1;
       if (!reduced && !coarse) frame = requestAnimationFrame(draw);
     };
@@ -135,8 +148,10 @@ export function HeroSignalField() {
       if (coarse) return;
       const box = canvas.getBoundingClientRect();
       const inside = event.clientX >= box.left && event.clientX <= box.right && event.clientY >= box.top && event.clientY <= box.bottom;
-      pointer.active = inside;
-      if (!inside) return;
+      const target = event.target instanceof Element ? event.target : null;
+      const overContent = Boolean(target?.closest(".site-header, .hero-copy, .clarity-stack, a, button, input, select, textarea, label"));
+      pointer.active = inside && !overContent;
+      if (!pointer.active) return;
       pointer.targetX = event.clientX - box.left;
       pointer.targetY = event.clientY - box.top;
       if (pointer.x === 0 && pointer.y === 0) { pointer.x = pointer.targetX; pointer.y = pointer.targetY; }
