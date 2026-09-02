@@ -12,10 +12,16 @@ const seeds: Record<DotFieldVariant, number> = {
 };
 
 const clusterSets: Record<DotFieldVariant, Array<[number, number, number, number]>> = {
-  about: [[0.1, 0.15, 0.23, 0.24], [0.88, 0.76, 0.2, 0.28]],
-  contact: [[0.92, 0.12, 0.25, 0.24], [0.12, 0.82, 0.22, 0.26]],
-  notes: [[0.12, 0.18, 0.25, 0.22], [0.82, 0.22, 0.24, 0.25], [0.52, 0.9, 0.26, 0.18]],
+  about: [[0.08, 0.14, 0.3, 0.28], [0.55, 0.02, 0.28, 0.2], [0.94, 0.78, 0.25, 0.34], [0.3, 0.96, 0.32, 0.2]],
+  contact: [[0.92, 0.1, 0.32, 0.28], [0.62, 0.98, 0.32, 0.2], [0.08, 0.82, 0.3, 0.32]],
+  notes: [[0.08, 0.12, 0.32, 0.3], [0.88, 0.16, 0.3, 0.3], [0.58, 0.94, 0.36, 0.22], [0.04, 0.72, 0.24, 0.28]],
   resume: [[0.84, 0.14, 0.28, 0.22], [0.2, 0.84, 0.25, 0.24]],
+};
+
+const quietZones: Partial<Record<DotFieldVariant, [number, number, number, number]>> = {
+  about: [0.02, 0.2, 0.6, 0.82],
+  contact: [0.02, 0.22, 0.58, 0.8],
+  notes: [0.02, 0.3, 0.78, 0.76],
 };
 
 function seededRandom(seed: number) {
@@ -49,14 +55,16 @@ export function IntroDotField({ variant }: { variant: DotFieldVariant }) {
       context.clearRect(0, 0, width, height);
 
       const random = seededRandom(seeds[variant]);
-      const spacing = width < 760 ? 17 : 19;
+      const spacing = width < 760 ? 16 : 18;
       const clusters = clusterSets[variant];
+      const isStructuredGrid = variant !== "resume";
+      const quietZone = quietZones[variant];
 
       for (let y = -spacing; y < height + spacing; y += spacing) {
         for (let x = -spacing; x < width + spacing; x += spacing) {
           const normalizedX = x / Math.max(1, width);
           const normalizedY = y / Math.max(1, height);
-          let density = 0;
+          let density = isStructuredGrid ? 0.12 : 0;
 
           for (const [centerX, centerY, radiusX, radiusY] of clusters) {
             const dx = (normalizedX - centerX) / radiusX;
@@ -64,16 +72,22 @@ export function IntroDotField({ variant }: { variant: DotFieldVariant }) {
             density = Math.max(density, Math.exp(-(dx * dx + dy * dy) * 1.65));
           }
 
-          const contour = 0.78 + Math.sin(normalizedX * 16 + normalizedY * 9 + seeds[variant]) * 0.16;
+          const contour = 0.84 + Math.sin(normalizedX * 14 + normalizedY * 8 + seeds[variant]) * 0.12;
           density *= contour;
-          if (random() > density * 0.74) continue;
+          const keepChance = isStructuredGrid ? 0.28 + density * 0.7 : density * 0.74;
+          if (random() > keepChance) continue;
 
-          const dotX = x + (random() - 0.5) * 3.5;
-          const dotY = y + (random() - 0.5) * 3.5;
+          const insideQuietZone = quietZone
+            ? normalizedX >= quietZone[0] && normalizedX <= quietZone[2] && normalizedY >= quietZone[1] && normalizedY <= quietZone[3]
+            : false;
+
+          const dotX = isStructuredGrid ? x : x + (random() - 0.5) * 3.5;
+          const dotY = isStructuredGrid ? y : y + (random() - 0.5) * 3.5;
           const accentChance = random();
-          const color = accentChance > 0.985 ? "54, 93, 228" : accentChance < 0.012 ? "255, 90, 24" : "17, 19, 24";
-          const alpha = color === "17, 19, 24" ? 0.035 + density * 0.075 : 0.11;
-          const radius = 0.65 + random() * 0.7;
+          const color = accentChance > 0.988 ? "54, 93, 228" : accentChance < 0.01 ? "255, 90, 24" : "17, 19, 24";
+          const baseAlpha = isStructuredGrid ? 0.045 + density * 0.12 : 0.035 + density * 0.075;
+          const alpha = (color === "17, 19, 24" ? baseAlpha : 0.15) * (insideQuietZone ? 0.32 : 1);
+          const radius = isStructuredGrid ? 0.72 + density * 0.38 : 0.65 + random() * 0.7;
 
           context.beginPath();
           context.fillStyle = `rgba(${color}, ${alpha})`;
