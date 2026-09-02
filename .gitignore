@@ -4,10 +4,16 @@ node_modules/
 tmp/
 .agent/
 .agents/
+.impeccable/
 .claude/
 .codex/
 .cursor/
 .gemini/
+research/
+AGENTS.md
+CLAUDE.md
+skills-lock.json
+/*.png
 *.tsbuildinfo
 *-qa.png
 *-qa-final.png

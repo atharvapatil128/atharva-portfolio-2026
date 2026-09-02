@@ -226,7 +226,7 @@ The contact visual is a pointer-responsive telemetry field with a small AP kart 
 
 ### Motion
 
-The hero is the primary authored entrance. Its content becomes clear first, while the Clarity Stack's evidence layers arrive from distinct directions, resolve their blur, and assemble around the foreground decision surface. The sticky header transitions only when scroll state changes; the footer signal field provides slow ambient motion and a local pointer response. All three experiences become static under reduced-motion preferences.
+The hero is the primary authored entrance. Its content becomes clear first, while the Clarity Stack's evidence layers arrive from distinct directions, resolve their blur, and assemble around the foreground decision surface. A canvas-based signal field places small vertical bars in measured edge clusters. Cursor proximity displaces and elongates nearby bars while a short spring-followed wake tracks movement; every mark settles back onto its original grid. Cobalt leads, Graphite supports, and Signal Orange/Selection Acid remain rare. The sticky header transitions only when scroll state changes; the footer signal field provides slower ambient motion and a local pointer response. All three experiences become static under reduced-motion preferences, and coarse-pointer devices receive the composed resting state.
 
 ### Case-Study Structure
 

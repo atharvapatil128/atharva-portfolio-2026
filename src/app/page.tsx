@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ClarityStack } from "@/components/clarity-stack";
 import { HeroReveal } from "@/components/hero-reveal";
+import { HeroSignalField } from "@/components/hero-signal-field";
 import { HomeSections } from "@/components/home-sections";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -11,6 +12,7 @@ export default function HomePage() {
       <SiteHeader />
       <main>
         <section className="hero section-pad" aria-labelledby="hero-title">
+        <HeroSignalField />
         <div className="hero-copy">
           <HeroReveal>
             <h1 id="hero-title" className="t-stagger-line t-stagger-line--1">
