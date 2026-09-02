@@ -55,6 +55,7 @@ body {
 }
 
 .signal-cursor-canvas { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.f1-cursor-canvas { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 
 ::selection { background: var(--acid); color: var(--ink); }
 * { scrollbar-color: var(--slate) var(--subtle); scrollbar-width: thin; }
@@ -684,12 +685,14 @@ p { text-wrap: pretty; }
   .t-stagger-line { transition: none !important; }
   .t-learn-chevron, .t-learn-arm { transition: none !important; }
   .signal-cursor-canvas { display: none; }
+  .f1-cursor-canvas { display: none; }
 }
 
 @media (pointer: coarse) {
   .button { min-height: 48px; }
   .primary-nav a { min-width: 44px; }
   .signal-cursor-canvas { display: none; }
+  .f1-cursor-canvas { display: none; }
 }
 
 /* 2026 visual refinement: identity, useful interactions, and authored close */

@@ -6,7 +6,7 @@ import { BrandMark } from "@/components/brand-mark";
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "/", label: "Work", match: (path: string) => path === "/" || path === "/home-alt" || path.startsWith("/work") },
+  { href: "/", label: "Work", match: (path: string) => path === "/" || path === "/home-alt" || path === "/home-f1" || path.startsWith("/work") },
   { href: "/notes", label: "Notes", match: (path: string) => path.startsWith("/notes") },
   { href: "/about", label: "About", match: (path: string) => path.startsWith("/about") },
 ];
