@@ -16,7 +16,7 @@ type SignalBar = {
 
 type WakeBar = { x: number; y: number; vx: number; vy: number; offsetX: number; offsetY: number; phase: number };
 
-const clusters = [
+const fallbackClusters = [
   { x: -0.09, y: 0.17, columns: 15, rows: 4, gapX: 11, gapY: 14 },
   { x: 0.34, y: 0.055, columns: 10, rows: 3, gapX: 12, gapY: 14 },
   { x: 0.83, y: 0.045, columns: 12, rows: 4, gapX: 11, gapY: 14 },
@@ -70,12 +70,28 @@ export function HeroSignalField() {
       canvas.height = Math.max(1, Math.round(height * ratio));
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
       bars = [];
-      const layoutClusters = width < 700 ? compactClusters : clusters;
+      const headline = canvas.closest(".hero")?.querySelector("h1")?.getBoundingClientRect();
+      const localHeadline = headline ? {
+        left: headline.left - box.left,
+        right: headline.right - box.left,
+        top: headline.top - box.top,
+        bottom: headline.bottom - box.top,
+      } : null;
+      const layoutClusters = width < 700
+        ? compactClusters.map((cluster) => ({ ...cluster, x: cluster.x * width, y: cluster.y * height }))
+        : localHeadline
+          ? [
+              { x: localHeadline.left - 74, y: localHeadline.top + 38, columns: 5, rows: 4, gapX: 10, gapY: 13 },
+              { x: localHeadline.left + 158, y: localHeadline.top - 62, columns: 10, rows: 3, gapX: 11, gapY: 13 },
+              { x: localHeadline.right + 26, y: localHeadline.top + 12, columns: 8, rows: 3, gapX: 11, gapY: 13 },
+              { x: localHeadline.right + 22, y: localHeadline.bottom - 42, columns: 6, rows: 4, gapX: 11, gapY: 13 },
+            ]
+          : fallbackClusters.map((cluster) => ({ ...cluster, x: cluster.x * width, y: cluster.y * height }));
       layoutClusters.forEach((cluster, clusterIndex) => {
         for (let row = 0; row < cluster.rows; row += 1) {
           for (let column = 0; column < cluster.columns; column += 1) {
-            const homeX = cluster.x * width + column * cluster.gapX;
-            const homeY = cluster.y * height + row * cluster.gapY;
+            const homeX = cluster.x + column * cluster.gapX;
+            const homeY = cluster.y + row * cluster.gapY;
             if (homeX < -8 || homeX > width + 8 || homeY < -8 || homeY > height + 8) continue;
             bars.push({
               x: homeX,

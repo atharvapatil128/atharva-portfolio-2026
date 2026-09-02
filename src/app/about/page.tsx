@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { TelemetryPanel } from "@/components/telemetry-panel";
 
 export default function AboutPage() {
   return (
@@ -13,16 +14,7 @@ export default function AboutPage() {
           <p>I work across research, interaction design, prototyping, and AI-assisted building to turn complicated systems into products people can trust.</p>
           <div className="hero-actions"><Link className="button button-signal" href="/resume">View résumé</Link><Link className="button button-quiet" href="/contact">Start a conversation</Link></div>
         </div>
-        <aside className="telemetry-panel">
-          <p className="mono">LIVE SNAPSHOT / 2026</p>
-          <h2>Current telemetry</h2>
-          <dl>
-            <div><dt>Base</dt><dd>Indianapolis · open to relocate</dd></div>
-            <div><dt>Focus</dt><dd>Product design · research · building</dd></div>
-            <div><dt>Off screen</dt><dd>Karting · Formula 1 · running · trails</dd></div>
-            <div><dt>Current build</dt><dd>Streaming Helper + this portfolio</dd></div>
-          </dl>
-        </aside>
+        <TelemetryPanel />
         </section>
         <section className="work-principles section-pad">
         <h2>How I tend to work</h2>
