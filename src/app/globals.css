@@ -245,7 +245,13 @@ p { text-wrap: pretty; }
 }
 .section-heading > p { margin-top: 8px; text-align: right; }
 
-.selected-work { min-height: 610px; padding-top: 88px; padding-bottom: 88px; background: var(--subtle); }
+.selected-work {
+  min-height: 610px;
+  padding-top: 88px;
+  padding-bottom: 88px;
+  scroll-margin-top: 112px;
+  background: var(--subtle);
+}
 .project-deck-shell { margin-top: 34px; }
 .deck-controls { display: flex; justify-content: space-between; margin-bottom: 12px; }
 .project-deck { display: grid; grid-template-columns: 1.75fr 1fr 1fr; gap: 18px; }
@@ -584,7 +590,7 @@ p { text-wrap: pretty; }
   .section-heading { display: block; }
   .section-heading h2, .paddock h2, .work-principles h2, .fast-feedback h2 { font-size: 42px; line-height: 1.02; }
   .section-heading > p { margin-top: 18px; text-align: left; }
-  .selected-work { min-height: 470px; padding-top: 64px; padding-bottom: 64px; }
+  .selected-work { min-height: 470px; padding-top: 64px; padding-bottom: 64px; scroll-margin-top: 80px; }
   .project-deck-shell { margin-top: 28px; }
   .deck-controls { font-size: 9px; }
   .deck-controls span:first-child { max-width: 210px; }
