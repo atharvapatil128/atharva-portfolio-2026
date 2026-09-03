@@ -3,6 +3,7 @@ import type { Project } from "@/lib/site-data";
 import { projects } from "@/lib/site-data";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { BackLink } from "@/components/back-link";
 
 function CaseMockup({ slug }: { slug: string }) {
   return (
@@ -28,6 +29,7 @@ export function CaseStudy({ project }: { project: Project }) {
       <main>
         <article className="case-study">
         <header className={`case-hero case-tone-${project.slug}`}>
+          <BackLink href="/#selected-work">Back to selected work</BackLink>
           <div className="case-title-block">
             <h1>{project.name}</h1>
             <p className="case-descriptor">{project.descriptor}</p>

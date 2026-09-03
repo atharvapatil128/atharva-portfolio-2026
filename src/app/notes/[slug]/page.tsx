@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { BackLink } from "@/components/back-link";
 import { notes } from "@/lib/site-data";
 
 export function generateStaticParams() {
@@ -17,6 +18,7 @@ export default async function NotePage({ params }: { params: Promise<{ slug: str
       <SiteHeader />
       <main>
         <article className="note-article">
+        <BackLink href="/notes#all-notes">Back to all notes</BackLink>
         <header>
           <p className="mono">{note.type.toUpperCase()} · {note.date.toUpperCase()}</p>
           <h1>{note.title}</h1>
