@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { FooterSignalField } from "@/components/footer-signal-field";
+import { SectionLink } from "@/components/section-link";
 
 export function SiteFooter() {
   return (
@@ -17,7 +18,7 @@ export function SiteFooter() {
       </div>
       <div className="footer-base">
         <Link className="footer-brand" href="/" aria-label="Atharva Patil, home"><BrandMark className="brand-mark" /><span>ATHARVA PATIL<br /><small>PRODUCT DESIGNER</small></span></Link>
-        <nav aria-label="Footer navigation"><Link href="/#selected-work">Work</Link><Link href="/notes">Notes</Link><Link href="/about">About</Link><Link href="/resume">Résumé</Link></nav>
+        <nav aria-label="Footer navigation"><SectionLink href="/#selected-work">Work</SectionLink><Link href="/notes">Notes</Link><Link href="/about">About</Link><Link href="/resume">Résumé</Link></nav>
         <div className="footer-status"><span className="availability footer-availability"><i aria-hidden="true" />AVAILABLE FOR THE RIGHT TEAM</span><p className="footer-credit mono">DESIGNED + BUILT BY ATHARVA · INDIANAPOLIS</p></div>
       </div>
     </footer>

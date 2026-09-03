@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
+import { SectionLink } from "@/components/section-link";
 
 const stages = ["Research", "Constraints", "Decisions", "Prototype", "Interface"];
 
@@ -13,7 +14,7 @@ export function ShowcaseHero() {
         <p className="availability-line mono"><i aria-hidden="true" />AVAILABLE FOR PRODUCT DESIGN ROLES · 2026</p>
         <h1 id="showcase-title">I turn complex systems<br />into clear decisions.</h1>
         <p>Product designer shaping dependable consumer and enterprise experiences.</p>
-        <div className="hero-actions"><Link className="button button-signal" href="#selected-work">View selected work</Link><Link className="button button-quiet" href="/resume">Résumé</Link></div>
+        <div className="hero-actions"><SectionLink className="button button-signal" href="#selected-work">View selected work</SectionLink><Link className="button button-quiet" href="/resume">Résumé</Link></div>
       </div>
       <div className="showcase-field" aria-label="An interactive view of the design process">
         <div className="showcase-line" aria-hidden="true" />

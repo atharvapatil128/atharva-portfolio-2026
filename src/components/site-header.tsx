@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandMark } from "@/components/brand-mark";
+import { SectionLink } from "@/components/section-link";
 import { useEffect, useState } from "react";
 import type { MouseEvent } from "react";
 
@@ -69,9 +70,9 @@ export function SiteHeader() {
 
       <nav className="primary-nav" aria-label="Primary navigation">
         {links.map((link) => (
-          <Link key={link.href} href={link.href} aria-current={isLinkActive(link) ? "page" : undefined}>
+          <SectionLink key={link.href} href={link.href} aria-current={isLinkActive(link) ? "page" : undefined}>
             {link.label}
-          </Link>
+          </SectionLink>
         ))}
       </nav>
 
@@ -86,9 +87,9 @@ export function SiteHeader() {
         <summary>INDEX / MENU</summary>
         <nav aria-label="Mobile navigation">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} aria-current={isLinkActive(link) ? "page" : undefined}>
+            <SectionLink key={link.href} href={link.href} aria-current={isLinkActive(link) ? "page" : undefined}>
               {link.label}
-            </Link>
+            </SectionLink>
           ))}
           <Link href="/resume">Résumé</Link>
           <Link href="/contact" aria-current={mounted && pathname.startsWith("/contact") ? "page" : undefined}>Let&apos;s talk</Link>

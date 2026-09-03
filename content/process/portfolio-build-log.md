@@ -76,3 +76,8 @@ Working notes for the future article about designing and building this portfolio
 - Changed the case-study continuation from a passive cobalt band into one large link whose full surface advances to the next project. Context and description stay on the left while a right-arrow tile visually anchors the action; it is part of the same link rather than a separate target.
 - Hover deepens the cobalt field and moves the arrow forward, keyboard focus receives a visible signal-orange inset outline, and the mobile two-column layout keeps the copy before the right-aligned arrow in reading order.
 - Finish review disposition: pass. These are local hierarchy and interaction refinements, so they do not add a new durable rule to `DESIGN.md`.
+
+## 2026-09-03 — Making section navigation repeatable
+
+- Replaced one-shot `#selected-work` links with a shared same-page section link. When the destination hash is already in the URL, clicking Work or “View selected work” now explicitly scrolls the section back into position instead of relying on the browser to repeat an unchanged navigation.
+- Kept normal cross-page navigation and modifier-key behavior intact, respected reduced-motion preferences, and closed the mobile navigation disclosure after the jump.

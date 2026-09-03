@@ -6,6 +6,7 @@ import { HeroSignalField } from "@/components/hero-signal-field";
 import { HomeSections } from "@/components/home-sections";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SectionLink } from "@/components/section-link";
 
 export default function F1HomePage() {
   return (
@@ -26,7 +27,7 @@ export default function F1HomePage() {
             </HeroReveal>
             <p className="availability-line mono"><i aria-hidden="true" />AVAILABLE FOR PRODUCT DESIGN ROLES · 2026</p>
             <div className="hero-actions">
-              <Link className="button button-signal" href="#selected-work">View selected work</Link>
+              <SectionLink className="button button-signal" href="#selected-work">View selected work</SectionLink>
               <Link className="button button-quiet" href="/resume">Résumé</Link>
             </div>
             <div className="hero-meta mono"><span>BASED IN INDIANAPOLIS</span><span>OPEN TO RELOCATE</span></div>

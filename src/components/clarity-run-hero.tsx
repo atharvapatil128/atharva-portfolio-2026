@@ -12,6 +12,7 @@ import {
   type MotionValue,
 } from "motion/react";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
+import { SectionLink } from "@/components/section-link";
 
 type FragmentConfig = {
   kind: "line" | "block" | "note";
@@ -112,7 +113,7 @@ export function ClarityRunHero() {
           <p>I&apos;m Atharva, a product designer with a background in HCI and computer science. I research, prototype, test, and sometimes write the front end too.</p>
           <p className="availability-line mono"><i aria-hidden="true" />AVAILABLE FOR PRODUCT DESIGN ROLES · 2026</p>
           <div className="hero-actions">
-            <Link className="button button-signal" href="#selected-work">View selected work</Link>
+            <SectionLink className="button button-signal" href="#selected-work">View selected work</SectionLink>
             <Link className="button button-quiet" href="/resume">Résumé</Link>
           </div>
           <div className="hero-meta mono"><span>BASED IN INDIANAPOLIS</span><span>OPEN TO RELOCATE</span></div>
