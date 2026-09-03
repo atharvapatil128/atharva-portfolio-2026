@@ -31,3 +31,19 @@ Working notes for the future article about designing and building this portfolio
 - Is the featured note visible enough at common laptop heights?
 - Does the mobile crop keep the message primary and the desk objects secondary?
 - During the content pass, replace the current short featured-note description with a real excerpt from the finished article.
+
+## 2026-09-02 — Replacing the composite with sharp object layers
+
+### What changed
+
+- The first full-frame desk image became visibly soft once it was enlarged across the hero.
+- Rebuilt the composition from five separately exported assets: laptop, keyboard, paperclip, binder clip, and Formula 1 model.
+- Kept one controlled lighting recipe and contact-shadow language so the objects still read as a single desk scene.
+- Exported the assets as WebP and display each below its native resolution, with Next.js serving responsive versions.
+
+### Art direction
+
+- Desktop retains the complete edge composition while protecting the central reading zone.
+- Mobile keeps only the lightest visual cues: the paperclip and the car.
+- Soft edge masks and multiply blending merge the porcelain asset backgrounds into the page without a visible rectangular crop.
+- Copy and the live note preview remain above every decorative layer, so the objects never compromise legibility or interaction.
