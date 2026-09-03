@@ -47,3 +47,24 @@ Working notes for the future article about designing and building this portfolio
 - Mobile keeps only the lightest visual cues: the paperclip and the car.
 - Soft edge masks and multiply blending merge the porcelain asset backgrounds into the page without a visible rectangular crop.
 - Copy and the live note preview remain above every decorative layer, so the objects never compromise legibility or interaction.
+
+## 2026-09-02 — Isolating the F1 clarity-run concept
+
+- Added `/home-clarity` as a separate homepage experiment so the approved landing page remains untouched.
+- Kept the first viewport direct: a junior-product-designer introduction and recruiter actions sit beside one interactive transformation instead of behind atmospheric copy.
+- Turned the earlier “clarity field” explanation into a working sequence: scattered interface fragments resolve into an ordered rail, the car advances, and a concrete “Something people can use” output becomes legible as the visitor scrolls.
+- Used a sticky desktop stage to make the change of state readable without scroll-jacking. Pointer movement adds only shallow depth to the fragments on fine pointers.
+- A red Formula 1 model travels along the rail, connecting Atharva's product practice and F1 interest to the same clarity story rather than using the car as unrelated decoration.
+- Tablet, touch, coarse-pointer, and reduced-motion contexts receive the resolved composition immediately; the existing homepage sections continue below the experimental hero.
+- Kept the implementation local to the new route and its clarity-run component/styles. The shared header only recognizes `/home-clarity` as a homepage path; `/` was not replaced.
+
+### Asset provenance
+
+- `public/images/clarity-run/f1-cutout.png` derives from the repository-owned raster `public/images/notes-objects/f1-model.webp`.
+- Codex's built-in image-generation edit mode removed the off-white background while preserving the red Formula 1 car, its proportions, materials, details, and a soft semi-transparent contact shadow. The edit explicitly prohibited an opaque backdrop, rectangle, vignette, halo, border, or text.
+- The generated 1536×1024 32-bit ARGB PNG has transparent corner pixels and was copied unchanged into the clarity-run directory. No post-processing, masking, or color grading was applied after generation.
+
+### Finish disposition
+
+- Visual and implementation review disposition: ship.
+- No `DESIGN.md` change was needed. The durable system already defines the complexity-to-clarity interaction principle; this route's F1 rail, sticky staging, and copy sequence remain experiment-specific rather than global design rules.

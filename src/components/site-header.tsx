@@ -17,7 +17,7 @@ export function SiteHeader() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [workInView, setWorkInView] = useState(false);
-  const isHome = pathname === "/" || pathname === "/home-alt" || pathname === "/home-f1";
+  const isHome = pathname === "/" || pathname === "/home-alt" || pathname === "/home-f1" || pathname === "/home-clarity";
 
   useEffect(() => setMounted(true), []);
 
