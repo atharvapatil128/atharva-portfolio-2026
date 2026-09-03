@@ -68,3 +68,11 @@ Working notes for the future article about designing and building this portfolio
 
 - Visual and implementation review disposition: ship.
 - No `DESIGN.md` change was needed. The durable system already defines the complexity-to-clarity interaction principle; this route's F1 rail, sticky staging, and copy sequence remain experiment-specific rather than global design rules.
+
+## 2026-09-03 — Clarifying the Notes handoff and project continuation
+
+- Archived the `/home-clarity` page source under `src/experiments`, outside the Next.js app router. Its component and generated asset remain available for reference, but the concept no longer creates a routed page or changes homepage-aware navigation.
+- Rebuilt the Notes transition as a content-driven stack: the featured note now participates in the hero's layout instead of hanging below an `overflow: hidden` boundary. This keeps its full title, description, and action on the white surface, followed by a deliberate responsive breathing interval before the gray note index begins.
+- Changed the case-study continuation from a passive cobalt band into one large link whose full surface advances to the next project. Context and description stay on the left while a right-arrow tile visually anchors the action; it is part of the same link rather than a separate target.
+- Hover deepens the cobalt field and moves the arrow forward, keyboard focus receives a visible signal-orange inset outline, and the mobile two-column layout keeps the copy before the right-aligned arrow in reading order.
+- Finish review disposition: pass. These are local hierarchy and interaction refinements, so they do not add a new durable rule to `DESIGN.md`.

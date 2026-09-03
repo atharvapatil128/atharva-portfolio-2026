@@ -81,10 +81,17 @@ export function CaseStudy({ project }: { project: Project }) {
         </section>
 
         {next && (
-          <Link href={`/work/${next.slug}`} className="next-case">
-            <span className="mono">NEXT CASE STUDY</span>
-            <strong>{next.name}</strong>
-            <span>{next.descriptor}</span>
+          <Link href={`/work/${next.slug}`} className="next-case" aria-label={`Next case study: ${next.name}`}>
+            <span className="next-case-copy">
+              <span className="mono">NEXT CASE STUDY</span>
+              <strong>{next.name}</strong>
+              <span className="next-case-descriptor">{next.descriptor}</span>
+            </span>
+            <span className="next-case-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </span>
           </Link>
         )}
         </article>
