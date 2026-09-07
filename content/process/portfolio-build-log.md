@@ -210,3 +210,9 @@ Working notes for the future article about designing and building this portfolio
 - Replaced MEAD's compressed desktop screenshot grids with horizontal, snap-aligned flow rails. Screens stay large enough to read, retain their numbered sequence, and expose a visible scroll cue instead of presenting as an unordered gallery.
 - Copied the cleaned Engagement and Detailed Entry exports to new public asset paths so cached versions cannot survive the replacement. The review flow now uses those exact portrait exports.
 - Replaced the repeated Add People phone in the MEAD hero with the Engagement overview. The first viewport now previews capture and returned guidance, while the complete Add People state sequence remains in its own care-circle flow.
+
+## 2026-09-07 — Final MEAD overflow replacements
+
+- Replaced the three remaining overflow-prone exports with the supplied final crops: Engagement, Add People with the keyboard open, and All Entries.
+- Moved all references to fresh asset paths so the updated crops appear immediately instead of competing with cached files.
+- Matched the hero's Engagement phone frame to the screenshot's actual aspect ratio, removing the artificial empty area below the product navigation.

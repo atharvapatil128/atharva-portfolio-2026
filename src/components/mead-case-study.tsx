@@ -63,7 +63,7 @@ const prototypeFlows = [
     description: "The caregiver can see who is already available, search when someone is missing, send a verification request, and continue only after a person is available in the care list.",
     screens: [
       { src: "/images/mead/care-circle-empty.png", alt: "MEAD Add People screen showing an empty care list and available members", width: 804, height: 1752, caption: "Review the current care list." },
-      { src: "/images/mead/care-circle-search.png", alt: "MEAD Add People search showing a person who can be requested", width: 804, height: 1980, caption: "Search for a missing person." },
+      { src: "/images/mead/care-circle-search-final.png", alt: "MEAD Add People search showing a person who can be requested", width: 804, height: 1752, caption: "Search for a missing person." },
       { src: "/images/mead/care-circle-request-sent.png", alt: "MEAD verification request confirmation", width: 804, height: 1756, caption: "Make the verification state explicit." },
       { src: "/images/mead/care-circle-selected.png", alt: "MEAD care list with a verified person selected and the next action enabled", width: 804, height: 1756, caption: "Select a verified person and continue." },
     ],
@@ -109,7 +109,7 @@ export function MeadCaseStudy() {
                   <path d="M22 444c154-90 259-48 361 34s211 78 408-39" />
                 </svg>
                 <figure className="mead-phone mead-phone-care">
-                  <Image src="/images/mead/engagement-screen-clean.png" alt="MEAD engagement overview with recommendations and an engagement trend" width={801} height={1748} loading="eager" />
+                  <Image src="/images/mead/engagement-screen-final.png" alt="MEAD engagement overview with recommendations and an engagement trend" width={801} height={1748} loading="eager" />
                 </figure>
                 <figure className="mead-phone mead-phone-record">
                   <Image src="/images/mead/entry-record-video.png" alt="MEAD in-app recording prototype screen" width={804} height={1748} loading="eager" />
@@ -226,11 +226,11 @@ export function MeadCaseStudy() {
                   <span className="mead-scroll-hint mono">SCROLL TO FOLLOW THE FLOW <b aria-hidden="true">→</b></span>
                   <ol className="mead-return-sequence" aria-label="Review and adapt screen sequence">
                     <li>
-                      <div className="mead-landscape-frame"><ExpandableImage src="/images/mead/engagement-screen-clean.png" alt="MEAD engagement overview with recommendations and an engagement trend" width={801} height={1748} sizes="(max-width: 760px) 86vw, 390px" caption="Start from the person's engagement overview." /></div>
+                      <div className="mead-landscape-frame"><ExpandableImage src="/images/mead/engagement-screen-final.png" alt="MEAD engagement overview with recommendations and an engagement trend" width={801} height={1748} sizes="(max-width: 760px) 86vw, 390px" caption="Start from the person's engagement overview." /></div>
                       <span className="mead-step-copy"><b>1</b>See the person-level pattern.</span>
                     </li>
                     <li>
-                      <div className="mead-landscape-frame mead-landscape-frame-list"><ExpandableImage src="/images/mead/entries-list-hd.png" alt="MEAD All Entries screen with filters and two entry summaries" width={804} height={2242} sizes="(max-width: 760px) 86vw, 390px" caption="Filter the entries that contributed to the pattern." /></div>
+                      <div className="mead-landscape-frame mead-landscape-frame-list"><ExpandableImage src="/images/mead/entries-list-final.png" alt="MEAD All Entries screen with filters and two entry summaries" width={804} height={1753} sizes="(max-width: 760px) 86vw, 390px" caption="Filter the entries that contributed to the pattern." /></div>
                       <span className="mead-step-copy"><b>2</b>Find the relevant entry.</span>
                     </li>
                     <li>

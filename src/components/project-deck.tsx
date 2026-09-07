@@ -30,7 +30,7 @@ function ProjectVisual({ slug }: { slug: string }) {
           <Image src="/images/mead/entry-ready-upload.png" alt="" fill sizes="110px" />
         </span>
         <span className="mead-mini-phone mead-mini-phone-return">
-          <Image src="/images/mead/engagement-screen-clean.png" alt="" fill sizes="150px" />
+          <Image src="/images/mead/engagement-screen-final.png" alt="" fill sizes="150px" />
         </span>
         <span className="mead-mini-path mono">CAPTURE <i /> REVIEW <i /> ADAPT</span>
       </div>
