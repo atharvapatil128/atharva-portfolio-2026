@@ -9,7 +9,16 @@ function ProjectVisual({ slug }: { slug: string }) {
   if (slug === "streaming-helper") {
     return (
       <div className="streaming-mini" aria-hidden="true">
-        <Image src="/images/streaming-helper/selected-work-preview.svg" alt="" fill loading="eager" sizes="(max-width: 760px) 140px, 50vw" />
+        <Image className="streaming-mini-context" src="/images/streaming-helper/extension-ready-hd.png" alt="" fill loading="eager" sizes="(max-width: 760px) 140px, 50vw" />
+        <span className="streaming-mini-scrim" />
+        <span className="streaming-mini-dashboard">
+          <Image src="/images/streaming-helper/dashboard-recommendations-hd.png" alt="" fill loading="eager" sizes="(max-width: 760px) 104px, 32vw" />
+        </span>
+        <span className="streaming-mini-brand">
+          <Image src="/images/streaming-helper/product-icon.png" alt="" width={28} height={28} />
+          <b>Streaming Helper</b>
+        </span>
+        <span className="streaming-mini-path mono">WATCHING <i /> SHARED <i /> SAVED</span>
       </div>
     );
   }

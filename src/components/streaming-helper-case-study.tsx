@@ -36,19 +36,19 @@ const decisions = [
 
 const recommendationFlow = [
   {
-    src: "/images/streaming-helper/recommend-open.jpg",
+    src: "/images/streaming-helper/recommend-open-hd.png",
     step: "01 / OPEN",
     caption: "The extension recognizes the title without interrupting playback.",
     alt: "Streaming page with the Streaming Helper recommendation panel opened beside the video.",
   },
   {
-    src: "/images/streaming-helper/recommend-selected.jpg",
+    src: "/images/streaming-helper/recommend-selected-hd.png",
     step: "02 / CHOOSE",
     caption: "A friend is selected and the action becomes explicit.",
     alt: "Streaming Helper panel with a friend selected and the send recommendation button active.",
   },
   {
-    src: "/images/streaming-helper/recommend-sent.jpg",
+    src: "/images/streaming-helper/recommend-sent-hd.png",
     step: "03 / CONFIRM",
     caption: "A clear receipt closes the loop without pulling the viewer away.",
     alt: "Streaming Helper confirmation showing that the recommendation was added to a friend's list.",
@@ -57,28 +57,60 @@ const recommendationFlow = [
 
 const productSurfaces = [
   {
-    src: "/images/streaming-helper/recommendations-dashboard.jpg",
+    src: "/images/streaming-helper/dashboard-recommendations-hd.png",
     label: "COMPANION PRODUCT / DASHBOARD",
     title: "Recommendations stay findable",
     alt: "Streaming Helper dashboard showing sent recommendations organized in a searchable grid.",
+    format: "wide",
   },
   {
-    src: "/images/streaming-helper/friend-picks.jpg",
-    label: "IN-STREAM SUPPORT / FRIEND PICKS",
-    title: "Trusted options arrive where the choice happens",
-    alt: "Streaming Helper friend recommendations shown as a focused row over a streaming service.",
+    src: "/images/streaming-helper/comfort-list-hd.png",
+    label: "COMPANION PRODUCT / COMFORT LIST",
+    title: "Familiar titles remain ready for low-energy moments",
+    alt: "Streaming Helper Comfort List with familiar movies and shows saved for later.",
+    format: "wide",
   },
   {
-    src: "/images/streaming-helper/helper-ready.jpg",
+    src: "/images/streaming-helper/comfort-pick-hd.jpg",
+    label: "IN-STREAM SUPPORT / COMFORT PICK",
+    title: "A focused fallback ends another round of browsing",
+    alt: "Streaming Helper Comfort Pick presenting five recommendations over a streaming service.",
+    format: "standard",
+  },
+  {
+    src: "/images/streaming-helper/extension-ready-hd.png",
     label: "EXTENSION / READY STATE",
     title: "The helper stays quiet until it is useful",
     alt: "Streaming service with the compact Streaming Helper menu showing friend recommendations and Comfort Pick ready.",
+    format: "standard",
   },
   {
-    src: "/images/streaming-helper/extension-sign-in.jpg",
+    src: "/images/streaming-helper/extension-sign-in-hd.png",
     label: "EXTENSION / ACCOUNT HANDOFF",
     title: "One account connects the viewing and saving moments",
     alt: "Streaming Helper extension sign-in panel opened over a streaming service.",
+    format: "standard",
+  },
+  {
+    src: "/images/streaming-helper/product-home-hd.png",
+    label: "PRODUCT SITE / ORIENTATION",
+    title: "The proposition is legible before setup begins",
+    alt: "Streaming Helper product website explaining friend-powered recommendations.",
+    format: "wide",
+  },
+  {
+    src: "/images/streaming-helper/privacy-settings-hd.png",
+    label: "COMPANION PRODUCT / PRIVACY",
+    title: "Sharing controls stay explicit and local",
+    alt: "Streaming Helper privacy and sharing settings dialog.",
+    format: "wide",
+  },
+  {
+    src: "/images/streaming-helper/help-center-hd.png",
+    label: "PRODUCT SUPPORT / HELP CENTER",
+    title: "Help is part of the product, not an afterthought",
+    alt: "Streaming Helper help center with search, support contact, and topic navigation.",
+    format: "wide",
   },
 ] as const;
 
@@ -242,7 +274,7 @@ export function StreamingHelperCaseStudy() {
               <div className="sh-flow-grid">
                 {recommendationFlow.map((frame) => (
                   <figure key={frame.step}>
-                    <div className="sh-image-frame"><ExpandableImage src={frame.src} alt={frame.alt} width={1280} height={800} sizes="(max-width: 760px) 84vw, 31vw" caption={`${frame.step} — ${frame.caption}`} /></div>
+                    <div className="sh-image-frame"><ExpandableImage src={frame.src} alt={frame.alt} width={2560} height={1600} sizes="(max-width: 760px) 84vw, 31vw" caption={`${frame.step} — ${frame.caption}`} /></div>
                     <figcaption><span className="mono">{frame.step}</span><p>{frame.caption}</p></figcaption>
                   </figure>
                 ))}
@@ -252,7 +284,7 @@ export function StreamingHelperCaseStudy() {
             <div className="sh-product-gallery">
               {productSurfaces.map((surface) => (
                 <figure key={surface.label}>
-                  <div className="sh-image-frame"><ExpandableImage src={surface.src} alt={surface.alt} width={1280} height={800} sizes="(max-width: 760px) 100vw, 50vw" caption={surface.title} /></div>
+                  <div className={`sh-image-frame ${surface.format === "wide" ? "sh-image-frame-wide" : ""}`}><ExpandableImage src={surface.src} alt={surface.alt} width={surface.format === "wide" ? 2936 : 2560} height={1600} sizes="(max-width: 760px) 100vw, 50vw" caption={surface.title} /></div>
                   <figcaption><span className="mono">{surface.label}</span><strong>{surface.title}</strong></figcaption>
                 </figure>
               ))}

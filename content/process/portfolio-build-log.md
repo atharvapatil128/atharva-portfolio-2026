@@ -176,3 +176,12 @@ Working notes for the future article about designing and building this portfolio
 - Added a deeper navy-to-electric-blue stage treatment, retained restrained technical linework, and kept rounded corners on the hero, product gallery, individual screens, and mobile video.
 - Added visible spacing to the projected metrics and retained their qualification as estimates.
 - Replaced the Field Maintenance Selected Work placeholder with the supplied case-study cover image. The other two preview redesigns remain deferred until their interior pages are final.
+
+## 2026-09-06 — Completing the Streaming Helper high-resolution media pass
+
+- Replaced every low-resolution Streaming Helper product screenshot with the supplied source exports. The primary recommendation sequence now uses the full 2560 × 1600 open → choose → confirm frames, while the companion-product surfaces use their native wide compositions.
+- Expanded the product evidence beyond the initial four screenshots to include the Recommendations dashboard, Comfort List, Comfort Pick, extension ready and sign-in states, product homepage, privacy controls, and help center. This keeps the case study grounded in the breadth of the working system without asking one image to explain every surface.
+- Rebuilt the Selected Work preview from live product evidence rather than another authored thumbnail: a streaming-service context establishes where the extension operates, the companion dashboard shows where recommendations persist, and the product mark ties the two together.
+- Standardized Field Maintenance card expansion on the same duration and easing tokens as Streaming Helper and MEAD. Its width and height now interpolate explicitly, removing the abrupt auto-size jump while preserving the requested top and bottom breathing room.
+- Changed the 761–900 px Selected Work layout into a swipeable fixed-card rail. At that width, preserving readable imagery and text matters more than forcing three compressed columns; desktop hover behavior and mobile scroll behavior remain intact.
+- Verified the homepage and Streaming Helper case study at 1440 px, 820 px, and 390 px. The final pass showed no page-level horizontal overflow, missing-image failures, browser errors, or framework error overlays.
