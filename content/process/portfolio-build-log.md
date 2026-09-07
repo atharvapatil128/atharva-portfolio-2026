@@ -225,3 +225,9 @@ Working notes for the future article about designing and building this portfolio
 - Tuned the Field transition as a staged identity-to-evidence swap: the seal exits quickly while the cover resolves over the existing card-resize duration, with reduced-motion support preserved.
 - Reviewed the supplied MEAD walkthrough as a potential case-study asset. At 2:58 it duplicates the now-ordered screenshot flows and is too long for the portfolio's reading rhythm, so it remains unplaced unless a focused interaction excerpt is cut later.
 - Preflighted a replacement Field context clip with Higgsfield. A credible eight-second 16:9 Seedance generation is viable, but the current account balance is below the estimated generation cost, so the existing clip remains in place pending an explicit generation decision.
+
+## 2026-09-07 — Stabilizing the Field Maintenance project card
+
+- Removed the alternate cover state from the Selected Work card after repeated crop and overflow failures across viewport sizes.
+- The Field Maintenance card now uses one durable identity treatment—the supplied department seal centered on a deep blue field—across hover, focus, swipe, desktop, tablet, and mobile.
+- Deferred all replacement context-video generation until the final portfolio pass because the available third-party video options require paid plans.

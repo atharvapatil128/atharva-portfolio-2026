@@ -36,10 +36,9 @@ function ProjectVisual({ slug }: { slug: string }) {
   }
   return (
     <div className="field-mini" aria-hidden="true">
-      <span className="field-condensed-mark">
+      <span className="field-brand-mark">
         <Image src="/images/field-maintenance/state-department-seal.png" alt="" width={1280} height={1281} sizes="70px" />
       </span>
-      <Image className="field-cover field-cover-expanded" src="/images/field-maintenance/cover-standard-direct.png" alt="" fill sizes="(max-width: 760px) 180px, 50vw" />
     </div>
   );
 }
