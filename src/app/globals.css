@@ -1948,7 +1948,14 @@ p { text-wrap: pretty; }
 .sh-flow-grid figcaption { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 16px 2px 0; }
 .sh-flow-grid figcaption span { color: var(--sh-accent); white-space: nowrap; }
 .sh-flow-grid figcaption p { color: var(--text-secondary); font-size: 15px; line-height: 22px; }
+.sh-product-chapters { display: grid; gap: 76px; margin-top: 76px; }
+.sh-product-chapter { padding-top: 22px; border-top: 1px solid var(--line); }
+.sh-product-chapter > header { display: grid; grid-template-columns: minmax(150px, .4fr) minmax(280px, .9fr) minmax(320px, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+.sh-product-chapter > header > span { padding-top: 7px; color: var(--sh-accent); }
+.sh-product-chapter > header h3 { max-width: 470px; font-size: clamp(28px, 2.35vw, 38px); line-height: 1.08; font-weight: 500; letter-spacing: -.025em; }
+.sh-product-chapter > header p { max-width: 600px; color: var(--text-secondary); font-size: 17px; line-height: 26px; }
 .sh-product-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 38px 20px; margin-top: 64px; }
+.sh-product-chapter .sh-product-gallery { margin-top: 30px; }
 .sh-product-gallery figcaption { display: flex; justify-content: space-between; gap: 20px; align-items: baseline; padding: 16px 2px 0; }
 .sh-product-gallery figcaption span { color: var(--text-tertiary); }
 .sh-product-gallery figcaption strong { max-width: 340px; font-size: 18px; line-height: 25px; font-weight: 500; text-align: right; }
@@ -1992,6 +1999,8 @@ p { text-wrap: pretty; }
   .sh-loop { grid-template-columns: repeat(2, 1fr); }
   .sh-decision-list > article { grid-template-columns: 1fr; }
   .sh-decision-title h3 { max-width: 620px; }
+  .sh-product-chapter > header { grid-template-columns: 140px minmax(0, 1fr); }
+  .sh-product-chapter > header p { grid-column: 2; }
 }
 
 @media (max-width: 760px) {
@@ -2041,7 +2050,14 @@ p { text-wrap: pretty; }
   }
   .sh-flow-grid figure { scroll-snap-align: start; }
   .sh-flow-grid figcaption { grid-template-columns: 1fr; gap: 8px; }
+  .sh-product-chapters { gap: 64px; margin-top: 64px; }
+  .sh-product-chapter { padding-top: 18px; }
+  .sh-product-chapter > header { grid-template-columns: 1fr; gap: 14px; }
+  .sh-product-chapter > header > span { padding-top: 0; }
+  .sh-product-chapter > header h3 { font-size: 30px; }
+  .sh-product-chapter > header p { grid-column: auto; font-size: 16px; line-height: 24px; }
   .sh-product-gallery { gap: 36px; margin-top: 54px; }
+  .sh-product-chapter .sh-product-gallery { margin-top: 26px; }
   .sh-product-gallery figcaption { display: grid; gap: 8px; }
   .sh-product-gallery figcaption strong { max-width: none; text-align: left; }
   .sh-validation-grid > * { min-height: auto; }

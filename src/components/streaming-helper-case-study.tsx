@@ -55,62 +55,48 @@ const recommendationFlow = [
   },
 ] as const;
 
-const productSurfaces = [
+const productChapters = [
   {
-    src: "/images/streaming-helper/dashboard-recommendations-hd.png",
-    label: "COMPANION PRODUCT / DASHBOARD",
-    title: "Recommendations stay findable",
-    alt: "Streaming Helper dashboard showing sent recommendations organized in a searchable grid.",
-    format: "wide",
+    label: "IN THE STREAM",
+    title: "Two paths appear when choosing starts to feel like work.",
+    description: "The helper stays compact during normal browsing. When support is wanted, a viewer can return to trusted recommendations or ask for one familiar Comfort Pick.",
+    surfaces: [
+      {
+        src: "/images/streaming-helper/extension-ready-hd.png",
+        label: "EXTENSION / READY STATE",
+        title: "The helper offers two distinct exits from hesitation",
+        alt: "Streaming service with the compact Streaming Helper menu showing friend recommendations and Comfort Pick ready.",
+        format: "standard",
+      },
+      {
+        src: "/images/streaming-helper/comfort-pick-hd.jpg",
+        label: "EXTENSION / COMFORT PICK",
+        title: "A focused fallback ends another round of browsing",
+        alt: "Streaming Helper Comfort Pick presenting five recommendations over a streaming service.",
+        format: "standard",
+      },
+    ],
   },
   {
-    src: "/images/streaming-helper/comfort-list-hd.png",
-    label: "COMPANION PRODUCT / COMFORT LIST",
-    title: "Familiar titles remain ready for low-energy moments",
-    alt: "Streaming Helper Comfort List with familiar movies and shows saved for later.",
-    format: "wide",
-  },
-  {
-    src: "/images/streaming-helper/comfort-pick-hd.jpg",
-    label: "IN-STREAM SUPPORT / COMFORT PICK",
-    title: "A focused fallback ends another round of browsing",
-    alt: "Streaming Helper Comfort Pick presenting five recommendations over a streaming service.",
-    format: "standard",
-  },
-  {
-    src: "/images/streaming-helper/extension-ready-hd.png",
-    label: "EXTENSION / READY STATE",
-    title: "The helper stays quiet until it is useful",
-    alt: "Streaming service with the compact Streaming Helper menu showing friend recommendations and Comfort Pick ready.",
-    format: "standard",
-  },
-  {
-    src: "/images/streaming-helper/extension-sign-in-hd.png",
-    label: "EXTENSION / ACCOUNT HANDOFF",
-    title: "One account connects the viewing and saving moments",
-    alt: "Streaming Helper extension sign-in panel opened over a streaming service.",
-    format: "standard",
-  },
-  {
-    src: "/images/streaming-helper/product-home-hd.png",
-    label: "PRODUCT SITE / ORIENTATION",
-    title: "The proposition is legible before setup begins",
-    alt: "Streaming Helper product website explaining friend-powered recommendations.",
-    format: "wide",
-  },
-  {
-    src: "/images/streaming-helper/privacy-settings-hd.png",
-    label: "COMPANION PRODUCT / PRIVACY",
-    title: "Sharing controls stay explicit and local",
-    alt: "Streaming Helper privacy and sharing settings dialog.",
-    format: "wide",
-  },
-  {
-    src: "/images/streaming-helper/help-center-hd.png",
-    label: "PRODUCT SUPPORT / HELP CENTER",
-    title: "Help is part of the product, not an afterthought",
-    alt: "Streaming Helper help center with search, support contact, and topic navigation.",
-    format: "wide",
+    label: "OUTSIDE THE STREAM",
+    title: "The companion product keeps recommendations useful later.",
+    description: "What a friend sends should not disappear with the viewing session. The dashboard preserves those recommendations, while the Comfort List gives familiar titles a deliberate place to live.",
+    surfaces: [
+      {
+        src: "/images/streaming-helper/dashboard-recommendations-hd.png",
+        label: "COMPANION PRODUCT / RECOMMENDATIONS",
+        title: "Sent titles remain searchable and attributable",
+        alt: "Streaming Helper dashboard showing sent recommendations organized in a searchable grid.",
+        format: "wide",
+      },
+      {
+        src: "/images/streaming-helper/comfort-list-hd.png",
+        label: "COMPANION PRODUCT / COMFORT LIST",
+        title: "Familiar titles stay ready for low-energy moments",
+        alt: "Streaming Helper Comfort List with familiar movies and shows saved for later.",
+        format: "wide",
+      },
+    ],
   },
 ] as const;
 
@@ -270,7 +256,7 @@ export function StreamingHelperCaseStudy() {
             </div>
 
             <div className="sh-primary-media">
-              <div className="sh-media-label mono"><span>PRIMARY FLOW</span><span>STREAMING PAGE → FRIEND → SAVED RECOMMENDATION</span></div>
+              <div className="sh-media-label mono"><span>DIRECT RECOMMENDATION</span><span>STREAMING PAGE → FRIEND → CONFIRMATION</span></div>
               <div className="sh-flow-grid">
                 {recommendationFlow.map((frame) => (
                   <figure key={frame.step}>
@@ -281,12 +267,23 @@ export function StreamingHelperCaseStudy() {
               </div>
             </div>
 
-            <div className="sh-product-gallery">
-              {productSurfaces.map((surface) => (
-                <figure key={surface.label}>
-                  <div className={`sh-image-frame ${surface.format === "wide" ? "sh-image-frame-wide" : ""}`}><ExpandableImage src={surface.src} alt={surface.alt} width={surface.format === "wide" ? 2936 : 2560} height={1600} sizes="(max-width: 760px) 100vw, 50vw" caption={surface.title} /></div>
-                  <figcaption><span className="mono">{surface.label}</span><strong>{surface.title}</strong></figcaption>
-                </figure>
+            <div className="sh-product-chapters">
+              {productChapters.map((chapter) => (
+                <section className="sh-product-chapter" key={chapter.label}>
+                  <header>
+                    <span className="mono">{chapter.label}</span>
+                    <h3>{chapter.title}</h3>
+                    <p>{chapter.description}</p>
+                  </header>
+                  <div className="sh-product-gallery">
+                    {chapter.surfaces.map((surface) => (
+                      <figure key={surface.label}>
+                        <div className={`sh-image-frame ${surface.format === "wide" ? "sh-image-frame-wide" : ""}`}><ExpandableImage src={surface.src} alt={surface.alt} width={surface.format === "wide" ? 2936 : 2560} height={1600} sizes="(max-width: 760px) 100vw, 50vw" caption={surface.title} loading="eager" /></div>
+                        <figcaption><span className="mono">{surface.label}</span><strong>{surface.title}</strong></figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </section>
               ))}
             </div>
 

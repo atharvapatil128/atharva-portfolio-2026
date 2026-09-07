@@ -185,3 +185,11 @@ Working notes for the future article about designing and building this portfolio
 - Standardized Field Maintenance card expansion on the same duration and easing tokens as Streaming Helper and MEAD. Its width and height now interpolate explicitly, removing the abrupt auto-size jump while preserving the requested top and bottom breathing room.
 - Changed the 761–900 px Selected Work layout into a swipeable fixed-card rail. At that width, preserving readable imagery and text matters more than forcing three compressed columns; desktop hover behavior and mobile scroll behavior remain intact.
 - Verified the homepage and Streaming Helper case study at 1440 px, 820 px, and 390 px. The final pass showed no page-level horizontal overflow, missing-image failures, browser errors, or framework error overlays.
+
+## 2026-09-07 — Curating Streaming Helper media into a product story
+
+- Corrected the high-resolution pass after recognizing that media quality and media quantity are separate decisions. A screenshot now earns its place only when it advances the visitor's understanding of the product system.
+- Kept the three-step direct-recommendation sequence as the primary flow because its open → choose → confirm progression explains one complete task without supporting prose.
+- Replaced the eight-image gallery with two explicit chapters. “In the stream” pairs the extension's ready state with Comfort Pick to explain the two responses to hesitation. “Outside the stream” pairs Recommendations with the Comfort List to show how the companion product preserves value after the viewing moment.
+- Removed the sign-in, product marketing page, privacy settings, and help center from the visible sequence. They remain useful source artifacts, but they interrupt the case study's core path and do not justify a full-size position in this narrative.
+- Set the four chapter images to load eagerly so a direct link or fast jump into the walkthrough does not briefly present empty media frames.
