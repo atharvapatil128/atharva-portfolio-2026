@@ -30,7 +30,7 @@ function ProjectVisual({ slug }: { slug: string }) {
           <Image src="/images/mead/entry-ready-upload.png" alt="" fill sizes="110px" />
         </span>
         <span className="mead-mini-phone mead-mini-phone-return">
-          <Image src="/images/mead/engagement-overview-hd.png" alt="" fill sizes="150px" />
+          <Image src="/images/mead/engagement-screen-clean.png" alt="" fill sizes="150px" />
         </span>
         <span className="mead-mini-path mono">CAPTURE <i /> REVIEW <i /> ADAPT</span>
       </div>
@@ -38,13 +38,8 @@ function ProjectVisual({ slug }: { slug: string }) {
   }
   return (
     <div className="field-mini" aria-hidden="true">
-      <span className="field-cover-backdrop">
-        <Image src="/images/field-maintenance/cover-wide.png" alt="" fill sizes="(max-width: 760px) 160px, 50vw" />
-      </span>
-      <span className="field-cover-stage">
-        <Image className="field-cover field-cover-condensed" src="/images/field-maintenance/cover-wide.png" alt="" fill sizes="(max-width: 760px) 150px, 50vw" />
-        <Image className="field-cover field-cover-expanded" src="/images/field-maintenance/cover-standard.png" alt="" fill sizes="(max-width: 760px) 150px, 50vw" />
-      </span>
+      <Image className="field-cover field-cover-condensed" src="/images/field-maintenance/cover-wide-direct.png" alt="" fill sizes="(max-width: 760px) 180px, 50vw" />
+      <Image className="field-cover field-cover-expanded" src="/images/field-maintenance/cover-standard-direct.png" alt="" fill sizes="(max-width: 760px) 180px, 50vw" />
     </div>
   );
 }

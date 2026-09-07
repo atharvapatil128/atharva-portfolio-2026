@@ -203,3 +203,10 @@ Working notes for the future article about designing and building this portfolio
 - Rebuilt the MEAD Selected Work preview as a compact capture → review → adapt composition using the supplied high-resolution product screens.
 - Restored the two supplied Field Maintenance cover variations in Selected Work. They now crossfade between condensed and expanded states inside a padded media stage; a soft image-derived fill absorbs ratio differences without exposing empty black bars.
 - Verified that the MEAD page returns to the viewport width at 390 px after fixing the mobile flow rail's intrinsic-width overflow.
+
+## 2026-09-07 — Making prototype sequences browsable
+
+- Removed the nested backdrop and padded frame from the Field Maintenance Selected Work preview. The supplied cover variants now occupy the media area directly; the condensed state deliberately stretches the wide cover while the expanded state uses the matching full cover.
+- Replaced MEAD's compressed desktop screenshot grids with horizontal, snap-aligned flow rails. Screens stay large enough to read, retain their numbered sequence, and expose a visible scroll cue instead of presenting as an unordered gallery.
+- Copied the cleaned Engagement and Detailed Entry exports to new public asset paths so cached versions cannot survive the replacement. The review flow now uses those exact portrait exports.
+- Replaced the repeated Add People phone in the MEAD hero with the Engagement overview. The first viewport now previews capture and returned guidance, while the complete Add People state sequence remains in its own care-circle flow.
