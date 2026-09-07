@@ -18,7 +18,6 @@ function ProjectVisual({ slug }: { slug: string }) {
           <Image src="/images/streaming-helper/product-icon.png" alt="" width={28} height={28} />
           <b>Streaming Helper</b>
         </span>
-        <span className="streaming-mini-path mono">WATCHING <i /> SHARED <i /> SAVED</span>
       </div>
     );
   }
@@ -32,13 +31,14 @@ function ProjectVisual({ slug }: { slug: string }) {
         <span className="mead-mini-phone mead-mini-phone-return">
           <Image src="/images/mead/engagement-screen-final.png" alt="" fill sizes="150px" />
         </span>
-        <span className="mead-mini-path mono">CAPTURE <i /> REVIEW <i /> ADAPT</span>
       </div>
     );
   }
   return (
     <div className="field-mini" aria-hidden="true">
-      <Image className="field-cover field-cover-condensed" src="/images/field-maintenance/cover-wide-direct.png" alt="" fill sizes="(max-width: 760px) 180px, 50vw" />
+      <span className="field-condensed-mark">
+        <Image src="/images/field-maintenance/state-department-seal.png" alt="" width={1280} height={1281} sizes="70px" />
+      </span>
       <Image className="field-cover field-cover-expanded" src="/images/field-maintenance/cover-standard-direct.png" alt="" fill sizes="(max-width: 760px) 180px, 50vw" />
     </div>
   );

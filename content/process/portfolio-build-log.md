@@ -216,3 +216,12 @@ Working notes for the future article about designing and building this portfolio
 - Replaced the three remaining overflow-prone exports with the supplied final crops: Engagement, Add People with the keyboard open, and All Entries.
 - Moved all references to fresh asset paths so the updated crops appear immediately instead of competing with cached files.
 - Matched the hero's Engagement phone frame to the screenshot's actual aspect ratio, removing the artificial empty area below the product navigation.
+
+## 2026-09-07 — Finalizing the Selected Work card system
+
+- Removed the tiny process labels from the Streaming Helper and MEAD previews. At card scale they behaved as illegible decoration rather than useful explanation.
+- Shifted MEAD onto a pale cobalt surface, creating a deliberate white → tinted → dark progression across the three projects while retaining the shared card structure.
+- Replaced Field Maintenance's condensed cover crop with the supplied department seal on a deep blue identity field. The authored cover remains reserved for the expanded state, where its title and context are large enough to read.
+- Tuned the Field transition as a staged identity-to-evidence swap: the seal exits quickly while the cover resolves over the existing card-resize duration, with reduced-motion support preserved.
+- Reviewed the supplied MEAD walkthrough as a potential case-study asset. At 2:58 it duplicates the now-ordered screenshot flows and is too long for the portfolio's reading rhythm, so it remains unplaced unless a focused interaction excerpt is cut later.
+- Preflighted a replacement Field context clip with Higgsfield. A credible eight-second 16:9 Seedance generation is viable, but the current account balance is below the estimated generation cost, so the existing clip remains in place pending an explicit generation decision.
