@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { projects } from "@/lib/site-data";
 
@@ -8,8 +9,7 @@ function ProjectVisual({ slug }: { slug: string }) {
   if (slug === "streaming-helper") {
     return (
       <div className="streaming-mini" aria-hidden="true">
-        <i /><i /><i />
-        <span>3 OPTIONS · 1 DECISION</span>
+        <Image src="/images/streaming-helper/selected-work-preview.svg" alt="" fill loading="eager" sizes="(max-width: 760px) 140px, 50vw" />
       </div>
     );
   }
@@ -23,9 +23,8 @@ function ProjectVisual({ slug }: { slug: string }) {
   }
   return (
     <div className="field-mini" aria-hidden="true">
-      <span><i /> BATTERY CHECK</span>
-      <span><i /> VOLTAGE LOG</span>
-      <span><i /> FIELD NOTE</span>
+      <Image className="field-cover field-cover-condensed" src="/images/field-maintenance/cover-wide.png" alt="" fill sizes="(max-width: 760px) 140px, 50vw" />
+      <Image className="field-cover field-cover-expanded" src="/images/field-maintenance/cover-standard.png" alt="" fill sizes="(max-width: 760px) 140px, 50vw" />
     </div>
   );
 }
@@ -41,21 +40,22 @@ export function ProjectDeck() {
       </div>
       <div className="project-deck" data-active={active}>
         {projects.map((project, index) => (
-          <Link
+          <article
             key={project.slug}
-            href={`/work/${project.slug}`}
             className={`project-card project-${project.slug}`}
             onMouseEnter={() => setActive(index)}
             onFocus={() => setActive(index)}
-            aria-label={`Read the ${project.name} case study`}
           >
-            <span className="project-meta mono">0{index + 1} / {index === 0 ? "FEATURED" : project.category.split(" · ")[0].toUpperCase()}</span>
-            <div className="project-copy">
-              <h3>{project.name}</h3>
-              <p>{project.descriptor}</p>
-            </div>
-            <ProjectVisual slug={project.slug} />
-          </Link>
+            <Link href={`/work/${project.slug}`} className="project-card-main" aria-label={`Read the ${project.name} case study`}>
+              <span className="project-meta mono">0{index + 1} / {index === 0 ? "FEATURED" : project.category.split(" · ")[0].toUpperCase()}</span>
+              <div className="project-copy">
+                <h3>{project.name}</h3>
+                <p>{project.descriptor}</p>
+              </div>
+              <ProjectVisual slug={project.slug} />
+            </Link>
+            {project.slug === "streaming-helper" ? <a href="https://streaminghelper.net/" target="_blank" rel="noreferrer" className="project-live-link mono" aria-label="Open the live Streaming Helper website">OPEN LIVE <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></a> : null}
+          </article>
         ))}
       </div>
     </div>

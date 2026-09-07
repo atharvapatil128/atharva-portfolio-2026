@@ -83,7 +83,7 @@ export const projects: Project[] = [
   {
     slug: "field-maintenance",
     name: "Field Maintenance",
-    descriptor: "Designing a clearer maintenance workflow with input from 40+ embassy stakeholders.",
+    descriptor: "Designing a clearer maintenance workflow from 45 stakeholder interviews.",
     category: "Enterprise operations · U.S. Department of State",
     role: "UX strategist and design consultant",
     period: "February–June 2025",
@@ -91,19 +91,19 @@ export const projects: Project[] = [
       "Embassy engineers recorded maintenance information on paper or from memory, then re-entered it later. The overlooked gap was secure, proactive field logging for non-assets such as batteries.",
     contribution:
       "I led discovery interviews and problem validation, helped identify standardization and battery tracking as the starting point, and co-designed the Power Apps MVP with a multidisciplinary cybersecurity team.",
-    evidence: ["45 stakeholder interviews", "Power Apps and Dataverse MVP", "Active pilot planning"],
+    evidence: ["45 stakeholder interviews", "Power Apps and Dataverse MVP", "Active pilot interest"],
     decisions: [
       {
-        title: "Invalidate the first concept",
-        body: "Testing showed that a mobile work-order concept duplicated an existing system without solving the field-recording gap.",
+        title: "Replace paper and memory with field entry",
+        body: "The mobile checklist records structured maintenance data where the inspection happens instead of relying on later workstation entry.",
       },
       {
-        title: "Start with overlooked non-assets",
-        body: "Battery checks created a concrete entry point for standardized field records and future maintenance planning.",
+        title: "Make maintenance needs visible before arrival",
+        body: "Post, location, asset, and attention states help technicians prepare before reaching the site.",
       },
       {
-        title: "Work inside approved infrastructure",
-        body: "Power Apps and Dataverse made the MVP viable under embassy security restrictions that ruled out most commercial tools.",
+        title: "Start with the overlooked battery routine",
+        body: "Batteries created a concrete entry point for standardized field records because they were a recurring pain point and often fell below the asset threshold.",
       },
     ],
     outcome:

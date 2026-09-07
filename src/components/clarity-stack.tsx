@@ -7,16 +7,16 @@ import Link from "next/link";
 export function ClarityStack() {
   const [separated, setSeparated] = useState(false);
   const reduceMotion = useReducedMotion();
-  const spring = reduceMotion ? { duration: 0 } : { type: "spring" as const, stiffness: 320, damping: 28 };
+  const spring = reduceMotion ? { duration: 0 } : { type: "spring" as const, stiffness: 240, damping: 30, mass: 0.75 };
   const stackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (reduceMotion || !stackRef.current) return;
     const specifications = [
-      [".stack-research", "translate(-58px, 20px) rotate(-2deg)", "translate(0, 0) rotate(7deg)", 100],
-      [".stack-constraints", "translate(58px, -34px) rotate(2deg)", "translate(0, 0) rotate(-7deg)", 170],
-      [".stack-decisions", "translate(66px, 38px) rotate(0deg)", "translate(0, 0) rotate(5deg)", 240],
-      [".resolved-card", "translateY(28px) scale(.96)", "translateY(0) scale(1)", 310],
+      [".stack-research", "translate(-58px, 20px) rotate(-2deg)", "translate(0, 0) rotate(7deg)", 40],
+      [".stack-constraints", "translate(58px, -34px) rotate(2deg)", "translate(0, 0) rotate(-7deg)", 80],
+      [".stack-decisions", "translate(66px, 38px) rotate(0deg)", "translate(0, 0) rotate(5deg)", 120],
+      [".resolved-card", "translateY(28px) scale(.96)", "translateY(0) scale(1)", 160],
     ] as const;
     const animations = specifications.flatMap(([selector, from, to, delay]) => {
       const element = stackRef.current?.querySelector<HTMLElement>(selector);
@@ -26,7 +26,7 @@ export function ClarityStack() {
           { opacity: 0.68, transform: from },
           { opacity: 1, transform: to },
         ],
-        { duration: 580, delay, easing: "cubic-bezier(0.16, 1, 0.3, 1)" },
+        { duration: 500, delay, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
       )];
     });
     return () => animations.forEach((animation) => animation.cancel());

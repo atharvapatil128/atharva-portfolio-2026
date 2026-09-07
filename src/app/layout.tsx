@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Instrument_Sans } from "next/font/google";
 import "./globals.css";
+import "./field-maintenance.css";
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],

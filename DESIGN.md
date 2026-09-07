@@ -232,6 +232,8 @@ The hero is the primary authored entrance. Its content becomes clear first, whil
 
 Every case study opens with project identity, a plain-language descriptor, the core problem statement, contribution facts, and a reserved media field. Deeper sections prioritize a 30-second summary, direct contribution, pivotal decisions, outcomes, and qualifications. Final mockups and content may change, but this evidence-first hierarchy is durable.
 
+**The Evidence Boundary Rule.** When a project spans an earlier concept and a later working product, label and compare those states explicitly, show what survived and what changed, and keep research counts and validation limits attached to the state that produced them. Later implementation must not retroactively imply that the earlier study validated shipped behavior.
+
 ## Do's and Don'ts
 
 ### Do:

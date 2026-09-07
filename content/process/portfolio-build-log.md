@@ -81,3 +81,98 @@ Working notes for the future article about designing and building this portfolio
 
 - Replaced one-shot `#selected-work` links with a shared same-page section link. When the destination hash is already in the URL, clicking Work or “View selected work” now explicitly scrolls the section back into position instead of relying on the browser to repeat an unchanged navigation.
 - Kept normal cross-page navigation and modifier-key behavior intact, respected reduced-motion preferences, and closed the mobile navigation disclosure after the jump.
+
+## 2026-09-03 — Separating the Streaming Helper concept from the working beta
+
+- Translated the locked Figma composition into an editorial case study that leads with the decision moment, then moves from a 30-second summary into research, product decisions, system structure, validation, and reflection.
+- Kept the capstone concept and the current browser-first beta in visibly separate, explicitly labeled states. A short “what survived / what changed” handoff makes the evolution legible without letting the shipped product overstate what the capstone validated.
+- Preserved the research evidence labels and limits in the page itself: survey and interview counts, iterative prototype testing, and the unvalidated technical assumptions remain attached to the relevant claims.
+- Used clearly labeled media reservations to lock hierarchy and responsive proportions without presenting placeholder artwork as product evidence. They are launch debt, not final mockups.
+- At narrower widths, paired and multi-column evidence stacks into a single reading order. Only the decision-moment sequence becomes a deliberate horizontal rail; minimum-width constraints keep the remaining content inside the viewport.
+- Finish review disposition: ship. Added the reusable Evidence Boundary Rule to `DESIGN.md`; the Streaming Helper sequence, copy, and media compositions remain page-specific.
+
+## 2026-09-04 — Replacing media reservations with product evidence
+
+- Replaced the labeled Streaming Helper placeholders with current extension and companion-product screenshots supplied from the live build.
+- Edited the recommendation flow into three readable moments—open, choose, confirm—rather than showing several nearly identical frames or presenting the demo as decoration.
+- Added four supporting surfaces that connect the in-stream helper, friend picks, account handoff, and saved-recommendation dashboard into one system.
+- Kept the screenshots inside the case-study evidence boundary: they demonstrate what exists in the working product, while the earlier research counts and validation limits remain attached to the capstone concept.
+- Reserved the 1:45 demo video for a later media pass. It should be compressed and edited around the story the page needs rather than embedded as a 209 MB download.
+- Logged a later site-wide “human artifacts” pass: use small, authentic traces of the work and the person—annotations, testing remnants, build notes, track references, or imperfect process details—only where each artifact adds meaning. Avoid scattering ornamental stickers or personality motifs across every section.
+- Finish review disposition: ship. No `DESIGN.md` change was needed; the existing Evidence Boundary Rule already governs the reusable behavior, while this page’s media sequence and gallery remain specific to Streaming Helper.
+
+## 2026-09-04 — Letting the product lead the case study
+
+- Replaced the abstract decision diagram in the hero with the live extension on a streaming page. The research diagram still matters, but now sits beside the 30-second case summary where it explains the behavioral model rather than competing with the shipped product.
+- Replaced the homepage card’s generic three-bar thumbnail with the same real product moment and app icon, so the project is recognizable before someone opens the case study.
+- Rebalanced the case summary: reduced the statement size, tightened the two-column gap, highlighted only the two pivotal findings in product violet, and gave the three summary facts compact numbered markers.
+- Rebuilt the decision rows as a compact Signal → Constraint → Choice chain. Removed height-driven spacing, kept the cause-and-effect relationship on one line at wide widths, and used pale product violet for the resulting choice instead of another heavy black panel.
+- Added an accessible full-screen viewer to every product screenshot, including a visible expand control, native dialog behavior, Escape/close support, scroll locking, contained imagery, and captions.
+- Optimized the supplied 1:41 demo from its 200+ MB source into a web-ready 1440px MP4 with a separate poster. The source remains untouched; the embedded video uses controls, does not autoplay, and omits the source's near-empty audio track so it does not imply unavailable captions.
+- Kept orange as the portfolio action color and introduced violet only where the case study is speaking in the product’s own visual language.
+- Responsive and production checks passed. Desktop preserves the causal rows; mobile stacks each step and keeps the product hero ahead of supporting evidence.
+
+## 2026-09-05 — Making the working product immediately reachable
+
+- Promoted the compressed 1:41 walkthrough into the case-study hero, where it can demonstrate the extension before the research narrative begins. Playback pauses when the media leaves the viewport or the tab is hidden, and reduced-motion visitors receive a still poster until they choose to play.
+- Replaced the Selected Work card's moving preview with the supplied Netflix extension screenshot. The homepage now gives a quicker, quieter read of the product while the full walkthrough remains available inside the case study.
+- Added direct links to the live Streaming Helper website at the hero, current-product comparison, walkthrough, and Selected Work card. The case-study link and live-product link remain separate targets with clear labels.
+- Shifted project-local actions from portfolio orange to Streaming Helper violet. The global navigation keeps the portfolio's orange action language; violet now identifies actions and highlights that belong to this product.
+- Added large, low-contrast looping paths behind the hero content, derived from the live product site's recommendation-relay visual language. The motif sits behind the interface rather than competing with the walkthrough.
+- Investigated the intermittent `postUserData` / `MutationObserver` fetch error. No matching code or failed request exists in the application, and a clean browser session produces no console error; the anonymous stack is consistent with an injected browser-extension script. The application does not suppress the external failure.
+- Deferred final screenshot replacement to the planned high-resolution asset pass. Current media establishes composition, interaction, and responsive behavior without treating the existing exports as final-quality assets.
+
+## 2026-09-05 — Turning the homepage thumbnail into a product preview
+
+- Replaced the miniature full-desktop screenshot in Selected Work with a composed Streaming Helper preview: streaming context provides the use scene, the extension panel receives the visual focus, and a compact watching → recommend → saved relay explains the product at a glance.
+- Reserved the preview's header for the browser-extension identity and direct live-product action, so the button no longer obscures the evidence visitors need to recognize.
+- Built the composition from replaceable image layers and crisp interface structure. Higher-resolution product captures can be inserted later without changing the card's hierarchy or responsive behavior.
+
+## 2026-09-05 — Replacing the preview and building the MEAD evidence path
+
+- Replaced the bespoke Streaming Helper miniature with Atharva's supplied SVG composition. The thumbnail now uses one authored product visual rather than rebuilding the same interface from several tiny HTML layers.
+- Reworked the Selected Work expansion with Motion layout interpolation. Removed the simultaneous width/height transition from each preview, which had compounded the grid change and forced visible layout thrash.
+- Reconciled the MEAD portfolio frame, final product prototype, and 21-page pitch deck before writing the case study. The source record confirms a four-person student team, an Epicollect5 audit, and three core prototype flows: verified care-list access, in-app recording/upload, and returned engagement feedback.
+- Replaced the generic MEAD route with a complete case study that opens on the product system, explains meaningful engagement through observable cues, summarizes the problem in 30 seconds, records the three pivotal design decisions, and uses direct Figma exports in the walkthrough.
+- Kept the evidence boundary visible throughout: this was a high-fidelity concept prototype, not a clinical assessment; it was not tested with actual caregivers; consent, UK GDPR handling, and the engagement-analysis algorithm remain unresolved.
+- Created `content/process/mead-case-study-source-notes.md` as the factual handoff for the later blog and content-polish pass.
+- TypeScript, production build, desktop rendering, mobile rendering, route loading, and the Selected Work state change passed. Final high-resolution screenshot replacement remains intentionally deferred until Atharva supplies the source assets.
+
+## 2026-09-05 — Restoring proportion and cross-case-study rhythm
+
+- Corrected the Streaming Helper thumbnail's collapsed state by preserving the supplied SVG's native composition instead of cropping it to every intermediate card ratio. The surrounding violet field absorbs any remaining width without distorting or cutting off the product story.
+- Brought MEAD's hero, section headings, lead paragraphs, decision titles, and vertical section spacing onto the same editorial scale used by the Streaming Helper case study. The page keeps its cobalt identity while no longer behaving like a separate typographic system.
+- Reserved the three-part final-prototype walkthrough for conversion into an interactive Figma prototype once the exact public prototype URL and starting flow are supplied. The current exports remain a factual fallback rather than being discarded before the embed is verifiable.
+- Audited the MEAD narrative for large statements that lacked a concrete payload. Replaced the abstract five-stage “care loop” with four source-backed workflow comparisons; each now states the existing problem and the prototype response. Rephrased the hero, decision, walkthrough, validation, and reflection headings so they describe the artifact or evidence instead of implying an outcome the sprint did not test.
+
+## 2026-09-05 — Rebuilding Field Maintenance around the pivot
+
+- Recovered the locked Field Maintenance case-study frame from the portfolio Figma file and checked its narrative against the original State Department challenge brief, the local Power Apps package, and the approved product mockup.
+- Replaced the generic case-study template with a dedicated enterprise case that explains the field-versus-desk gap, the interview evidence, and the narrower battery-inspection MVP that followed.
+- Made every decision row answer three questions: what was observed, what constraint mattered, and what the MVP did in response. The functional walkthrough is grounded in controls and fields present in the Power Apps source rather than invented showcase screens.
+- Kept the evidence boundary visible: the initially available Figma frame supported 40+ interviews, functional MVP rather than deployment, and projected time/cost savings rather than measured outcomes. The later pitch-deck review below resolves the final interview count at 45.
+
+## 2026-09-05 — Revising Field Maintenance with the final pitch deck
+
+- Reconciled the case study with the missing 24-page Team Optima pitch deck. It resolves the interview count at 45 and identifies standardization—not a duplicated work-order concept—as the strongest reported research pattern.
+- Rebuilt the central narrative as broad field problem → interview pattern → battery starting point. The revised sequence now explains why batteries mattered: they were a common frustration, often untracked below the $500 asset threshold, and could leave technicians discovering needs only after reaching a post.
+- Added the product capabilities named in the deck: post and embassy-location selection, on-site asset visibility, and structured maintenance entry for voltage, serial numbers, comments, and related data.
+- Kept the pitch claims honest. Approximately 40% time savings and 30% cost savings remain estimates; the $12,000 request, 1–2 developers, integration, and pilot rollout are presented as proposed next-phase work rather than completed deployment.
+- Tightened the MEAD hero at the same time. The headline now names advanced dementia and non-verbal cues directly, the summary says each idea once, and the prototype action sits inside the copy column with sufficient separation from the facts row.
+
+## 2026-09-06 — Replacing Field Maintenance placeholders with final evidence
+
+- Audited the previous public case study before placing the final media. Preserved its strongest material—the reactive-to-proactive product shift, the primary-beneficiary feedback, and active pilot interest—while removing repeated background, carousel, and framework explanations.
+- Rebuilt the hero with three real Power Apps screens rather than one repeated mockup. The composition now previews the actual select → review → record workflow in the product's blue visual language.
+- Added the supplied eight-second field-context video, the iteration sheet showing the move toward explicit attention states, and the final end-to-end workflow as an expandable high-resolution artifact.
+- Replaced source-facing prose such as “the deck presents” with reader-facing evidence. Approximately 40% time savings and 30% cost savings now appear as bold projected metrics with the qualification immediately adjacent.
+- Added the approved Officer-in-Charge quotation and described the rollout accurately as active pilot interest, not completed deployment.
+- Deferred the three homepage preview compositions until all case-study interiors and media sequences are settled, so each preview can be designed from the final story rather than an interim page state.
+
+## 2026-09-06 — Refining Field Maintenance media and preview behavior
+
+- Changed the field-context clip from a silent ambient loop into an intentional media player. It now starts paused with native play, pause, timeline, volume, and fullscreen controls; the supplied MP4 audio track is no longer forced muted.
+- Replaced the zoomed-out workflow sheet in the product walkthrough with a horizontally scrollable sequence of individual final screens. Each screen remains large enough to read and can be opened independently at full size.
+- Added a deeper navy-to-electric-blue stage treatment, retained restrained technical linework, and kept rounded corners on the hero, product gallery, individual screens, and mobile video.
+- Added visible spacing to the projected metrics and retained their qualification as estimates.
+- Replaced the Field Maintenance Selected Work placeholder with the supplied case-study cover image. The other two preview redesigns remain deferred until their interior pages are final.
