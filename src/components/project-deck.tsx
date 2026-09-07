@@ -25,15 +25,26 @@ function ProjectVisual({ slug }: { slug: string }) {
   if (slug === "mead") {
     return (
       <div className="mead-mini" aria-hidden="true">
-        <span className="waveform"><i /><i /><i /><i /><i /><i /><i /></span>
-        <span className="mead-readout">ENGAGEMENT<br /><b>VISIBLE</b></span>
+        <span className="mead-mini-orbit" />
+        <span className="mead-mini-phone mead-mini-phone-capture">
+          <Image src="/images/mead/entry-ready-upload.png" alt="" fill sizes="110px" />
+        </span>
+        <span className="mead-mini-phone mead-mini-phone-return">
+          <Image src="/images/mead/engagement-overview-hd.png" alt="" fill sizes="150px" />
+        </span>
+        <span className="mead-mini-path mono">CAPTURE <i /> REVIEW <i /> ADAPT</span>
       </div>
     );
   }
   return (
     <div className="field-mini" aria-hidden="true">
-      <Image className="field-cover field-cover-condensed" src="/images/field-maintenance/cover-wide.png" alt="" fill sizes="(max-width: 760px) 140px, 50vw" />
-      <Image className="field-cover field-cover-expanded" src="/images/field-maintenance/cover-standard.png" alt="" fill sizes="(max-width: 760px) 140px, 50vw" />
+      <span className="field-cover-backdrop">
+        <Image src="/images/field-maintenance/cover-wide.png" alt="" fill sizes="(max-width: 760px) 160px, 50vw" />
+      </span>
+      <span className="field-cover-stage">
+        <Image className="field-cover field-cover-condensed" src="/images/field-maintenance/cover-wide.png" alt="" fill sizes="(max-width: 760px) 150px, 50vw" />
+        <Image className="field-cover field-cover-expanded" src="/images/field-maintenance/cover-standard.png" alt="" fill sizes="(max-width: 760px) 150px, 50vw" />
+      </span>
     </div>
   );
 }

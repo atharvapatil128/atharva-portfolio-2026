@@ -55,6 +55,33 @@ const workflowChanges = [
   },
 ] as const;
 
+const prototypeFlows = [
+  {
+    id: "access",
+    label: "Build the care circle",
+    title: "Establish access before asking for an entry.",
+    description: "The caregiver can see who is already available, search when someone is missing, send a verification request, and continue only after a person is available in the care list.",
+    screens: [
+      { src: "/images/mead/care-circle-empty.png", alt: "MEAD Add People screen showing an empty care list and available members", width: 804, height: 1752, caption: "Review the current care list." },
+      { src: "/images/mead/care-circle-search.png", alt: "MEAD Add People search showing a person who can be requested", width: 804, height: 1980, caption: "Search for a missing person." },
+      { src: "/images/mead/care-circle-request-sent.png", alt: "MEAD verification request confirmation", width: 804, height: 1756, caption: "Make the verification state explicit." },
+      { src: "/images/mead/care-circle-selected.png", alt: "MEAD care list with a verified person selected and the next action enabled", width: 804, height: 1756, caption: "Select a verified person and continue." },
+    ],
+  },
+  {
+    id: "capture",
+    label: "Capture an entry",
+    title: "Keep recording, context, and privacy in one path.",
+    description: "The entry stays anchored to one person. Recording happens inside the app, the caregiver completes the context, and the product confirms both transfer and deletion.",
+    screens: [
+      { src: "/images/mead/entry-select-person.png", alt: "MEAD New Entry screen with a person selected and recording available", width: 804, height: 1982, caption: "Choose the person before recording." },
+      { src: "/images/mead/entry-record-video.png", alt: "MEAD in-app video recording screen", width: 804, height: 1748, caption: "Record without leaving the entry." },
+      { src: "/images/mead/entry-ready-upload.png", alt: "MEAD completed entry with recorded video, location, notes, and upload action", width: 804, height: 2090, caption: "Add context and complete the transfer." },
+      { src: "/images/mead/entry-uploaded.png", alt: "MEAD upload complete screen explaining that the video was deleted for privacy", width: 804, height: 1748, caption: "Confirm upload and deletion." },
+    ],
+  },
+] as const;
+
 export function MeadCaseStudy() {
   return (
     <>
@@ -82,10 +109,10 @@ export function MeadCaseStudy() {
                   <path d="M22 444c154-90 259-48 361 34s211 78 408-39" />
                 </svg>
                 <figure className="mead-phone mead-phone-care">
-                  <Image src="/images/mead/care-list.png" alt="MEAD Add People prototype screen with a verified care list" width={402} height={990} loading="eager" />
+                  <Image src="/images/mead/care-circle-selected.png" alt="MEAD Add People prototype screen with a verified care list" width={804} height={1756} loading="eager" />
                 </figure>
                 <figure className="mead-phone mead-phone-record">
-                  <Image src="/images/mead/record-entry.png" alt="MEAD in-app recording prototype screen" width={402} height={874} loading="eager" />
+                  <Image src="/images/mead/entry-record-video.png" alt="MEAD in-app recording prototype screen" width={804} height={1748} loading="eager" />
                 </figure>
                 <figure className="mead-feedback-card">
                   <span className="mono">RETURN VALUE</span>
@@ -162,26 +189,51 @@ export function MeadCaseStudy() {
 
           <section className="mead-walkthrough">
             <div className="mead-section-head">
-              <h2>The prototype connects care-list access, recording, and feedback.</h2>
-              <p>These screens show the proposed end-to-end flow. They will be replaced by the interactive Figma prototype after its exact public link and starting flow are confirmed.</p>
+              <h2>Three flows turn a recording into a useful return loop.</h2>
+              <p>Each sequence is grouped around one caregiver outcome. Alternate states stay inside the task they explain instead of becoming a disconnected gallery.</p>
             </div>
-            <div className="mead-flow-grid">
-              <figure>
-                <div className="mead-screen-frame"><ExpandableImage src="/images/mead/care-list.png" alt="MEAD Add People screen with search, member information, and verification" width={402} height={990} sizes="(max-width: 760px) 78vw, 28vw" caption="Care list — add, find, and verify access before recording." /></div>
-                <figcaption><span className="mono">ACCESS</span><strong>Add and verify the care list</strong><p>Search keeps the task direct while member information preserves the person as the anchor.</p></figcaption>
-              </figure>
-              <figure>
-                <div className="mead-screen-frame"><ExpandableImage src="/images/mead/record-entry.png" alt="MEAD in-app video recording screen" width={402} height={874} sizes="(max-width: 760px) 78vw, 28vw" caption="Record — capture the interaction inside the protected flow." /></div>
-                <figcaption><span className="mono">CAPTURE</span><strong>Record a new interaction</strong><p>The recording action is separated from the form and designed to reduce manual file handling.</p></figcaption>
-              </figure>
-              <figure className="mead-feedback-flow">
-                <div className="mead-feedback-preview">
-                  <Image src="/images/mead/recommendation-copy.png" alt="MEAD recommendation introduction from the feedback screen" width={346} height={90} />
-                  <Image src="/images/mead/recommendation-cards.png" alt="MEAD cards suggesting ways to respond during a future interaction" width={374} height={240} />
-                  <Image src="/images/mead/engagement-feedback-chart.png" alt="MEAD chart summarizing engagement cues" width={344} height={236} />
-                </div>
-                <figcaption><span className="mono">RETURN</span><strong>Interpret and act</strong><p>Feedback translates the entry into observable cues and suggestions for the next interaction.</p></figcaption>
-              </figure>
+            <div className="mead-flow-stories">
+              {prototypeFlows.map((flow) => (
+                <article className="mead-flow-story" key={flow.id}>
+                  <header>
+                    <span className="mono">{flow.label}</span>
+                    <h3>{flow.title}</h3>
+                    <p>{flow.description}</p>
+                  </header>
+                  <ol className="mead-phone-sequence" aria-label={`${flow.label} screen sequence`}>
+                    {flow.screens.map((screen, index) => (
+                      <li key={screen.src}>
+                        <div className="mead-sequence-frame">
+                          <ExpandableImage src={screen.src} alt={screen.alt} width={screen.width} height={screen.height} sizes="(max-width: 760px) 68vw, 19vw" caption={screen.caption} />
+                        </div>
+                        <span className="mead-step-copy"><b>{index + 1}</b>{screen.caption}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </article>
+              ))}
+
+              <article className="mead-flow-story mead-flow-story-return">
+                <header>
+                  <span className="mono">Review and adapt</span>
+                  <h3>Move from a person-level signal to the entry behind it.</h3>
+                  <p>The return path begins with longitudinal engagement, narrows to the entries behind the pattern, and opens one detailed record with observable cues and practical suggestions.</p>
+                </header>
+                <ol className="mead-return-sequence" aria-label="Review and adapt screen sequence">
+                  <li>
+                    <div className="mead-landscape-frame"><ExpandableImage src="/images/mead/engagement-overview-hd.png" alt="MEAD engagement overview with recommendations and an engagement trend" width={801} height={1748} sizes="(max-width: 760px) 86vw, 36vw" caption="Start from the person's engagement overview." /></div>
+                    <span className="mead-step-copy"><b>1</b>See the person-level pattern.</span>
+                  </li>
+                  <li>
+                    <div className="mead-landscape-frame mead-landscape-frame-list"><ExpandableImage src="/images/mead/entries-list-hd.png" alt="MEAD All Entries screen with filters and two entry summaries" width={804} height={2242} sizes="(max-width: 760px) 86vw, 28vw" caption="Filter the entries that contributed to the pattern." /></div>
+                    <span className="mead-step-copy"><b>2</b>Find the relevant entry.</span>
+                  </li>
+                  <li>
+                    <div className="mead-landscape-frame mead-landscape-frame-detail"><ExpandableImage src="/images/mead/entry-detail-hd.png" alt="MEAD detailed entry showing recommendations and an engagement breakdown" width={802} height={2934} sizes="(max-width: 760px) 86vw, 44vw" caption="Open the record and use its recommendations in the next interaction." /></div>
+                    <span className="mead-step-copy"><b>3</b>Review cues and decide what to try next.</span>
+                  </li>
+                </ol>
+              </article>
             </div>
             <a className="mead-prototype-link mead-prototype-link-dark" href={prototypeUrl} target="_blank" rel="noreferrer">Explore the full prototype <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></a>
           </section>

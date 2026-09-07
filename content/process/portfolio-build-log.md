@@ -193,3 +193,13 @@ Working notes for the future article about designing and building this portfolio
 - Replaced the eight-image gallery with two explicit chapters. “In the stream” pairs the extension's ready state with Comfort Pick to explain the two responses to hesitation. “Outside the stream” pairs Recommendations with the Comfort List to show how the companion product preserves value after the viewing moment.
 - Removed the sign-in, product marketing page, privacy settings, and help center from the visible sequence. They remain useful source artifacts, but they interrupt the case study's core path and do not justify a full-size position in this narrative.
 - Set the four chapter images to load eagerly so a direct link or fast jump into the walkthrough does not briefly present empty media frames.
+
+## 2026-09-07 — Turning MEAD media into three task flows
+
+- Rejected filename order as the organizing principle and rebuilt the walkthrough around three caregiver outcomes: establish verified care-list access, capture and upload an entry, and move from a person-level engagement pattern into the detailed record behind it.
+- Kept alternate states inside the task they explain. The care-circle sequence now reads empty list → search → verification sent → verified person selected; the capture sequence reads person selected → record → complete context → upload and deletion confirmed.
+- Replaced the two overflowed recommendation exports with the cleaned portrait versions. Their horizontal recommendation carousels remain visible inside the product screen, but the portfolio no longer presents the surrounding black export canvas as part of the interface.
+- Moved MEAD's hero and sequence stages to a lighter cobalt-tinted surface and changed product-screen framing to preserve the full screenshot. Bottom actions, status confirmations, and navigation are no longer sacrificed to a uniform crop.
+- Rebuilt the MEAD Selected Work preview as a compact capture → review → adapt composition using the supplied high-resolution product screens.
+- Restored the two supplied Field Maintenance cover variations in Selected Work. They now crossfade between condensed and expanded states inside a padded media stage; a soft image-derived fill absorbs ratio differences without exposing empty black bars.
+- Verified that the MEAD page returns to the viewport width at 390 px after fixing the mobile flow rail's intrinsic-width overflow.
