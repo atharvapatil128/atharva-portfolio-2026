@@ -230,4 +230,5 @@ Working notes for the future article about designing and building this portfolio
 
 - Removed the alternate cover state from the Selected Work card after repeated crop and overflow failures across viewport sizes.
 - The Field Maintenance card now uses one durable identity treatment—the supplied department seal centered on a deep blue field—across hover, focus, swipe, desktop, tablet, and mobile.
+- Rebalanced the expanded desktop split so the logo panel no longer crowds the real four-line project descriptor, and removed the three-line height constraint that clipped “stakeholder interviews.”
 - Deferred all replacement context-video generation until the final portfolio pass because the available third-party video options require paid plans.

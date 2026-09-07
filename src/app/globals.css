@@ -401,11 +401,12 @@ p { text-wrap: pretty; }
   transition: width var(--duration-fast) var(--ease-smooth-out), height var(--duration-fast) var(--ease-smooth-out);
 }
 .project-deck[data-active="2"] .project-card:nth-child(3) .field-mini {
-  width: min(349px, 58%);
+  width: min(280px, 44%);
   height: 184px;
 }
 .project-deck[data-active="2"] .project-card:nth-child(3) .project-copy h3,
-.project-deck[data-active="2"] .project-card:nth-child(3) .project-copy p { max-width: 42%; }
+.project-deck[data-active="2"] .project-card:nth-child(3) .project-copy p { max-width: 44%; }
+.project-deck[data-active="2"] .project-card:nth-child(3) .project-copy p { max-height: 80px; }
 .project-field-maintenance .project-meta { color: white; background: rgba(17,19,24,.82); }
 .field-brand-mark { position: absolute; inset: 0; display: grid; place-items: center; background: #0b3b78; }
 .field-brand-mark img { width: min(70px, 38%); max-height: 70%; height: auto; object-fit: contain; filter: drop-shadow(0 8px 14px rgba(0,0,0,.24)); }
