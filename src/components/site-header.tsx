@@ -18,7 +18,7 @@ export function SiteHeader() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [workInView, setWorkInView] = useState(false);
-  const isHome = pathname === "/" || pathname === "/home-alt" || pathname === "/home-f1";
+  const isHome = pathname === "/";
 
   useEffect(() => setMounted(true), []);
 
@@ -65,7 +65,7 @@ export function SiteHeader() {
     <header className="site-header" data-scrolled={scrolled}>
       <Link className="identity" href="/" aria-label="Atharva Patil, home" onClick={handleHomeClick}>
         <BrandMark className="brand-mark" />
-        <span className="identity-name">ATHARVA PATIL</span>
+        <span className="identity-name">Atharva Patil</span>
       </Link>
 
       <nav className="primary-nav" aria-label="Primary navigation">
@@ -77,14 +77,14 @@ export function SiteHeader() {
       </nav>
 
       <div className="header-actions">
-        <span className="availability"><i aria-hidden="true" />AVAILABLE</span>
+        <span className="availability"><i aria-hidden="true" />Available</span>
         <Link className="nav-cta" href="/contact" aria-current={mounted && pathname.startsWith("/contact") ? "page" : undefined}>
-          <span>LET&apos;S TALK</span><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 14 14 4M7 4h7v7" /></svg>
+          <span>Let&apos;s talk</span><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 14 14 4M7 4h7v7" /></svg>
         </Link>
       </div>
 
       <details className="mobile-menu">
-        <summary>INDEX / MENU</summary>
+        <summary>Menu</summary>
         <nav aria-label="Mobile navigation">
           {links.map((link) => (
             <SectionLink key={link.href} href={link.href} aria-current={isLinkActive(link) ? "page" : undefined}>
