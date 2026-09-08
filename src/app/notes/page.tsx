@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { notes } from "@/lib/site-data";
+
+export const metadata: Metadata = {
+  title: "Notes",
+  description:
+    "Short reads about product decisions, AI-assisted builds, karting, and what changes once an idea meets real feedback.",
+  alternates: { canonical: "/notes" },
+  openGraph: { url: "/notes" },
+};
 
 export default function NotesPage() {
   const featuredNote = notes[0];
@@ -24,9 +33,9 @@ export default function NotesPage() {
             <p>Short reads about product decisions, AI-assisted builds, karting, and what changes once an idea meets real feedback.</p>
             <Link className="button notes-hero-button" href="#all-notes">Browse the notes</Link>
             <div className="notes-hero-topics mono" aria-label="Topics covered">
-              <span>PRODUCT JUDGMENT</span>
-              <span>BUILD NOTES</span>
-              <span>OFF TRACK</span>
+              <span>Product judgment</span>
+              <span>Build notes</span>
+              <span>Off track</span>
             </div>
           </div>
 
@@ -36,10 +45,10 @@ export default function NotesPage() {
               <span>{featuredNote.date}</span>
             </span>
             <div className="notes-preview-body">
-              <span className="mono">WORKING NOTE / 01</span>
+              <span className="mono">Working note / 01</span>
               <h2>{featuredNote.title}</h2>
               <p>{featuredNote.description}</p>
-              <span className="notes-preview-link mono">READ THE NOTE ↗</span>
+              <span className="notes-preview-link mono">Read the note ↗</span>
             </div>
           </Link>
         </section>

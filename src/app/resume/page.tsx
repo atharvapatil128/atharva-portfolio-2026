@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { IntroDotField } from "@/components/intro-dot-field";
+
+export const metadata: Metadata = {
+  title: "Résumé",
+  description: "The résumé route is ready for the final PDF, connected here before deployment.",
+  alternates: { canonical: "/resume" },
+  robots: { index: false, follow: true },
+};
 
 export default function ResumePage() {
   return (

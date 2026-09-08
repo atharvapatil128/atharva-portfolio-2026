@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -6,6 +7,18 @@ import { notes } from "@/lib/site-data";
 
 export function generateStaticParams() {
   return notes.map((note) => ({ slug: note.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const note = notes.find((candidate) => candidate.slug === slug);
+  if (!note) return {};
+  return {
+    title: note.title,
+    description: note.description,
+    alternates: { canonical: `/notes/${note.slug}` },
+    openGraph: { url: `/notes/${note.slug}`, title: note.title, description: note.description },
+  };
 }
 
 export default async function NotePage({ params }: { params: Promise<{ slug: string }> }) {

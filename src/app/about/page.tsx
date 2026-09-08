@@ -1,8 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowLink } from "@/components/arrow-link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { TelemetryPanel } from "@/components/telemetry-panel";
 import { IntroDotField } from "@/components/intro-dot-field";
+import { PersonalAbout } from "@/components/personal-journal";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "I like staying close to a problem—from the first messy conversations through prototypes, feedback, implementation, and whatever needs fixing next.",
+  alternates: { canonical: "/about" },
+  openGraph: { url: "/about" },
+};
 
 export default function AboutPage() {
   return (
@@ -14,23 +25,17 @@ export default function AboutPage() {
         <div>
           <h1>I ask a lot of “why” questions. Then I make something and see if I was right.</h1>
           <p>I like staying close to a problem—from the first messy conversations through prototypes, feedback, implementation, and whatever needs fixing next. A rationale helps, but it doesn&apos;t make a design correct. People using it get the final vote.</p>
-          <div className="hero-actions"><Link className="button button-signal" href="/resume">View résumé</Link><Link className="button button-quiet" href="/contact">Start a conversation</Link></div>
+          <div className="hero-actions about-actions">
+            <Link className="about-primary-action" href="/resume">
+              <span>View résumé</span>
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 14 14 4M7 4h7v7" /></svg>
+            </Link>
+            <ArrowLink className="about-secondary-action" href="/contact">Start a conversation</ArrowLink>
+          </div>
         </div>
         <TelemetryPanel />
         </section>
-        <section className="work-principles section-pad">
-        <h2>How I tend to work</h2>
-        <div>
-          <article><h3>Find the real decision</h3><p>Research is useful when it changes what gets built—not when it only adds another artifact to the file.</p></article>
-          <article><h3>Make it tangible early</h3><p>A prototype creates a better disagreement than a polished explanation.</p></article>
-          <article><h3>Stay for the messy part</h3><p>Edge cases, content changes, and implementation constraints are part of the design.</p></article>
-        </div>
-        </section>
-        <section className="fast-feedback section-pad">
-        <h2>Fast laps, long runs, open air.</h2>
-        <p>Karting taught me to read a system through feedback: brake later, change one thing, and let the next lap tell you whether it worked.</p>
-        <div className="lap-visual" aria-label="Karting telemetry-inspired visual"><i /><i /><i /><i /></div>
-        </section>
+        <PersonalAbout />
       </main>
       <SiteFooter />
     </>

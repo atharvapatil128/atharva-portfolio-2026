@@ -1,20 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Instrument_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import "./field-maintenance.css";
 
-const instrumentSans = Instrument_Sans({
-  subsets: ["latin"],
+const instrumentSans = localFont({
+  src: "./fonts/instrument-sans-latin.woff2",
+  weight: "400 700",
   variable: "--font-sans",
   display: "swap",
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["500"],
+const ibmPlexMono = localFont({
+  src: "./fonts/ibm-plex-mono-latin-500.woff2",
+  weight: "500",
   variable: "--font-mono",
   display: "swap",
 });
+
+const defaultDescription =
+  "Atharva Patil is a product designer with a background in HCI and computer science who works across research, prototyping, testing, and front-end implementation.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://atharvapatil.net"),
@@ -22,8 +26,22 @@ export const metadata: Metadata = {
     default: "Atharva Patil — Product Designer",
     template: "%s — Atharva Patil",
   },
-  description:
-    "Atharva Patil is a product designer with a background in HCI and computer science who works across research, prototyping, testing, and front-end implementation.",
+  description: defaultDescription,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Atharva Patil",
+    title: "Atharva Patil — Product Designer",
+    description: defaultDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Atharva Patil — Product Designer",
+    description: defaultDescription,
+  },
 };
 
 export const viewport: Viewport = {

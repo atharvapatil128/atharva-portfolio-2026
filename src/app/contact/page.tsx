@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ContactForm } from "@/components/contact-form";
 import { IntroDotField } from "@/components/intro-dot-field";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Tell me what you're working through. I'm always happy to compare notes, talk product, or hear about a good team.",
+  alternates: { canonical: "/contact" },
+  openGraph: { url: "/contact" },
+};
 
 export default function ContactPage() {
   return (
