@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowLink } from "@/components/arrow-link";
-import { PaddockField } from "@/components/paddock-field";
+import { PersonalJournal } from "@/components/personal-journal";
 import { ProjectDeck } from "@/components/project-deck";
 import { notes } from "@/lib/site-data";
 
@@ -8,11 +8,11 @@ export function HomeSections() {
   return (
     <>
       <section className="selected-work section-pad" id="selected-work" aria-labelledby="work-title">
-        <div className="section-heading"><h2 id="work-title">Selected work</h2><p className="mono">SHIPPED WORK, RESEARCH, AND DECISIONS THAT CHANGED</p></div>
+        <div className="section-heading"><h2 id="work-title">Selected work</h2><p className="mono">Shipped work, research, and decisions that changed</p></div>
         <ProjectDeck />
       </section>
       <section className="notes-section section-pad" aria-labelledby="notes-title">
-        <div className="section-heading"><h2 id="notes-title">Notes &amp; experiments</h2><p className="mono">PROCESS, PROTOTYPES, MISC.</p></div>
+        <div className="section-heading"><h2 id="notes-title">Notes &amp; experiments</h2><p className="mono">Process, prototypes, misc.</p></div>
         <div className="note-list">
           {notes.map((note) => (
             <Link key={note.slug} href={`/notes/${note.slug}`} className="note-row">
@@ -23,14 +23,7 @@ export function HomeSections() {
         </div>
         <ArrowLink href="/notes" className="section-link">View every note</ArrowLink>
       </section>
-      <section className="paddock section-pad" id="beyond-work" aria-labelledby="paddock-title">
-        <div className="paddock-heading">
-          <h2 id="paddock-title">Things I make when nobody asked</h2>
-          <p>Experiments, side quests, visual ideas, AI-assisted builds, and whatever I&apos;m currently curious about.</p>
-        </div>
-        <PaddockField />
-        <p className="paddock-instruction mono">DRAG TO EXPLORE · EACH STORY OPENS SOMEWHERE</p>
-      </section>
+      <PersonalJournal />
     </>
   );
 }

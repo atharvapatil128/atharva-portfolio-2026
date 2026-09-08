@@ -1,0 +1,317 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Home and Notes: the right swap",
+    "description": "A product and visual-design recommendation for making Atharva Patil's strongest work visible sooner while giving Notes a clearer editorial role.",
+    "generatedAt": "2026-09-08T21:15:56.2325277Z",
+    "filters": [],
+    "cards": [],
+    "charts": [
+      {
+        "id": "direction_fit_chart",
+        "title": "Heuristic fit across portfolio goals",
+        "subtitle": "Design-team assessment on a 1–5 ordinal scale; not observed user behavior",
+        "type": "bar",
+        "dataset": "direction_scores",
+        "sourceId": "decision-scores-query",
+        "source": {
+          "id": "decision-scores-query",
+          "label": "Heuristic direction scores",
+          "query": {
+            "engine": "duckdb",
+            "language": "sql",
+            "sql": "SELECT * FROM (VALUES ('Current Home', 'Strongest work visible pre-scroll', 1, 5, 'Heuristic', 'The first viewport shows destinations rather than project proof.'), ('Current Home', 'Information efficiency', 2, 5, 'Heuristic', 'The Clarity Stack repeats destinations found immediately below.'), ('Current Home', 'Visual distinctiveness', 3, 5, 'Heuristic', 'The stack is interactive but visually less authored than the Notes hero.'), ('Current Home', 'Content-role fit', 3, 5, 'Heuristic', 'The content is relevant, but the hero behaves primarily as navigation.'), ('Current Home', 'Interaction clarity and access', 4, 5, 'Heuristic', 'The destinations are understandable, though the signature meaning relies partly on interaction.'), ('Wholesale swap', 'Strongest work visible pre-scroll', 4, 5, 'Heuristic', 'A project artifact can become visible, but the route roles may blur.'), ('Wholesale swap', 'Information efficiency', 4, 5, 'Heuristic', 'It removes the direct duplication in the Home hero.'), ('Wholesale swap', 'Visual distinctiveness', 5, 5, 'Heuristic', 'It promotes the most art-directed composition to the highest-value route.'), ('Wholesale swap', 'Content-role fit', 2, 5, 'Heuristic', 'A literal exchange risks making Home editorial and Notes project-led.'), ('Wholesale swap', 'Interaction clarity and access', 3, 5, 'Heuristic', 'The current compositions were authored for different content and need semantic rework.'), ('Selective swap', 'Strongest work visible pre-scroll', 5, 5, 'Heuristic', 'Streaming Helper becomes visible as real shipped proof without scrolling.'), ('Selective swap', 'Information efficiency', 5, 5, 'Heuristic', 'The hero proves one project while Selected Work compares the complete set.'), ('Selective swap', 'Visual distinctiveness', 5, 5, 'Heuristic', 'The Notes visual grammar gives Home a memorable authored composition.'), ('Selective swap', 'Content-role fit', 5, 5, 'Heuristic', 'Home proves, Selected Work compares, and Notes supports exploration.'), ('Selective swap', 'Interaction clarity and access', 4, 5, 'Heuristic', 'Proof remains legible at rest while motion enhances the experience.')) AS scores(direction, criterion, score, scale_max, assessment_type, rationale)",
+            "description": "Materializes the documented five-point heuristic assessment for the three Home and Notes directions.",
+            "executed_at": "2026-09-08T21:15:56.2325277Z",
+            "metric_definitions": [
+              "score is an ordinal design-team assessment from 1 (conflicts with the goal) to 5 (strongly supports the goal)",
+              "the chart plots the unweighted average score across five criteria for each direction"
+            ]
+          }
+        },
+        "encodings": {
+          "x": {
+            "field": "direction",
+            "type": "nominal",
+            "label": "Direction"
+          },
+          "y": {
+            "field": "score",
+            "type": "quantitative",
+            "aggregate": "avg",
+            "label": "Average fit score"
+          }
+        },
+        "yAxisTitle": "Average fit score (1–5)",
+        "valueFormat": "number"
+      }
+    ],
+    "tables": [],
+    "sources": [
+      {
+        "id": "design-contract",
+        "label": "Portfolio design system",
+        "path": "DESIGN.md"
+      },
+      {
+        "id": "home-implementation",
+        "label": "Current Home implementation",
+        "path": "src/app/page.tsx"
+      },
+      {
+        "id": "notes-implementation",
+        "label": "Current Notes implementation",
+        "path": "src/app/notes/page.tsx"
+      },
+      {
+        "id": "content-inventory",
+        "label": "Current project and note inventory",
+        "path": "src/lib/site-data.ts"
+      },
+      {
+        "id": "home-screenshot",
+        "label": "Current Home first viewport",
+        "path": "content/design/home-notes-audit/01-current-home.jpg"
+      },
+      {
+        "id": "notes-screenshot",
+        "label": "Current Notes first viewport",
+        "path": "content/design/home-notes-audit/02-current-notes.jpg"
+      },
+      {
+        "id": "decision-framework",
+        "label": "Heuristic decision framework",
+        "path": "content/design/home-notes-audit/decision-framework.md"
+      },
+      {
+        "id": "decision-scores-query",
+        "label": "Heuristic direction scores",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM (VALUES ('Current Home', 'Strongest work visible pre-scroll', 1, 5, 'Heuristic', 'The first viewport shows destinations rather than project proof.'), ('Current Home', 'Information efficiency', 2, 5, 'Heuristic', 'The Clarity Stack repeats destinations found immediately below.'), ('Current Home', 'Visual distinctiveness', 3, 5, 'Heuristic', 'The stack is interactive but visually less authored than the Notes hero.'), ('Current Home', 'Content-role fit', 3, 5, 'Heuristic', 'The content is relevant, but the hero behaves primarily as navigation.'), ('Current Home', 'Interaction clarity and access', 4, 5, 'Heuristic', 'The destinations are understandable, though the signature meaning relies partly on interaction.'), ('Wholesale swap', 'Strongest work visible pre-scroll', 4, 5, 'Heuristic', 'A project artifact can become visible, but the route roles may blur.'), ('Wholesale swap', 'Information efficiency', 4, 5, 'Heuristic', 'It removes the direct duplication in the Home hero.'), ('Wholesale swap', 'Visual distinctiveness', 5, 5, 'Heuristic', 'It promotes the most art-directed composition to the highest-value route.'), ('Wholesale swap', 'Content-role fit', 2, 5, 'Heuristic', 'A literal exchange risks making Home editorial and Notes project-led.'), ('Wholesale swap', 'Interaction clarity and access', 3, 5, 'Heuristic', 'The current compositions were authored for different content and need semantic rework.'), ('Selective swap', 'Strongest work visible pre-scroll', 5, 5, 'Heuristic', 'Streaming Helper becomes visible as real shipped proof without scrolling.'), ('Selective swap', 'Information efficiency', 5, 5, 'Heuristic', 'The hero proves one project while Selected Work compares the complete set.'), ('Selective swap', 'Visual distinctiveness', 5, 5, 'Heuristic', 'The Notes visual grammar gives Home a memorable authored composition.'), ('Selective swap', 'Content-role fit', 5, 5, 'Heuristic', 'Home proves, Selected Work compares, and Notes supports exploration.'), ('Selective swap', 'Interaction clarity and access', 4, 5, 'Heuristic', 'Proof remains legible at rest while motion enhances the experience.')) AS scores(direction, criterion, score, scale_max, assessment_type, rationale)",
+          "description": "Materializes the documented five-point heuristic assessment for the three Home and Notes directions."
+        }
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Home and Notes: the right swap"
+      },
+      {
+        "id": "summary",
+        "type": "markdown",
+        "body": "## Executive Summary\n\nClaude's central diagnosis is correct: the current Home hero spends premium space on three destinations that the Selected Work section repeats immediately below. The stronger direction is not a literal page swap. It is a selective transfer of visual grammar.\n\n**Recommended direction:** keep Home's identity, positioning, availability, and résumé access; replace the Clarity Stack with the Notes hero's rising-artifact composition; make the artifact **Streaming Helper**, the only shipped project with a live product. Move the stack interaction to Notes and reinterpret it as a deliberate note picker.\n\nThis makes the first viewport prove the portfolio's thesis—evidence-led product design—while preserving the distinctive, tactile visual language."
+      },
+      {
+        "id": "decision",
+        "type": "markdown",
+        "body": "## Recommendation: transfer the visual grammar, not the entire screens\n\nThe Home and Notes routes have different jobs. Home must establish who Atharva is, prove that he ships, and offer an obvious next step within seconds. Notes should reward curiosity and expose how he thinks. A wholesale swap would confuse those jobs.\n\nThe right move is a **selective swap**:\n\n1. **Home:** identity copy on the left; a real, interactive Streaming Helper artifact rising into view on the right.\n2. **Selected Work:** remains the comparison/index for all three projects.\n3. **Notes:** a quieter editorial introduction followed by a stack that lets visitors browse and select a note.\n\nThe featured Home artifact and Selected Work are not redundant if they do different jobs: the first is proof and a direct conversion path; the second is the complete project index."
+      },
+      {
+        "id": "direction-chart",
+        "type": "chart",
+        "chartId": "direction_fit_chart"
+      },
+      {
+        "id": "home-evidence",
+        "type": "markdown",
+        "sourceId": "home-implementation",
+        "body": "## Why the current Home underperforms\n\nThe current first viewport has strong positioning copy and accessible actions, but the visual half is primarily navigation. Its three cards point to Streaming Helper, MEAD, and an AI workflow note—the same destinations visitors encounter again below. No product interface, shipped behavior, or evidence is visible before scrolling.\n\nThat conflicts with the site's own Thirty-Second Rule: a hiring manager should be able to identify the strongest work and understand why it matters without depending on hover, drag, or animation."
+      },
+      {
+        "id": "notes-evidence",
+        "type": "markdown",
+        "sourceId": "content-inventory",
+        "body": "## Why Notes should become quieter—but more purposeful\n\nNotes currently carries the site's most art-directed hero, even though the content inventory contains two notes and one is still marked planned. That is an inverted emphasis for a portfolio whose primary conversion is project credibility.\n\nMoving the stack to Notes is strategically sound because the interaction becomes useful there: it can express multiple editorial threads instead of duplicating project navigation. The content depth is the constraint. A full theatrical picker should launch when at least three notes are published; until then, a two-card editorial stack is the honest version."
+      },
+      {
+        "id": "home-plan",
+        "type": "markdown",
+        "body": "## The new Home first viewport\n\nKeep the current headline, summary, availability line, selected-work link, and résumé access. Replace the right-side Clarity Stack with one focused artifact:\n\n- **Project:** Streaming Helper\n- **Label:** Shipped product · Live\n- **Story:** Helping tired viewers move from endless browsing to a confident pick.\n- **Evidence:** 30 survey responses · 7 interviews · 5+ prototype tests\n- **Actions:** View case study; Open live product\n- **Media:** an actual product surface or short interaction sequence, not generic props\n\nThe artifact should be fully legible in its resting state. Motion can make it feel authored: a restrained 24–40 px rise, a slight depth shift, and a clear hover/focus response. Motion must support the proof rather than hide it. On mobile, the project name, evidence, and primary action should remain above the fold."
+      },
+      {
+        "id": "notes-plan",
+        "type": "markdown",
+        "body": "## The Notes picker should feel controlled, not random\n\nUse the Clarity Stack as an editorial selector, but preserve visitor agency. The interaction should feel like sorting through a small field notebook, not a roulette wheel.\n\n- The front card asks: **What are you curious about?**\n- Each card represents a published note and shows its theme, title, date, and a short premise.\n- Drag, swipe, arrow buttons, and keyboard arrows move through the stack.\n- The active card snaps forward; clicking or pressing Enter opens it.\n- A visible position indicator makes the set understandable.\n- Reduced-motion mode becomes a simple stacked list with the same information and actions.\n\nFor the current two-note inventory, ship a compact two-card version or wait until a third note is published before making it the route's signature interaction."
+      },
+      {
+        "id": "visual-direction",
+        "type": "markdown",
+        "sourceId": "design-contract",
+        "body": "## Keep the visual world cohesive\n\nThe redesign should extend the existing Precision Paddock system rather than introduce another aesthetic. Use alternating tonal fields intentionally: porcelain for identity and reading, warm gray for navigation/index moments, and soft black for concentrated editorial or product proof.\n\nOrange remains the rare action and selection signal. Cobalt stays structural or evidence-oriented. Project-specific purple can live inside Streaming Helper media, not become a new global accent. Notes cards should use restrained category tabs or edges instead of unrelated full-card colors.\n\nReplace generic hero props with authored, relevant assets. On Home, every object should point back to the shipped product. On Notes, tactile objects can remain if they reinforce writing, observation, experiments, or the track."
+      },
+      {
+        "id": "implementation",
+        "type": "markdown",
+        "body": "## Recommended implementation order\n\n1. **Lock the information architecture:** Home proves; Selected Work compares; Notes explores.\n2. **Design the Home artifact first:** use real Streaming Helper media and write the evidence line before building motion.\n3. **Refactor the stack semantics:** create a reusable artifact-stack motion primitive or a dedicated NotePicker rather than keeping project-specific Clarity Stack naming.\n4. **Build the Notes picker at the content-appropriate scale:** two cards now, richer stack after a third published note.\n5. **Add motion and accessibility together:** keyboard input, focus states, touch controls, and reduced-motion behavior are part of the component contract.\n6. **Update stale design contracts:** revise the Home and Clarity Stack sections in DESIGN.md and the data-design-contract string in src/app/layout.tsx.\n7. **Validate on desktop and mobile:** the first viewport must still communicate identity, shipped proof, and the next action without interaction."
+      },
+      {
+        "id": "measurement",
+        "type": "markdown",
+        "body": "## How to know the change worked\n\nThe recommendation is qualitative because no behavioral analytics were supplied. Validate it before and after implementation with a short 5–8 person study using hiring managers or senior design peers. After five seconds, ask: Who is Atharva? What shipped product did you see? What evidence do you remember? What would you click next?\n\nTrack these signals if analytics are available:\n\n- Home-to-Streaming-Helper case-study click rate\n- Live-product click rate\n- Time or scroll depth to first credible project proof\n- Résumé click rate as a guardrail\n- Notes open rate and note-picker completion\n- LCP, CLS, and INP as performance guardrails\n\nThe redesign succeeds if more visitors can name the shipped product and choose a meaningful next step without reducing résumé discovery or page performance."
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## Further questions\n\n- Which Streaming Helper screen or interaction most convincingly communicates shipped value in one glance?\n- Can a third substantive note be published before the picker becomes the main Notes interaction?\n- Should the Home artifact open the case study by default while the live product remains a clearly labeled secondary action?"
+      },
+      {
+        "id": "caveats",
+        "type": "markdown",
+        "body": "## Caveats and assumptions\n\nThis is a heuristic product-design recommendation based on the current repository, current first-viewport captures, the site's documented design principles, and the present content inventory. It is not supported by production traffic or conversion data. Claude's cited design-qa.md file is not present in the current repository, so its exact placeholder warning could not be verified; the current Notes implementation does, however, use an F1 model asset as part of its hero composition."
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-09-08T21:15:56.2325277Z",
+    "status": "ready",
+    "datasets": {
+      "direction_scores": [
+        {
+          "direction": "Current Home",
+          "criterion": "Strongest work visible pre-scroll",
+          "score": 1,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "The first viewport shows destinations rather than project proof."
+        },
+        {
+          "direction": "Current Home",
+          "criterion": "Information efficiency",
+          "score": 2,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "The Clarity Stack repeats destinations found immediately below."
+        },
+        {
+          "direction": "Current Home",
+          "criterion": "Visual distinctiveness",
+          "score": 3,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "The stack is interactive but visually less authored than the Notes hero."
+        },
+        {
+          "direction": "Current Home",
+          "criterion": "Content-role fit",
+          "score": 3,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "The content is relevant, but the hero behaves primarily as navigation."
+        },
+        {
+          "direction": "Current Home",
+          "criterion": "Interaction clarity and access",
+          "score": 4,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "The destinations are understandable, though the signature meaning relies partly on interaction."
+        },
+        {
+          "direction": "Wholesale swap",
+          "criterion": "Strongest work visible pre-scroll",
+          "score": 4,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "A project artifact can become visible, but the route roles may blur."
+        },
+        {
+          "direction": "Wholesale swap",
+          "criterion": "Information efficiency",
+          "score": 4,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "It removes the direct duplication in the Home hero."
+        },
+        {
+          "direction": "Wholesale swap",
+          "criterion": "Visual distinctiveness",
+          "score": 5,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "It promotes the most art-directed composition to the highest-value route."
+        },
+        {
+          "direction": "Wholesale swap",
+          "criterion": "Content-role fit",
+          "score": 2,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "A literal exchange risks making Home editorial and Notes project-led."
+        },
+        {
+          "direction": "Wholesale swap",
+          "criterion": "Interaction clarity and access",
+          "score": 3,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "The current compositions were authored for different content and need semantic rework."
+        },
+        {
+          "direction": "Selective swap",
+          "criterion": "Strongest work visible pre-scroll",
+          "score": 5,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "Streaming Helper becomes visible as real shipped proof without scrolling."
+        },
+        {
+          "direction": "Selective swap",
+          "criterion": "Information efficiency",
+          "score": 5,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "The hero proves one project while Selected Work compares the complete set."
+        },
+        {
+          "direction": "Selective swap",
+          "criterion": "Visual distinctiveness",
+          "score": 5,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "The Notes visual grammar gives Home a memorable authored composition."
+        },
+        {
+          "direction": "Selective swap",
+          "criterion": "Content-role fit",
+          "score": 5,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "Home proves, Selected Work compares, and Notes supports exploration."
+        },
+        {
+          "direction": "Selective swap",
+          "criterion": "Interaction clarity and access",
+          "score": 4,
+          "scale_max": 5,
+          "assessment_type": "Heuristic",
+          "rationale": "Proof remains legible at rest while motion enhances the experience."
+        }
+      ]
+    },
+    "accessIssues": []
+  },
+  "sources": [
+    {
+      "id": "decision-framework",
+      "label": "Heuristic decision framework",
+      "path": "content/design/home-notes-audit/decision-framework.md"
+    },
+    {
+      "id": "decision-scores-query",
+      "label": "Heuristic direction scores",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM (VALUES ('Current Home', 'Strongest work visible pre-scroll', 1, 5, 'Heuristic', 'The first viewport shows destinations rather than project proof.'), ('Current Home', 'Information efficiency', 2, 5, 'Heuristic', 'The Clarity Stack repeats destinations found immediately below.'), ('Current Home', 'Visual distinctiveness', 3, 5, 'Heuristic', 'The stack is interactive but visually less authored than the Notes hero.'), ('Current Home', 'Content-role fit', 3, 5, 'Heuristic', 'The content is relevant, but the hero behaves primarily as navigation.'), ('Current Home', 'Interaction clarity and access', 4, 5, 'Heuristic', 'The destinations are understandable, though the signature meaning relies partly on interaction.'), ('Wholesale swap', 'Strongest work visible pre-scroll', 4, 5, 'Heuristic', 'A project artifact can become visible, but the route roles may blur.'), ('Wholesale swap', 'Information efficiency', 4, 5, 'Heuristic', 'It removes the direct duplication in the Home hero.'), ('Wholesale swap', 'Visual distinctiveness', 5, 5, 'Heuristic', 'It promotes the most art-directed composition to the highest-value route.'), ('Wholesale swap', 'Content-role fit', 2, 5, 'Heuristic', 'A literal exchange risks making Home editorial and Notes project-led.'), ('Wholesale swap', 'Interaction clarity and access', 3, 5, 'Heuristic', 'The current compositions were authored for different content and need semantic rework.'), ('Selective swap', 'Strongest work visible pre-scroll', 5, 5, 'Heuristic', 'Streaming Helper becomes visible as real shipped proof without scrolling.'), ('Selective swap', 'Information efficiency', 5, 5, 'Heuristic', 'The hero proves one project while Selected Work compares the complete set.'), ('Selective swap', 'Visual distinctiveness', 5, 5, 'Heuristic', 'The Notes visual grammar gives Home a memorable authored composition.'), ('Selective swap', 'Content-role fit', 5, 5, 'Heuristic', 'Home proves, Selected Work compares, and Notes supports exploration.'), ('Selective swap', 'Interaction clarity and access', 4, 5, 'Heuristic', 'Proof remains legible at rest while motion enhances the experience.')) AS scores(direction, criterion, score, scale_max, assessment_type, rationale)",
+        "description": "Materializes the documented five-point heuristic assessment for the three Home and Notes directions."
+      }
+    }
+  ]
+}
