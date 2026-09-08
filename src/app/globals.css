@@ -860,7 +860,6 @@ p { text-wrap: pretty; }
   .project-deck[data-active="0"] .project-card:nth-child(1) .streaming-mini,
   .project-deck[data-active="1"] .project-card:nth-child(2) .mead-mini,
   .project-deck[data-active="2"] .project-card:nth-child(3) .field-mini { width: 42%; }
-  .project-deck[data-active="2"] .project-card:nth-child(3) .field-mini { width: min(349px, 58%); }
   .about-hero { grid-template-columns: 1fr 430px; gap: 40px; }
   .contact-hero { grid-template-columns: 1fr 390px; gap: 40px; }
   .outcome-section { grid-template-columns: 1fr 320px; gap: 50px; }
