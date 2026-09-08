@@ -877,7 +877,7 @@ p { text-wrap: pretty; }
     scroll-padding-inline: var(--page-pad);
     scrollbar-width: none;
     margin-inline: calc(var(--page-pad) * -1);
-    padding-inline: var(--page-pad);
+    padding-inline: var(--page-pad) calc(100% + var(--page-pad) - 340px);
     padding-bottom: 10px;
   }
   .project-deck::-webkit-scrollbar { display: none; }
@@ -954,7 +954,7 @@ p { text-wrap: pretty; }
     scroll-padding-inline: var(--page-pad);
     scrollbar-width: none;
     margin-inline: calc(var(--page-pad) * -1);
-    padding-inline: var(--page-pad);
+    padding-inline: var(--page-pad) calc(100% + var(--page-pad) - 300px);
     padding-bottom: 10px;
   }
   .project-deck::-webkit-scrollbar { display: none; }
