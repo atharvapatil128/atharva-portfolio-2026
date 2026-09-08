@@ -874,6 +874,7 @@ p { text-wrap: pretty; }
     gap: 14px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--page-pad);
     scrollbar-width: none;
     margin-inline: calc(var(--page-pad) * -1);
     padding-inline: var(--page-pad);
@@ -950,6 +951,7 @@ p { text-wrap: pretty; }
     gap: var(--space-control);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--page-pad);
     scrollbar-width: none;
     margin-inline: calc(var(--page-pad) * -1);
     padding-inline: var(--page-pad);
