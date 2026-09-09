@@ -752,6 +752,52 @@ p { text-wrap: pretty; }
 .notes-preview-link { display: inline-block; margin-top: 24px; font-size: 10px; }
 .notes-index { padding-top: var(--section-space); padding-bottom: var(--section-space); background: var(--field-warm); }
 .notes-index h2 { font-size: var(--type-section); }
+.notes-editorial-hero {
+  min-height: clamp(520px, 66svh, 660px);
+  display: grid;
+  align-items: center;
+  padding-top: clamp(88px, 11vh, 128px);
+  padding-bottom: clamp(88px, 11vh, 128px);
+  background: var(--canvas);
+}
+.notes-editorial-copy { width: min(820px, 78vw); }
+.notes-editorial-copy h1 {
+  max-width: 790px;
+  font-size: clamp(54px, 5.4vw, 78px);
+  font-weight: 600;
+  line-height: .98;
+  letter-spacing: -.04em;
+}
+.notes-editorial-copy > p {
+  max-width: 620px;
+  margin-top: 26px;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 27px;
+}
+.notes-editorial-button {
+  margin-top: 28px;
+  border-color: var(--strong);
+  color: var(--surface);
+  background: var(--strong);
+}
+.notes-editorial-button:hover { background: #25282f; }
+.notes-editorial-topics {
+  display: flex;
+  align-items: center;
+  margin-top: 36px;
+  color: var(--slate);
+  font-size: 10px;
+  line-height: 16px;
+}
+.notes-editorial-topics span { display: flex; align-items: center; }
+.notes-editorial-topics span + span::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  margin-inline: 14px;
+  background: var(--line);
+}
 .note-article { max-width: 1000px; margin: 0 auto; padding: 100px var(--page-pad) 140px; }
 .note-article header > p:last-child { max-width: 720px; margin-top: 28px; color: var(--text-secondary); font-size: 20px; line-height: 30px; }
 .note-article h1 { margin-top: 20px; }
@@ -2323,6 +2369,12 @@ p { text-wrap: pretty; }
   .featured-project-evidence li { padding-right: 7px; }
   .featured-project-evidence li + li { padding-left: 7px; }
   .featured-project-actions { flex-wrap: wrap; gap: 10px 16px; }
+
+  .notes-editorial-hero { min-height: auto; padding-top: 76px; padding-bottom: 76px; }
+  .notes-editorial-copy { width: 100%; }
+  .notes-editorial-copy h1 { font-size: clamp(46px, 13vw, 58px); }
+  .notes-editorial-copy > p { font-size: 17px; line-height: 25px; }
+  .notes-editorial-topics { flex-wrap: wrap; row-gap: var(--space-micro); }
 
   .notes-picker-hero { min-height: auto; grid-template-columns: 1fr; gap: 46px; padding-top: 76px; padding-bottom: 76px; }
   .notes-picker-hero .notes-hero-copy { width: 100%; }

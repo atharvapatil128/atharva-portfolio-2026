@@ -126,9 +126,9 @@ export const notes = [
     slug: "building-this-portfolio",
   },
   {
-    status: "planned",
+    status: "published",
     type: "Field note",
-    date: "Planned",
+    date: "Sep 2026",
     title: "What karting taught me about product feedback",
     description: "Fast loops, clean signals, and knowing when grip is gone.",
     slug: "karting-and-feedback",
