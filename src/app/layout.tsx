@@ -11,8 +11,10 @@ const instrumentSans = localFont({
 });
 
 const ibmPlexMono = localFont({
-  src: "./fonts/ibm-plex-mono-latin-500.woff2",
-  weight: "500",
+  src: [
+    { path: "./fonts/ibm-plex-mono-latin-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/ibm-plex-mono-latin-600.woff2", weight: "600", style: "normal" },
+  ],
   variable: "--font-mono",
   display: "swap",
 });
