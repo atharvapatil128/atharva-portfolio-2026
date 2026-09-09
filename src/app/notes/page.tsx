@@ -7,7 +7,7 @@ import { notes } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Notes",
   description:
-    "Short reads about product decisions, AI-assisted builds, karting, and what changes once an idea meets real feedback.",
+    "Short reflections on product decisions, building this portfolio, and lessons from the track.",
   alternates: { canonical: "/notes" },
   openGraph: { url: "/notes" },
 };
@@ -21,13 +21,13 @@ export default function NotesPage() {
       <main>
         <section className="notes-editorial-hero section-pad" aria-labelledby="notes-hero-title">
           <div className="notes-editorial-copy">
-            <h1 id="notes-hero-title">Notes from the work, the track, and the messy middle.</h1>
-            <p>Short reads about product decisions, AI-assisted builds, karting, and what changes once an idea meets real feedback.</p>
-            <Link className="button notes-editorial-button" href="#all-notes">Browse the notes</Link>
+            <h1 id="notes-hero-title">Notes on building, testing, and learning.</h1>
+            <p>A small collection of what I learned while designing products, building this portfolio, and testing ideas beyond the screen.</p>
+            <Link className="button notes-editorial-button" href="#all-notes">Read the notes</Link>
             <div className="notes-editorial-topics mono" aria-label="Topics covered">
-              <span>Product judgment</span>
-              <span>Build notes</span>
-              <span>Off track</span>
+              <span>Product decisions</span>
+              <span>Build process</span>
+              <span>Lessons from the track</span>
             </div>
           </div>
         </section>

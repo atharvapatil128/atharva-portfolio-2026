@@ -16,10 +16,24 @@ export function FeaturedProjectArtifact() {
 
   return (
     <div className="featured-project-artifact" aria-label="Featured shipped project">
+      <motion.div
+        className="featured-project-sheet featured-project-sheet-back"
+        aria-hidden="true"
+        initial={reduceMotion ? false : { x: 0, y: 34, rotate: 0 }}
+        animate={{ x: 14, y: -42, rotate: 2.3 }}
+        transition={{ ...transition, delay: reduceMotion ? 0 : 0.08 }}
+      />
+      <motion.div
+        className="featured-project-sheet featured-project-sheet-middle"
+        aria-hidden="true"
+        initial={reduceMotion ? false : { x: 0, y: 38, rotate: 0 }}
+        animate={{ x: -10, y: -19, rotate: -1.5 }}
+        transition={{ ...transition, delay: reduceMotion ? 0 : 0.14 }}
+      />
       <motion.article
         className="featured-project-proof"
-        initial={reduceMotion ? false : { y: 42, rotate: -2 }}
-        animate={{ y: 0, rotate: -0.6 }}
+        initial={reduceMotion ? false : { y: 42 }}
+        animate={{ y: 0 }}
         transition={{ ...transition, delay: reduceMotion ? 0 : 0.2 }}
       >
         <div className="featured-project-meta mono">
