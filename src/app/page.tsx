@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { ClarityStack } from "@/components/clarity-stack";
+import { FeaturedProjectArtifact } from "@/components/featured-project-artifact";
 import { HeroReveal } from "@/components/hero-reveal";
-import { HeroSignalField } from "@/components/hero-signal-field";
 import { HomeSections } from "@/components/home-sections";
-import { SignalCursor } from "@/components/signal-cursor";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SectionLink } from "@/components/section-link";
@@ -14,8 +12,6 @@ export default function HomePage() {
       <SiteHeader />
       <main>
         <section className="hero section-pad" aria-labelledby="hero-title">
-        <HeroSignalField />
-        <SignalCursor />
         <div className="hero-copy">
           <HeroReveal>
             <h1 id="hero-title" className="t-stagger-line t-stagger-line--1">
@@ -32,7 +28,7 @@ export default function HomePage() {
           </div>
           <div className="hero-meta mono"><span>Based in Indianapolis</span><span>Open to relocate</span></div>
         </div>
-        <ClarityStack />
+        <FeaturedProjectArtifact />
         </section>
 
         <HomeSections />

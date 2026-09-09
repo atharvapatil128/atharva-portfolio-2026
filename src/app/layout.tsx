@@ -58,7 +58,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <div
           hidden
-          data-design-contract="THESIS: evidence-led clarity over portfolio spectacle. OWN-WORLD: porcelain canvas, soft-black ink, cobalt structure, orange decisions, precise rounded fields. STORY: understand Atharva, scan the work, choose depth. FIRST VIEWPORT: identity and action left; draggable complexity-to-clarity system right. FORM: approved Precision Paddock / Cobalt Circuit comp. SEED: cobalt-clarity-stack-40-125. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance"
+          data-design-contract="THESIS: evidence-led clarity over portfolio spectacle. OWN-WORLD: porcelain canvas, soft-black ink, cobalt structure, orange decisions, precise rounded fields. STORY: understand Atharva, see shipped proof, scan the work, choose depth. FIRST VIEWPORT: identity and action left; a real Streaming Helper product artifact right. NOTES: editorial selection scales honestly with published content. FORM: Precision Paddock. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance"
         />
         {children}
       </body>

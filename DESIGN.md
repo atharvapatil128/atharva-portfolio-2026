@@ -153,7 +153,7 @@ The palette is predominantly neutral. Color appears in project media, purposeful
 
 ## Layout
 
-The desktop experience is art-directed around a 1440px reference viewport with a shared fluid page inset. Homepage A uses an asymmetric two-column composition: hiring signal and action on the left, the interactive Clarity Stack on the right. Homepage B (`/home-alt`) preserves the centered showcase-field composition for later A/B testing. Major sections are full-width tonal fields with content aligned to the same inset.
+The desktop experience is art-directed around a 1440px reference viewport with a shared fluid page inset. The homepage uses an asymmetric two-column composition: hiring signal and action on the left, then real Streaming Helper product evidence and a rising proof card on the right. The hero spotlights one shipped project; Selected Work remains the complete comparison index below it. Major sections are full-width tonal fields with content aligned to the same inset.
 
 The Selected Work deck favors one project at a time on fine pointers while keeping every project legible. At the mobile breakpoint it becomes a horizontal snap rail with the next card visibly peeking into the viewport. The Beyond the Work field follows the same discoverable rail behavior, giving personality content a deliberate but secondary role.
 
@@ -204,9 +204,11 @@ The recurring silhouette is a rounded field containing precise internal geometry
 
 The desktop header is a sticky porcelain rail with Atharva's geometric AP/apex mark, centered segmented navigation, a green live-availability signal, and one high-contrast Let's Talk action. It compresses slightly after scrolling and gains measured depth without transparency or glass. Active routes receive a contained surface, short underline, and signal dot; the contact control reverses its black/orange split treatment on the contact route. On mobile, a native disclosure exposes Work, Notes, About, Résumé, and Let's Talk in a floating field with 44px rows.
 
-### Clarity Stack
+### Featured Project Artifact and Note Picker
 
-The signature hero component turns a shipped product, a care-system case study, and an AI-assisted build note into three useful paths. The foreground card can be pressed or dragged; the linked supporting layers separate and realign with a damped spring. The instruction is explicit, the button carries an accurate pressed state, and reduced-motion users receive the same meaning without animation.
+The homepage signature is a product-proof composition rather than a second navigation index. Real Streaming Helper screens establish that the work shipped; the foreground proof card names the product, the customer problem, the research evidence, and both the case-study and live-product paths. Its layers rise into place with restrained depth, while the complete meaning remains legible at rest and in reduced-motion mode.
+
+Notes uses the stack behavior as an editorial selector. It renders only published work and exposes selection controls only when more than one note exists. With a single published note, it behaves as an art-directed featured article rather than pretending a collection exists. Keyboard, touch, pointer, and reduced-motion behavior remain equivalent as the inventory grows.
 
 ### Selected Work Deck
 
@@ -226,7 +228,7 @@ Contact is task-first: a light, compact form prepares a complete email draft for
 
 ### Motion
 
-The hero is the primary authored entrance. Its content becomes clear first, while the Clarity Stack's evidence layers arrive from distinct directions and assemble around the foreground decision surface. The canvas signal field uses four proportionally distinct silhouettes—a two-line rail, a sparse cascade, a curved trail, and a circular equalizer—rather than repeating one rectangular grid. Cursor proximity bends and elongates the existing marks. A single site-level circular equalizer follows fine pointers across open negative space with individual spring lag per bar, stretching subtly with travel speed and fading smoothly over copy, navigation, actions, forms, and drag surfaces. The native cursor remains visible and precise. Every silhouette keeps its authored shape and returns calmly to rest. Cobalt leads, pale cobalt adds depth, and Signal Orange/Selection Acid remain rare. The About trace animates only its scan and active build channel; the sticky header transitions only when scroll state changes; the footer signal field provides slower ambient motion and a local pointer response. All experiences become static under reduced-motion preferences, and coarse-pointer devices receive the composed resting state.
+The hero is the primary authored entrance. Its copy becomes clear first, while real Streaming Helper screens and the proof card arrive from distinct directions and settle into one legible shipped-product story. Notes uses the same restrained rise-and-settle language when the active article changes. The canvas signal field remains available for supporting surfaces, not behind the homepage's product evidence. A single site-level circular equalizer may follow fine pointers across open negative space, but it fades over copy, navigation, actions, forms, and product media. The native cursor remains visible and precise. The footer signal field stays concentrated around the closing action rather than becoming a universal background. All experiences become static under reduced-motion preferences, and coarse pointers receive the same complete content.
 
 ### Case-Study Structure
 

@@ -118,6 +118,7 @@ export const getProject = (slug: string) => projects.find((project) => project.s
 
 export const notes = [
   {
+    status: "published",
     type: "Process note",
     date: "Aug 2026",
     title: "Building this portfolio with an AI-assisted workflow",
@@ -125,6 +126,7 @@ export const notes = [
     slug: "building-this-portfolio",
   },
   {
+    status: "planned",
     type: "Field note",
     date: "Planned",
     title: "What karting taught me about product feedback",
