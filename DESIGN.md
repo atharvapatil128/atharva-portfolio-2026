@@ -100,7 +100,7 @@ The visual story moves from complexity to confidence. Large plain-language state
 - Instrument Sans for human clarity; IBM Plex Mono for verified metadata and telemetry.
 - Orange for decisive action, cobalt for system structure, and quieter local colors for authored content.
 - Large, calm spatial fields interrupted by precise interactive cards.
-- One memorable complexity-to-clarity interaction supported by restrained motion elsewhere.
+- One memorable desk composition supported by restrained motion elsewhere.
 
 ## Colors
 
@@ -153,7 +153,7 @@ The palette is predominantly neutral. Color appears in project media, purposeful
 
 ## Layout
 
-The desktop experience is art-directed around a 1440px reference viewport with a shared fluid page inset. The homepage uses an asymmetric two-column composition: hiring signal and action on the left, then real Streaming Helper product evidence and a rising proof card on the right. The hero spotlights one shipped project; Selected Work remains the complete comparison index below it. Major sections are full-width tonal fields with content aligned to the same inset.
+The desktop experience is art-directed around a 1440px reference viewport with a shared fluid page inset. The homepage uses a centered reading column framed by five real desk-object assets. Home-specific identity, summary, availability, actions, and location remain the focal point; a real Streaming Helper proof card rises from the lower edge in the position formerly occupied by the Notes preview. The hero spotlights one shipped project without duplicating the complete Selected Work comparison index below it. Major sections are full-width tonal fields with content aligned to the same inset.
 
 The Selected Work deck favors one project at a time on fine pointers while keeping every project legible. At the mobile breakpoint it becomes a horizontal snap rail with the next card visibly peeking into the viewport. The Beyond the Work field follows the same discoverable rail behavior, giving personality content a deliberate but secondary role.
 
@@ -204,11 +204,11 @@ The recurring silhouette is a rounded field containing precise internal geometry
 
 The desktop header is a sticky porcelain rail with Atharva's geometric AP/apex mark, centered segmented navigation, a green live-availability signal, and one high-contrast Let's Talk action. It compresses slightly after scrolling and gains measured depth without transparency or glass. Active routes receive a contained surface, short underline, and signal dot; the contact control reverses its black/orange split treatment on the contact route. On mobile, a native disclosure exposes Work, Notes, About, Résumé, and Let's Talk in a floating field with 44px rows.
 
-### Featured Project Artifact and Note Picker
+### Featured Project Artifact and Notes Index
 
-The homepage signature is a product-proof composition rather than a second navigation index. Real Streaming Helper screens establish that the work shipped; the foreground proof card names the product, the customer problem, the research evidence, and both the case-study and live-product paths. Its layers rise into place with restrained depth, while the complete meaning remains legible at rest and in reduced-motion mode.
+The homepage signature is a product-proof composition rather than a second navigation index. Tactile desk objects create an authored field around a protected central reading column. The foreground Streaming Helper proof card names the product, the customer problem, the research evidence, and both the case-study and live-product paths. It rises into place with restrained depth, while the complete meaning remains legible at rest and in reduced-motion mode.
 
-Notes uses the stack behavior as an editorial selector. It renders only published work and exposes selection controls only when more than one note exists. With a single published note, it behaves as an art-directed featured article rather than pretending a collection exists. Keyboard, touch, pointer, and reduced-motion behavior remain equivalent as the inventory grows.
+Notes uses a quieter editorial introduction followed by one complete index of published writing. It does not repeat a featured article or simulate a large collection; both currently published notes appear once, with the existing row behavior and placeholder article routes intact.
 
 ### Selected Work Deck
 
@@ -228,7 +228,7 @@ Contact is task-first: a light, compact form prepares a complete email draft for
 
 ### Motion
 
-The hero is the primary authored entrance. Its copy becomes clear first, while real Streaming Helper screens and the proof card arrive from distinct directions and settle into one legible shipped-product story. Notes uses the same restrained rise-and-settle language when the active article changes. The canvas signal field remains available for supporting surfaces, not behind the homepage's product evidence. A single site-level circular equalizer may follow fine pointers across open negative space, but it fades over copy, navigation, actions, forms, and product media. The native cursor remains visible and precise. The footer signal field stays concentrated around the closing action rather than becoming a universal background. All experiences become static under reduced-motion preferences, and coarse pointers receive the same complete content.
+The hero is the primary authored entrance. Its copy becomes clear first, while the five desk objects hold their framing positions and the Streaming Helper proof card rises into the reading path. Notes uses a quieter reveal so the index remains the destination rather than a second showpiece. The canvas signal field remains available for supporting surfaces, not behind the homepage composition. A single site-level circular equalizer may follow fine pointers across open negative space, but it fades over copy, navigation, actions, forms, and project media. The native cursor remains visible and precise. The footer signal field stays concentrated around the closing action rather than becoming a universal background. All experiences become static under reduced-motion preferences, and coarse pointers receive the same complete content.
 
 ### Case-Study Structure
 
