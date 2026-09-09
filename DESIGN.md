@@ -121,7 +121,8 @@ The palette is predominantly neutral. Color appears in project media, purposeful
 
 - **Porcelain Canvas:** The default page field and the source of the site's warm, clean atmosphere.
 - **White Surface:** Raised or isolated content surfaces.
-- **Fog Subtle:** Section fields, quiet project visuals, and low-contrast separation.
+- **Warm Parchment:** The brighter alternating section field; visibly warmer than the porcelain canvas without becoming a second accent color.
+- **Fog Subtle:** Quiet project visuals and low-contrast separation within sections.
 - **Soft Black:** Primary text, dark fields, and the strongest structural contrast.
 - **Secondary Graphite / Tertiary Graphite:** Supporting copy and non-primary metadata.
 - **Hairline Gray:** Dividers, quiet borders, and control outlines.
@@ -208,7 +209,7 @@ The desktop header is a sticky porcelain rail with Atharva's geometric AP/apex m
 
 The homepage signature is a product-proof composition rather than a second navigation index. Tactile desk objects create an authored field around a protected central reading column. The foreground Streaming Helper proof card names the product, the customer problem, the research evidence, and both the case-study and live-product paths. It rises into place with restrained depth, while the complete meaning remains legible at rest and in reduced-motion mode.
 
-Notes uses a quieter editorial introduction followed by one complete index of published writing. It does not repeat a featured article or simulate a large collection; both currently published notes appear once, with the existing row behavior and placeholder article routes intact.
+Notes uses a quieter editorial introduction with a two-sheet preview of the two real published notes on the right. The overlap borrows the tactile paper language of the homepage artifact without repeating its product-proof treatment: both sheets are actionable, the newest note leads, and one restrained orange filing tab connects the composition to the shared signal color. The complete index remains directly below as the scannable destination and must stay useful when the collection grows.
 
 ### Selected Work Deck
 
@@ -228,7 +229,7 @@ Contact is task-first: a light, compact form prepares a complete email draft for
 
 ### Motion
 
-The hero is the primary authored entrance. Its copy becomes clear first, while the five desk objects hold their framing positions and the Streaming Helper proof card rises into the reading path. Notes uses a quieter reveal so the index remains the destination rather than a second showpiece. The canvas signal field remains available for supporting surfaces, not behind the homepage composition. A single site-level circular equalizer may follow fine pointers across open negative space, but it fades over copy, navigation, actions, forms, and project media. The native cursor remains visible and precise. The footer signal field stays concentrated around the closing action rather than becoming a universal background. All experiences become static under reduced-motion preferences, and coarse pointers receive the same complete content.
+The hero is the primary authored entrance. Its copy becomes clear first, while the five desk objects hold their framing positions and the Streaming Helper proof card rises into the reading path. The Home desk objects use true alpha cutouts; a white rectangular source canvas may never be visible. Secondary page heroes share the same restrained intro dot field, seed, density, and orange accent distribution; Home remains the exception because its real desk objects already form the visual field. The Notes sheets enter as one staggered editorial moment and then stay quiet so the index remains the destination rather than a second showpiece. About photography receives subtle scroll-linked crop movement inside stable frames; text and controls do not drift. Teak-inspired text emphasis is reserved for one meaningful word at a time and appears as a compact translucent signal highlight, never as a long underline. The canvas signal field remains available for supporting surfaces, not behind the homepage composition. A single site-level circular equalizer may follow fine pointers across open negative space, but it fades over copy, navigation, actions, forms, and project media. The native cursor remains visible and precise. The footer signal field stays concentrated around the closing action rather than becoming a universal background. All experiences become static under reduced-motion preferences, and coarse pointers receive the same complete content.
 
 ### Case-Study Structure
 

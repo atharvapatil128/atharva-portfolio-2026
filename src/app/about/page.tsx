@@ -23,7 +23,7 @@ export default function AboutPage() {
         <section className="about-hero top-stage section-pad">
         <IntroDotField variant="about" />
         <div>
-          <h1>I ask a lot of “why” questions. Then I make something and see if I was right.</h1>
+          <h1>I ask a lot of “why” questions. Then I make <span className="signal-emphasis">something</span> and see if I was right.</h1>
           <p>I like staying close to a problem—from the first messy conversations through prototypes, feedback, implementation, and whatever needs fixing next. A rationale helps, but it doesn&apos;t make a design correct. People using it get the final vote.</p>
           <div className="hero-actions about-actions">
             <Link className="about-primary-action" href="/resume">

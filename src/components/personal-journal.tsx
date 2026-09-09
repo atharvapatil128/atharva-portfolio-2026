@@ -18,9 +18,12 @@ const photos = {
 
 function Photo({ name, className = "" }: { name: keyof typeof photos; className?: string }) {
   const photo = photos[name];
+
   return <figure className={`${styles.photo} ${className}`}>
-    <div className={styles.frame} data-reveal="photo">
-      <Image src={`/images/personal/${name}.jpg`} alt={photo.alt} fill sizes="(max-width: 600px) 85vw, (max-width: 1000px) 45vw, 35vw" className={styles[name]} />
+    <div className={styles.frame}>
+      <div className={styles.frameInner}>
+        <Image src={`/images/personal/${name}.jpg`} alt={photo.alt} fill sizes="(max-width: 600px) 85vw, (max-width: 1000px) 45vw, 35vw" className={styles[name]} />
+      </div>
     </div>
     <figcaption data-reveal>{photo.caption}</figcaption>
   </figure>;
@@ -40,7 +43,7 @@ export function PersonalJournal() {
   return <section className={`${styles.journal} section-pad`} id="beyond-work" aria-labelledby="journal-title">
     <SectionReveal className={styles.collage}>
       <div className={styles.intro}>
-        <h2 id="journal-title" data-reveal>A little further<br />from the desk.</h2>
+        <h2 id="journal-title" data-reveal>A little <span className={styles.signalEmphasis}>further</span><br />from the desk.</h2>
         <p data-reveal>A few places, milestones, and things I keep coming back to.</p>
         <ArrowLink className={styles.aboutLink} href="/about">Explore the full story</ArrowLink>
       </div>
@@ -84,7 +87,7 @@ export function PersonalAbout() {
       <SectionReveal className={styles.personalStory}>
       <Photo name="gallery" className={styles.galleryMoment} />
       <div className={styles.storyCopy}>
-        <h2 id="personal-story-title" data-reveal>Room to <br />be curious.</h2>
+        <h2 id="personal-story-title" data-reveal>Room to <br />be <span className={styles.signalEmphasis}>curious.</span></h2>
         <p data-reveal>Fast laps, long runs, open air. And time to stop and look a little closer.</p>
         <p data-reveal>Karting taught me to read a system through feedback: brake later, change one thing, and let the next lap tell you whether it worked.</p>
         <ArrowLink className={styles.aboutLink} href="/notes">Read what I’m thinking about</ArrowLink>

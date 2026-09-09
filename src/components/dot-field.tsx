@@ -61,7 +61,7 @@ export function DotField({
             : variant === "hero"
               ? rightFocus * centerFocus
               : introCluster;
-          const quietLeft = variant === "intro" && nx < 0.63 && ny > 0.16 && ny < 0.82 ? 0.2 : 1;
+          const quietLeft = variant === "intro" && nx < 0.63 && ny > 0.16 && ny < 0.82 ? 0.45 : 1;
           const accent = hash(column, row, seed) > (variant === "footer" ? 0.91 : 0.955);
           const dx = x - pointer.x;
           const dy = y - pointer.y;
