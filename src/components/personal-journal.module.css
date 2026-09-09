@@ -8,7 +8,7 @@
 .aboutLink:hover::after { right: 0; }
 .aboutLink span { color: var(--signal); }
 .photo { min-width: 0; margin: 0; }
-.frame { position: relative; overflow: hidden; background: var(--subtle); border-radius: var(--radius-media); aspect-ratio: 3 / 4; }
+.frame { position: relative; overflow: hidden; background: var(--subtle); border-radius: var(--radius-media); box-shadow: var(--lift-media); aspect-ratio: 3 / 4; }
 .frameInner { position: absolute; inset: 0; }
 .frame img { object-fit: cover; transition: transform var(--duration-slow) var(--ease-smooth-out); }
 .photo figcaption { margin-top: 12px; font-size: 13px; line-height: 1.4; color: var(--text-secondary); }

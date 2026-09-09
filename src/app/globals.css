@@ -91,6 +91,9 @@
   --glass-veil: color-mix(in srgb, var(--canvas) 72%, transparent);
   /* Selected/hover edge. Jumping straight to --ink reads as a hard outline;
      this lands mid-grey and lets the halo carry the rest of the state change. */
+  /* Imagery takes a hairline inner ring instead of --lift-face: a white
+     top-left inset would haze the photo's corner. */
+  --lift-media: 0 2px 8px rgba(17, 19, 24, .1), inset 0 0 0 1px rgba(17, 19, 24, .07);
   --line-active: color-mix(in srgb, var(--ink) 30%, var(--line));
   --halo-active: 0 0 0 3px color-mix(in srgb, var(--ink) 5%, transparent);
 }
@@ -438,6 +441,7 @@ p { text-wrap: pretty; }
   height: 128px;
   overflow: hidden;
   border-radius: 17px;
+  box-shadow: var(--lift-media);
   transition: width var(--duration-fast) var(--ease-smooth-out), height var(--duration-fast) var(--ease-smooth-out);
 }
 .project-deck[data-active="0"] .project-card:nth-child(1) .streaming-mini,
