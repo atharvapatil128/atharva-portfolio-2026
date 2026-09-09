@@ -14,7 +14,7 @@ export function HomeSections() {
         <ProjectDeck />
       </section>
       <section className="notes-section section-pad" aria-labelledby="notes-title">
-        <div className="section-heading"><h2 id="notes-title">Notes &amp; experiments</h2><p className="mono">Product decisions, build process, and lessons from the track</p></div>
+        <div className="section-heading"><h2 id="notes-title">Notes &amp; experiments</h2><p className="mono">Product decisions, build process, and moments beyond the desk</p></div>
         <div className="note-list">
           {publishedNotes.map((note) => (
             <Link key={note.slug} href={`/notes/${note.slug}`} className="note-row">

@@ -32,7 +32,7 @@ export const projects: Project[] = [
     decisions: [
       {
         title: "Intervene only when support is useful",
-        body: "The helper stays quiet during ordinary browsing and becomes available when hesitation appears—or when someone asks for it.",
+        body: "The helper stays quiet during ordinary browsing, and becomes available when hesitation appears or when someone asks for it.",
       },
       {
         title: "Separate choosing from stopping",

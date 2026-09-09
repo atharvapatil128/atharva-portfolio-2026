@@ -154,7 +154,7 @@ export function FieldMaintenanceCaseStudy() {
           <section className="field-pivot">
             <div className="field-section-head">
               <h2>Testing changed the product from reactive work orders to proactive maintenance.</h2>
-              <p>The first concept focused on managing work orders in the field. Early validation showed that similar work was already underway—and that technicians needed to know what required attention before something failed.</p>
+              <p>The first concept focused on managing work orders in the field. Early validation showed that similar work was already underway, and that technicians needed to know what required attention before something failed.</p>
             </div>
             <div className="field-pivot-sequence">
               <article><span className="mono">FIRST CONCEPT</span><strong>Mobile work-order tracking</strong><p>Help technicians manage tasks after an issue was already known.</p></article>
@@ -279,7 +279,7 @@ export function FieldMaintenanceCaseStudy() {
                 <div><strong>~ 40%</strong><span>projected time savings</span></div>
                 <div><strong>~ 30%</strong><span>projected cost savings</span></div>
               </div>
-              <p className="field-metric-note">These are projected estimates based on sponsor discussions and field validation—not measured production results.</p>
+              <p className="field-metric-note">These are projected estimates based on sponsor discussions and field validation, not measured production results.</p>
               <blockquote>
                 <p>“I really hope we can get this done and continue development of more apps based on the refined interface.”</p>
                 <cite>Officer-in-Charge, Engineering Services Office, U.S. Embassy Vienna</cite>
@@ -299,7 +299,7 @@ export function FieldMaintenanceCaseStudy() {
 
           <section className="field-reflection">
             <h2>The strongest move was choosing a tractable starting point.</h2>
-            <p>“Field maintenance” was too broad to design as one undifferentiated problem. The interviews made the shared need—standardized mobile records—clear, while the battery workflow gave the team a specific routine to build and a future pilot something concrete to evaluate.</p>
+            <p>“Field maintenance” was too broad to design as one undifferentiated problem. The interviews made it clear that the shared need was standardized mobile records, while the battery workflow gave the team a specific routine to build and a future pilot something concrete to evaluate.</p>
           </section>
 
           <Link href="/work/streaming-helper" className="next-case field-next-case" aria-label="Next case study: Streaming Helper">

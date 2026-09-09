@@ -10,7 +10,7 @@ import { PersonalAbout } from "@/components/personal-journal";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "I like staying close to a problem—from the first messy conversations through prototypes, feedback, implementation, and whatever needs fixing next.",
+    "I like staying close to a problem, from the first messy conversations through prototypes, feedback, implementation, and whatever needs fixing next.",
   alternates: { canonical: "/about" },
   openGraph: { url: "/about" },
 };
@@ -24,7 +24,7 @@ export default function AboutPage() {
         <IntroDotField variant="about" />
         <div>
           <h1>I ask a lot of “why” questions. Then I make <span className="signal-emphasis">something</span> and see if I was right.</h1>
-          <p>I like staying close to a problem—from the first messy conversations through prototypes, feedback, implementation, and whatever needs fixing next. A rationale helps, but it doesn&apos;t make a design correct. People using it get the final vote.</p>
+          <p>I like staying close to a problem, from the first messy conversations through prototypes, feedback, implementation, and whatever needs fixing next. A rationale helps, but it doesn&apos;t make a design correct. People using it get the final vote.</p>
           <div className="hero-actions about-actions">
             <Link className="about-primary-action" href="/resume">
               <span>View résumé</span>

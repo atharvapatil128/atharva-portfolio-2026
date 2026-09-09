@@ -9,7 +9,7 @@ import { notes } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Notes",
   description:
-    "Short reflections on product decisions, building this portfolio, and lessons from the track.",
+    "Short reflections on product decisions, building this portfolio, and what I'm curious about beyond it.",
   alternates: { canonical: "/notes" },
   openGraph: { url: "/notes" },
 };
@@ -32,7 +32,7 @@ export default function NotesPage() {
               <div className="notes-editorial-topics mono" aria-label="Topics covered">
                 <span>Product decisions</span>
                 <span>Build process</span>
-                <span>Lessons from the track</span>
+                <span>Beyond the desk</span>
               </div>
             </div>
             <NotesPreviewStack notes={featuredNotes} />

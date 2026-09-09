@@ -8,7 +8,7 @@ import styles from "./personal-journal.module.css";
 
 const photos = {
   trail: { alt: "A walker following a stone path across a green hillside", caption: "Taking the longer route." },
-  running: { alt: "Atharva after a run, wearing a race bib and medal", caption: "After the run." },
+  running: { alt: "Atharva after a run, wearing a race bib and medal", caption: "First 5K, new PR." },
   boat: { alt: "The decorated bow of a wooden boat facing turquoise water and distant cliffs", caption: "A different view from the water." },
   sunset: { alt: "The last light of sunset reflected in still water between wooded banks", caption: "Last light on the water." },
   gallery: { alt: "A visitor taking in large paintings in an art gallery", caption: "Time in the galleries." },
@@ -88,8 +88,8 @@ export function PersonalAbout() {
       <Photo name="gallery" className={styles.galleryMoment} />
       <div className={styles.storyCopy}>
         <h2 id="personal-story-title" data-reveal>Room to <br />be <span className={styles.signalEmphasis}>curious.</span></h2>
-        <p data-reveal>Fast laps, long runs, open air. And time to stop and look a little closer.</p>
-        <p data-reveal>Karting taught me to read a system through feedback: brake later, change one thing, and let the next lap tell you whether it worked.</p>
+        <p data-reveal>Fast laps, long runs, open air. And time to slow down and actually look at something.</p>
+        <p data-reveal>Karting is where I first noticed how fast good feedback can be. Change one thing, take another lap, and you know almost right away whether it worked.</p>
         <ArrowLink className={styles.aboutLink} href="/notes">Read what I’m thinking about</ArrowLink>
       </div>
       <div className={styles.milestones}>

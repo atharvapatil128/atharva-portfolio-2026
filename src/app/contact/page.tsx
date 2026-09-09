@@ -21,7 +21,7 @@ export default function ContactPage() {
         <section className="contact-hero top-stage section-pad">
           <IntroDotField variant="contact" />
           <div className="contact-intro">
-            <h1>Have something interesting—or slightly complicated?</h1>
+            <h1>Have something interesting, or maybe a little complicated?</h1>
             <p>Tell me what you&apos;re working through. I&apos;m always happy to compare notes, talk product, or hear about a good team.</p>
           </div>
           <ContactForm />
