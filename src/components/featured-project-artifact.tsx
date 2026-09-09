@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 
@@ -17,39 +16,6 @@ export function FeaturedProjectArtifact() {
 
   return (
     <div className="featured-project-artifact" aria-label="Featured shipped project">
-      <motion.div
-        className="featured-project-window featured-project-window-main"
-        initial={reduceMotion ? false : { x: 26, y: 18, rotate: 1.4 }}
-        animate={{ x: 0, y: 0, rotate: -0.8 }}
-        transition={{ ...transition, delay: reduceMotion ? 0 : 0.08 }}
-      >
-        <Link href="/work/streaming-helper" aria-label="View the Streaming Helper case study">
-          <Image
-            src="/images/streaming-helper/product-home-hd.png"
-            alt="Streaming Helper product home showing recommendations and shared picks"
-            fill
-            priority
-            sizes="(max-width: 760px) 92vw, (max-width: 1100px) 560px, 620px"
-          />
-        </Link>
-      </motion.div>
-
-      <motion.div
-        className="featured-project-window featured-project-window-extension"
-        initial={reduceMotion ? false : { x: -18, y: 34, rotate: -4 }}
-        animate={{ x: 0, y: 0, rotate: 2.5 }}
-        transition={{ ...transition, delay: reduceMotion ? 0 : 0.14 }}
-        aria-hidden="true"
-      >
-        <Image
-          src="/images/streaming-helper/extension-ready-hd.png"
-          alt=""
-          fill
-          priority
-          sizes="180px"
-        />
-      </motion.div>
-
       <motion.article
         className="featured-project-proof"
         initial={reduceMotion ? false : { y: 42, rotate: -2 }}
