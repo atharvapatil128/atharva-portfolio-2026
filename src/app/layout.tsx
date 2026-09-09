@@ -11,8 +11,10 @@ const instrumentSans = localFont({
 });
 
 const ibmPlexMono = localFont({
-  src: "./fonts/ibm-plex-mono-latin-500.woff2",
-  weight: "500",
+  src: [
+    { path: "./fonts/ibm-plex-mono-latin-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/ibm-plex-mono-latin-600.woff2", weight: "600", style: "normal" },
+  ],
   variable: "--font-mono",
   display: "swap",
 });
@@ -58,7 +60,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <div
           hidden
-          data-design-contract="THESIS: evidence-led clarity over portfolio spectacle. OWN-WORLD: porcelain canvas, soft-black ink, cobalt structure, orange decisions, precise rounded fields. STORY: understand Atharva, scan the work, choose depth. FIRST VIEWPORT: identity and action left; draggable complexity-to-clarity system right. FORM: approved Precision Paddock / Cobalt Circuit comp. SEED: cobalt-clarity-stack-40-125. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance"
+          data-design-contract="THESIS: evidence-led clarity over portfolio spectacle. OWN-WORLD: porcelain canvas, soft-black ink, cobalt structure, orange decisions, precise rounded fields. STORY: understand Atharva, see shipped proof, scan the work, choose depth. FIRST VIEWPORT: centered identity and actions framed by tactile desk objects; a real Streaming Helper proof card rises from the lower edge. NOTES: a quiet editorial introduction leads directly to the complete published index. FORM: Precision Paddock. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance"
         />
         {children}
       </body>

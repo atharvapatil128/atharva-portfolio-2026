@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const chapters = [
-  { label: "CS foundation", title: "Computer science", detail: "I learned how software works—and how a technically correct answer can still miss the person using it.", x: 78, y: 174 },
+  { label: "CS foundation", title: "Computer science", detail: "I learned how software works, and how a technically correct answer can still miss the person using it.", x: 78, y: 174 },
   { label: "HCI + design", title: "HCI + Design", detail: "I moved closer to the people, decisions, and contexts surrounding the system.", x: 309, y: 126 },
   { label: "Early career", title: "Early career", detail: "I’m building range across research, interaction design, visual design, and front-end implementation.", x: 542, y: 66 },
 ] as const;
@@ -89,12 +89,12 @@ export function TelemetryPanel() {
         <div className="telemetry-primary">
           <div className="readout-label"><span className="readout-icon"><ReadoutIcon name="build" /></span><span className="mono">ACTIVE BUILD</span></div>
           <strong>Streaming Helper</strong>
-          <p>Turning my graduate capstone into a working product—designing, building, testing, and iterating it myself.</p>
+          <p>Turning my graduate capstone into a working product I design, build, test, and iterate myself.</p>
         </div>
         <dl>
           <div><span className="readout-icon"><ReadoutIcon name="location" /></span><dt>LOCATION</dt><dd>Indianapolis <small>Open to relocate for the right role</small></dd></div>
           <div><span className="readout-icon"><ReadoutIcon name="focus" /></span><dt>FOCUS</dt><dd>End-to-end product design <small>Research · interaction · prototyping · implementation</small></dd></div>
-          <div><span className="readout-icon"><ReadoutIcon name="offTrack" /></span><dt>OFF TRACK</dt><dd>Karting, running, outdoors <small>Fast laps · longer trails · fresh air</small></dd></div>
+          <div><span className="readout-icon"><ReadoutIcon name="offTrack" /></span><dt>BEYOND WORK</dt><dd>Karting, running, outdoors <small>Fast laps · longer trails · fresh air</small></dd></div>
         </dl>
       </div>
     </aside>

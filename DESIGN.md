@@ -5,6 +5,7 @@ colors:
   canvas: "#F6F7F4"
   surface: "#FFFFFF"
   subtle: "#E8EBEF"
+  field-warm: "#F1EFE8"
   strong: "#111318"
   text-secondary: "#616671"
   text-tertiary: "#858B96"
@@ -100,7 +101,7 @@ The visual story moves from complexity to confidence. Large plain-language state
 - Instrument Sans for human clarity; IBM Plex Mono for verified metadata and telemetry.
 - Orange for decisive action, cobalt for system structure, and quieter local colors for authored content.
 - Large, calm spatial fields interrupted by precise interactive cards.
-- One memorable complexity-to-clarity interaction supported by restrained motion elsewhere.
+- One memorable desk composition supported by restrained motion elsewhere.
 
 ## Colors
 
@@ -121,7 +122,8 @@ The palette is predominantly neutral. Color appears in project media, purposeful
 
 - **Porcelain Canvas:** The default page field and the source of the site's warm, clean atmosphere.
 - **White Surface:** Raised or isolated content surfaces.
-- **Fog Subtle:** Section fields, quiet project visuals, and low-contrast separation.
+- **Warm Parchment:** The brighter alternating section field; visibly warmer than the porcelain canvas without becoming a second accent color.
+- **Fog Subtle:** Quiet project visuals and low-contrast separation within sections.
 - **Soft Black:** Primary text, dark fields, and the strongest structural contrast.
 - **Secondary Graphite / Tertiary Graphite:** Supporting copy and non-primary metadata.
 - **Hairline Gray:** Dividers, quiet borders, and control outlines.
@@ -145,7 +147,7 @@ The palette is predominantly neutral. Color appears in project media, purposeful
 - **Case Display** (600, fluid 64–110px, 0.92): Project names on case-study routes.
 - **Headline** (600, fluid 48–64px, 1.06): Major homepage and section headings.
 - **Body** (400, 16px, 1.5): General explanations, evidence, and supporting copy. Important summaries may step up to 20px with the same measured rhythm.
-- **Label** (500, 12px, 0.015em, uppercase): Functional metadata, indices, status, and interaction instructions.
+- **Label** (500, 12px, 0.015em): Functional metadata, indices, status, and interaction instructions. Use sentence case by default; reserve all caps for compact operational labels inside project-specific interfaces.
 
 **The Plain-Language First Rule.** A reader encounters the meaningful statement before its technical classification. Mono labels support the message; they do not become invented eyebrow copy above every heading.
 
@@ -153,7 +155,7 @@ The palette is predominantly neutral. Color appears in project media, purposeful
 
 ## Layout
 
-The desktop experience is art-directed around a 1440px reference viewport with a shared fluid page inset. Homepage A uses an asymmetric two-column composition: hiring signal and action on the left, the interactive Clarity Stack on the right. Homepage B (`/home-alt`) preserves the centered showcase-field composition for later A/B testing. Major sections are full-width tonal fields with content aligned to the same inset.
+The desktop experience is art-directed around a 1440px reference viewport with a shared fluid page inset. The homepage uses a centered reading column framed by five real desk-object assets. Home-specific identity, summary, availability, actions, and location remain the focal point; a real Streaming Helper proof card rises from the lower edge in the position formerly occupied by the Notes preview. The hero spotlights one shipped project without duplicating the complete Selected Work comparison index below it. Major sections are full-width tonal fields with content aligned to the same inset.
 
 The Selected Work deck favors one project at a time on fine pointers while keeping every project legible. At the mobile breakpoint it becomes a horizontal snap rail with the next card visibly peeking into the viewport. The Beyond the Work field follows the same discoverable rail behavior, giving personality content a deliberate but secondary role.
 
@@ -163,17 +165,24 @@ The system uses content-driven breakpoints near 1100px and 760px. Below 760px, n
 
 **The Peek Rule.** Horizontal rails show enough of the next card to communicate that more content exists; never hide required navigation behind an invisible gesture.
 
-## Elevation & Depth
+## Dimensional Surfaces, Elevation & Depth
 
-The system is flat by default and uses tonal contrast, borders, overlap, and clipping for most depth. Shadows are ambient and stateful: the resolved hero card carries a soft resting lift; project cards gain restrained elevation on hover/focus; the mobile menu floats above content. Dark sections and white cards create material contrast without glass effects.
+The interface uses one quiet, consistent light source from the top-left. Controls, cards, and contained media receive a shallow tonal face plus a soft lower-right cast shadow; this makes the site feel tactile without turning it glossy or skeuomorphic. Page fields, text columns, and large uninterrupted sections remain flat so the dimensional moments keep their meaning.
+
+Light surfaces move from white or warm porcelain at the top-left toward a slightly cooler, darker edge at the bottom-right. Dark surfaces use the same geometry with a much narrower tonal range. Image frames use a hairline inner ring and cast shadow rather than a light face, which keeps photography crisp. Form fields invert the model with a restrained inset shadow so they read as places to enter information.
 
 ### Shadow Vocabulary
 
-- **Resolved Lift:** A broad, soft shadow under the hero's resolved card; use only for the signature movable surface.
-- **Interactive Lift:** A lighter shadow accompanying a small upward hover/focus translation on project cards.
+- **Face:** Paired one-pixel inset highlights and shade edges that establish the common top-left light source.
+- **Control Lift:** A compact cast shadow for buttons, tabs, and small controls. Hover raises it by only a few pixels; active returns it to the surface.
+- **Panel Lift:** A wider, lower-contrast shadow for cards and form panels. Large panels never reuse the tighter control shadow.
+- **Media Lift:** A soft cast shadow plus a neutral inner ring for photography, video, and project imagery.
+- **Resolved Lift:** The broadest resting shadow, reserved for the layered homepage proof artifact and overlapping Notes sheets.
 - **Menu Float:** A compact ambient shadow that separates the mobile menu from the page.
 
-**The Flat-at-Rest Rule.** Shared surfaces stay flat until interaction or overlap creates a real reason for elevation.
+**The One-Light Rule.** Any dimensional surface must agree with the top-left source. Never mix highlight directions, stack unrelated halos, or add depth to a section merely because a neighboring card has it.
+
+**The Restraint Rule.** A surface may use tonal separation and a shadow when it represents a control, card, panel, or framed artifact. Page fields and reading columns remain flat. Colored project media can keep its own authored depth instead of receiving the global white-face treatment.
 
 ## Shapes
 
@@ -190,13 +199,14 @@ The recurring silhouette is a rounded field containing precise internal geometry
 - **Shape:** Fully pill-shaped with a 48px minimum height.
 - **Primary:** Signal Orange with Soft Black text and compact horizontal padding.
 - **Secondary:** White Surface with a Hairline Gray border; it darkens structurally on hover rather than gaining more color.
-- **Hover / Focus:** Fine pointers receive a 2px upward lift. Keyboard focus uses a clear cobalt outline outside the control. Active state returns to the baseline quickly.
+- **Surface:** A shallow directional face and Control Lift, both derived from the shared tokens rather than one-off gradients.
+- **Hover / Focus:** Fine pointers receive a 2px upward lift and a slightly stronger cast shadow. Keyboard focus uses a clear cobalt outline outside the control. Active state returns to the baseline quickly.
 
 ### Cards / Containers
 
 - **Corner Style:** 24px for primary cards, 18px for compact fields.
 - **Background:** White Surface, Fog Subtle, or Soft Black according to hierarchy.
-- **Shadow Strategy:** Flat at rest; ambient Interactive Lift only on an actionable hover/focus state.
+- **Shadow Strategy:** Panel Lift at rest when a surface is meaningfully raised or overlapping; interaction increases the cast shadow without changing the light direction. Flat editorial groupings remain border-only.
 - **Border:** One quiet hairline; the active resolved experience may use a stronger Soft Black outline.
 - **Internal Padding:** Generally 18–24px, increasing only for major editorial sections.
 
@@ -204,9 +214,11 @@ The recurring silhouette is a rounded field containing precise internal geometry
 
 The desktop header is a sticky porcelain rail with Atharva's geometric AP/apex mark, centered segmented navigation, a green live-availability signal, and one high-contrast Let's Talk action. It compresses slightly after scrolling and gains measured depth without transparency or glass. Active routes receive a contained surface, short underline, and signal dot; the contact control reverses its black/orange split treatment on the contact route. On mobile, a native disclosure exposes Work, Notes, About, Résumé, and Let's Talk in a floating field with 44px rows.
 
-### Clarity Stack
+### Featured Project Artifact and Notes Index
 
-The signature hero component turns a shipped product, a care-system case study, and an AI-assisted build note into three useful paths. The foreground card can be pressed or dragged; the linked supporting layers separate and realign with a damped spring. The instruction is explicit, the button carries an accurate pressed state, and reduced-motion users receive the same meaning without animation.
+The homepage signature is a product-proof composition rather than a second navigation index. Tactile desk objects create an authored field around a protected central reading column. The foreground Streaming Helper proof card names the product, the customer problem, the research evidence, and both the case-study and live-product paths. It rises into place with restrained depth, while the complete meaning remains legible at rest and in reduced-motion mode.
+
+Notes uses a quieter editorial introduction with a two-sheet preview of the two real published notes on the right. The overlap borrows the tactile paper language of the homepage artifact without repeating its product-proof treatment: both sheets are actionable, the newest note leads, and one restrained orange filing tab connects the composition to the shared signal color. The complete index remains directly below as the scannable destination and must stay useful when the collection grows.
 
 ### Selected Work Deck
 
@@ -222,11 +234,11 @@ Personal cards connect build logs, karting, running, outdoors, and travel to con
 
 ### Contact Form, About Telemetry, and Footer
 
-Contact is task-first: a light, compact form prepares a complete email draft for the visitor to review and send from their own email app. Direct email, LinkedIn, and résumé routes remain visible below it. The About telemetry panel uses the dark instrumentation surface only where it has semantic value: an explicitly illustrative feedback-loop trace connects discover, frame, make, and test, while the readouts carry truthful current context rather than invented performance metrics. The light footer remains within the Porcelain/White visual world and pairs a direct closing statement with a living canvas field of orange, cobalt, and graphite signals.
+Contact is task-first: a light, compact form validates the visitor's name, reply address, context, and message, then sends it server-side through Resend to Atharva's inbox. Sending, success, configuration, provider-error, and direct-email fallback states remain honest and accessible. Direct email, LinkedIn, and résumé routes stay visible below it. The About telemetry panel uses the dark instrumentation surface only where it has semantic value: an explicitly illustrative feedback-loop trace connects discover, frame, make, and test, while the readouts carry truthful current context rather than invented performance metrics. The dark footer closes the site within the same Soft Black and Signal Orange system and pairs a direct statement with a living canvas field of orange, cobalt, and porcelain signals.
 
 ### Motion
 
-The hero is the primary authored entrance. Its content becomes clear first, while the Clarity Stack's evidence layers arrive from distinct directions and assemble around the foreground decision surface. The canvas signal field uses four proportionally distinct silhouettes—a two-line rail, a sparse cascade, a curved trail, and a circular equalizer—rather than repeating one rectangular grid. Cursor proximity bends and elongates the existing marks. A single site-level circular equalizer follows fine pointers across open negative space with individual spring lag per bar, stretching subtly with travel speed and fading smoothly over copy, navigation, actions, forms, and drag surfaces. The native cursor remains visible and precise. Every silhouette keeps its authored shape and returns calmly to rest. Cobalt leads, pale cobalt adds depth, and Signal Orange/Selection Acid remain rare. The About trace animates only its scan and active build channel; the sticky header transitions only when scroll state changes; the footer signal field provides slower ambient motion and a local pointer response. All experiences become static under reduced-motion preferences, and coarse-pointer devices receive the composed resting state.
+The hero is the primary authored entrance. Its copy becomes clear first, while the five desk objects hold their framing positions and the Streaming Helper proof card rises into the reading path. The Home desk objects use true alpha cutouts; a white rectangular source canvas may never be visible. Secondary page heroes share the same restrained intro dot field, seed, density, and orange accent distribution; Home remains the exception because its real desk objects already form the visual field. The Notes sheets enter as one staggered editorial moment and then stay quiet so the index remains the destination rather than a second showpiece. About photography receives subtle scroll-linked crop movement inside stable frames; text and controls do not drift. Teak-inspired text emphasis is reserved for one meaningful word at a time and appears as a compact translucent signal highlight, never as a long underline. The canvas signal field remains available for supporting surfaces, not behind the homepage composition. A single site-level circular equalizer may follow fine pointers across open negative space, but it fades over copy, navigation, actions, forms, and project media. The native cursor remains visible and precise. The footer signal field stays concentrated around the closing action rather than becoming a universal background. All experiences become static under reduced-motion preferences, and coarse pointers receive the same complete content.
 
 ### Case-Study Structure
 
@@ -250,5 +262,5 @@ Every case study opens with project identity, a plain-language descriptor, the c
 - **Don't** turn mono metadata into decorative eyebrow copy above every heading.
 - **Don't** distribute Signal Orange across secondary actions and ornaments.
 - **Don't** hide essential descriptions behind hover, drag, or a large media placeholder.
-- **Don't** add glassmorphism, gradient text, generic icon grids, or ornamental 3D that slows the scan.
+- **Don't** add glassmorphism to flat content, gradient text, generic icon grids, or ornamental 3D that slows the scan. A restrained translucent menu or caption is allowed only when it is visibly refracting content behind it.
 - **Don't** treat the current placeholder mockups, résumé destination, or contact destinations as finished launch content.

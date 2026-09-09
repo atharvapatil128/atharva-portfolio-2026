@@ -10,16 +10,16 @@ export function SiteFooter() {
         <div className="footer-cta">
           <p className="footer-statement">Have something interesting?<br />I&apos;d like to hear about it.</p>
           <p className="footer-support">Open to product design roles, thoughtful collaborations, and conversations about complicated products.</p>
-          <Link className="footer-button" href="/contact"><span>LET&apos;S TALK</span><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 14 14 4M7 4h7v7" /></svg></Link>
+          <Link className="footer-button" href="/contact"><span>Let&apos;s talk</span><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 14 14 4M7 4h7v7" /></svg></Link>
         </div>
         <div className="footer-motion">
           <FooterSignalField />
         </div>
       </div>
       <div className="footer-base">
-        <Link className="footer-brand" href="/" aria-label="Atharva Patil, home"><BrandMark className="brand-mark" /><span>ATHARVA PATIL<br /><small>PRODUCT DESIGNER</small></span></Link>
+        <Link className="footer-brand" href="/" aria-label="Atharva Patil, home"><BrandMark className="brand-mark" /><span>Atharva Patil<br /><small>Product designer</small></span></Link>
         <nav aria-label="Footer navigation"><SectionLink href="/#selected-work">Work</SectionLink><Link href="/notes">Notes</Link><Link href="/about">About</Link><Link href="/resume">Résumé</Link></nav>
-        <div className="footer-status"><span className="availability footer-availability"><i aria-hidden="true" />AVAILABLE FOR THE RIGHT TEAM</span><p className="footer-credit mono">DESIGNED + BUILT BY ATHARVA · INDIANAPOLIS</p></div>
+        <div className="footer-status"><span className="availability footer-availability"><i aria-hidden="true" />Available for the right team</span><p className="footer-credit">Designed + built by Atharva · Indianapolis</p></div>
       </div>
     </footer>
   );

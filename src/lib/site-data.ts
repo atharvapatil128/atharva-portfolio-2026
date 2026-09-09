@@ -32,7 +32,7 @@ export const projects: Project[] = [
     decisions: [
       {
         title: "Intervene only when support is useful",
-        body: "The helper stays quiet during ordinary browsing and becomes available when hesitation appears—or when someone asks for it.",
+        body: "The helper stays quiet during ordinary browsing, and becomes available when hesitation appears or when someone asks for it.",
       },
       {
         title: "Separate choosing from stopping",
@@ -118,6 +118,7 @@ export const getProject = (slug: string) => projects.find((project) => project.s
 
 export const notes = [
   {
+    status: "published",
     type: "Process note",
     date: "Aug 2026",
     title: "Building this portfolio with an AI-assisted workflow",
@@ -125,8 +126,9 @@ export const notes = [
     slug: "building-this-portfolio",
   },
   {
+    status: "published",
     type: "Field note",
-    date: "Planned",
+    date: "Sep 2026",
     title: "What karting taught me about product feedback",
     description: "Fast loops, clean signals, and knowing when grip is gone.",
     slug: "karting-and-feedback",

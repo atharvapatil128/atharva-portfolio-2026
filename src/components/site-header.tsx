@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandMark } from "@/components/brand-mark";
 import { SectionLink } from "@/components/section-link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { MouseEvent } from "react";
 
 const links = [
@@ -15,12 +15,14 @@ const links = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const menuRef = useRef<HTMLDetailsElement>(null);
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [workInView, setWorkInView] = useState(false);
   const isHome = pathname === "/";
 
   useEffect(() => setMounted(true), []);
+  useEffect(() => { if (menuRef.current) menuRef.current.open = false; }, [pathname]);
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 24);
@@ -83,9 +85,16 @@ export function SiteHeader() {
         </Link>
       </div>
 
-      <details className="mobile-menu">
-        <summary>Menu</summary>
-        <nav aria-label="Mobile navigation">
+      <details className="mobile-menu" ref={menuRef} onKeyDown={(event) => {
+        if (event.key === "Escape" && menuRef.current?.open) {
+          menuRef.current.open = false;
+          menuRef.current.querySelector("summary")?.focus();
+        }
+      }}>
+        <summary aria-label="Toggle navigation menu"><svg className="menu-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg></summary>
+        <nav aria-label="Mobile navigation" onClick={(event) => {
+          if ((event.target as HTMLElement).closest("a") && menuRef.current) menuRef.current.open = false;
+        }}>
           {links.map((link) => (
             <SectionLink key={link.href} href={link.href} aria-current={isLinkActive(link) ? "page" : undefined}>
               {link.label}

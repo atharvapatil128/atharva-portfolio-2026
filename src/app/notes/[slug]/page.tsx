@@ -6,13 +6,15 @@ import { BackLink } from "@/components/back-link";
 import { notes } from "@/lib/site-data";
 
 export function generateStaticParams() {
-  return notes.map((note) => ({ slug: note.slug }));
+  return notes
+    .filter((note) => note.status === "published")
+    .map((note) => ({ slug: note.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const note = notes.find((candidate) => candidate.slug === slug);
-  if (!note) return {};
+  if (!note || note.status !== "published") return {};
   return {
     title: note.title,
     description: note.description,
@@ -24,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function NotePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const note = notes.find((candidate) => candidate.slug === slug);
-  if (!note) notFound();
+  if (!note || note.status !== "published") notFound();
 
   return (
     <>

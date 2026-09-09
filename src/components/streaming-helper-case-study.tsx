@@ -143,7 +143,7 @@ export function StreamingHelperCaseStudy() {
           <section className="sh-section sh-scan">
             <div>
               <h2>The case in 30 seconds</h2>
-              <p className="sh-scan-statement">The capstone began with too many choices. Research revealed a sharper problem: <span>hesitation when energy was low.</span> Building it later exposed a more concrete opportunity—<span>keep trusted recommendations from disappearing before people need them.</span></p>
+              <p className="sh-scan-statement">The capstone began with too many choices. Research revealed a sharper problem: <span>hesitation when energy was low.</span> Building it later showed something more concrete: <span>keep trusted recommendations from disappearing before people need them.</span></p>
             </div>
             <dl className="sh-summary-facts">
               <div><dt><i aria-hidden="true">01</i> Problem</dt><dd>Repeated browsing became hesitation when users were tired.</dd></div>
@@ -300,7 +300,7 @@ export function StreamingHelperCaseStudy() {
           </section>
 
           <section className="sh-section sh-validation">
-            <h2>What the prototype established—and what it did not</h2>
+            <h2>What the prototype established, and what it didn&apos;t</h2>
             <div className="sh-validation-grid">
               <article>
                 <span className="mono">ITERATIVE TESTING · 5+ PROTOTYPE TESTS</span>

@@ -17,7 +17,7 @@
 .field-hero-copy h1 { max-width: 720px; font-size: clamp(64px, 6vw, 86px); line-height: .96; letter-spacing: -.04em; font-weight: 600; }
 .field-hero-copy > p { max-width: 650px; margin-top: 28px; color: var(--text-secondary); font-size: 18px; line-height: 27px; }
 .field-hero-product { min-width: 0; margin: 0; }
-.field-hero-product-frame { position: relative; height: 540px; overflow: hidden; border-radius: 24px; background: white; box-shadow: 0 28px 68px rgba(29,33,29,.15); }
+.field-hero-product-frame { position: relative; height: 540px; overflow: hidden; border-radius: 24px; background: white; box-shadow: 0 28px 68px rgba(29,33,29,.15), inset 0 0 0 1px rgba(29,33,29,.07); }
 .field-device-stage { isolation: isolate; background: var(--field-stage); }
 .field-device-stage::after { content: ""; position: absolute; inset: 8% -18% -52% 30%; z-index: -1; border: 1px solid rgba(255,255,255,.16); border-radius: 50%; transform: rotate(-14deg); }
 .field-device { position: absolute; width: auto; overflow: hidden; border-radius: 16px; object-fit: contain; filter: drop-shadow(0 24px 28px rgba(7,25,75,.28)); }
@@ -26,17 +26,17 @@
 .field-device-entry { right: 5%; bottom: 6%; z-index: 2; height: 73%; transform: rotate(4deg); }
 .field-hero-product figcaption { display: flex; justify-content: space-between; gap: 18px; margin-top: 14px; color: var(--text-tertiary); font-size: 10px; }
 .field-facts { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; margin: 0; border: 1px solid var(--line); background: var(--line); }
-.field-facts div { min-height: 112px; padding: 22px; background: var(--canvas); }
+.field-facts div { min-height: 112px; padding: 22px; background-color: var(--canvas); background-image: var(--face-canvas); box-shadow: var(--lift-face); }
 .field-facts dt { color: var(--field-accent); font: 500 11px/16px var(--font-mono), monospace; text-transform: uppercase; }
 .field-facts dd { margin: 16px 0 0; font-size: 15px; line-height: 22px; }
 
 .field-scan { padding: 88px var(--page-pad); background: var(--field-fog); }
 .field-scan h2, .field-reality h2, .field-section-head h2, .field-validation h2, .field-reflection h2 { max-width: 1120px; font-size: clamp(44px, 4.25vw, 60px); line-height: 1.04; letter-spacing: -.032em; font-weight: 600; }
 .field-scan-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 54px; }
-.field-scan-grid article { min-height: 220px; padding: 27px; border-radius: 16px; background: white; }
+.field-scan-grid article { min-height: 220px; padding: 27px; border-radius: 16px; background-color: white; background-image: var(--face-light); box-shadow: var(--lift-panel), var(--lift-face); }
 .field-scan-grid article > span { color: var(--text-tertiary); }
 .field-scan-grid article p { margin-top: 42px; font-size: 20px; line-height: 29px; font-weight: 500; }
-.field-scan-grid .is-pivot { color: white; background: var(--field-accent); }
+.field-scan-grid .is-pivot { color: white; background-color: var(--field-accent); background-image: var(--face-tint); }
 .field-scan-grid .is-pivot > span { color: var(--field-pale); }
 
 .field-reality { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(64px, 9vw, 145px); padding: 96px var(--page-pad); background: white; }
@@ -56,12 +56,12 @@
 .field-section-head > p { max-width: 430px; color: var(--text-secondary); font-size: 17px; line-height: 26px; }
 .field-pivot .field-section-head > p { color: #cfd3cb; }
 .field-pivot-sequence { display: grid; grid-template-columns: 1fr 60px 1fr 60px 1fr; gap: 18px; align-items: stretch; margin-top: 62px; }
-.field-pivot-sequence article { min-height: 250px; display: flex; flex-direction: column; padding: 25px; border-radius: 16px; background: #292d29; }
+.field-pivot-sequence article { min-height: 250px; display: flex; flex-direction: column; padding: 25px; border-radius: 16px; background-color: #292d29; background-image: var(--face-tint); box-shadow: var(--lift-panel), var(--lift-face); }
 .field-pivot-sequence article > span { color: #b8bdb5; }
 .field-pivot-sequence strong { display: block; margin-top: 28px; font-size: 25px; line-height: 31px; font-weight: 500; }
 .field-pivot-sequence p { margin-top: auto; color: #cfd3cb; font-size: 15px; line-height: 22px; }
 .field-pivot-sequence svg { width: 52px; align-self: center; fill: none; stroke: #91a7ee; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.field-pivot-sequence .is-result { background: var(--field-electric); }
+.field-pivot-sequence .is-result { background-color: var(--field-electric); background-image: var(--face-tint); }
 .field-pivot-sequence .is-result > span, .field-pivot-sequence .is-result p { color: white; }
 .field-iteration-evidence { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(48px, 7vw, 108px); align-items: center; margin: 70px 0 0; padding-top: 70px; border-top: 1px solid rgba(255,255,255,.16); }
 .field-iteration-evidence > div > span { color: #aeb9df; }
@@ -77,7 +77,7 @@
 .field-decision-list article > div { padding-left: 22px; border-left: 1px solid var(--line); }
 .field-decision-list article span { color: var(--text-tertiary); }
 .field-decision-list article p { margin-top: 12px; color: var(--text-secondary); font-size: 16px; line-height: 24px; }
-.field-decision-list .field-decision-response { padding: 23px; border-left: 0; border-radius: 14px; background: var(--field-pale); }
+.field-decision-list .field-decision-response { padding: 23px; border-left: 0; border-radius: 14px; background-color: var(--field-pale); background-image: var(--face-tint); box-shadow: var(--lift-panel), var(--lift-face); }
 .field-decision-list .field-decision-response span { color: var(--field-accent); }
 .field-decision-list .field-decision-response p { color: var(--ink); }
 
@@ -85,7 +85,7 @@
 .field-product-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(48px, 7vw, 110px); align-items: center; margin-top: 60px; }
 .field-product-grid figure { min-width: 0; margin: 0; }
 .field-product-gallery { height: 760px; display: flex; gap: 18px; padding: 28px; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; scrollbar-color: rgba(255,255,255,.72) rgba(9,47,114,.42); scrollbar-width: thin; border-radius: 22px; background: var(--field-stage); box-shadow: 0 24px 58px rgba(29,33,29,.12); }
-.field-product-screen { min-width: 0; flex: 0 0 min(76%, 430px); display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 12px; padding: 14px; scroll-snap-align: center; border-radius: 16px; background: rgba(7,38,96,.46); box-shadow: 0 18px 38px rgba(6,28,76,.26); }
+.field-product-screen { min-width: 0; flex: 0 0 min(76%, 430px); display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 12px; padding: 14px; scroll-snap-align: center; border-radius: 16px; background-color: rgba(7,38,96,.46); background-image: var(--face-tint); box-shadow: 0 18px 38px rgba(6,28,76,.26), var(--lift-face); }
 .field-product-screen .media-expand-trigger { width: 100%; height: 100%; overflow: hidden; border-radius: 12px; background: white; }
 .field-product-screen .media-expand-trigger > img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
 .field-product-screen > span { color: rgba(255,255,255,.82); font-size: 10px; }
@@ -111,14 +111,14 @@
 .field-validation li::before { content: ""; width: 8px; height: 8px; display: inline-block; margin-right: 11px; border-radius: 50%; background: var(--field-accent); }
 .field-outcome > p { max-width: 680px; margin-top: 24px; color: var(--text-secondary); font-size: 18px; line-height: 28px; }
 .field-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 38px; }
-.field-metrics div { min-height: 180px; display: flex; flex-direction: column; justify-content: space-between; padding: 26px; border-radius: 14px; color: white; background: var(--field-accent); }
+.field-metrics div { min-height: 180px; display: flex; flex-direction: column; justify-content: space-between; padding: 26px; border-radius: 14px; color: white; background-color: var(--field-accent); background-image: var(--face-tint); box-shadow: var(--lift-panel), var(--lift-face); }
 .field-metrics strong { font-size: clamp(54px, 5vw, 76px); line-height: .9; letter-spacing: -.04em; font-weight: 650; }
 .field-metrics span { max-width: 150px; font-size: 15px; line-height: 20px; }
 .field-outcome .field-metric-note { margin-top: 16px; color: var(--text-tertiary); font-size: 13px; line-height: 20px; }
 .field-outcome blockquote { margin: 36px 0 0; padding-top: 28px; border-top: 1px solid var(--line); }
 .field-outcome blockquote p { max-width: 680px; font-size: 23px; line-height: 31px; letter-spacing: -.015em; }
 .field-outcome blockquote cite { max-width: 520px; display: block; margin-top: 16px; color: var(--text-tertiary); font-size: 12px; line-height: 18px; font-style: normal; }
-.field-validation aside { align-self: start; padding: 32px; border-radius: 16px; color: white; background: var(--field-ink); }
+.field-validation aside { align-self: start; padding: 32px; border-radius: 16px; color: white; background-color: var(--field-ink); background-image: var(--face-tint); box-shadow: var(--lift-panel), var(--lift-face); }
 .field-validation aside h3 { font-size: 28px; line-height: 34px; font-weight: 500; }
 .field-validation aside > p { margin-top: 18px; color: #d4d7d0; font-size: 17px; line-height: 26px; }
 .field-validation aside ul { border-color: rgba(255,255,255,.15); }
