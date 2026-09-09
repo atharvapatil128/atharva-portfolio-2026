@@ -5,6 +5,7 @@ colors:
   canvas: "#F6F7F4"
   surface: "#FFFFFF"
   subtle: "#E8EBEF"
+  field-warm: "#F1EFE8"
   strong: "#111318"
   text-secondary: "#616671"
   text-tertiary: "#858B96"
@@ -146,7 +147,7 @@ The palette is predominantly neutral. Color appears in project media, purposeful
 - **Case Display** (600, fluid 64–110px, 0.92): Project names on case-study routes.
 - **Headline** (600, fluid 48–64px, 1.06): Major homepage and section headings.
 - **Body** (400, 16px, 1.5): General explanations, evidence, and supporting copy. Important summaries may step up to 20px with the same measured rhythm.
-- **Label** (500, 12px, 0.015em, uppercase): Functional metadata, indices, status, and interaction instructions.
+- **Label** (500, 12px, 0.015em): Functional metadata, indices, status, and interaction instructions. Use sentence case by default; reserve all caps for compact operational labels inside project-specific interfaces.
 
 **The Plain-Language First Rule.** A reader encounters the meaningful statement before its technical classification. Mono labels support the message; they do not become invented eyebrow copy above every heading.
 
@@ -164,17 +165,24 @@ The system uses content-driven breakpoints near 1100px and 760px. Below 760px, n
 
 **The Peek Rule.** Horizontal rails show enough of the next card to communicate that more content exists; never hide required navigation behind an invisible gesture.
 
-## Elevation & Depth
+## Dimensional Surfaces, Elevation & Depth
 
-The system is flat by default and uses tonal contrast, borders, overlap, and clipping for most depth. Shadows are ambient and stateful: the resolved hero card carries a soft resting lift; project cards gain restrained elevation on hover/focus; the mobile menu floats above content. Dark sections and white cards create material contrast without glass effects.
+The interface uses one quiet, consistent light source from the top-left. Controls, cards, and contained media receive a shallow tonal face plus a soft lower-right cast shadow; this makes the site feel tactile without turning it glossy or skeuomorphic. Page fields, text columns, and large uninterrupted sections remain flat so the dimensional moments keep their meaning.
+
+Light surfaces move from white or warm porcelain at the top-left toward a slightly cooler, darker edge at the bottom-right. Dark surfaces use the same geometry with a much narrower tonal range. Image frames use a hairline inner ring and cast shadow rather than a light face, which keeps photography crisp. Form fields invert the model with a restrained inset shadow so they read as places to enter information.
 
 ### Shadow Vocabulary
 
-- **Resolved Lift:** A broad, soft shadow under the hero's resolved card; use only for the signature movable surface.
-- **Interactive Lift:** A lighter shadow accompanying a small upward hover/focus translation on project cards.
+- **Face:** Paired one-pixel inset highlights and shade edges that establish the common top-left light source.
+- **Control Lift:** A compact cast shadow for buttons, tabs, and small controls. Hover raises it by only a few pixels; active returns it to the surface.
+- **Panel Lift:** A wider, lower-contrast shadow for cards and form panels. Large panels never reuse the tighter control shadow.
+- **Media Lift:** A soft cast shadow plus a neutral inner ring for photography, video, and project imagery.
+- **Resolved Lift:** The broadest resting shadow, reserved for the layered homepage proof artifact and overlapping Notes sheets.
 - **Menu Float:** A compact ambient shadow that separates the mobile menu from the page.
 
-**The Flat-at-Rest Rule.** Shared surfaces stay flat until interaction or overlap creates a real reason for elevation.
+**The One-Light Rule.** Any dimensional surface must agree with the top-left source. Never mix highlight directions, stack unrelated halos, or add depth to a section merely because a neighboring card has it.
+
+**The Restraint Rule.** A surface may use tonal separation and a shadow when it represents a control, card, panel, or framed artifact. Page fields and reading columns remain flat. Colored project media can keep its own authored depth instead of receiving the global white-face treatment.
 
 ## Shapes
 
@@ -191,13 +199,14 @@ The recurring silhouette is a rounded field containing precise internal geometry
 - **Shape:** Fully pill-shaped with a 48px minimum height.
 - **Primary:** Signal Orange with Soft Black text and compact horizontal padding.
 - **Secondary:** White Surface with a Hairline Gray border; it darkens structurally on hover rather than gaining more color.
-- **Hover / Focus:** Fine pointers receive a 2px upward lift. Keyboard focus uses a clear cobalt outline outside the control. Active state returns to the baseline quickly.
+- **Surface:** A shallow directional face and Control Lift, both derived from the shared tokens rather than one-off gradients.
+- **Hover / Focus:** Fine pointers receive a 2px upward lift and a slightly stronger cast shadow. Keyboard focus uses a clear cobalt outline outside the control. Active state returns to the baseline quickly.
 
 ### Cards / Containers
 
 - **Corner Style:** 24px for primary cards, 18px for compact fields.
 - **Background:** White Surface, Fog Subtle, or Soft Black according to hierarchy.
-- **Shadow Strategy:** Flat at rest; ambient Interactive Lift only on an actionable hover/focus state.
+- **Shadow Strategy:** Panel Lift at rest when a surface is meaningfully raised or overlapping; interaction increases the cast shadow without changing the light direction. Flat editorial groupings remain border-only.
 - **Border:** One quiet hairline; the active resolved experience may use a stronger Soft Black outline.
 - **Internal Padding:** Generally 18–24px, increasing only for major editorial sections.
 
@@ -225,7 +234,7 @@ Personal cards connect build logs, karting, running, outdoors, and travel to con
 
 ### Contact Form, About Telemetry, and Footer
 
-Contact is task-first: a light, compact form prepares a complete email draft for the visitor to review and send from their own email app. Direct email, LinkedIn, and résumé routes remain visible below it. The About telemetry panel uses the dark instrumentation surface only where it has semantic value: an explicitly illustrative feedback-loop trace connects discover, frame, make, and test, while the readouts carry truthful current context rather than invented performance metrics. The light footer remains within the Porcelain/White visual world and pairs a direct closing statement with a living canvas field of orange, cobalt, and graphite signals.
+Contact is task-first: a light, compact form validates the visitor's name, reply address, context, and message, then sends it server-side through Resend to Atharva's inbox. Sending, success, configuration, provider-error, and direct-email fallback states remain honest and accessible. Direct email, LinkedIn, and résumé routes stay visible below it. The About telemetry panel uses the dark instrumentation surface only where it has semantic value: an explicitly illustrative feedback-loop trace connects discover, frame, make, and test, while the readouts carry truthful current context rather than invented performance metrics. The dark footer closes the site within the same Soft Black and Signal Orange system and pairs a direct statement with a living canvas field of orange, cobalt, and porcelain signals.
 
 ### Motion
 
@@ -253,5 +262,5 @@ Every case study opens with project identity, a plain-language descriptor, the c
 - **Don't** turn mono metadata into decorative eyebrow copy above every heading.
 - **Don't** distribute Signal Orange across secondary actions and ornaments.
 - **Don't** hide essential descriptions behind hover, drag, or a large media placeholder.
-- **Don't** add glassmorphism, gradient text, generic icon grids, or ornamental 3D that slows the scan.
+- **Don't** add glassmorphism to flat content, gradient text, generic icon grids, or ornamental 3D that slows the scan. A restrained translucent menu or caption is allowed only when it is visibly refracting content behind it.
 - **Don't** treat the current placeholder mockups, résumé destination, or contact destinations as finished launch content.

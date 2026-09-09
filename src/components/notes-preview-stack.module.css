@@ -21,20 +21,24 @@
   padding: 28px 30px 26px;
   overflow: hidden;
   color: var(--ink);
-  background: var(--surface);
+  background-color: var(--surface);
+  background-image: var(--face-light);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
+  box-shadow: var(--lift-panel), var(--lift-face);
   transition: transform var(--duration-fast) var(--ease-smooth-out), box-shadow var(--duration-fast) var(--ease-smooth-out), border-color var(--duration-fast) var(--ease-smooth-out);
 }
 
 .front .sheet {
   transform: rotate(-1.8deg);
-  box-shadow: 0 22px 42px rgba(17, 19, 24, .1);
+  box-shadow: 0 22px 42px rgba(17, 19, 24, .1), var(--lift-face);
 }
 
 .back .sheet {
   transform: rotate(3.2deg);
-  background: color-mix(in srgb, var(--field-warm) 58%, var(--surface));
+  background-color: color-mix(in srgb, var(--field-warm) 58%, var(--surface));
+  background-image: var(--face-tint);
+  box-shadow: var(--lift-panel), var(--lift-face);
 }
 .back .rule { margin-block: 14px 17px; }
 .back .sheet strong { font-size: clamp(23px, 1.8vw, 28px); }
@@ -58,8 +62,8 @@
 .sheet:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 4px; }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .front .sheet:hover { transform: rotate(-.7deg) translateY(-7px); box-shadow: 0 28px 52px rgba(17, 19, 24, .13); }
-  .back .sheet:hover { transform: rotate(2deg) translateY(-7px); border-color: color-mix(in srgb, var(--signal) 34%, var(--line)); }
+  .front .sheet:hover { transform: rotate(-.7deg) translateY(-7px); box-shadow: 0 28px 52px rgba(17, 19, 24, .13), var(--lift-face); }
+  .back .sheet:hover { transform: rotate(2deg) translateY(-7px); border-color: color-mix(in srgb, var(--signal) 34%, var(--line)); box-shadow: var(--lift-panel-raised), var(--lift-face); }
 }
 
 @media (max-width: 1000px) {
