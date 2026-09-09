@@ -222,6 +222,7 @@ p { text-wrap: pretty; }
   border: 1px solid var(--line);
   border-radius: var(--radius-pill);
   font-size: 16px;
+  font-weight: 600;
   line-height: 24px;
   transition:
     transform var(--duration-fast) var(--ease-smooth-out),
@@ -737,7 +738,7 @@ p { text-wrap: pretty; }
 .t-tab:not([aria-selected="true"]):hover, .t-tab[aria-selected="true"] { color: var(--tabs-text-active); }
 .t-tabs-pill { position: absolute; top: 3px; left: 0; height: 30px; width: 0; background: var(--tabs-pill-bg); border-radius: 48px; transform: translateX(0); transition: transform var(--tabs-dur) var(--tabs-ease), width var(--tabs-dur) var(--tabs-ease); will-change: transform, width; z-index: 0; pointer-events: none; }
 .career-tabs { display: flex; width: 100%; margin-top: 4px; }
-.career-tabs .t-tab { flex: 1; min-width: 0; font-size: 8px; }
+.career-tabs .t-tab { flex: 1; min-width: 0; font-size: clamp(9px, 2.2vw, 11px); white-space: nowrap; }
 .career-chapter { min-height: 48px; margin-top: 12px; }
 .career-chapter strong { font-size: 15px; line-height: 20px; }
 .career-chapter p { max-width: 390px; margin-top: 5px; color: #b7bbc4; font-size: 12px; line-height: 17px; }
