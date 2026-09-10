@@ -169,7 +169,7 @@ export function AskNavTrigger() {
   const label = statusLabel(busy, unread);
   return (
     <a className={styles.navTrigger} href="/ask" onClick={upgrade(open)}>
-      Ask
+      Ask Atharva
       {label ? (
         <>
           <i className={`${styles.mark} ${busy ? styles.markBusy : ""}`} aria-hidden="true" />
@@ -198,6 +198,44 @@ export function AskFieldTrigger() {
       ) : (
         <kbd className={styles.kbd}>⌘K</kbd>
       )}
+    </a>
+  );
+}
+
+/**
+ * Mobile lives behind a closed hamburger, so a mark inside the menu would only
+ * appear once it is already open. This one rides on the summary itself, which
+ * is the only part of the header visible at that width.
+ */
+export function AskStatusMark() {
+  const { busy, unread } = useAsk();
+  const label = statusLabel(busy, unread);
+  if (!label) return null;
+  return (
+    <>
+      <i className={`${styles.summaryMark} ${busy ? styles.markBusy : ""}`} aria-hidden="true" />
+      <span className={styles.srOnly}>{label}</span>
+    </>
+  );
+}
+
+/**
+ * The menu entry navigates to /ask rather than opening the sheet: on a phone
+ * the page has more room than a panel over the page, and Back then works the
+ * way a visitor expects.
+ */
+export function AskMobileTrigger({ current }: { current?: boolean }) {
+  const { busy, unread } = useAsk();
+  const label = statusLabel(busy, unread);
+  return (
+    <a className={styles.mobileTrigger} href="/ask" aria-current={current ? "page" : undefined}>
+      <span>Ask Atharva</span>
+      {label ? (
+        <>
+          <i className={`${styles.mark} ${busy ? styles.markBusy : ""}`} aria-hidden="true" />
+          <span className={styles.srOnly}>{label}</span>
+        </>
+      ) : null}
     </a>
   );
 }

@@ -4,7 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandMark } from "@/components/brand-mark";
 import { SectionLink } from "@/components/section-link";
-import { AskFieldTrigger, AskNavTrigger, AskProvider } from "@/components/ask-launcher";
+import {
+  AskFieldTrigger,
+  AskMobileTrigger,
+  AskNavTrigger,
+  AskProvider,
+  AskStatusMark,
+} from "@/components/ask-launcher";
 import { useEffect, useRef, useState } from "react";
 import type { MouseEvent } from "react";
 import { resumeUrl } from "@/lib/site-data";
@@ -96,7 +102,7 @@ export function SiteHeader() {
             menuRef.current.querySelector("summary")?.focus();
           }
         }}>
-          <summary aria-label="Toggle navigation menu"><svg className="menu-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg></summary>
+          <summary aria-label="Toggle navigation menu"><svg className="menu-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg><AskStatusMark /></summary>
           <nav aria-label="Mobile navigation" onClick={(event) => {
             if ((event.target as HTMLElement).closest("a") && menuRef.current) menuRef.current.open = false;
           }}>
@@ -105,7 +111,7 @@ export function SiteHeader() {
                 {link.label}
               </SectionLink>
             ))}
-            <Link href="/ask" aria-current={mounted && pathname.startsWith("/ask") ? "page" : undefined}>Ask</Link>
+            <AskMobileTrigger current={mounted && pathname.startsWith("/ask")} />
             <a href={resumeUrl} target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗︎</span></a>
             <Link href="/contact" aria-current={mounted && pathname.startsWith("/contact") ? "page" : undefined}>Let&apos;s talk</Link>
           </nav>

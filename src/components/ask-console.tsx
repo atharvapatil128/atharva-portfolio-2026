@@ -2,7 +2,7 @@
 
 import { FormEvent, KeyboardEvent, useCallback, useEffect, useId, useRef, useState } from "react";
 import styles from "@/components/ask-console.module.css";
-import { clearAsk, readAsk, subscribeAsk, writeAsk, type Turn } from "@/lib/ask-store";
+import { clearAsk, markAskSeen, readAsk, subscribeAsk, writeAsk, type Turn } from "@/lib/ask-store";
 
 const MAX_CHARS = 1000;
 const fallbackError = "The assistant could not answer. Please try again, or use the contact page.";
@@ -55,6 +55,13 @@ export function AskConsole({
   }, []);
 
   useEffect(() => onStreamingChange?.(streaming), [streaming, onStreamingChange]);
+
+  // On the page there is no panel to open, so reading it here is what counts
+  // as having seen the reply. Without this the trigger's mark never clears for
+  // anyone who arrived by navigating rather than by opening the panel.
+  useEffect(() => {
+    if (variant === "page" && !streaming) markAskSeen();
+  }, [variant, streaming, turns]);
 
   // The textarea grows with its content rather than scrolling internally.
   // Measuring against "auto" matters: measuring against a fixed height lets

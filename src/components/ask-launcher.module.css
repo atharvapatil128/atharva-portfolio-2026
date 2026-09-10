@@ -201,6 +201,34 @@
 
 :global(.primary-nav) a.navTrigger { gap: 7px; }
 
+/*
+ * The hamburger is the only header element visible on a phone, so the mark
+ * rides on it. .mobile-menu is already position: relative in globals.css,
+ * which is what this anchors against.
+ */
+.summaryMark {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background: var(--signal);
+  box-shadow: 0 0 0 2px var(--canvas);
+}
+
+/* Matches the menu's own rows; the mark trails the label. */
+.mobileTrigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 9px;
+}
+
+.mobileTrigger:hover { background: var(--subtle); }
+
 .srOnly {
   position: absolute;
   width: 1px;
