@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FeaturedProjectArtifact } from "@/components/featured-project-artifact";
 import { HeroObjects } from "@/components/hero-objects";
 import { HeroReveal } from "@/components/hero-reveal";
@@ -7,6 +6,7 @@ import { LocationPin } from "@/components/location-pin";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SectionLink } from "@/components/section-link";
+import { resumeUrl } from "@/lib/site-data";
 
 export default function HomePage() {
   return (
@@ -27,7 +27,7 @@ export default function HomePage() {
             <p className="availability-line mono"><i aria-hidden="true" />Available for product design roles · 2026</p>
             <div className="hero-actions">
               <SectionLink className="button button-signal" href="#selected-work">View selected work</SectionLink>
-              <Link className="button button-quiet" href="/resume">Résumé</Link>
+              <a className="button button-quiet" href={resumeUrl} target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗</span></a>
             </div>
             <div className="hero-meta mono"><span className="location-label"><LocationPin className="location-pin" />Based in Bloomington, Indiana</span><span>Open to relocate</span></div>
           </div>

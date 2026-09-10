@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ContactForm } from "@/components/contact-form";
 import { openGraphFor } from "@/lib/metadata";
 import { IntroDotField } from "@/components/intro-dot-field";
+import { resumeUrl } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -31,7 +31,7 @@ export default function ContactPage() {
           <h2>Choose the fastest route.</h2>
           <div className="contact-row"><span className="mono">01</span><strong>EMAIL</strong><p>Best for roles, collaborations, and thoughtful introductions.</p><a href="mailto:atharvapatil128@gmail.com">SEND DIRECTLY</a></div>
           <div className="contact-row"><span className="mono">02</span><strong>LINKEDIN</strong><p>For professional context, shared connections, and a quick hello.</p><a href="https://www.linkedin.com/in/atharvahpatil" target="_blank" rel="noreferrer">VIEW PROFILE</a></div>
-          <div className="contact-row"><span className="mono">03</span><strong>RÉSUMÉ</strong><p>A concise record of experience, education, and capabilities.</p><Link href="/resume">OPEN RÉSUMÉ</Link></div>
+          <div className="contact-row"><span className="mono">03</span><strong>RÉSUMÉ</strong><p>A concise record of experience, education, and capabilities.</p><a href={resumeUrl} target="_blank" rel="noreferrer">OPEN RÉSUMÉ</a></div>
           <p className="connection-note">Messages are sent to my inbox through Resend. Your email is used so I can reply.</p>
         </section>
       </main>

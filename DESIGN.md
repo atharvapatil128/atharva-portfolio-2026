@@ -165,6 +165,8 @@ The Selected Work deck favors one project at a time on fine pointers while keepi
 
 The system uses content-driven breakpoints near 1100px and 760px. Below 760px, navigation condenses, the hero becomes a vertical sequence, both recruiter actions remain available, project descriptors remain visible, case-study facts stack, and drag-first behaviors gain native horizontal scrolling. Page sections reduce top/bottom rhythm but preserve the 24px horizontal inset and 44–48px tap targets.
 
+Individual Notes use a calm editorial reading column for the narrative while source artifacts, comparison sets, and thesis moments may widen beyond it. This keeps prose easy to follow without shrinking the evidence that supports it; wide material returns to the single column on small screens.
+
 **The Thirty-Second Rule.** Role, strongest work, project meaning, résumé, and the next path must remain visible without requiring hover or animation.
 
 **The Peek Rule.** Horizontal rails show enough of the next card to communicate that more content exists; never hide required navigation behind an invisible gesture.
@@ -240,6 +242,14 @@ Desktop hover/focus changes the active column and reveals more project context. 
 
 Editorial entries use a bordered 18px field with metadata, a clear title, and supporting copy. Hover increases surface contrast and border definition without adding a decorative effect.
 
+### Long-Form Note Story
+
+Published Notes pair a measured single-column narrative with occasional dark thesis moments and oversized pull quotes that mark genuine turns in the argument. Source artifacts appear as captioned Media Lift figures and always provide an explicit path to the full-size original; a preview is never the only available evidence. Each story closes with one decisive next-note continuation rather than a generic cluster of related links.
+
+### Résumé Route
+
+Recruiter-facing résumé actions in Home, About, Contact, and shared navigation open the verified Google Drive source directly. The `/resume` route remains a shareable fallback with distinct view and download actions, but it is never a required intermediate click. Present that connection as a composed portfolio surface: porcelain copy field, existing pill controls, and one dimensional résumé sheet using the shared Face and Panel Lift vocabulary.
+
 ### What Sharpens My Eye Rail
 
 Personal cards connect build logs, karting, running, outdoors, and travel to concrete design instincts. Every card is a real link with an explicit summary; the rail supports drag, native scroll, and keyboard arrows, and no destination or meaning depends on the gesture.
@@ -265,6 +275,8 @@ Every case study opens with project identity, a plain-language descriptor, the c
 - **Do** preserve the neutral-to-signal ratio; most of every screen should remain Porcelain, White, Fog, or Soft Black.
 - **Do** show the meaningful claim before its metadata and give factual qualifications visible weight.
 - **Do** keep résumé and case-study paths available on desktop and mobile.
+- **Do** let Notes alternate calm reading rhythm with source evidence, and preserve full-size access to every embedded artifact.
+- **Do** keep every résumé action connected to the same verified Drive-backed source, and make primary recruiter paths one click.
 - **Do** use motion to explain state, depth, or discoverability and respect reduced-motion preferences.
 - **Do** give each project or personality card its own authored visual logic.
 
@@ -275,4 +287,4 @@ Every case study opens with project identity, a plain-language descriptor, the c
 - **Don't** distribute Signal Orange across secondary actions and ornaments.
 - **Don't** hide essential descriptions behind hover, drag, or a large media placeholder.
 - **Don't** add glassmorphism to flat content, gradient text, generic icon grids, or ornamental 3D that slows the scan. A restrained translucent menu or caption is allowed only when it is visibly refracting content behind it.
-- **Don't** treat the current placeholder mockups, résumé destination, or contact destinations as finished launch content.
+- **Don't** mirror the résumé into a separately maintained portfolio file that can drift from its verified source.

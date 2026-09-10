@@ -1,5 +1,7 @@
 export type ProjectSlug = "streaming-helper" | "mead" | "field-maintenance";
 
+export const resumeUrl = "https://drive.google.com/file/d/1mrmP2kJmFNJ1GdWXoZlMbsNyvmgnLa53/view?usp=sharing";
+
 export type Project = {
   slug: ProjectSlug;
   name: string;
@@ -120,17 +122,19 @@ export const notes = [
   {
     status: "published",
     type: "Process note",
-    date: "Aug 2026",
+    date: "Sep 2026",
+    readTime: "8 min read",
     title: "Building this portfolio with an AI-assisted workflow",
-    description: "Decisions, misses, and the system behind the finished site.",
+    description: "What moved faster, where judgment still mattered, and why every reversible decision was documented.",
     slug: "building-this-portfolio",
   },
   {
     status: "published",
-    type: "Field note",
+    type: "Design systems note",
     date: "Sep 2026",
-    title: "What karting taught me about product feedback",
-    description: "Fast loops, clean signals, and knowing when grip is gone.",
-    slug: "karting-and-feedback",
+    readTime: "6 min read",
+    title: "Extending Porsche’s design system without breaking its grammar",
+    description: "Deconstructing a mature system, recomposing its parts, and adding one component that still belonged.",
+    slug: "extending-porsche-design-system",
   },
 ] as const;

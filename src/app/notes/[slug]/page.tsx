@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { BackLink } from "@/components/back-link";
+import { NoteStory } from "@/components/note-story";
 import { notes } from "@/lib/site-data";
 import { openGraphFor } from "@/lib/metadata";
 
@@ -28,23 +30,27 @@ export default async function NotePage({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const note = notes.find((candidate) => candidate.slug === slug);
   if (!note || note.status !== "published") notFound();
+  const relatedNote = notes.find((candidate) => candidate.status === "published" && candidate.slug !== note.slug);
 
   return (
     <>
       <SiteHeader />
       <main>
         <article className="note-article">
-        <BackLink href="/notes#all-notes">Back to all notes</BackLink>
-        <header>
-          <p className="mono">{note.type.toUpperCase()} · {note.date.toUpperCase()}</p>
-          <h1>{note.title}</h1>
-          <p>{note.description}</p>
-        </header>
-        <section className="article-placeholder">
-          <p className="mono">EDITORIAL DRAFT SPACE</p>
-          <h2>This note is scaffolded and ready for the real story.</h2>
-          <p>The publishing system is in place. The final writing, process captures, and source imagery will be added during the content pass rather than filled with invented detail.</p>
-        </section>
+          <BackLink href="/notes#all-notes">Back to all notes</BackLink>
+          <header>
+            <p className="note-article-meta mono"><span>{note.type}</span><span>{note.date}</span><span>{note.readTime}</span></p>
+            <h1>{note.title}</h1>
+            <p>{note.description}</p>
+          </header>
+          <NoteStory slug={note.slug} />
+          {relatedNote ? (
+            <Link className="note-next" href={`/notes/${relatedNote.slug}`}>
+              <span className="mono">Continue reading</span>
+              <strong>{relatedNote.title}</strong>
+              <span aria-hidden="true">↗</span>
+            </Link>
+          ) : null}
         </article>
       </main>
       <SiteFooter />

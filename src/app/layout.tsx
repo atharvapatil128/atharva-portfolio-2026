@@ -61,7 +61,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <div
           hidden
-          data-design-contract="THESIS: evidence-led clarity over portfolio spectacle. OWN-WORLD: porcelain canvas, soft-black ink, cobalt structure, orange decisions, precise rounded fields. STORY: understand Atharva, see shipped proof, scan the work, choose depth. FIRST VIEWPORT: centered identity and actions framed by tactile desk objects; a real Streaming Helper proof card rises from the lower edge. NOTES: a quiet editorial introduction leads directly to the complete published index. FORM: Precision Paddock. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance"
+          data-design-contract="THESIS: evidence-led clarity over portfolio spectacle. OWN-WORLD: porcelain canvas, soft-black ink, cobalt structure, orange decisions, precise rounded fields. STORY: understand Atharva, see shipped proof, scan the work, choose depth. FIRST VIEWPORT: centered identity and actions framed by tactile desk objects; a real Streaming Helper proof card rises from the lower edge. NOTES: evidence-led long-form stories pair a calm reading column with source artifacts and one decisive continuation. FORM: Precision Paddock. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance"
         />
         {children}
       </body>

@@ -6,6 +6,7 @@ import { BrandMark } from "@/components/brand-mark";
 import { SectionLink } from "@/components/section-link";
 import { useEffect, useRef, useState } from "react";
 import type { MouseEvent } from "react";
+import { resumeUrl } from "@/lib/site-data";
 
 const links = [
   { href: "/#selected-work", label: "Work", match: (path: string) => path.startsWith("/work") },
@@ -100,7 +101,7 @@ export function SiteHeader() {
               {link.label}
             </SectionLink>
           ))}
-          <Link href="/resume">Résumé</Link>
+          <a href={resumeUrl} target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗</span></a>
           <Link href="/contact" aria-current={mounted && pathname.startsWith("/contact") ? "page" : undefined}>Let&apos;s talk</Link>
         </nav>
       </details>

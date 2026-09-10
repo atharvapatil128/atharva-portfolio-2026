@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function NotesPage() {
   const publishedNotes = notes.filter((note) => note.status === "published");
-  const featuredNotes = [...publishedNotes].reverse().slice(0, 2);
+  const featuredNotes = publishedNotes.slice(0, 2);
 
   return (
     <>
