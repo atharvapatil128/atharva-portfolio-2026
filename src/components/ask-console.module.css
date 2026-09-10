@@ -321,3 +321,78 @@
 }
 
 .reset:hover { color: var(--ink); }
+
+/*
+ * Sits below the console. A visitor who lands here cold has no idea what this
+ * thing knows, and the page carried 82 words with no heading below the h1,
+ * which read as thin to crawlers for the same reason it read as bare to people.
+ */
+.primer {
+  width: min(100%, 720px);
+  margin: clamp(48px, 6vw, 72px) auto 0;
+  padding-top: clamp(28px, 3vw, 40px);
+  border-top: 1px solid var(--line);
+}
+
+.primer h2 {
+  margin: 0 0 14px;
+  font-size: 19px;
+  line-height: 26px;
+  letter-spacing: -0.01em;
+}
+
+.primer h2 + p {
+  max-width: 62ch;
+  margin: 0 0 18px;
+  color: var(--text-secondary);
+}
+
+.primer h3 {
+  margin: 0 0 12px;
+  color: var(--text-tertiary);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.primerGrid {
+  display: grid;
+  gap: clamp(28px, 4vw, 44px);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.primer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.primer li {
+  padding-left: 16px;
+  position: relative;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 23px;
+}
+
+.primer li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 1px;
+  background: var(--signal);
+}
+
+.primerNote {
+  max-width: 62ch;
+  margin: clamp(24px, 3vw, 32px) 0 0;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  line-height: 22px;
+}
