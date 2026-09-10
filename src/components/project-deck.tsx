@@ -60,7 +60,13 @@ export function ProjectDeck() {
             onMouseEnter={() => setActive(index)}
             onFocus={() => setActive(index)}
           >
-            <Link href={`/work/${project.slug}`} className="project-card-main" aria-label={`Read the ${project.name} case study`}>
+            {/*
+              No aria-label here. An aria-label replaces the accessible name
+              entirely, so the card's own visible text stopped being part of it
+              and voice control lost "click Streaming Helper" (WCAG 2.5.3,
+              Label in Name). The visible copy already names the destination.
+            */}
+            <Link href={`/work/${project.slug}`} className="project-card-main">
               <span className="project-meta mono">0{index + 1} / {index === 0 ? "Featured" : project.category.split(" · ")[0]}</span>
               <div className="project-copy">
                 <h3>{project.name}</h3>
@@ -68,7 +74,7 @@ export function ProjectDeck() {
               </div>
               <ProjectVisual slug={project.slug} />
             </Link>
-            {project.slug === "streaming-helper" ? <a href="https://streaminghelper.net/" target="_blank" rel="noreferrer" className="project-live-link mono" aria-label="Open the live Streaming Helper website">Open live <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></a> : null}
+            {project.slug === "streaming-helper" ? <a href="https://streaminghelper.net/" target="_blank" rel="noreferrer" className="project-live-link mono" aria-label="Open live Streaming Helper website">Open live <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></a> : null}
           </article>
         ))}
       </div>

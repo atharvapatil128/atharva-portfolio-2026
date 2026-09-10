@@ -6,13 +6,27 @@ type FigureProps = {
   alt: string;
   caption: string;
   className?: string;
+  priority?: boolean;
 };
 
-function ArticleFigure({ src, alt, caption, className = "" }: FigureProps) {
+/**
+ * `priority` belongs on the first figure of an article only. next/image lazy
+ * loads by default, and on this note the opening figure is the LCP element, so
+ * lazy loading it made the browser wait for layout before it would even start
+ * the request.
+ */
+function ArticleFigure({ src, alt, caption, className = "", priority = false }: FigureProps) {
   return (
     <figure className={`note-figure ${className}`.trim()}>
       <a className="note-figure-link" href={src} target="_blank" rel="noreferrer" aria-label={`Open full-size figure: ${caption}`}>
-        <Image src={src} alt={alt} width={1320} height={1708} sizes="(max-width: 760px) 100vw, 1040px" />
+        <Image
+          src={src}
+          alt={alt}
+          width={1320}
+          height={1708}
+          sizes="(max-width: 760px) 100vw, 1040px"
+          priority={priority}
+        />
         <span className="note-figure-zoom mono">Open full-size <span aria-hidden="true">↗︎</span></span>
       </a>
       <figcaption>{caption}</figcaption>
@@ -67,6 +81,7 @@ function PorscheDesignSystemNote() {
             src="/images/notes/porsche-design-system/porsche-current-home.webp"
             alt="Assignment page showing the first half of Porsche's existing homepage"
             caption="The existing homepage established the component vocabulary and density baseline."
+            priority
           />
           <ArticleFigure
             src="/images/notes/porsche-design-system/porsche-recomposed-home.webp"

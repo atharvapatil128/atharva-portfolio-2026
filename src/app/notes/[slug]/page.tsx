@@ -7,6 +7,7 @@ import { BackLink } from "@/components/back-link";
 import { NoteStory } from "@/components/note-story";
 import { notes } from "@/lib/site-data";
 import { openGraphFor } from "@/lib/metadata";
+import { JsonLd, blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return notes
@@ -35,6 +36,16 @@ export default async function NotePage({ params }: { params: Promise<{ slug: str
   return (
     <>
       <SiteHeader />
+      <JsonLd
+        graph={[
+          blogPostingSchema(note),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Notes", path: "/notes" },
+            { name: note.title, path: `/notes/${note.slug}` },
+          ]),
+        ]}
+      />
       <main>
         <article className="note-article">
           <BackLink href="/notes#all-notes">Back to all notes</BackLink>

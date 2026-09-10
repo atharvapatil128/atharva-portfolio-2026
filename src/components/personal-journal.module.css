@@ -34,7 +34,7 @@
 .valuesHeading h2 span { color: var(--signal); }
 .beliefGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; max-width: var(--content); margin: 0 auto; position: relative; }
 .symbolReveal { max-width: 250px; margin-inline: auto; }
-.symbol { width: 100%; aspect-ratio: 3 / 4; background-image: url('/images/personal/values-frieze.png'); background-size: 400% 100%; background-repeat: no-repeat; filter: url('#values-signal'); transition: transform var(--duration-fast) var(--ease-smooth-out); }
+.symbol { width: 100%; aspect-ratio: 3 / 4; background-image: url('/images/personal/values-frieze.webp'); background-size: 400% 100%; background-repeat: no-repeat; filter: url('#values-signal'); transition: transform var(--duration-fast) var(--ease-smooth-out); }
 .beliefGrid h3 { font-size: 23px; font-weight: 500; line-height: 1.2; letter-spacing: -.02em; margin-top: 10px; }
 .beliefGrid p { font-size: 16px; line-height: 1.55; margin-top: 14px; max-width: 29ch; color: var(--text-secondary); }
 .personalStorySection { background: var(--canvas); padding-block: var(--section-space); }

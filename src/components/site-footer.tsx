@@ -19,8 +19,14 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="footer-base">
-        <Link className="footer-brand" href="/" aria-label="Atharva Patil, home"><BrandMark className="brand-mark" /><span>Atharva Patil<br /><small>Product designer</small></span></Link>
-        <nav aria-label="Footer navigation"><SectionLink href="/#selected-work">Work</SectionLink><Link href="/notes">Notes</Link><Link href="/about">About</Link><a href={resumeUrl} target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗︎</span></a></nav>
+        {/* Visible text names this link already; an aria-label would override it (WCAG 2.5.3). */}
+        <Link className="footer-brand" href="/"><BrandMark className="brand-mark" /><span>Atharva Patil<br /><small>Product designer</small></span></Link>
+        {/*
+          The LinkedIn link is not decoration. Person schema claims that profile
+          via sameAs, and search engines only treat that as confirmation when the
+          two point at each other, so this link is half of that pair.
+        */}
+        <nav aria-label="Footer navigation"><SectionLink href="/#selected-work">Work</SectionLink><Link href="/notes">Notes</Link><Link href="/about">About</Link><a href={resumeUrl} target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗︎</span></a><a href="https://www.linkedin.com/in/atharvahpatil" target="_blank" rel="noreferrer me">LinkedIn <span aria-hidden="true">↗︎</span></a></nav>
         <div className="footer-status"><span className="availability footer-availability"><i aria-hidden="true" />Available for the right team</span><p className="footer-credit">Designed + built by Atharva<span className="footer-location"><LocationPin className="location-pin" />Bloomington, Indiana</span></p></div>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
+import { JsonLd, personSchema, websiteSchema } from "@/lib/schema";
 import "./globals.css";
 import "./field-maintenance.css";
 
@@ -69,8 +70,24 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           data-design-contract="THESIS: evidence-led clarity over portfolio spectacle. OWN-WORLD: porcelain canvas, soft-black ink, cobalt structure, orange decisions, precise rounded fields. STORY: understand Atharva, see shipped proof, scan the work, choose depth. FIRST VIEWPORT: centered identity and actions framed by tactile desk objects; a real Streaming Helper proof card rises from the lower edge. NOTES: evidence-led long-form stories pair a calm reading column with source artifacts and one decisive continuation. FORM: Precision Paddock. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance"
         />
         {children}
+        <JsonLd graph={[personSchema, websiteSchema]} />
+        {analyticsEnabled ? (
+          <>
+            {/*
+              @next/third-parties' GoogleAnalytics takes no strategy prop, so it
+              ships gtag at next/script's default afterInteractive. Measured on
+              production that was 170KiB evaluating on the critical path, the
+              largest single contributor to a 3.3s LCP render delay. lazyOnload
+              holds it until after window load. The trade is real: a visitor who
+              leaves before load completes is not counted.
+            */}
+            <Script id="ga-src" strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`} />
+            <Script id="ga-init" strategy="lazyOnload">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${googleAnalyticsId}');`}
+            </Script>
+          </>
+        ) : null}
       </body>
-      {analyticsEnabled ? <GoogleAnalytics gaId={googleAnalyticsId} /> : null}
     </html>
   );
 }

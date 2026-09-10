@@ -118,11 +118,18 @@ export const projects: Project[] = [
 
 export const getProject = (slug: string) => projects.find((project) => project.slug === slug);
 
+/**
+ * `published` is the machine-readable twin of `date`. Structured data needs a
+ * real ISO date, and deriving one from "Sep 2026" at render time would invent a
+ * day silently. Keeping both means the displayed string and the date Google
+ * reads can never drift apart unnoticed.
+ */
 export const notes = [
   {
     status: "published",
     type: "Process note",
     date: "Sep 2026",
+    published: "2026-09-01",
     readTime: "8 min read",
     title: "Building this portfolio with an AI-assisted workflow",
     description: "What moved faster, where judgment still mattered, and why every reversible decision was documented.",
@@ -132,6 +139,7 @@ export const notes = [
     status: "published",
     type: "Design systems note",
     date: "Sep 2026",
+    published: "2026-09-01",
     readTime: "6 min read",
     title: "Extending Porsche’s design system without breaking its grammar",
     description: "Deconstructing a mature system, recomposing its parts, and adding one component that still belonged.",

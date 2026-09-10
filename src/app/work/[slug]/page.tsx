@@ -5,6 +5,7 @@ import { MeadCaseStudy } from "@/components/mead-case-study";
 import { FieldMaintenanceCaseStudy } from "@/components/field-maintenance-case-study";
 import { getProject, projects } from "@/lib/site-data";
 import { openGraphFor } from "@/lib/metadata";
+import { JsonLd, breadcrumbSchema, caseStudySchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -26,8 +27,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
-  if (project.slug === "streaming-helper") return <StreamingHelperCaseStudy />;
-  if (project.slug === "mead") return <MeadCaseStudy />;
-  if (project.slug === "field-maintenance") return <FieldMaintenanceCaseStudy />;
+  const schema = (
+    <JsonLd
+      graph={[
+        caseStudySchema(project),
+        breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: project.name, path: `/work/${project.slug}` },
+        ]),
+      ]}
+    />
+  );
+  if (project.slug === "streaming-helper") return <>{schema}<StreamingHelperCaseStudy /></>;
+  if (project.slug === "mead") return <>{schema}<MeadCaseStudy /></>;
+  if (project.slug === "field-maintenance") return <>{schema}<FieldMaintenanceCaseStudy /></>;
   notFound();
 }

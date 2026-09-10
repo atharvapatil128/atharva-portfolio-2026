@@ -1,0 +1,47 @@
+# Atharva Patil
+
+> Product designer working across research, prototyping, testing, and front-end
+> implementation. Based in Bloomington, Indiana, and open to relocating.
+> Currently looking for product design roles.
+
+Atharva designs end to end: discovery research, interaction design, prototyping,
+usability testing, and often the front-end code that ships. His work spans
+consumer products, care research, and enterprise operations tooling.
+
+## Selected work
+
+- [Streaming Helper](https://atharvapatil.net/work/streaming-helper): A consumer
+  product that reduces decision fatigue when choosing something to watch. Grew
+  out of a graduate capstone. 30 survey responses, 7 interviews, 5+ iterative
+  prototype tests. Independent product designer.
+- [MEAD](https://atharvapatil.net/work/mead): Caregiver-facing mobile tooling for
+  people living with advanced dementia, built in a six-day sponsor-led sprint
+  under UK GDPR constraints. Research, strategy, prototyping, visual design.
+- [Field Maintenance](https://atharvapatil.net/work/field-maintenance): A
+  maintenance logging workflow for U.S. Department of State embassy engineers,
+  developed from 45 stakeholder interviews into a Power Apps and Dataverse MVP.
+  UX strategist and design consultant.
+
+## Notes
+
+- [Building this portfolio with an AI-assisted workflow](https://atharvapatil.net/notes/building-this-portfolio):
+  How this site was made, from framing the identity in ChatGPT through Figma and
+  MCP to writing the code. What moved faster and where judgment still mattered.
+- [Extending Porsche's design system without breaking its grammar](https://atharvapatil.net/notes/extending-porsche-design-system):
+  Deconstructing a mature design system, recomposing a page from its existing
+  parts, and designing one new component that still belonged.
+
+## Pages
+
+- [Home](https://atharvapatil.net/)
+- [About](https://atharvapatil.net/about)
+- [Notes](https://atharvapatil.net/notes)
+- [Ask](https://atharvapatil.net/ask): An assistant that answers questions about
+  these projects and decisions, grounded in the published work.
+- [Contact](https://atharvapatil.net/contact)
+
+## Contact
+
+Email atharvapatil128@gmail.com, or use the form at
+https://atharvapatil.net/contact
+LinkedIn: https://www.linkedin.com/in/atharvahpatil
