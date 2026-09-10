@@ -116,7 +116,7 @@ export function ClarityRunHero() {
             <SectionLink className="button button-signal" href="#selected-work">View selected work</SectionLink>
             <Link className="button button-quiet" href="/resume">Résumé</Link>
           </div>
-          <div className="hero-meta mono"><span>BASED IN INDIANAPOLIS</span><span>OPEN TO RELOCATE</span></div>
+          <div className="hero-meta mono"><span>Based in Bloomington, Indiana</span><span>Open to relocate</span></div>
         </div>
 
         <div

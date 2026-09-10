@@ -29,17 +29,32 @@ export function DotField({
     if (!canvas || !context) return;
 
     const preference = matchMedia("(prefers-reduced-motion: reduce)");
-    const pointer = { x: 0, y: 0, active: false };
+    const pointer = {
+      x: 0,
+      y: 0,
+      targetX: 0,
+      targetY: 0,
+      strength: 0,
+      targetStrength: 0,
+    };
     let width = 0;
     let height = 0;
     let frame = 0;
     let visible = false;
     let ink = "#111318";
     let signal = "#ff5a18";
+    let previousTime = 0;
 
     const draw = (time = 0) => {
       context.clearRect(0, 0, width, height);
       const moving = !preference.matches;
+      const elapsed = previousTime ? Math.min(time - previousTime, 40) : 16;
+      previousTime = time;
+      const positionEase = 1 - Math.pow(0.0008, elapsed / 1000);
+      const strengthEase = 1 - Math.pow(0.006, elapsed / 1000);
+      pointer.x += (pointer.targetX - pointer.x) * positionEase;
+      pointer.y += (pointer.targetY - pointer.y) * positionEase;
+      pointer.strength += (pointer.targetStrength - pointer.strength) * strengthEase;
       const gap = variant === "footer" ? 16 : variant === "hero" ? 18 : 19;
       const startX = variant === "hero" ? width * 0.42 : gap / 2;
 
@@ -66,19 +81,21 @@ export function DotField({
           const dx = x - pointer.x;
           const dy = y - pointer.y;
           const distance = Math.hypot(dx, dy);
-          const influence = moving && interactive && pointer.active ? Math.max(0, 1 - distance / 150) : 0;
-          const driftX = moving ? Math.sin(time * 0.00038 + column * 0.22 + row * 0.09) * (variant === "footer" ? 2.1 : 1.1) : 0;
-          const driftY = moving ? Math.cos(time * 0.00031 + row * 0.24 + column * 0.07) * (variant === "footer" ? 2.8 : 1.4) : 0;
-          const repulseX = distance ? (dx / distance) * influence * 18 : 0;
-          const repulseY = distance ? (dy / distance) * influence * 18 : 0;
-          const radius = (variant === "footer" ? 1.05 : 0.92) + emphasis * 0.62 + influence * 0.8;
+          const influence = moving && interactive
+            ? Math.max(0, 1 - distance / 168) * pointer.strength
+            : 0;
+          const driftX = moving ? Math.sin(time * 0.00032 + column * 0.22 + row * 0.09) * (variant === "footer" ? 1.2 : 1.05) : 0;
+          const driftY = moving ? Math.cos(time * 0.00027 + row * 0.24 + column * 0.07) * (variant === "footer" ? 1.55 : 1.3) : 0;
+          const repulseX = distance ? (dx / distance) * influence * 10 : 0;
+          const repulseY = distance ? (dy / distance) * influence * 10 : 0;
+          const radius = (variant === "footer" ? 1.05 : 0.98) + emphasis * 0.62 + influence * 0.48;
 
           context.beginPath();
           context.arc(x + driftX + repulseX, y + driftY + repulseY, radius, 0, Math.PI * 2);
           context.fillStyle = accent ? signal : ink;
-          const baseAlpha = variant === "footer" ? 0.08 : variant === "hero" ? 0.025 : 0.028;
-          const emphasisAlpha = variant === "footer" ? 0.2 : variant === "hero" ? 0.095 : 0.085;
-          context.globalAlpha = quietLeft * (baseAlpha + emphasis * emphasisAlpha + (accent ? 0.18 : 0) + influence * 0.12);
+          const baseAlpha = variant === "footer" ? 0.08 : variant === "hero" ? 0.04 : 0.045;
+          const emphasisAlpha = variant === "footer" ? 0.2 : variant === "hero" ? 0.11 : 0.105;
+          context.globalAlpha = quietLeft * (baseAlpha + emphasis * emphasisAlpha + (accent ? 0.18 : 0) + influence * 0.08);
           context.fill();
         }
       }
@@ -113,11 +130,11 @@ export function DotField({
     }, { threshold: 0.01 });
     const move = (event: PointerEvent) => {
       const box = canvas.getBoundingClientRect();
-      pointer.x = event.clientX - box.left;
-      pointer.y = event.clientY - box.top;
-      pointer.active = true;
+      pointer.targetX = event.clientX - box.left;
+      pointer.targetY = event.clientY - box.top;
+      pointer.targetStrength = 1;
     };
-    const leave = () => { pointer.active = false; };
+    const leave = () => { pointer.targetStrength = 0; };
 
     resize.observe(canvas);
     viewport.observe(canvas);

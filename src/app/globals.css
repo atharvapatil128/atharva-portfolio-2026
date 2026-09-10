@@ -1245,6 +1245,9 @@ p { text-wrap: pretty; }
 .hero-copy, .hero .clarity-stack { position: relative; z-index: 3; }
 .hero-meta { display: flex; gap: 22px; margin-top: 28px; color: var(--text-secondary); }
 .hero-meta span + span { padding-left: 22px; border-left: 1px solid var(--line); }
+.location-label, .footer-location { display: inline-flex; align-items: center; gap: 7px; }
+.location-pin { width: 15px; height: 15px; flex: 0 0 auto; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.location-pin circle { fill: var(--signal); stroke: var(--signal); }
 .location { display: none; }
 
 /* Homepage concept: fuzzy signals resolve into a usable path */
@@ -1405,6 +1408,7 @@ p { text-wrap: pretty; }
 .footer-status { justify-self: end; display: grid; gap: var(--space-micro); justify-items: end; }
 .footer-availability { justify-content: flex-end; color: var(--canvas); font: 500 11px/16px var(--font-mono), monospace; }
 .footer-credit { color: #9da3ad; text-align: right; }
+.footer-credit .footer-location { margin-left: 8px; color: #b7bbc3; }
 
 .showcase-hero { min-height: 900px; padding-top: 64px; padding-bottom: 74px; text-align: center; }
 .showcase-copy { max-width: 890px; margin: 0 auto; }
@@ -2340,6 +2344,8 @@ p { text-wrap: pretty; }
 @media (max-width: 760px) {
   .hero { min-height: auto; padding-top: 76px; padding-bottom: 36px; }
   .hero-copy { width: 100%; }
+  .hero .hero-meta { flex-direction: column; align-items: center; gap: 8px; }
+  .hero .hero-meta span + span { padding-left: 0; border-left: 0; }
   .hero-object-laptop,
   .hero-object-keyboard,
   .hero-object-binder { display: none; }

@@ -3,6 +3,7 @@ import { FeaturedProjectArtifact } from "@/components/featured-project-artifact"
 import { HeroObjects } from "@/components/hero-objects";
 import { HeroReveal } from "@/components/hero-reveal";
 import { HomeSections } from "@/components/home-sections";
+import { LocationPin } from "@/components/location-pin";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SectionLink } from "@/components/section-link";
@@ -28,7 +29,7 @@ export default function HomePage() {
               <SectionLink className="button button-signal" href="#selected-work">View selected work</SectionLink>
               <Link className="button button-quiet" href="/resume">Résumé</Link>
             </div>
-            <div className="hero-meta mono"><span>Based in Indianapolis</span><span>Open to relocate</span></div>
+            <div className="hero-meta mono"><span className="location-label"><LocationPin className="location-pin" />Based in Bloomington, Indiana</span><span>Open to relocate</span></div>
           </div>
           <FeaturedProjectArtifact />
         </section>

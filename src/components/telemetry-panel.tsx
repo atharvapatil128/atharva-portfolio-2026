@@ -92,7 +92,7 @@ export function TelemetryPanel() {
           <p>Turning my graduate capstone into a working product I design, build, test, and iterate myself.</p>
         </div>
         <dl>
-          <div><span className="readout-icon"><ReadoutIcon name="location" /></span><dt>LOCATION</dt><dd>Indianapolis <small>Open to relocate for the right role</small></dd></div>
+          <div><span className="readout-icon"><ReadoutIcon name="location" /></span><dt>LOCATION</dt><dd>Bloomington, Indiana <small>Open to relocate for the right role</small></dd></div>
           <div><span className="readout-icon"><ReadoutIcon name="focus" /></span><dt>FOCUS</dt><dd>End-to-end product design <small>Research · interaction · prototyping · implementation</small></dd></div>
           <div><span className="readout-icon"><ReadoutIcon name="offTrack" /></span><dt>BEYOND WORK</dt><dd>Karting, running, outdoors <small>Fast laps · longer trails · fresh air</small></dd></div>
         </dl>
