@@ -54,7 +54,29 @@ export async function POST(request: Request) {
       }),
       signal: AbortSignal.timeout(10000),
     });
-    if (!response.ok) return error("Your message could not be sent. Please try again or use the email link below.", 502);
+    if (!response.ok) {
+      let providerError = "unknown";
+      let providerMessage = "unavailable";
+      try {
+        const details: unknown = await response.json();
+        if (details && typeof details === "object") {
+          if ("name" in details && typeof details.name === "string") {
+            providerError = details.name.slice(0, 80);
+          }
+          if ("message" in details && typeof details.message === "string") {
+            providerMessage = details.message
+              .replace(/[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}/g, "[email]")
+              .slice(0, 240);
+          }
+        }
+      } catch {
+        providerError = "unreadable_response";
+      }
+      // Keep visitor data and provider messages out of logs, while preserving
+      // enough detail to distinguish credentials, sender, and outage failures.
+      console.error("Resend contact delivery rejected", { status: response.status, providerError, providerMessage });
+      return error("Your message could not be sent. Please try again or use the email link below.", 502);
+    }
     const result = await response.json();
     if (!result.id) return error("Your message could not be confirmed. Please try again.", 502);
     return Response.json({ ok: true });
