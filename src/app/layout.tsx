@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import "./field-maintenance.css";
 
@@ -22,6 +23,10 @@ const ibmPlexMono = localFont({
 // Kept short enough to survive SERP truncation, which cuts on pixel width.
 const defaultDescription =
   "Product designer working across research, prototyping, testing, and front-end implementation.";
+
+// Measurement IDs are public. The environment override keeps future property changes deploy-only.
+const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-059Y2LE15Y";
+const analyticsEnabled = process.env.VERCEL_ENV === "production";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://atharvapatil.net"),
@@ -65,6 +70,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
         {children}
       </body>
+      {analyticsEnabled ? <GoogleAnalytics gaId={googleAnalyticsId} /> : null}
     </html>
   );
 }
