@@ -1277,10 +1277,11 @@ p { text-wrap: pretty; }
   .mobile-menu nav { position: absolute; top: 48px; right: 0; width: 210px; padding: 10px; display: grid; border: 1px solid var(--line); border-radius: var(--radius-soft); background: var(--surface); box-shadow: 0 18px 40px rgba(17,19,24,.14), var(--lift-face); }
   @supports (backdrop-filter: blur(1px)) {
     /* The menu opens over the homepage hero, which is the largest, highest
-       contrast type on the site. An 18px blur softens letterforms that big
-       without dissolving them, so their shapes still ghosted through behind
-       15px menu labels. More tint and a wider blur, still clearly glass. */
-    .mobile-menu nav { background: color-mix(in srgb, var(--surface) 90%, transparent); backdrop-filter: blur(24px) saturate(1.3); }
+       contrast type on the site. A blur softens letterforms that big without
+       dissolving them, so their shapes ghosted through behind 15px menu
+       labels. At 94% the tint does the work and the blur only takes the edge
+       off what little shows, which is what a nav on a phone needs. */
+    .mobile-menu nav { background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(24px) saturate(1.3); }
   }
   .mobile-menu nav a { min-height: 44px; display: flex; align-items: center; padding: 0 12px; border-radius: 9px; }
   .mobile-menu nav a:hover { background: var(--subtle); }
