@@ -140,12 +140,11 @@ export function FieldMaintenanceCaseStudy() {
             <figure className="field-context-media">
               <AmbientVideo
                 src="/videos/field-maintenance-context.mp4"
-                poster="/images/field-maintenance/cover.png"
+                poster="/images/field-maintenance/cover.webp"
                 className="field-context-video"
                 controls
-                muted={false}
                 autoPlayWhenVisible={false}
-                label="Illustration of the outdated tools and delayed field-maintenance workflow before Power Maintenance"
+                label="Silent illustration of the outdated tools and delayed field-maintenance workflow before Power Maintenance"
               />
               <figcaption><span className="mono">BEFORE THE MVP</span><span>FIELD OBSERVATION → PAPER OR MEMORY → LATER DESK ENTRY</span></figcaption>
             </figure>
