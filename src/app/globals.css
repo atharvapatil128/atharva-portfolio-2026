@@ -890,6 +890,87 @@ p { text-wrap: pretty; }
 .contact-form-foot p { max-width: 220px; color: var(--text-tertiary); font-size: 11px; line-height: 16px; }
 .contact-form-foot .button { flex: 0 0 auto; border: 0; cursor: pointer; }
 .contact-form-foot .button span { margin-left: 16px; }
+
+/* Sent state. The confirmation replaces the form rather than sitting under it:
+   sending a message is a real commitment, and an 11px line in the same grey as
+   the idle hint gave success, idle and failure identical weight. Keeps the
+   panel's own surface so the swap does not read as a different component. */
+.contact-sent {
+  display: grid;
+  justify-items: start;
+  align-content: center;
+  gap: var(--space-control);
+  min-height: 366px;
+  outline: none;
+}
+.contact-sent-mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #12894a;
+  background: rgba(33, 185, 91, .13);
+  box-shadow: 0 0 0 5px rgba(33, 185, 91, .08);
+}
+.contact-sent-mark svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.contact-sent h2 { font-size: clamp(26px, 3vw, 32px); font-weight: 600; line-height: 1.1; letter-spacing: -.025em; }
+.contact-sent > p { max-width: 42ch; color: var(--text-secondary); font-size: 15px; line-height: 1.55; }
+.contact-sent > p strong { color: var(--ink); font-weight: 500; word-break: break-word; }
+.contact-sent-actions { display: flex; align-items: center; gap: var(--space-card-gap); flex-wrap: wrap; margin-top: var(--space-micro); }
+.contact-sent-link { color: var(--text-tertiary); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+.contact-sent-link:hover { color: var(--ink); }
+
+/* Failure keeps the form mounted so nothing typed is lost, but stops sharing
+   the idle hint's treatment. No red exists in the palette, so the alert earns
+   its weight from a bordered field and the ink border rather than colour. */
+.contact-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-control);
+  margin-top: var(--space-card-gap);
+  padding: 13px 15px;
+  border: 1px solid var(--line-active);
+  border-radius: var(--radius-field);
+  background: color-mix(in srgb, var(--signal) 7%, var(--surface));
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.contact-alert-mark {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--surface);
+  background: var(--signal);
+  font-size: 12px;
+  font-weight: 600;
+}
+.contact-alert a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* No fill-mode and no delay on purpose. A staggered cascade needs `both` to
+   avoid flashing during the delay, but `both` holds the element at opacity 0
+   before the animation runs, so anything that stops animations from playing
+   leaves the confirmation invisible. For a success message that is the worst
+   possible failure, so the resting state stays visible and the rise plays over
+   it. One confident movement also reads better here than four staggered ones. */
+@media (prefers-reduced-motion: no-preference) {
+  .contact-sent { animation: contact-sent-rise var(--duration-medium) var(--ease-smooth-out); }
+  .contact-alert { animation: contact-sent-rise var(--duration-fast) var(--ease-smooth-out); }
+}
+/* Transform only, never opacity. An animation stalled on its first frame holds
+   that frame, so fading from 0 can leave the confirmation invisible in any
+   environment that throttles animations. Stalled here just means it rests 8px
+   low, which nobody notices; invisible would mean the send looked like it
+   failed. */
+@keyframes contact-sent-rise {
+  from { transform: translateY(8px); }
+  to { transform: translateY(0); }
+}
 .contact-routes { padding-top: var(--section-space); padding-bottom: var(--section-space); background: var(--field-warm); }
 .contact-routes h2 { font-size: var(--type-section); }
 .contact-row { display: grid; grid-template-columns: 40px 140px 1fr auto; gap: 20px; align-items: center; min-height: 100px; border-top: 1px solid var(--line); }

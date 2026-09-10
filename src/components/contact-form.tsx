@@ -1,14 +1,23 @@
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 const contactEmail = "atharvapatil128@gmail.com";
+const idleHint = "Your message goes directly to my inbox.";
 
 export function ContactForm() {
-  const [status, setStatus] = useState("Your message goes directly to my inbox.");
+  const [status, setStatus] = useState(idleHint);
   const [sending, setSending] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [sentTo, setSentTo] = useState<string | null>(null);
   const inFlight = useRef(false);
+  const confirmation = useRef<HTMLDivElement>(null);
+
+  // The confirmation replaces the form, so focus has to follow it or a keyboard
+  // user is left on a button that no longer exists.
+  useEffect(() => {
+    if (sentTo) confirmation.current?.focus();
+  }, [sentTo]);
 
   const sendMessage = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -31,8 +40,8 @@ export function ContactForm() {
       });
       const result = await response.json();
       if (!response.ok || !result.ok) throw new Error(result.error || "Your message could not be sent. Please try again.");
-      setStatus("Message sent. Thanks for reaching out!");
       form.reset();
+      setSentTo(replyEmail);
     } catch (error) {
       setFailed(true);
       setStatus(error instanceof Error ? error.message : "Your message could not be sent. Please try again.");
@@ -41,6 +50,37 @@ export function ContactForm() {
       setSending(false);
     }
   };
+
+  const sendAnother = () => {
+    setSentTo(null);
+    setFailed(false);
+    setStatus(idleHint);
+  };
+
+  if (sentTo) {
+    return (
+      <div
+        className="contact-form contact-sent"
+        role="status"
+        aria-live="polite"
+        tabIndex={-1}
+        ref={confirmation}
+      >
+        <span className="contact-sent-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
+        </span>
+        <h2>Message sent.</h2>
+        <p>
+          It is in my inbox now. I will reply to <strong>{sentTo}</strong>, so if that address looks wrong,
+          send it again or reach me directly.
+        </p>
+        <div className="contact-sent-actions">
+          <button className="button button-quiet" type="button" onClick={sendAnother}>Send another</button>
+          <a className="contact-sent-link" href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <form className="contact-form" onSubmit={sendMessage} aria-busy={sending}>
@@ -71,8 +111,18 @@ export function ContactForm() {
         <textarea name="message" placeholder="A little about the role, team, or problem…" rows={5} minLength={10} maxLength={5000} required />
       </label>
 
+      {failed ? (
+        <p className="contact-alert" role="alert">
+          <span className="contact-alert-mark" aria-hidden="true">!</span>
+          <span>
+            {status} Your message is still here, so you can retry, or{" "}
+            <a href={`mailto:${contactEmail}`}>email me directly</a>.
+          </span>
+        </p>
+      ) : null}
+
       <div className="contact-form-foot">
-        <p role="status" aria-live="polite">{status}{failed && <> <a href={`mailto:${contactEmail}`}>Email me directly</a>.</>}</p>
+        <p role="status" aria-live="polite">{failed ? "" : status}</p>
         <button className="button button-signal" type="submit" disabled={sending}>{sending ? "Sending…" : "Send it my way"} <span aria-hidden="true">↗</span></button>
       </div>
     </form>
