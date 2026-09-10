@@ -24,3 +24,8 @@ skills-lock.json
 *-qa-final.png
 .DS_Store
 Thumbs.db
+
+# SEO audit tooling
+seomator.toml
+.seomator/
+.agents/

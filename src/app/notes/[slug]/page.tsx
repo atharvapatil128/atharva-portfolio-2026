@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { BackLink } from "@/components/back-link";
 import { notes } from "@/lib/site-data";
+import { openGraphFor } from "@/lib/metadata";
 
 export function generateStaticParams() {
   return notes
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: note.title,
     description: note.description,
     alternates: { canonical: `/notes/${note.slug}` },
-    openGraph: { url: `/notes/${note.slug}`, title: note.title, description: note.description },
+    openGraph: openGraphFor(`/notes/${note.slug}`, { title: note.title, description: note.description }),
   };
 }
 

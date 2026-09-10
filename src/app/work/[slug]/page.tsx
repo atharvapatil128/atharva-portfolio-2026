@@ -4,6 +4,7 @@ import { StreamingHelperCaseStudy } from "@/components/streaming-helper-case-stu
 import { MeadCaseStudy } from "@/components/mead-case-study";
 import { FieldMaintenanceCaseStudy } from "@/components/field-maintenance-case-study";
 import { getProject, projects } from "@/lib/site-data";
+import { openGraphFor } from "@/lib/metadata";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: project.name,
     description: project.descriptor,
     alternates: { canonical: `/work/${project.slug}` },
-    openGraph: { url: `/work/${project.slug}`, title: `${project.name} — Atharva Patil`, description: project.descriptor },
+    openGraph: openGraphFor(`/work/${project.slug}`, { title: `${project.name} — Atharva Patil`, description: project.descriptor }),
   };
 }
 

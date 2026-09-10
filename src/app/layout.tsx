@@ -19,8 +19,9 @@ const ibmPlexMono = localFont({
   display: "swap",
 });
 
+// Kept short enough to survive SERP truncation, which cuts on pixel width.
 const defaultDescription =
-  "Atharva Patil is a product designer with a background in HCI and computer science who works across research, prototyping, testing, and front-end implementation.";
+  "Product designer working across research, prototyping, testing, and front-end implementation.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://atharvapatil.net"),

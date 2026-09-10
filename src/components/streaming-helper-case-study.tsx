@@ -126,7 +126,7 @@ export function StreamingHelperCaseStudy() {
               <figure className="sh-hero-media">
                 <div className="sh-hero-image">
                   <AmbientVideo src="/videos/streaming-helper-demo.mp4" poster="/images/streaming-helper/demo-poster.jpg" controls label="Streaming Helper product walkthrough" />
-                  <span className="sh-hero-product-icon" aria-hidden="true"><Image src="/images/streaming-helper/product-icon.png" alt="" width={76} height={76} /></span>
+                  <span className="sh-hero-product-icon" aria-hidden="true"><Image src="/images/streaming-helper/product-icon.png" alt="" width={76} height={76} priority /></span>
                 </div>
                 <figcaption className="mono"><span>WORKING PRODUCT / 1:41 WALKTHROUGH</span><span>PLAY, PAUSE, OR OPEN THE LIVE BUILD</span></figcaption>
               </figure>

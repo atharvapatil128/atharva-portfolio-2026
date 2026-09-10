@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ContactForm } from "@/components/contact-form";
+import { openGraphFor } from "@/lib/metadata";
 import { IntroDotField } from "@/components/intro-dot-field";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "Tell me what you're working through. I'm always happy to compare notes, talk product, or hear about a good team.",
   alternates: { canonical: "/contact" },
-  openGraph: { url: "/contact" },
+  openGraph: openGraphFor("/contact"),
 };
 
 export default function ContactPage() {

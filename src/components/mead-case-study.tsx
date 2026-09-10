@@ -117,7 +117,7 @@ export function MeadCaseStudy() {
                 <figure className="mead-feedback-card">
                   <span className="mono">RETURN VALUE</span>
                   <strong>Observe → interpret → adapt</strong>
-                  <Image src="/images/mead/engagement-feedback-chart.png" alt="Prototype engagement feedback chart" width={344} height={236} />
+                  <Image src="/images/mead/engagement-feedback-chart.png" alt="Prototype engagement feedback chart" width={344} height={236} loading="eager" />
                 </figure>
               </div>
             </div>

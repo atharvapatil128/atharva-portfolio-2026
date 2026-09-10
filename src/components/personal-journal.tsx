@@ -16,13 +16,14 @@ const photos = {
   presentation: { alt: "Atharva beside his research poster about decision fatigue in streaming", caption: "Presenting Streaming Helper." },
 };
 
-function Photo({ name, className = "" }: { name: keyof typeof photos; className?: string }) {
+/** `priority` marks the first photo a page shows, so the LCP candidate is not lazy. */
+function Photo({ name, className = "", priority = false }: { name: keyof typeof photos; className?: string; priority?: boolean }) {
   const photo = photos[name];
 
   return <figure className={`${styles.photo} ${className}`}>
     <div className={styles.frame}>
       <div className={styles.frameInner}>
-        <Image src={`/images/personal/${name}.jpg`} alt={photo.alt} fill sizes="(max-width: 600px) 85vw, (max-width: 1000px) 45vw, 35vw" className={styles[name]} />
+        <Image src={`/images/personal/${name}.jpg`} alt={photo.alt} fill sizes="(max-width: 600px) 85vw, (max-width: 1000px) 45vw, 35vw" className={styles[name]} priority={priority} />
       </div>
     </div>
     <figcaption data-reveal>{photo.caption}</figcaption>
@@ -85,7 +86,7 @@ export function PersonalAbout() {
     </section>
     <section className={`${styles.personalStorySection} section-pad`} aria-labelledby="personal-story-title">
       <SectionReveal className={styles.personalStory}>
-      <Photo name="gallery" className={styles.galleryMoment} />
+      <Photo name="gallery" className={styles.galleryMoment} priority />
       <div className={styles.storyCopy}>
         <h2 id="personal-story-title" data-reveal>Room to <br />be <span className={styles.signalEmphasis}>curious.</span></h2>
         <p data-reveal>Fast laps, long runs, open air. And time to slow down and actually look at something.</p>

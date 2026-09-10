@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLink } from "@/components/arrow-link";
+import { openGraphFor } from "@/lib/metadata";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { TelemetryPanel } from "@/components/telemetry-panel";
@@ -10,9 +11,9 @@ import { PersonalAbout } from "@/components/personal-journal";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "I like staying close to a problem, from the first messy conversations through prototypes, feedback, implementation, and whatever needs fixing next.",
+    "Staying close to a problem, from the first messy conversations through prototypes, feedback, and implementation.",
   alternates: { canonical: "/about" },
-  openGraph: { url: "/about" },
+  openGraph: openGraphFor("/about"),
 };
 
 export default function AboutPage() {

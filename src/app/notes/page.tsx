@@ -5,13 +5,14 @@ import { NotesPreviewStack } from "@/components/notes-preview-stack";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { notes } from "@/lib/site-data";
+import { openGraphFor } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: "Notes",
   description:
     "Short reflections on product decisions, building this portfolio, and what I'm curious about beyond it.",
   alternates: { canonical: "/notes" },
-  openGraph: { url: "/notes" },
+  openGraph: openGraphFor("/notes"),
 };
 
 export default function NotesPage() {
