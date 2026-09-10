@@ -5,7 +5,8 @@ published on this site. It refuses when the site does not cover something,
 carries each project's stated limitations into any answer about results, and
 routes compensation and work-authorisation questions to the contact page.
 
-Branch: `feat/ask-atharva`, cut from `main` at `3fe6566`.
+Branch: `feat/ask-atharva`. Current `main` has been merged in, so the branch is
+up to date with `d0e7277` and the build has been verified against it.
 Nothing has been pushed. `main` is untouched.
 
 ---
@@ -26,8 +27,16 @@ Nothing has been pushed. `main` is untouched.
 | `src/components/ask-pet.*` | Decorative creature on the panel |
 | `content/brain/` | Hand-written background, curated for publication |
 | `src/components/site-header.tsx` | **Modified.** Triggers added in three places |
+| `src/app/sitemap.ts` | **Modified.** One line adding `/ask` |
+| `src/app/globals.css` | **Modified.** Unrelated to the assistant, see below |
 | `package.json` | **Modified.** `@google/genai`, `corpus` and `prebuild` scripts |
 | `.env.example` | **Modified.** Documents `GEMINI_API_KEY` |
+
+Everything else is new. The `globals.css` change is the only edit that has
+nothing to do with this feature: the mobile menu's translucency let the
+homepage hero's letterforms ghost through behind the nav labels, so its tint
+went from 80% to 94% and its blur from 18px to 24px. It is a self-contained
+change inside one existing media query and can be reverted on its own.
 
 `prebuild` regenerates the corpus, so `next build` always ships a current one.
 No manual step.
@@ -87,9 +96,10 @@ Roughly $0.03 per conversation at ~7.9K input tokens and ~300 output.
 
 ### 2.4 Merge
 
-Standard merge of `feat/ask-atharva` into `main`. The only modified existing
-files are `site-header.tsx`, `package.json`, `package-lock.json`, and
-`.env.example`; everything else is new.
+Standard merge of `feat/ask-atharva` into `main`. Current `main` has already
+been merged into the branch and the build verified against it, so the merge
+should be clean. The modified existing files are listed in section 1; there
+are six, and everything else is new.
 
 ---
 
