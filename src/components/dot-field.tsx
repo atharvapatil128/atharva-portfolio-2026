@@ -45,10 +45,18 @@ export function DotField({
     let signal = "#ff5a18";
     let previousTime = 0;
 
-    const draw = (time = 0) => {
+    /**
+     * `time` defaults to the current clock, not 0: restart() calls this directly,
+     * and a 0 here against a real previousTime yields a large negative elapsed.
+     * That drives Math.pow(0.0008, elapsed / 1000) past Infinity once the page has
+     * been open a couple of minutes, turning pointer state into NaN. A NaN radius
+     * makes canvas silently skip every arc, so the field blanks and never recovers.
+     * The clamp is the safety net for any other source of a backwards delta.
+     */
+    const draw = (time = performance.now()) => {
       context.clearRect(0, 0, width, height);
       const moving = !preference.matches;
-      const elapsed = previousTime ? Math.min(time - previousTime, 40) : 16;
+      const elapsed = previousTime ? Math.min(Math.max(time - previousTime, 0), 40) : 16;
       previousTime = time;
       const positionEase = 1 - Math.pow(0.0008, elapsed / 1000);
       const strengthEase = 1 - Math.pow(0.006, elapsed / 1000);
