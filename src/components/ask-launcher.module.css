@@ -1,0 +1,174 @@
+/*
+ * Two triggers, one at a time. The header already hides .availability at
+ * 1050px because it runs out of room, so that is the honest switch point:
+ * above it the actions zone can carry a field, below it the nav carries a
+ * word, and under 760px the hamburger takes over entirely.
+ */
+
+.fieldTrigger {
+  display: none;
+  align-items: center;
+  gap: 9px;
+  height: 38px;
+  padding: 0 8px 0 12px;
+  color: var(--text-secondary);
+  background: color-mix(in srgb, var(--field-warm) 60%, var(--surface));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  transition:
+    color var(--duration-fast) var(--ease-smooth-out),
+    border-color var(--duration-fast) var(--ease-smooth-out),
+    background-color var(--duration-fast) var(--ease-smooth-out);
+}
+
+.fieldTrigger:hover {
+  color: var(--ink);
+  background: var(--surface);
+  border-color: color-mix(in srgb, var(--ink) 26%, var(--line));
+}
+
+.glyph {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.kbd {
+  padding: 3px 6px;
+  font: inherit;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  background: var(--canvas);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+}
+
+/*
+ * The nav variant inherits .primary-nav a for its styling, which also means
+ * that rule's `display: grid` outranks a bare .navTrigger class. Both
+ * selectors below are scoped through :global(.primary-nav) so they actually
+ * beat it rather than losing silently.
+ */
+:global(.primary-nav) a.navTrigger { display: none; }
+
+@media (min-width: 1051px) {
+  .fieldTrigger { display: inline-flex; }
+}
+
+@media (min-width: 761px) and (max-width: 1050px) {
+  :global(.primary-nav) a.navTrigger { display: grid; }
+}
+
+/* Panel ------------------------------------------------------------------ */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60; /* above the sticky header at 30 */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 92px var(--page-pad) var(--page-pad);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  background: color-mix(in srgb, var(--ink) 22%, transparent);
+  border: 0;
+  cursor: default;
+  animation: fade var(--duration-fast) var(--ease-smooth-out);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .scrim { backdrop-filter: blur(3px); }
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: min(100%, 720px);
+  max-height: min(70vh, 620px);
+  padding: 20px 22px 22px;
+  background-color: var(--canvas);
+  background-image: var(--face-light);
+  border: 1px solid color-mix(in srgb, var(--ink) 12%, var(--line));
+  border-radius: var(--radius-card);
+  box-shadow: 0 26px 60px rgba(17, 19, 24, 0.16), var(--lift-face);
+  animation: rise var(--duration-fast) var(--ease-smooth-out);
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.panelTitle { color: var(--text-tertiary); }
+
+.close {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: var(--text-secondary);
+  background: none;
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
+  transition:
+    color var(--duration-quick) var(--ease-smooth-out),
+    background-color var(--duration-quick) var(--ease-smooth-out);
+}
+
+.close svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+
+.close:hover {
+  color: var(--ink);
+  background: var(--subtle);
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(-8px); }
+}
+
+/* Below the header's own breakpoint the panel becomes a sheet. */
+@media (max-width: 760px) {
+  .overlay { padding: 0; align-items: stretch; }
+  .panel {
+    width: 100%;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+    padding: 18px 20px 20px;
+    animation: sheet var(--duration-medium) var(--ease-smooth-out);
+  }
+  @keyframes sheet {
+    from { transform: translateY(12px); opacity: 0; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrim,
+  .panel { animation: none; }
+}

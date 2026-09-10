@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandMark } from "@/components/brand-mark";
 import { SectionLink } from "@/components/section-link";
+import { AskFieldTrigger, AskNavTrigger, AskProvider } from "@/components/ask-launcher";
 import { useEffect, useRef, useState } from "react";
 import type { MouseEvent } from "react";
 import { resumeUrl } from "@/lib/site-data";
@@ -65,46 +66,51 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="site-header" data-scrolled={scrolled}>
-      <Link className="identity" href="/" aria-label="Atharva Patil, home" onClick={handleHomeClick}>
-        <BrandMark className="brand-mark" />
-        <span className="identity-name">Atharva Patil</span>
-      </Link>
-
-      <nav className="primary-nav" aria-label="Primary navigation">
-        {links.map((link) => (
-          <SectionLink key={link.href} href={link.href} aria-current={isLinkActive(link) ? "page" : undefined}>
-            {link.label}
-          </SectionLink>
-        ))}
-      </nav>
-
-      <div className="header-actions">
-        <span className="availability"><i aria-hidden="true" />Available</span>
-        <Link className="nav-cta" href="/contact" aria-current={mounted && pathname.startsWith("/contact") ? "page" : undefined}>
-          <span>Let&apos;s talk</span><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 14 14 4M7 4h7v7" /></svg>
+    <AskProvider>
+      <header className="site-header" data-scrolled={scrolled}>
+        <Link className="identity" href="/" aria-label="Atharva Patil, home" onClick={handleHomeClick}>
+          <BrandMark className="brand-mark" />
+          <span className="identity-name">Atharva Patil</span>
         </Link>
-      </div>
 
-      <details className="mobile-menu" ref={menuRef} onKeyDown={(event) => {
-        if (event.key === "Escape" && menuRef.current?.open) {
-          menuRef.current.open = false;
-          menuRef.current.querySelector("summary")?.focus();
-        }
-      }}>
-        <summary aria-label="Toggle navigation menu"><svg className="menu-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg></summary>
-        <nav aria-label="Mobile navigation" onClick={(event) => {
-          if ((event.target as HTMLElement).closest("a") && menuRef.current) menuRef.current.open = false;
-        }}>
+        <nav className="primary-nav" aria-label="Primary navigation">
           {links.map((link) => (
             <SectionLink key={link.href} href={link.href} aria-current={isLinkActive(link) ? "page" : undefined}>
               {link.label}
             </SectionLink>
           ))}
-          <a href={resumeUrl} target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗︎</span></a>
-          <Link href="/contact" aria-current={mounted && pathname.startsWith("/contact") ? "page" : undefined}>Let&apos;s talk</Link>
+          <AskNavTrigger />
         </nav>
-      </details>
-    </header>
+
+        <div className="header-actions">
+          <AskFieldTrigger />
+          <span className="availability"><i aria-hidden="true" />Available</span>
+          <Link className="nav-cta" href="/contact" aria-current={mounted && pathname.startsWith("/contact") ? "page" : undefined}>
+            <span>Let&apos;s talk</span><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 14 14 4M7 4h7v7" /></svg>
+          </Link>
+        </div>
+
+        <details className="mobile-menu" ref={menuRef} onKeyDown={(event) => {
+          if (event.key === "Escape" && menuRef.current?.open) {
+            menuRef.current.open = false;
+            menuRef.current.querySelector("summary")?.focus();
+          }
+        }}>
+          <summary aria-label="Toggle navigation menu"><svg className="menu-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg></summary>
+          <nav aria-label="Mobile navigation" onClick={(event) => {
+            if ((event.target as HTMLElement).closest("a") && menuRef.current) menuRef.current.open = false;
+          }}>
+            {links.map((link) => (
+              <SectionLink key={link.href} href={link.href} aria-current={isLinkActive(link) ? "page" : undefined}>
+                {link.label}
+              </SectionLink>
+            ))}
+            <Link href="/ask" aria-current={mounted && pathname.startsWith("/ask") ? "page" : undefined}>Ask</Link>
+            <a href={resumeUrl} target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗︎</span></a>
+            <Link href="/contact" aria-current={mounted && pathname.startsWith("/contact") ? "page" : undefined}>Let&apos;s talk</Link>
+          </nav>
+        </details>
+      </header>
+    </AskProvider>
   );
 }

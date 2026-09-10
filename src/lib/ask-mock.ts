@@ -46,11 +46,22 @@ const MOCKS: Mock[] = [
 const FALLBACK =
   "That is not something I have on record. This assistant only knows what is published on this site, so if it is not in the case studies or the About page, I would be guessing.\n\nAtharva can answer it directly through /contact.";
 
-export const mockAnswer = (question: string) =>
-  MOCKS.find((mock) => mock.match.test(question))?.answer ?? FALLBACK;
+const PATH_HINTS: Record<string, string> = {
+  "/work/streaming-helper": "streaming helper",
+  "/work/mead": "mead",
+  "/work/field-maintenance": "field maintenance",
+};
 
-export const mockStream = (question: string) => {
-  const answer = mockAnswer(question);
+// The panel seeds questions like "what did he own on this project", which carry
+// no project name. The path supplies the missing noun, exactly as the real
+// route does before it reaches the model.
+export const mockAnswer = (question: string, path = "") => {
+  const subject = `${question} ${PATH_HINTS[path] ?? ""}`;
+  return MOCKS.find((mock) => mock.match.test(subject))?.answer ?? FALLBACK;
+};
+
+export const mockStream = (question: string, path = "") => {
+  const answer = mockAnswer(question, path);
   const encoder = new TextEncoder();
   let index = 0;
   return new ReadableStream<Uint8Array>({

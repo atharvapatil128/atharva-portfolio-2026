@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, KeyboardEvent, useCallback, useEffect, useRef, useState } from "react";
+import { FormEvent, KeyboardEvent, useCallback, useEffect, useId, useRef, useState } from "react";
 import styles from "@/components/ask-console.module.css";
 
 type Turn = { role: "user" | "assistant"; content: string };
@@ -8,21 +8,33 @@ type Turn = { role: "user" | "assistant"; content: string };
 const MAX_CHARS = 1000;
 const fallbackError = "The assistant could not answer. Please try again, or use the contact page.";
 
-const suggestions = [
+const defaultSuggestions = [
   "What did Atharva actually own on Field Maintenance?",
   "What went wrong in the Streaming Helper capstone?",
   "How does he decide when research is enough?",
-] as const;
+];
+
+type Props = {
+  /** "panel" scrolls the transcript inside a fixed height instead of the page. */
+  variant?: "page" | "panel";
+  /** Opened from a case study, the openers should be about that project. */
+  suggestions?: string[];
+  autoFocus?: boolean;
+  /** Current path, so the assistant can resolve "this project". */
+  context?: string;
+};
 
 /** Paragraph breaks are the only formatting an answer needs. */
 const paragraphs = (text: string) => text.split(/\n{2,}/).filter(Boolean);
 
-export function AskConsole() {
+export function AskConsole({ variant = "page", suggestions = defaultSuggestions, autoFocus = false, context }: Props) {
   const [turns, setTurns] = useState<Turn[]>([]);
   const [draft, setDraft] = useState("");
   const [streaming, setStreaming] = useState(false);
   const [failed, setFailed] = useState<string | null>(null);
 
+  // The page and the panel can both be mounted at once on /ask.
+  const fieldId = useId();
   const inFlight = useRef(false);
   const input = useRef<HTMLTextAreaElement>(null);
   const tail = useRef<HTMLDivElement>(null);
@@ -49,6 +61,10 @@ export function AskConsole() {
     tail.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [turns]);
 
+  useEffect(() => {
+    if (autoFocus) input.current?.focus();
+  }, [autoFocus]);
+
   const ask = useCallback(
     async (question: string) => {
       const trimmed = question.trim();
@@ -65,7 +81,7 @@ export function AskConsole() {
         const response = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: history }),
+          body: JSON.stringify({ messages: history, path: context }),
         });
 
         if (!response.ok || !response.body) {
@@ -93,7 +109,7 @@ export function AskConsole() {
         input.current?.focus();
       }
     },
-    [turns],
+    [turns, context],
   );
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
@@ -111,7 +127,7 @@ export function AskConsole() {
   const started = turns.length > 0;
 
   return (
-    <div className={styles.console}>
+    <div className={`${styles.console} ${variant === "panel" ? styles.inPanel : ""}`}>
       {started ? (
         <div className={styles.transcript} role="log" aria-live="polite" aria-busy={streaming}>
           {turns.map((turn, index) => {
@@ -178,11 +194,11 @@ export function AskConsole() {
       ) : null}
 
       <form className={styles.composer} onSubmit={submit}>
-        <label className={styles.srOnly} htmlFor="ask-input">
+        <label className={styles.srOnly} htmlFor={fieldId}>
           Ask a question about Atharva&apos;s work
         </label>
         <textarea
-          id="ask-input"
+          id={fieldId}
           ref={input}
           className={styles.input}
           value={draft}

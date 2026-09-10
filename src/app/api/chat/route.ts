@@ -2,6 +2,29 @@ import { createHash } from "node:crypto";
 import Anthropic from "@anthropic-ai/sdk";
 import { SYSTEM_PROMPT } from "@/lib/ask-prompt";
 import { mockStream } from "@/lib/ask-mock";
+import { projects } from "@/lib/site-data";
+
+/**
+ * Opened from a case study, a visitor asks "what did he own on this project".
+ * The model needs to know which project that is.
+ *
+ * Two constraints shape how: the label is looked up from a fixed table rather
+ * than interpolated from the client, so a crafted path cannot inject prompt
+ * text; and it is prepended to the first user message rather than added to the
+ * system prompt, because the system prompt is the cached prefix and varying it
+ * per page would throw the cache away on every navigation.
+ */
+const PAGE_LABELS = new Map<string, string>([
+  ...projects.map((project) => [`/work/${project.slug}`, `the ${project.name} case study`] as const),
+  ["/about", "the About page"],
+  ["/resume", "the résumé page"],
+  ["/notes", "the Notes index"],
+]);
+
+const labelFor = (path: unknown) => {
+  if (typeof path !== "string" || path.length > 120) return null;
+  return PAGE_LABELS.get(path) ?? (path.startsWith("/notes/") ? "a published note" : null);
+};
 
 export const runtime = "nodejs";
 
@@ -57,11 +80,20 @@ export async function POST(request: Request) {
   if (messages[0].role !== "user") return error("Please check your message.", 400);
   if (messages[messages.length - 1].role !== "user") return error("Please check your message.", 400);
 
+  const label = labelFor(data.path);
+  if (label) {
+    messages[0] = {
+      role: "user",
+      content: `(Context: the visitor is reading ${label}. Resolve "this project" and similar references accordingly.)\n\n${messages[0].content as string}`,
+    };
+  }
+
   // Design-review mode: canned answers, no API call, no key. Double-gated so a
   // production build cannot serve mock content even if the flag leaks into env.
   if (process.env.NODE_ENV !== "production" && process.env.ASK_MOCK === "1") {
     const question = String(messages[messages.length - 1].content);
-    return new Response(mockStream(question), {
+    const mockPath = typeof data.path === "string" ? data.path : "";
+    return new Response(mockStream(question, mockPath), {
       headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" },
     });
   }
