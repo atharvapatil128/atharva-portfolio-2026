@@ -709,7 +709,7 @@ p { text-wrap: pretty; }
 
 /* Secondary pages */
 .editorial-hero { display: grid; padding-top: clamp(76px, 9vh, 116px); padding-bottom: clamp(84px, 10vh, 128px); }
-.editorial-hero h1, .about-hero h1, .contact-hero h1, .resume-placeholder h1, .note-article h1 { font-size: clamp(54px, 6.5vw, 94px); line-height: .98; letter-spacing: -0.04em; font-weight: 600; }
+.editorial-hero h1, .about-hero h1, .contact-hero h1, .resume-placeholder h1 { font-size: clamp(54px, 6.5vw, 94px); line-height: .98; letter-spacing: -0.04em; font-weight: 600; }
 .editorial-hero > p { max-width: 780px; margin-top: 30px; color: var(--text-secondary); font-size: 20px; line-height: 30px; }
 .notes-index { padding-top: var(--section-space); padding-bottom: var(--section-space); background: var(--field-warm); }
 .notes-index h2 {
@@ -803,25 +803,29 @@ p { text-wrap: pretty; }
 .note-article { max-width: 1180px; margin: 0 auto; padding: 100px var(--page-pad) 140px; }
 .note-article > header { max-width: 980px; }
 .note-article header > p:last-child { max-width: 720px; margin-top: 28px; color: var(--text-secondary); font-size: 20px; line-height: 30px; }
-.note-article h1 { margin-top: 20px; }
+/* An article is read, not scanned from across the room, so it uses a tighter
+   scale than the page heroes. Against 18px body the headings previously ran
+   5.2x (h1) and 2.9x (h2), which made the page alternate between billboard and
+   paragraph instead of holding one reading rhythm. */
+.note-article h1 { margin-top: 20px; font-size: clamp(34px, 4vw, 52px); line-height: 1.06; letter-spacing: -.032em; font-weight: 600; }
 .note-article-meta { display: flex; flex-wrap: wrap; gap: 10px 24px; color: var(--text-secondary); }
 .note-article-meta span + span::before { content: ""; display: inline-block; width: 22px; height: 1px; margin: 0 14px 3px 0; background: var(--line); }
 
 .note-story { margin-top: clamp(76px, 9vw, 118px); }
-.note-lede { max-width: 780px; color: var(--ink); font-size: clamp(22px, 2.25vw, 29px); line-height: 1.42; letter-spacing: -.015em; }
-.note-story > section { max-width: 780px; margin: clamp(82px, 9vw, 118px) auto 0; }
-.note-story h2 { font-size: clamp(34px, 4vw, 52px); font-weight: 600; line-height: 1.04; letter-spacing: -.035em; }
+.note-lede { max-width: 780px; color: var(--ink); font-size: clamp(20px, 1.75vw, 23px); line-height: 1.5; letter-spacing: -.015em; }
+.note-story > section { max-width: 780px; margin: clamp(52px, 5vw, 68px) auto 0; }
+.note-story h2 { font-size: clamp(23px, 2.2vw, 29px); font-weight: 600; line-height: 1.22; letter-spacing: -.022em; }
 .note-story section > p { margin-top: 24px; color: var(--text-secondary); font-size: 18px; line-height: 30px; }
 .note-story strong { color: var(--ink); font-weight: 600; }
 .note-thesis { max-width: 940px; margin: clamp(60px, 7vw, 88px) 0 0 auto; padding: clamp(28px, 4vw, 48px); border-radius: var(--radius-card); color: var(--surface); background-color: var(--strong); background-image: var(--face-dark); box-shadow: var(--lift-panel), var(--lift-face); }
 .note-thesis > span { color: color-mix(in srgb, var(--signal) 84%, white); }
-.note-thesis p { max-width: 760px; margin-top: 20px; font-size: clamp(28px, 3.4vw, 43px); line-height: 1.12; letter-spacing: -.03em; }
+.note-thesis p { max-width: 760px; margin-top: 16px; font-size: clamp(19px, 1.9vw, 25px); line-height: 1.34; letter-spacing: -.03em; }
 .note-decision-ledger { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-card-gap); width: min(1080px, calc(100vw - (var(--page-pad) * 2))); margin: 44px 50% 0; padding: 0; list-style: none; transform: translateX(-50%); }
 .note-decision-ledger li { min-height: 286px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius-field); background-color: var(--surface); background-image: var(--face-light); box-shadow: var(--lift-panel), var(--lift-face); }
 .note-decision-ledger li > span { color: var(--text-tertiary); }
 .note-decision-ledger h3 { margin-top: 34px; font-size: 23px; font-weight: 500; line-height: 1.22; letter-spacing: -.02em; }
 .note-decision-ledger li p { margin-top: 18px; color: var(--text-secondary); font-size: 14px; line-height: 21px; }
-.note-pullquote { max-width: 980px; margin: clamp(90px, 10vw, 132px) auto 0; padding: clamp(36px, 5vw, 64px) 0; border-block: 1px solid var(--line); font-size: clamp(34px, 4.8vw, 62px); font-weight: 500; line-height: 1.08; letter-spacing: -.04em; }
+.note-pullquote { max-width: 980px; margin: clamp(90px, 10vw, 132px) auto 0; padding: clamp(36px, 5vw, 64px) 0; border-block: 1px solid var(--line); font-size: clamp(21px, 2.3vw, 29px); font-weight: 500; line-height: 1.35; letter-spacing: -.022em; }
 .note-list-block { display: grid; gap: 0; margin: 34px 0 0; padding: 0; list-style: none; border-block: 1px solid var(--line); }
 .note-list-block li { padding: 22px 0; border-bottom: 1px solid var(--line); color: var(--text-secondary); font-size: 17px; line-height: 27px; }
 .note-list-block li:last-child { border-bottom: 0; }
