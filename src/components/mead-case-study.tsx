@@ -133,7 +133,7 @@ export function MeadCaseStudy() {
           <section className="mead-meaning">
             <div className="mead-meaning-copy">
               <h2>Meaningful engagement is often non-verbal.</h2>
-              <p>For people living with advanced dementia, meaningful engagement can appear through eye gaze, facial expression, gesture, or vocalisation. The design problem was not simply how to capture a video. It was how to help a busy caregiver notice and act on those signals.</p>
+              <p>For people living with advanced dementia, meaningful engagement can appear through eye gaze, facial expression, gesture, or vocalisation. Capturing a video was the straightforward part. The real design problem was helping a busy caregiver notice those signals and act on them.</p>
             </div>
             <div className="mead-signal-board">
               {signals.map(([title, body], index) => (

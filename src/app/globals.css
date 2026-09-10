@@ -811,13 +811,17 @@ p { text-wrap: pretty; }
 .note-article-meta { display: flex; flex-wrap: wrap; gap: 10px 24px; color: var(--text-secondary); }
 .note-article-meta span + span::before { content: ""; display: inline-block; width: 22px; height: 1px; margin: 0 14px 3px 0; background: var(--line); }
 
-.note-story { margin-top: clamp(76px, 9vw, 118px); }
+.note-story { margin-top: clamp(52px, 5.5vw, 76px); }
+/* A heading has to bind to the text it introduces. Previously h2-to-paragraph
+   and paragraph-to-paragraph were both 24px, so nothing grouped: every block
+   floated at the same distance and the article read as a list of fragments. */
+.note-story section > h2 + p { margin-top: 15px; }
 .note-lede { max-width: 780px; color: var(--ink); font-size: clamp(20px, 1.75vw, 23px); line-height: 1.5; letter-spacing: -.015em; }
 .note-story > section { max-width: 780px; margin: clamp(52px, 5vw, 68px) auto 0; }
 .note-story h2 { font-size: clamp(23px, 2.2vw, 29px); font-weight: 600; line-height: 1.22; letter-spacing: -.022em; }
 .note-story section > p { margin-top: 24px; color: var(--text-secondary); font-size: 18px; line-height: 30px; }
 .note-story strong { color: var(--ink); font-weight: 600; }
-.note-thesis { max-width: 940px; margin: clamp(60px, 7vw, 88px) 0 0 auto; padding: clamp(28px, 4vw, 48px); border-radius: var(--radius-card); color: var(--surface); background-color: var(--strong); background-image: var(--face-dark); box-shadow: var(--lift-panel), var(--lift-face); }
+.note-thesis { max-width: 940px; margin: clamp(48px, 5vw, 68px) 0 0 auto; padding: clamp(28px, 4vw, 48px); border-radius: var(--radius-card); color: var(--surface); background-color: var(--strong); background-image: var(--face-dark); box-shadow: var(--lift-panel), var(--lift-face); }
 .note-thesis > span { color: color-mix(in srgb, var(--signal) 84%, white); }
 .note-thesis p { max-width: 760px; margin-top: 16px; font-size: clamp(19px, 1.9vw, 25px); line-height: 1.34; letter-spacing: -.03em; }
 .note-decision-ledger { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-card-gap); width: min(1080px, calc(100vw - (var(--page-pad) * 2))); margin: 44px 50% 0; padding: 0; list-style: none; transform: translateX(-50%); }
@@ -825,7 +829,7 @@ p { text-wrap: pretty; }
 .note-decision-ledger li > span { color: var(--text-tertiary); }
 .note-decision-ledger h3 { margin-top: 34px; font-size: 23px; font-weight: 500; line-height: 1.22; letter-spacing: -.02em; }
 .note-decision-ledger li p { margin-top: 18px; color: var(--text-secondary); font-size: 14px; line-height: 21px; }
-.note-pullquote { max-width: 980px; margin: clamp(90px, 10vw, 132px) auto 0; padding: clamp(36px, 5vw, 64px) 0; border-block: 1px solid var(--line); font-size: clamp(21px, 2.3vw, 29px); font-weight: 500; line-height: 1.35; letter-spacing: -.022em; }
+.note-pullquote { max-width: 980px; margin: clamp(60px, 6.5vw, 84px) auto 0; padding: clamp(36px, 5vw, 64px) 0; border-block: 1px solid var(--line); font-size: clamp(21px, 2.3vw, 29px); font-weight: 500; line-height: 1.35; letter-spacing: -.022em; }
 .note-list-block { display: grid; gap: 0; margin: 34px 0 0; padding: 0; list-style: none; border-block: 1px solid var(--line); }
 .note-list-block li { padding: 22px 0; border-bottom: 1px solid var(--line); color: var(--text-secondary); font-size: 17px; line-height: 27px; }
 .note-list-block li:last-child { border-bottom: 0; }
@@ -850,7 +854,7 @@ p { text-wrap: pretty; }
 .note-sources p { margin-top: 14px; color: var(--text-secondary); }
 .note-sources ul { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 20px 0 0; padding: 0; list-style: none; }
 .note-sources a { border-bottom: 1px solid var(--ink); }
-.note-next { display: grid; grid-template-columns: 1fr auto; gap: 18px 32px; align-items: end; margin-top: clamp(96px, 11vw, 144px); padding: clamp(30px, 4vw, 48px); border-radius: var(--radius-card); color: var(--surface); background-color: var(--strong); background-image: var(--face-dark); box-shadow: var(--lift-panel), var(--lift-face); transition: transform var(--duration-fast) var(--ease-smooth-out), box-shadow var(--duration-fast) var(--ease-smooth-out); }
+.note-next { display: grid; grid-template-columns: 1fr auto; gap: 18px 32px; align-items: end; margin-top: clamp(72px, 8vw, 100px); padding: clamp(30px, 4vw, 48px); border-radius: var(--radius-card); color: var(--surface); background-color: var(--strong); background-image: var(--face-dark); box-shadow: var(--lift-panel), var(--lift-face); transition: transform var(--duration-fast) var(--ease-smooth-out), box-shadow var(--duration-fast) var(--ease-smooth-out); }
 .note-next:hover { transform: translateY(-2px); box-shadow: var(--lift-panel-raised), var(--lift-face); }
 .note-next > span:first-child { grid-column: 1 / -1; color: #aeb3bd; }
 .note-next strong { max-width: 850px; color: inherit; font-size: clamp(28px, 4vw, 50px); line-height: 1.06; letter-spacing: -.035em; }

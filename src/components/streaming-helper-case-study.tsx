@@ -197,7 +197,7 @@ export function StreamingHelperCaseStudy() {
               <h2>The problem changed when I stopped counting options.</h2>
               <p className="mono">30 SURVEY RESPONSES<br />7 INTERVIEWS<br />AFFINITY SYNTHESIS</p>
             </div>
-            <p className="sh-section-intro">The recurring pattern was not discovery. It was hesitation: browsing for several minutes, switching services, delaying the choice, or falling back on something familiar.</p>
+            <p className="sh-section-intro">The recurring pattern was hesitation rather than discovery: browsing for several minutes, switching services, delaying the choice, or falling back on something familiar.</p>
             <div className="sh-loop">
               {researchLoop.map(([title, body], index) => (
                 <article key={title}>

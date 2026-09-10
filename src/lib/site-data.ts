@@ -27,7 +27,7 @@ export const projects: Project[] = [
     role: "Independent product designer",
     period: "Semester-long capstone · 2026",
     summary:
-      "Streaming was not failing people with too little content. It was asking for too much decision-making at the end of the day.",
+      "Streaming has never had too little content. It asks for too much decision-making at the end of a long day.",
     contribution:
       "I led the research, reframing, interaction design, prototyping, and iterative testing. The capstone concept and later product are related but intentionally presented as distinct tracks.",
     evidence: ["30 survey responses", "7 interviews", "5+ iterative prototype tests"],

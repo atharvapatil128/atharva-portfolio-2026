@@ -27,9 +27,9 @@ function PorscheDesignSystemNote() {
     <div className="note-story">
       <p className="note-lede">
         For an Interaction Design Methods assignment, I studied Porsche’s public web design system,
-        rebuilt a homepage composition from its existing parts, and designed one new component. The
-        interesting challenge was not making something that looked like Porsche. It was making something
-        new that behaved as though it had always belonged there.
+        rebuilt a homepage composition from its existing parts, and designed one new component.
+        Making something that looks like Porsche is the easy half. The harder half is making
+        something new that behaves as though it had been there all along.
       </p>
 
       <aside className="note-thesis">
@@ -42,7 +42,7 @@ function PorscheDesignSystemNote() {
         <p>
           I began by identifying five principles in Porsche’s design language: monochrome interfaces,
           gently rounded geometry, generous space, reduced information, and iconic brand assets. These
-          principles appeared in the components, but also in the relationships between them—image scale,
+          principles appeared in the components, but also in the relationships between them: image scale,
           button hierarchy, spacing patterns, and how layouts changed across viewports.
         </p>
         <ul className="note-principles" aria-label="Porsche design principles examined">
@@ -124,7 +124,7 @@ function PorscheDesignSystemNote() {
       </section>
 
       <blockquote className="note-pullquote">
-        “A design system is not a box of matching parts. It is an agreement about how new decisions should behave.”
+        “A design system is less a box of matching parts than an agreement about how the next decision should behave.”
       </blockquote>
 
       <section>
@@ -132,8 +132,8 @@ function PorscheDesignSystemNote() {
         <p>
           The exercise made the hidden labor of a mature design system visible. Variants that appear
           effortless in a final interface depend on detailed constraints, naming, responsive behavior,
-          and documentation. When one footer variant would not switch cleanly in Figma, the problem was
-          not simply the component—it was the absence of guidance for someone encountering it from outside.
+          and documentation. When one footer variant would not switch cleanly in Figma, the component
+          itself was fine. What was missing was any guidance for someone meeting it from the outside.
         </p>
         <p>
           I left with a stricter standard for extensions: understand the system at multiple scales, reuse
