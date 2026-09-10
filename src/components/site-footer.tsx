@@ -20,7 +20,7 @@ export function SiteFooter() {
       <div className="footer-base">
         <Link className="footer-brand" href="/" aria-label="Atharva Patil, home"><BrandMark className="brand-mark" /><span>Atharva Patil<br /><small>Product designer</small></span></Link>
         <nav aria-label="Footer navigation"><SectionLink href="/#selected-work">Work</SectionLink><Link href="/notes">Notes</Link><Link href="/about">About</Link><Link href="/resume">Résumé</Link></nav>
-        <div className="footer-status"><span className="availability footer-availability"><i aria-hidden="true" />Available for the right team</span><p className="footer-credit">Designed + built by Atharva · <span className="footer-location"><LocationPin className="location-pin" />Bloomington, Indiana</span></p></div>
+        <div className="footer-status"><span className="availability footer-availability"><i aria-hidden="true" />Available for the right team</span><p className="footer-credit">Designed + built by Atharva<span className="footer-location"><LocationPin className="location-pin" />Bloomington, Indiana</span></p></div>
       </div>
     </footer>
   );

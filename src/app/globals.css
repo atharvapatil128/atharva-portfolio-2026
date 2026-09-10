@@ -1408,7 +1408,11 @@ p { text-wrap: pretty; }
 .footer-status { justify-self: end; display: grid; gap: var(--space-micro); justify-items: end; }
 .footer-availability { justify-content: flex-end; color: var(--canvas); font: 500 11px/16px var(--font-mono), monospace; }
 .footer-credit { color: #9da3ad; text-align: right; }
-.footer-credit .footer-location { margin-left: 8px; color: #b7bbc3; }
+/* The separator is generated so it spaces evenly on both sides: the span's own
+   inline-flex gap handles dot-to-pin, this margin handles name-to-dot. A literal
+   "·" in the markup plus a margin here made the gaps asymmetric. */
+.footer-credit .footer-location { margin-left: 7px; color: #b7bbc3; }
+.footer-credit .footer-location::before { content: "·"; color: #6f757f; }
 
 .showcase-hero { min-height: 900px; padding-top: 64px; padding-bottom: 74px; text-align: center; }
 .showcase-copy { max-width: 890px; margin: 0 auto; }
@@ -1458,7 +1462,10 @@ p { text-wrap: pretty; }
   .footer-motion { min-height: 240px; margin-inline: calc(var(--page-pad) * -1); }
   .footer-signal-canvas { inset: -28px -48px; width: calc(100% + 96px); height: calc(100% + 56px); -webkit-mask-image: radial-gradient(ellipse 90% 86% at 76% 50%, #000 0%, rgba(0,0,0,.9) 48%, transparent 100%); mask-image: radial-gradient(ellipse 90% 86% at 76% 50%, #000 0%, rgba(0,0,0,.9) 48%, transparent 100%); }
   .footer-base { display: grid; grid-template-columns: 1fr; gap: 28px; }
-  .site-footer .footer-base nav { justify-content: flex-start; flex-wrap: wrap; gap: 18px 24px; }
+  /* justify-self positions the nav within its grid column; justify-content only
+     positions the links inside it. Without this the nav stayed centred and sat
+     indented from the brand and status blocks. */
+  .site-footer .footer-base nav { justify-self: start; justify-content: flex-start; flex-wrap: wrap; gap: 18px 24px; }
   .footer-status { grid-column: auto; }
   .showcase-hero { min-height: auto; padding-top: 54px; padding-bottom: 64px; }
   .showcase-copy h1 { font-size: 48px; }
