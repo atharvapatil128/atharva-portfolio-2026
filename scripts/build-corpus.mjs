@@ -12,6 +12,7 @@ import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
 const rel = (...parts) => path.join(root, ...parts);
+const normalizeNewlines = (value) => value.replace(/\r\n?/g, "\n");
 
 const entities = {
   "&apos;": "’",
@@ -78,7 +79,10 @@ const readMarkdownDir = async (dir) => {
     (name) => name.endsWith(".md") && name.toLowerCase() !== "readme.md" && !EXCLUDED.has(name),
   );
   return Promise.all(
-    names.sort().map(async (name) => ({ name, body: (await readFile(rel(dir, name), "utf8")).trim() })),
+    names.sort().map(async (name) => ({
+      name,
+      body: normalizeNewlines(await readFile(rel(dir, name), "utf8")).trim(),
+    })),
   );
 };
 
@@ -160,7 +164,7 @@ const buildCorpus = async () => {
   const tsxBlocks = [];
   for (const [label, file] of tsxSources) {
     if (!existsSync(rel(file))) continue;
-    const prose = proseFromTsx(await readFile(rel(file), "utf8"));
+    const prose = proseFromTsx(normalizeNewlines(await readFile(rel(file), "utf8")));
     if (prose) tsxBlocks.push(`### ${label}\n\n${prose}`);
   }
 

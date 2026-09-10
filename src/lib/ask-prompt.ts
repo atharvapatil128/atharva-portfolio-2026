@@ -1,7 +1,7 @@
 import { CORPUS } from "@/lib/ask-corpus.generated";
 
 /**
- * The assistant runs on Haiku 4.5, which needs its grounding rules stated
+ * The assistant runs on Gemini Flash, which needs its grounding rules stated
  * explicitly rather than inferred. Every rule here exists because breaking it
  * would cost Atharva credibility with a recruiter, which is worse than the
  * assistant simply not knowing something.
