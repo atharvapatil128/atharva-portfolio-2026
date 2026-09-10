@@ -73,7 +73,7 @@ export function AskProvider({ children }: { children: ReactNode }) {
 
   // Reading it counts as seeing it, including answers that arrive while open.
   useEffect(() => {
-    if (open && !streaming) markAskSeen();
+    if (open && !streaming && hasUnread(readAsk())) markAskSeen();
   }, [open, streaming]);
 
   useEffect(() => {

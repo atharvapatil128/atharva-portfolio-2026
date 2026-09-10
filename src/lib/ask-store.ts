@@ -23,6 +23,12 @@ const KEY = "ask.conversation.v1";
 const EMPTY: AskState = { turns: [], answeredAt: 0, seenAt: 0 };
 
 let memory: AskState = EMPTY;
+/**
+ * Parse once, then serve the cached object. Re-parsing on every read handed
+ * back a new `turns` array each time, so a subscriber calling setState with it
+ * always saw a changed reference and re-rendered forever.
+ */
+let hydrated = false;
 const listeners = new Set<() => void>();
 
 const isTurn = (value: unknown): value is Turn => {
@@ -33,6 +39,8 @@ const isTurn = (value: unknown): value is Turn => {
 
 export const readAsk = (): AskState => {
   if (typeof window === "undefined") return EMPTY;
+  if (hydrated) return memory;
+  hydrated = true;
   try {
     const raw = window.sessionStorage.getItem(KEY);
     if (!raw) return memory;

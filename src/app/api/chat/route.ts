@@ -163,6 +163,13 @@ export async function POST(request: Request) {
         429,
       );
     }
+    // 503 UNAVAILABLE is Google's side being busy, not us being out of quota.
+    // It clears on its own, so the copy says "in a moment" rather than sending
+    // the visitor away for the day.
+    if (requestError instanceof ApiError && (requestError.status === 503 || requestError.status === 500)) {
+      console.warn("[ask] upstream busy");
+      return error("The assistant is busy for a moment. Please try that again shortly.", 503);
+    }
     if (requestError instanceof ApiError && (requestError.status === 401 || requestError.status === 403)) {
       console.error("[ask] auth failed", requestError);
       return error("The assistant is temporarily unavailable. Please use the contact page.", 503);
