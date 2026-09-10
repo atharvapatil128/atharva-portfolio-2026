@@ -18,6 +18,12 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   async redirects() {
     return [
+      // Preserve the public URLs from the previous Readymag site during cutover.
+      { source: "/1", destination: "/", permanent: true },
+      { source: "/works", destination: "/#selected-work", permanent: true },
+      { source: "/project1", destination: "/work/streaming-helper", permanent: true },
+      { source: "/project2", destination: "/work/mead", permanent: true },
+      { source: "/project3", destination: "/work/field-maintenance", permanent: true },
       {
         source: "/notes/karting-and-feedback",
         destination: "/notes/extending-porsche-design-system",

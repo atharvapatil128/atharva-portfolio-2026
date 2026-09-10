@@ -18,10 +18,10 @@ export default function HomePage() {
           <div className="hero-copy">
             <HeroReveal>
               <h1 id="hero-title" className="t-stagger-line t-stagger-line--1">
-                I take fuzzy problems all the way to something people can use.
+                AI takes me to a prototype fast. <mark className="signal-emphasis">Taste</mark> takes it all the way.
               </h1>
               <p className="hero-summary t-stagger-line t-stagger-line--2">
-                I&apos;m Atharva, a product designer with a background in HCI and computer science. I research, prototype, test, and sometimes write the front end too.
+                I&apos;m Atharva, a product designer with an HCI and computer science background. I research, prototype, test, and write the front end, from streaming apps to embassy tooling.
               </p>
             </HeroReveal>
             <p className="availability-line mono"><i aria-hidden="true" />Available for product design roles · 2026</p>
