@@ -86,7 +86,30 @@ const section = (title, body) => (body && body.trim() ? `\n\n## ${title}\n\n${bo
 
 const buildCorpus = async () => {
   // Node strips the TypeScript annotations natively; site-data.ts has no imports.
-  const { projects, notes } = await import(pathToFileURL(rel("src/lib/site-data.ts")).href);
+  const { projects, notes, resumeUrl } = await import(pathToFileURL(rel("src/lib/site-data.ts")).href);
+
+  /*
+   * A recruiter's first question is often "is there a CV", not a question about
+   * the work at all. The map is generated from the same data the site renders
+   * from, so a new project or note cannot leave the assistant describing a site
+   * that no longer exists.
+   */
+  const siteMap = [
+    "These are the pages of this site and what each one holds. Point visitors to the right one by path when it answers them better than you can.",
+    "",
+    "- `/` Home. Introduction, selected work, and a short set of highlights.",
+    "- `/about` About. How Atharva works, his background, and what he is like to work with.",
+    ...projects.map((project) => `- \`/work/${project.slug}\` ${project.name} case study. ${project.descriptor}`),
+    "- `/notes` Notes. Written pieces on design and process.",
+    ...notes
+      .filter((note) => note.status === "published")
+      .map((note) => `- \`/notes/${note.slug}\` "${note.title}" (${note.type}, ${note.date}).`),
+    `- \`/resume\` Résumé. Always points at the current version, kept in Google Drive so it never goes stale. There is a view link and a PDF download. The document itself is at ${resumeUrl}`,
+    "- `/contact` Contact. A form that reaches Atharva's inbox directly, and his email address. This is where to send anything you cannot answer.",
+    "- `/ask` This assistant, on its own page.",
+    "",
+    "A visitor asking for a CV, résumé, or portfolio PDF wants `/resume`. A visitor who wants to reach Atharva wants `/contact`.",
+  ].join("\n");
 
   const projectBlocks = projects.map((project) => {
     const decisions = project.decisions
@@ -152,6 +175,7 @@ const buildCorpus = async () => {
 
   return [
     header,
+    section("Where things are on this site", siteMap),
     section("Projects", projectBlocks.join("\n\n---\n\n")),
     section("Published notes", noteList),
     section("Background and perspective", brain.map((file) => file.body).join("\n\n---\n\n")),
