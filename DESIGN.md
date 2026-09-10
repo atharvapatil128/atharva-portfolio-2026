@@ -16,6 +16,8 @@ colors:
   coral: "#E97B72"
   oat: "#DDD1B0"
   slate: "#4F5966"
+  ink-on-signal: "#1F222A"
+  line-active: "color-mix(in srgb, {colors.strong} 30%, {colors.line})"
 typography:
   display:
     fontFamily: "Instrument Sans, Arial, sans-serif"
@@ -61,8 +63,10 @@ spacing:
 components:
   button-primary:
     backgroundColor: "{colors.signal}"
-    textColor: "{colors.strong}"
+    backgroundImage: "{face.signal}"
+    textColor: "{colors.ink-on-signal}"
     typography: "{typography.body}"
+    fontWeight: 600
     rounded: "{rounded.pill}"
     padding: "11px 24px 12px"
     height: "48px"
@@ -184,6 +188,10 @@ Light surfaces move from white or warm porcelain at the top-left toward a slight
 
 **The Restraint Rule.** A surface may use tonal separation and a shadow when it represents a control, card, panel, or framed artifact. Page fields and reading columns remain flat. Colored project media can keep its own authored depth instead of receiving the global white-face treatment.
 
+**The Conditional Translucency Rule.** Translucency is always progressive enhancement, never the base state. A frosted surface declares its solid fill first and only becomes translucent inside a feature query for backdrop blur; without that guard, a browser lacking the filter renders unblurred content bleeding through the panel. Every frosted surface also honours a reduced-transparency preference by returning to its solid fill.
+
+**Two tiers of depth.** Shared interface surfaces — controls, cards, panels, form fields, framed media — take their depth from the shared tokens so they read as one system. Authored artifacts such as device mockups, case-study hero compositions, and floating product frames keep deliberately heavier bespoke shadows, because an object floating well above the page cannot borrow a button's cast shadow and still look physical. Fact grids, list rows, and other divisions *within* a surface stay flat; they are not objects resting on the page.
+
 ## Shapes
 
 Cards use generous but disciplined curves. Primary project and personal cards use 24px corners; smaller note fields use 18px; floating interactive layers may reach 26px; actions are fully pill-shaped. Borders are usually one quiet hairline, with stronger two-pixel outlines reserved for the resolved hero surface.
@@ -197,10 +205,14 @@ The recurring silhouette is a rounded field containing precise internal geometry
 ### Buttons
 
 - **Shape:** Fully pill-shaped with a 48px minimum height.
-- **Primary:** Signal Orange with Soft Black text and compact horizontal padding.
-- **Secondary:** White Surface with a Hairline Gray border; it darkens structurally on hover rather than gaining more color.
+- **Primary:** A shallow Signal Orange gradient carrying Ink-on-Signal text at weight 600. The label is deliberately not Soft Black; see The Coupled Contrast Rule below.
+- **Secondary:** White Surface with a Hairline Gray border. On hover the edge lifts to Line Active and gains a faint halo rather than snapping to a hard outline.
 - **Surface:** A shallow directional face and Control Lift, both derived from the shared tokens rather than one-off gradients.
-- **Hover / Focus:** Fine pointers receive a 2px upward lift and a slightly stronger cast shadow. Keyboard focus uses a clear cobalt outline outside the control. Active state returns to the baseline quickly.
+- **Hover / Focus:** Fine pointers receive a 2px upward lift and a slightly stronger cast shadow. Hover *lightens* the face rather than deepening it, which suits a control rising toward the light and keeps contrast climbing rather than falling. Keyboard focus uses a clear cobalt outline outside the control. Active state returns to the baseline quickly.
+
+**The Coupled Contrast Rule.** Primary button text sits on the darkest stop of the Signal gradient, so the label colour and that stop are a single decision. Ink-on-Signal is as light as the gradient currently allows; the gradient's dark stop is held shallow for the same reason. Measured against Ink-on-Signal, the gradient runs 5.81:1 to 4.72:1 at rest and 6.06:1 to 4.90:1 on hover — every stop above the 4.5:1 floor, with the resting dark end the tightest point in the system. Lightening the label without lightening that stop, or deepening the gradient without darkening the label, drops the control below AA silently and with no visual warning. Change them together or not at all.
+
+**No light text on Signal Orange.** At 16px nothing lighter than roughly `#252525` clears 4.5:1 on this orange, and white measures about 3.1:1. Dark text is a contrast requirement here, not a stylistic preference.
 
 ### Cards / Containers
 
