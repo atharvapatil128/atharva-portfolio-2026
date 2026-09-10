@@ -31,7 +31,7 @@ export function NotesPreviewStack({ notes }: { notes: readonly NotePreview[] }) 
             <span className={styles.rule} aria-hidden="true" />
             <strong>{note.title}</strong>
             <p>{note.description}</p>
-            <span className={`${styles.action} mono`}>Read note <span aria-hidden="true">↗</span></span>
+            <span className={`${styles.action} mono`}>Read note <span aria-hidden="true">↗︎</span></span>
           </Link>
         </motion.div>
       ))}

@@ -48,7 +48,7 @@ export default async function NotePage({ params }: { params: Promise<{ slug: str
             <Link className="note-next" href={`/notes/${relatedNote.slug}`}>
               <span className="mono">Continue reading</span>
               <strong>{relatedNote.title}</strong>
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true">↗︎</span>
             </Link>
           ) : null}
         </article>

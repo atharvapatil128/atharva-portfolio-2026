@@ -25,7 +25,7 @@ export default function ResumePage() {
             <h1>A living résumé, one reliable link.</h1>
             <p>The current version lives in Google Drive, so this page always points to the latest document rather than a file that quietly goes out of date.</p>
             <div className="resume-actions">
-              <a className="button button-signal" href={resumeUrl} target="_blank" rel="noreferrer">View résumé <span aria-hidden="true">↗</span></a>
+              <a className="button button-signal" href={resumeUrl} target="_blank" rel="noreferrer">View résumé <span aria-hidden="true">↗︎</span></a>
               <a className="button button-quiet" href={resumeDownloadUrl}>Download PDF</a>
             </div>
             <p className="resume-source mono">View-only · Updated at the source</p>
@@ -44,7 +44,7 @@ export default function ResumePage() {
             </ul>
             <div className="resume-sheet-foot">
               <span>Bloomington, Indiana</span>
-              <a href={resumeUrl} target="_blank" rel="noreferrer" aria-label="Open current résumé">Open <span aria-hidden="true">↗</span></a>
+              <a href={resumeUrl} target="_blank" rel="noreferrer" aria-label="Open current résumé">Open <span aria-hidden="true">↗︎</span></a>
             </div>
           </aside>
         </section>

@@ -101,7 +101,7 @@ export function SiteHeader() {
               {link.label}
             </SectionLink>
           ))}
-          <a href={resumeUrl} target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗</span></a>
+          <a href={resumeUrl} target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗︎</span></a>
           <Link href="/contact" aria-current={mounted && pathname.startsWith("/contact") ? "page" : undefined}>Let&apos;s talk</Link>
         </nav>
       </details>

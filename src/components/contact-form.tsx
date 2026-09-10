@@ -123,7 +123,7 @@ export function ContactForm() {
 
       <div className="contact-form-foot">
         <p role="status" aria-live="polite">{failed ? "" : status}</p>
-        <button className="button button-signal" type="submit" disabled={sending}>{sending ? "Sending…" : "Send it my way"} <span aria-hidden="true">↗</span></button>
+        <button className="button button-signal" type="submit" disabled={sending}>{sending ? "Sending…" : "Send it my way"} <span aria-hidden="true">↗︎</span></button>
       </div>
     </form>
   );

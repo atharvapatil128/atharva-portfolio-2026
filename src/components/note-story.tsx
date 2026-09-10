@@ -13,7 +13,7 @@ function ArticleFigure({ src, alt, caption, className = "" }: FigureProps) {
     <figure className={`note-figure ${className}`.trim()}>
       <a className="note-figure-link" href={src} target="_blank" rel="noreferrer" aria-label={`Open full-size figure: ${caption}`}>
         <Image src={src} alt={alt} width={1320} height={1708} sizes="(max-width: 760px) 100vw, 1040px" />
-        <span className="note-figure-zoom mono">Open full-size <span aria-hidden="true">↗</span></span>
+        <span className="note-figure-zoom mono">Open full-size <span aria-hidden="true">↗︎</span></span>
       </a>
       <figcaption>{caption}</figcaption>
     </figure>
@@ -146,8 +146,8 @@ function PorscheDesignSystemNote() {
         <h2>Source material</h2>
         <p>Based on my INFO-I 543 Interaction Design Methods assignment from Spring 2025.</p>
         <ul>
-          <li><a href="https://www.porsche.com/usa/" target="_blank" rel="noreferrer">Porsche USA <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://designsystem.porsche.com/v3/" target="_blank" rel="noreferrer">Porsche Design System <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.porsche.com/usa/" target="_blank" rel="noreferrer">Porsche USA <span aria-hidden="true">↗︎</span></a></li>
+          <li><a href="https://designsystem.porsche.com/v3/" target="_blank" rel="noreferrer">Porsche Design System <span aria-hidden="true">↗︎</span></a></li>
         </ul>
       </footer>
     </div>

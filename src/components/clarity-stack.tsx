@@ -40,7 +40,7 @@ export function ClarityStack() {
         transition={spring}
       >
         <span>CASE STUDY / STREAMING HELPER</span>
-        <Link href="/work/streaming-helper">Choosing together, faster <b>↗</b></Link>
+        <Link href="/work/streaming-helper">Choosing together, faster <b>↗︎</b></Link>
       </motion.div>
 
       <motion.div
@@ -49,7 +49,7 @@ export function ClarityStack() {
         transition={spring}
       >
         <span>CASE STUDY / MEAD</span>
-        <Link href="/work/mead">Care, made more legible <b>↗</b></Link>
+        <Link href="/work/mead">Care, made more legible <b>↗︎</b></Link>
       </motion.div>
 
       <motion.div
@@ -58,7 +58,7 @@ export function ClarityStack() {
         transition={spring}
       >
         <span>FIELD NOTE / AI WORKFLOW</span>
-        <Link href="/notes/building-this-portfolio">Building this portfolio <b>↗</b></Link>
+        <Link href="/notes/building-this-portfolio">Building this portfolio <b>↗︎</b></Link>
       </motion.div>
 
       <motion.button
