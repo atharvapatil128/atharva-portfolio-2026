@@ -1,0 +1,277 @@
+/*
+ * Composition borrowed from poly.app: a single left-aligned column, the input
+ * as the hero object, speaker identity carried by a small marker rather than
+ * opposing chat bubbles. The material is this site's own, so the wood and
+ * frosted glass are replaced by canvas, warm field, and the standard lifts.
+ */
+
+.stage {
+  padding-block: clamp(48px, 7vw, 96px) clamp(64px, 8vw, 112px);
+}
+
+.intro {
+  width: min(100%, 720px);
+  margin: 0 auto clamp(32px, 4vw, 48px);
+}
+
+.intro h1 {
+  margin: 14px 0 18px;
+}
+
+.intro > p:last-child {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.console {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: min(100%, 720px);
+  margin-inline: auto;
+}
+
+/* Transcript ------------------------------------------------------------- */
+
+.transcript {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.turn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.speaker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.speakerMark {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background-color: var(--line);
+}
+
+.assistant .speakerMark { background-color: var(--signal); }
+
+/* A visitor's question reads as an aside; the answer reads as site prose. */
+.question .body {
+  padding: 16px 20px;
+  color: var(--ink);
+  background-color: color-mix(in srgb, var(--subtle) 55%, var(--canvas));
+  border-radius: var(--radius-field);
+}
+
+.answer .body {
+  padding: 22px 24px 24px;
+  color: var(--ink);
+  background-color: var(--surface);
+  background-image: var(--face-light);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-field);
+  box-shadow: var(--lift-panel);
+}
+
+.body p { margin: 0; }
+.body p + p { margin-top: 12px; }
+
+/*
+ * Streaming: only the paragraph still being written sits back, the way the
+ * poly.app transcript greys its newest words. Everything already finished
+ * reads at full contrast.
+ */
+.pending { color: var(--text-secondary); }
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background-color: var(--signal);
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+.thinking {
+  display: inline-flex;
+  gap: 5px;
+  padding: 4px 0;
+}
+
+.thinking i {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-pill);
+  background-color: var(--text-tertiary);
+  animation: pulse 1.2s var(--ease-in-out) infinite;
+}
+
+.thinking i:nth-child(2) { animation-delay: 150ms; }
+.thinking i:nth-child(3) { animation-delay: 300ms; }
+
+@keyframes pulse {
+  0%, 100% { opacity: .25; }
+  50% { opacity: 1; }
+}
+
+/* Composer --------------------------------------------------------------- */
+
+.composer {
+  position: sticky;
+  bottom: 24px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 10px 10px 10px 22px;
+  background-color: color-mix(in srgb, var(--field-warm) 70%, var(--surface));
+  background-image: var(--face-light);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-interactive);
+  box-shadow: var(--lift-panel-raised);
+  transition: box-shadow var(--duration-fast) var(--ease-smooth-out),
+    border-color var(--duration-fast) var(--ease-smooth-out);
+}
+
+.composer:focus-within {
+  border-color: color-mix(in srgb, var(--ink) 30%, var(--line));
+  box-shadow: var(--lift-panel-raised), 0 0 0 3px color-mix(in srgb, var(--signal) 16%, transparent);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  /* Correct before JS runs, so the field never flashes at full height. */
+  height: 28px;
+  min-height: 28px;
+  max-height: 160px;
+  overflow-y: auto;
+  padding: 0;
+  margin: 10px 0;
+  font: inherit;
+  line-height: 1.5;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  resize: none;
+  outline: none;
+}
+
+.input::placeholder { color: var(--text-tertiary); }
+
+.send {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: var(--ink-on-signal, #1f222a);
+  background-color: var(--signal);
+  border: 0;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform var(--duration-quick) var(--ease-smooth-out),
+    opacity var(--duration-quick) var(--ease-smooth-out);
+}
+
+.send svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.send:hover:not(:disabled) { transform: translateY(-1px); }
+.send:disabled { opacity: .35; cursor: default; }
+
+/* Suggestions ------------------------------------------------------------ */
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.suggestion {
+  padding: 9px 16px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: left;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: color var(--duration-quick) var(--ease-smooth-out),
+    border-color var(--duration-quick) var(--ease-smooth-out),
+    transform var(--duration-quick) var(--ease-smooth-out);
+}
+
+.suggestion:hover {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--ink) 30%, var(--line));
+  transform: translateY(-1px);
+}
+
+/* The site has no global visually-hidden utility, and globals.css is live. */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Footnotes -------------------------------------------------------------- */
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--text-tertiary);
+}
+
+.alert {
+  padding: 14px 18px;
+  color: var(--ink);
+  background-color: color-mix(in srgb, var(--signal) 8%, var(--canvas));
+  border: 1px solid color-mix(in srgb, var(--signal) 28%, var(--line));
+  border-radius: var(--radius-soft);
+}
+
+.alert a { color: inherit; }
+
+@media (max-width: 640px) {
+  .composer {
+    bottom: 12px;
+    padding-left: 18px;
+  }
+  .answer .body { padding: 18px 18px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret,
+  .thinking i { animation: none; }
+  .send:hover:not(:disabled),
+  .suggestion:hover { transform: none; }
+}
