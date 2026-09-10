@@ -40,12 +40,13 @@
 .inPanel {
   gap: 18px;
   width: 100%;
-  height: 100%;
   min-height: 0;
 }
 
+/* 0 1 auto, not 1: take only the room the conversation needs, and shrink
+   into a scroller once the panel has grown as far as it may. */
 .inPanel .transcript {
-  flex: 1;
+  flex: 0 1 auto;
   min-height: 0;
   padding-right: 4px;
   overflow-y: auto;
@@ -58,7 +59,7 @@
 }
 
 .inPanel .suggestions {
-  flex: 1;
+  flex: 0 1 auto;
   align-content: flex-start;
   min-height: 0;
   overflow-y: auto;
@@ -307,3 +308,16 @@
   .send:hover:not(:disabled),
   .suggestion:hover { transform: none; }
 }
+
+.reset {
+  padding: 0;
+  font: inherit;
+  color: var(--text-tertiary);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  cursor: pointer;
+  transition: color var(--duration-quick) var(--ease-smooth-out);
+}
+
+.reset:hover { color: var(--ink); }

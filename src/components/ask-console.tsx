@@ -2,8 +2,7 @@
 
 import { FormEvent, KeyboardEvent, useCallback, useEffect, useId, useRef, useState } from "react";
 import styles from "@/components/ask-console.module.css";
-
-type Turn = { role: "user" | "assistant"; content: string };
+import { clearAsk, readAsk, subscribeAsk, writeAsk, type Turn } from "@/lib/ask-store";
 
 const MAX_CHARS = 1000;
 const fallbackError = "The assistant could not answer. Please try again, or use the contact page.";
@@ -22,12 +21,20 @@ type Props = {
   autoFocus?: boolean;
   /** Current path, so the assistant can resolve "this project". */
   context?: string;
+  /** Lets the launcher badge the trigger while the panel is closed. */
+  onStreamingChange?: (streaming: boolean) => void;
 };
 
 /** Paragraph breaks are the only formatting an answer needs. */
 const paragraphs = (text: string) => text.split(/\n{2,}/).filter(Boolean);
 
-export function AskConsole({ variant = "page", suggestions = defaultSuggestions, autoFocus = false, context }: Props) {
+export function AskConsole({
+  variant = "page",
+  suggestions = defaultSuggestions,
+  autoFocus = false,
+  context,
+  onStreamingChange,
+}: Props) {
   const [turns, setTurns] = useState<Turn[]>([]);
   const [draft, setDraft] = useState("");
   const [streaming, setStreaming] = useState(false);
@@ -38,6 +45,16 @@ export function AskConsole({ variant = "page", suggestions = defaultSuggestions,
   const inFlight = useRef(false);
   const input = useRef<HTMLTextAreaElement>(null);
   const tail = useRef<HTMLDivElement>(null);
+
+  // Pick up whatever the visitor already said, here or on an earlier page.
+  useEffect(() => {
+    setTurns(readAsk().turns);
+    return subscribeAsk(() => {
+      if (!inFlight.current) setTurns(readAsk().turns);
+    });
+  }, []);
+
+  useEffect(() => onStreamingChange?.(streaming), [streaming, onStreamingChange]);
 
   // The textarea grows with its content rather than scrolling internally.
   // Measuring against "auto" matters: measuring against a fixed height lets
@@ -70,7 +87,7 @@ export function AskConsole({ variant = "page", suggestions = defaultSuggestions,
       const trimmed = question.trim();
       if (!trimmed || inFlight.current) return;
 
-      const history: Turn[] = [...turns, { role: "user", content: trimmed }];
+      const history: Turn[] = [...readAsk().turns, { role: "user", content: trimmed }];
       inFlight.current = true;
       setTurns([...history, { role: "assistant", content: "" }]);
       setDraft("");
@@ -99,9 +116,15 @@ export function AskConsole({ variant = "page", suggestions = defaultSuggestions,
           setTurns([...history, { role: "assistant", content: answer }]);
         }
         if (!answer.trim()) throw new Error(fallbackError);
+
+        inFlight.current = false;
+        // answeredAt is what badges the trigger if the panel is closed by now.
+        writeAsk({ turns: [...history, { role: "assistant", content: answer }], answeredAt: Date.now() });
       } catch (error) {
         // Drop the empty assistant turn so the transcript stays coherent.
+        inFlight.current = false;
         setTurns(history);
+        writeAsk({ turns: history });
         setFailed(error instanceof Error ? error.message : fallbackError);
       } finally {
         inFlight.current = false;
@@ -109,7 +132,7 @@ export function AskConsole({ variant = "page", suggestions = defaultSuggestions,
         input.current?.focus();
       }
     },
-    [turns, context],
+    [context],
   );
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
@@ -122,6 +145,14 @@ export function AskConsole({ variant = "page", suggestions = defaultSuggestions,
       event.preventDefault();
       void ask(draft);
     }
+  };
+
+  const reset = () => {
+    if (streaming) return;
+    clearAsk();
+    setTurns([]);
+    setFailed(null);
+    input.current?.focus();
   };
 
   const started = turns.length > 0;
@@ -137,18 +168,13 @@ export function AskConsole({ variant = "page", suggestions = defaultSuggestions,
             return (
               <article
                 key={index}
-                className={[
-                  styles.turn,
-                  isAnswer ? styles.answer : styles.question,
-                  isAnswer ? styles.assistant : "",
-                  pending ? styles.streaming : "",
-                ]
+                className={[styles.turn, isAnswer ? styles.answer : styles.question, isAnswer ? styles.assistant : ""]
                   .filter(Boolean)
                   .join(" ")}
               >
                 <span className={`${styles.speaker} mono`}>
                   <i className={styles.speakerMark} aria-hidden="true" />
-                  {isAnswer ? "Assistant" : "You"}
+                  {isAnswer ? "Atharva’s assistant" : "You"}
                 </span>
                 <div className={styles.body}>
                   {turn.content ? (
@@ -218,7 +244,11 @@ export function AskConsole({ variant = "page", suggestions = defaultSuggestions,
 
       <div className={`${styles.foot} mono`}>
         <span>Answers come only from this site. It will say when it does not know.</span>
-        <span>{draft.length > MAX_CHARS - 120 ? `${MAX_CHARS - draft.length} left` : ""}</span>
+        {started && !streaming ? (
+          <button className={styles.reset} type="button" onClick={reset}>
+            Start over
+          </button>
+        ) : null}
       </div>
     </div>
   );

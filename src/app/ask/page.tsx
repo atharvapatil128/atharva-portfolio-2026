@@ -22,7 +22,7 @@ export default function AskPage() {
         <section className={`${styles.stage} top-stage section-pad`}>
           <IntroDotField variant="about" />
           <div className={styles.intro}>
-            <p className="mono">ASK / ANSWERED FROM THIS SITE</p>
+            <p className="mono">ATHARVA&apos;S ASSISTANT / ANSWERED FROM THIS SITE</p>
             <h1>
               Ask about the <span className="signal-emphasis">work</span>.
             </h1>

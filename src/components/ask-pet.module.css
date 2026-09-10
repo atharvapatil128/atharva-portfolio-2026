@@ -1,0 +1,109 @@
+/*
+ * The pet sits on the panel's top edge and walks back and forth. Everything is
+ * CSS: three nested elements so the horizontal walk, the turn, and the bob can
+ * run on their own clocks without fighting each other.
+ */
+.track {
+  position: absolute;
+  top: -17px;
+  left: 22px;
+  right: 22px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.walker {
+  position: absolute;
+  bottom: 0;
+  width: 24px;
+  animation: patrol 34s var(--ease-in-out) infinite;
+}
+
+.bob {
+  animation: bob 620ms var(--ease-in-out) infinite;
+}
+
+.body {
+  display: block;
+  width: 24px;
+  height: 20px;
+  overflow: visible;
+}
+
+.shell {
+  fill: var(--ink);
+}
+
+.legs {
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  animation: steps 620ms steps(2, jump-none) infinite;
+}
+
+.antenna {
+  stroke: var(--ink);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+.tip {
+  fill: var(--signal);
+}
+
+.eyes {
+  fill: var(--canvas);
+  animation: blink 5.4s var(--ease-in-out) infinite;
+  transform-origin: center 12.2px;
+}
+
+/* Walks right, turns, walks back, turns again. */
+@keyframes patrol {
+  0%   { left: 0;    transform: scaleX(1); }
+  4%   { left: 0;    transform: scaleX(1); }
+  44%  { left: calc(100% - 24px); transform: scaleX(1); }
+  50%  { left: calc(100% - 24px); transform: scaleX(-1); }
+  92%  { left: 0;    transform: scaleX(-1); }
+  98%  { left: 0;    transform: scaleX(1); }
+  100% { left: 0;    transform: scaleX(1); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-1.5px); }
+}
+
+@keyframes steps {
+  0%   { transform: translateX(-0.9px); }
+  100% { transform: translateX(0.9px); }
+}
+
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95%           { transform: scaleY(0.1); }
+}
+
+/* It gets on with it while an answer is being written. */
+.busy .walker { animation-duration: 13s; }
+.busy .bob,
+.busy .legs { animation-duration: 300ms; }
+
+/*
+ * The sheet is full-bleed, so its top edge is the top of the viewport and
+ * there is nothing above it to stand on. Rather than wedge the pet in beside
+ * the title on the smallest screens, it sits this one out.
+ */
+@media (max-width: 760px) {
+  .track { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .walker,
+  .bob,
+  .legs,
+  .eyes {
+    animation: none;
+  }
+  .walker { left: calc(100% - 24px); }
+}
