@@ -21,7 +21,7 @@ export default function HomePage() {
                 AI takes me to a prototype fast. <mark className="signal-emphasis">Taste</mark> takes it all the way.
               </h1>
               <p className="hero-summary t-stagger-line t-stagger-line--2">
-                I&apos;m Atharva, a product designer with a computer science background and a Masters in HCI/d from Indiana University. I research, prototype, test, and write the front end, from streaming apps to embassy tooling.
+                I&apos;m Atharva, a product designer with a computer science background and a Masters in HCI/d from Indiana University. I research, prototype, test, and write the front end.
               </p>
             </HeroReveal>
             <p className="availability-line mono"><i aria-hidden="true" />Available for product design roles · 2026</p>
