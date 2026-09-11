@@ -25,8 +25,12 @@ export const personSchema = {
   name: "Atharva Patil",
   url: siteUrl,
   jobTitle: "Product Designer",
-  description:
-    "Product designer working across research, prototyping, testing, and front-end implementation.",
+  /**
+   * No description field. Person is emitted on every page, so any one sentence
+   * disagrees with the visible copy almost everywhere, which reads as schema
+   * drift to crawlers and AI extractors. The entity is identified by name, url
+   * and sameAs; a description bought nothing and cost a mismatch on 7 pages.
+   */
   address: {
     "@type": "PostalAddress",
     addressLocality: "Bloomington",
@@ -79,6 +83,9 @@ export function blogPostingSchema(note: {
     headline: note.title,
     description: note.description,
     url,
+    // Google treats image as recommended for Article results. The site card is
+    // the only 1200x630 raster every note is guaranteed to have.
+    image: `${siteUrl}/opengraph-image`,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     datePublished: note.published,
     dateModified: note.published,
