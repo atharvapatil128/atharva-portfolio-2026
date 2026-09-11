@@ -26,6 +26,18 @@ export const personSchema = {
   url: siteUrl,
   jobTitle: "Product Designer",
   /**
+   * Points at the file in public/ rather than a /_next/image URL: the optimizer
+   * URL carries a width and quality that would go stale, and search engines
+   * want a stable, directly fetchable original.
+   */
+  image: {
+    "@type": "ImageObject",
+    url: `${siteUrl}/images/personal/graduation.jpg`,
+    width: 1200,
+    height: 1600,
+    caption: "Atharva Patil",
+  },
+  /**
    * No description field. Person is emitted on every page, so any one sentence
    * disagrees with the visible copy almost everywhere, which reads as schema
    * drift to crawlers and AI extractors. The entity is identified by name, url
