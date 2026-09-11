@@ -33,6 +33,18 @@ export const personSchema = {
     addressRegion: "IN",
     addressCountry: "US",
   },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Indiana University Bloomington",
+    sameAs: "https://www.indiana.edu/",
+  },
+  hasCredential: {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "degree",
+    educationalLevel: "Master's degree",
+    name: "Master of Science in Human-Computer Interaction Design (HCI/d)",
+    recognizedBy: { "@type": "CollegeOrUniversity", name: "Indiana University Bloomington" },
+  },
   knowsAbout: [
     "Product Design",
     "Interaction Design",
