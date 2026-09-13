@@ -130,7 +130,7 @@ export const notes = [
     type: "Process note",
     date: "Sep 2026",
     published: "2026-09-01",
-    readTime: "8 min read",
+    readTime: "6 min read",
     title: "Building this portfolio with an AI-assisted workflow",
     description: "What moved faster, where judgment still mattered, and why every reversible decision was documented.",
     slug: "building-this-portfolio",
