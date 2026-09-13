@@ -5,9 +5,18 @@
  * another page (each page renders its own SiteHeader, so the provider
  * remounts), and a reload. That rules out React state on its own.
  *
- * sessionStorage is the right scope: per tab, gone when the tab closes, never
- * sent anywhere. It can throw or be empty in a private window, so every access
- * is guarded and an in-memory copy is the fallback.
+ * localStorage, not sessionStorage: a recruiter who asks three questions and
+ * closes the tab should find the thread still there tomorrow, and per-tab
+ * storage read as the assistant having forgotten them.
+ *
+ * It expires after a week, which is the compromise. Keeping a conversation
+ * forever means a months-old thread greets someone on return, and on a shared
+ * machine the next person reads what the last one asked. A week covers coming
+ * back to finish a thought and little else.
+ *
+ * Nothing here is ever sent anywhere. Storage can throw or be empty in a
+ * private window, so every access is guarded and an in-memory copy is the
+ * fallback.
  */
 export type Turn = { role: "user" | "assistant"; content: string };
 
@@ -17,10 +26,15 @@ export type AskState = {
   answeredAt: number;
   /** When the visitor last had the panel open. */
   seenAt: number;
+  /** Last write, so a stale conversation can expire itself. */
+  updatedAt: number;
 };
 
-const KEY = "ask.conversation.v1";
-const EMPTY: AskState = { turns: [], answeredAt: 0, seenAt: 0 };
+// v2: the key changes with the storage area, so anything left in sessionStorage
+// from the previous version is simply ignored rather than half-read.
+const KEY = "ask.conversation.v2";
+const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+const EMPTY: AskState = { turns: [], answeredAt: 0, seenAt: 0, updatedAt: 0 };
 
 let memory: AskState = EMPTY;
 /**
@@ -42,15 +56,22 @@ export const readAsk = (): AskState => {
   if (hydrated) return memory;
   hydrated = true;
   try {
-    const raw = window.sessionStorage.getItem(KEY);
+    const raw = window.localStorage.getItem(KEY);
     if (!raw) return memory;
     const parsed: unknown = JSON.parse(raw);
     if (!parsed || typeof parsed !== "object") return memory;
     const state = parsed as Partial<AskState>;
+    const updatedAt = typeof state.updatedAt === "number" ? state.updatedAt : 0;
+    // Past its week, drop it rather than greeting someone with a stale thread.
+    if (updatedAt && Date.now() - updatedAt > MAX_AGE_MS) {
+      window.localStorage.removeItem(KEY);
+      return memory;
+    }
     memory = {
       turns: Array.isArray(state.turns) ? state.turns.filter(isTurn) : [],
       answeredAt: typeof state.answeredAt === "number" ? state.answeredAt : 0,
       seenAt: typeof state.seenAt === "number" ? state.seenAt : 0,
+      updatedAt,
     };
     return memory;
   } catch {
@@ -59,9 +80,9 @@ export const readAsk = (): AskState => {
 };
 
 export const writeAsk = (next: Partial<AskState>) => {
-  memory = { ...readAsk(), ...next };
+  memory = { ...readAsk(), ...next, updatedAt: Date.now() };
   try {
-    window.sessionStorage.setItem(KEY, JSON.stringify(memory));
+    window.localStorage.setItem(KEY, JSON.stringify(memory));
   } catch {
     // Private window, or storage disabled. The in-memory copy still works for
     // this page view, which is the case that matters most.

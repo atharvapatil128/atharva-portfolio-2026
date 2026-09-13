@@ -28,6 +28,22 @@ type Props = {
 /** Paragraph breaks are the only formatting an answer needs. */
 const paragraphs = (text: string) => text.split(/\n{2,}/).filter(Boolean);
 
+/**
+ * How much of the conversation the model is shown. The transcript on screen
+ * keeps everything; only the window travels, so a long conversation loses its
+ * oldest context instead of hitting a wall and telling the visitor to go away.
+ *
+ * The slice has to start on a user turn, because the API rejects a history
+ * that opens with an assistant reply.
+ */
+const SEND_WINDOW = 20;
+
+const windowed = (turns: Turn[]) => {
+  if (turns.length <= SEND_WINDOW) return turns;
+  const cut = turns.length - SEND_WINDOW;
+  return turns.slice(turns[cut].role === "user" ? cut : cut + 1);
+};
+
 export function AskConsole({
   variant = "page",
   suggestions = defaultSuggestions,
@@ -109,7 +125,7 @@ export function AskConsole({
         const response = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: history, path: context }),
+          body: JSON.stringify({ messages: windowed(history), path: context }),
         });
 
         if (!response.ok || !response.body) {

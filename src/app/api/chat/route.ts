@@ -23,7 +23,13 @@ const MAX_TOKENS = 2048;
 // is the floor here. Measured at LOW: zero thinking tokens, full-length answers.
 const THINKING_LEVEL = ThinkingLevel.LOW;
 
-const MAX_MESSAGES = 12; // six exchanges, then the visitor is asked to email
+/*
+ * The client sends a sliding window of the last 20 turns, so a normal visitor
+ * never approaches this. It is a ceiling against a crafted request, not the
+ * conversation length limit it used to be, and it sits above the window so a
+ * full one is never rejected.
+ */
+const MAX_MESSAGES = 24;
 const MAX_MESSAGE_CHARS = 1000;
 const RATE_LIMIT = 20; // messages per IP per window
 const RATE_WINDOW_MS = 600000;
