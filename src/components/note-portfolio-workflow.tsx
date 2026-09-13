@@ -3,12 +3,12 @@ export function PortfolioWorkflowNote() {
     <div className="note-story">
       <p className="note-lede">
         This site did not start in Figma. It started in a chat window, with me trying to explain
-        what I wanted before I knew what it looked like.
+        what I wanted before I knew what it looked like. A little over a week later it was live.
       </p>
 
       <aside className="note-thesis">
-        <span className="mono">What actually happened</span>
-        <p>Five tools, in order. Each one handed something to the next, and the real decisions kept landing on me.</p>
+        <span className="mono">The hard part, named</span>
+        <p>The tools get you moving quickly. Then they start pulling toward the average of everything they have seen, and the further in you are, the more reasonable each nudge sounds.</p>
       </aside>
 
       <section>
@@ -39,11 +39,11 @@ export function PortfolioWorkflowNote() {
       </section>
 
       <section>
-        <h2>Into Figma, with Codex wired in</h2>
+        <h2>Into Figma, with the models wired in</h2>
         <p>
-          With a theme to work from I moved into Figma and connected Codex through MCP. That
-          combination built out the bones: the design system, the type and colour decisions, the
-          layout logic, the tokens that everything else would inherit.
+          With a theme to work from I moved into Figma and connected it through MCP. That built out
+          the bones: the design system, the type and colour decisions, the layout logic, the tokens
+          that everything else would inherit.
         </p>
         <p>
           It was fast in a way that still surprises me. It was also where I learned to be careful,
@@ -53,17 +53,40 @@ export function PortfolioWorkflowNote() {
       </section>
 
       <section>
-        <h2>Then into code, where most of it got decided</h2>
+        <h2>Two models, marking each other&apos;s work</h2>
         <p>
-          Once the basics were chalked out I moved into the codebase and kept designing there. Mobbin
-          came back out constantly at this stage, not for whole layouts but for specific problems.
-          How does a good index row handle its metadata. What does a confirmation state look like
-          when it has to feel like a real answer. How much shadow is too much.
+          In code I ran Codex and Claude Code together, and the useful part was not having two
+          assistants. It was having each one audit what the other had written. Whichever model had
+          not produced the code was better at finding what was wrong with it, because it had no
+          investment in the approach.
         </p>
         <p>
-          I kept adjusting until the thing held together. Most of that was small: a border that was
-          too hard, a label two pixels too small to read properly, motion that looked good in
-          isolation and wrong in sequence.
+          That loop caught a lot before it ever reached me: dead styles, a canvas animation that
+          silently stopped after a few minutes, labels that had drifted below a readable size,
+          accessible names that no longer matched their visible text. Less broken code arrived at
+          my end, so the attention I had left went to whether the thing was any good rather than
+          whether it worked.
+        </p>
+        <p>
+          Skills are the part I would not skip. They package a standard into something a model runs
+          against its own output, so accessibility, motion performance, metadata, SEO and
+          performance all got audited as a matter of course rather than whenever I remembered to
+          ask. The same habit applied to the site as a whole, with Lighthouse and SEO passes run
+          against real builds instead of assumed.
+        </p>
+      </section>
+
+      <section>
+        <h2>Then into code, where most of it got decided</h2>
+        <p>
+          Once the basics were chalked out I kept designing in the codebase. Mobbin came back out
+          constantly at this stage, not for whole layouts but for specific problems. How does a good
+          index row handle its metadata. What does a confirmation state look like when it has to feel
+          like a real answer. How much shadow is too much.
+        </p>
+        <p>
+          Most of the work was small: a border that was too hard, a label two pixels too small to
+          read properly, motion that looked good in isolation and wrong in sequence.
         </p>
         <p>
           Some of it was not small. The desk in the homepage hero started life as one generated
@@ -97,37 +120,54 @@ export function PortfolioWorkflowNote() {
       </blockquote>
 
       <section>
+        <h2>The pull toward the middle</h2>
+        <p>
+          This is the part nobody warned me about, and the part I would tell anyone starting now.
+          However sharp the early output is, keep going and the suggestions begin drifting toward
+          the safe centre. A cleaner type scale that happens to be the one everywhere else. A hero
+          arrangement you have already seen this month. Nothing arrives looking like a mistake,
+          which is exactly why it works on you.
+        </p>
+        <p>
+          I think this is where most people give up on the approach or start over by hand, and
+          conclude the tools cannot do taste. What actually happened is that the tools were doing
+          what they do, and there was nothing firm enough on the other side to push back.
+        </p>
+        <p>
+          So it demanded something I did not expect: a clearer idea of what I wanted than I would
+          have needed building this by hand, and the willingness to keep saying no to reasonable
+          suggestions. I asked for the original type system back when a replacement made the site
+          feel like everyone else&apos;s. I removed an underline treatment I had requested two hours
+          earlier because it was fussier than the page needed. I reverted a layout fix that solved
+          the measurement and made the section worse.
+        </p>
+        <p>
+          None of that was tidying up after the real work. That was the work.
+        </p>
+      </section>
+
+      <section>
         <h2>What the tools were genuinely good at</h2>
         <ul className="note-list-block">
           <li><strong>Looking:</strong> surfacing references I would not have found, and explaining what made a composition work.</li>
           <li><strong>Building:</strong> turning an agreed layout into responsive code fast enough that I could judge it in a browser instead of in my head.</li>
-          <li><strong>Catching drift:</strong> finding the duplicated styles, undersized labels and conflicting shadows that crept in as the site grew.</li>
-          <li><strong>Checking:</strong> running builds, type checks and route checks after changes, so a visual tweak did not quietly break a page.</li>
+          <li><strong>Auditing:</strong> checking each other&apos;s output, then running accessibility, performance and SEO passes against real builds, so a visual tweak did not quietly break a page.</li>
           <li><strong>Remembering:</strong> keeping a build log, so I could tell later why something had been tried and dropped.</li>
         </ul>
       </section>
 
       <section>
-        <h2>Where I kept taking the wheel</h2>
-        <p>
-          I asked for the original type system back when a new one made the site feel like everyone
-          else&apos;s. I removed an underline treatment I had asked for two hours earlier because it
-          was fussier than the page needed. I reverted a layout fix that solved the measurement and
-          made the section worse.
-        </p>
-        <p>
-          None of that was tidying up after the real work. That was the work. The tools widened the
-          field and shortened the distance to something I could look at. Deciding what stayed was
-          the part that took judgement, and it never moved.
-        </p>
-      </section>
-
-      <section>
         <h2>What I would keep</h2>
         <p>
-          The site is one output. The more useful one is the way of working: write the brief before
-          the interface, look widely and early, build fast enough to test, and keep a record so
-          today&apos;s decision can be argued with tomorrow.
+          Just over a week from a blank chat window to a live site, and the slowest stretches were
+          usage limits rather than anything about the work. The speed is real. It is also the least
+          interesting thing here.
+        </p>
+        <p>
+          The part worth keeping is the way of working: write the brief before the interface, look
+          widely and early, build fast enough to test, have the models check each other, and hold a
+          clear enough picture of what you are making to notice when you are being walked toward
+          someone else&apos;s version of it.
         </p>
       </section>
     </div>
