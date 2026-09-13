@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { ApiError, GoogleGenAI } from "@google/genai";
+import { ApiError, GoogleGenAI, ThinkingLevel } from "@google/genai";
 import { SYSTEM_PROMPT } from "@/lib/ask-prompt";
 import { mockStream } from "@/lib/ask-mock";
 import { projects } from "@/lib/site-data";
@@ -9,7 +9,19 @@ export const runtime = "nodejs";
 // "gemini-flash-latest" is a moving alias, so a model retirement does not take
 // the assistant down with it. Override with GEMINI_MODEL to pin a version.
 const MODEL = process.env.GEMINI_MODEL || "gemini-flash-latest";
-const MAX_TOKENS = 1024;
+
+/*
+ * Thinking tokens are drawn from maxOutputTokens, and Flash reasons by default.
+ * Left unset, a measured 979 of 1024 tokens went to reasoning the visitor never
+ * sees, leaving 41 tokens of answer that stopped mid-word. This is grounded
+ * question answering over a fixed corpus, which is retrieval and phrasing
+ * rather than reasoning, so the budget belongs to the answer. The ceiling is
+ * generous enough that a long answer finishes on its own.
+ */
+const MAX_TOKENS = 2048;
+// MINIMAL exists in the SDK's enum but this model rejects it with a 400, so LOW
+// is the floor here. Measured at LOW: zero thinking tokens, full-length answers.
+const THINKING_LEVEL = ThinkingLevel.LOW;
 
 const MAX_MESSAGES = 12; // six exchanges, then the visitor is asked to email
 const MAX_MESSAGE_CHARS = 1000;
@@ -123,6 +135,7 @@ export async function POST(request: Request) {
       config: {
         systemInstruction: SYSTEM_PROMPT,
         maxOutputTokens: MAX_TOKENS,
+        thinkingConfig: { thinkingLevel: THINKING_LEVEL },
       },
     });
 
@@ -130,9 +143,24 @@ export async function POST(request: Request) {
     const body = new ReadableStream<Uint8Array>({
       async start(controller) {
         try {
+          let finishReason: string | undefined;
           for await (const chunk of stream) {
             const text = chunk.text;
             if (text) controller.enqueue(encoder.encode(text));
+            finishReason = chunk.candidates?.[0]?.finishReason ?? finishReason;
+          }
+          /*
+           * A run that ends on MAX_TOKENS stops mid-sentence, and nothing in the
+           * stream says so. Presenting that as a finished answer is the worst of
+           * the options: the visitor cannot tell the difference between the
+           * assistant being brief and the assistant being cut off. Saying so
+           * costs a line and keeps the transcript honest.
+           */
+          if (finishReason === "MAX_TOKENS") {
+            console.warn("[ask] answer hit the output ceiling");
+            controller.enqueue(
+              encoder.encode("\n\nThat answer ran past its length limit and stopped early. Ask me to continue it, or narrow the question."),
+            );
           }
         } catch (streamError) {
           console.error("[ask] stream failed", streamError);
