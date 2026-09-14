@@ -1,7 +1,9 @@
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
+import { after } from "next/server";
 import { ApiError, GoogleGenAI, ThinkingLevel } from "@google/genai";
 import { SYSTEM_PROMPT } from "@/lib/ask-prompt";
 import { mockStream } from "@/lib/ask-mock";
+import { logAsk } from "@/lib/ask-log";
 import { projects } from "@/lib/site-data";
 
 export const runtime = "nodejs";
@@ -95,6 +97,12 @@ export async function POST(request: Request) {
   if (contents[0].role !== "user") return error("Please check your message.", 400);
   if (contents[contents.length - 1].role !== "user") return error("Please check your message.", 400);
 
+  const question = contents[contents.length - 1].parts[0].text;
+  const conversationId =
+    typeof data.conversationId === "string" && /^[0-9a-f-]{8,64}$/i.test(data.conversationId)
+      ? data.conversationId
+      : randomUUID();
+
   const label = labelFor(data.path);
   if (label) {
     contents[0] = {
@@ -110,7 +118,6 @@ export async function POST(request: Request) {
   // Design-review mode: canned answers, no API call, no key. Double-gated so a
   // production build cannot serve mock content even if the flag leaks into env.
   if (process.env.NODE_ENV !== "production" && process.env.ASK_MOCK === "1") {
-    const question = contents[contents.length - 1].parts[0].text;
     const mockPath = typeof data.path === "string" ? data.path : "";
     return new Response(mockStream(question, mockPath), {
       headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" },
@@ -146,15 +153,23 @@ export async function POST(request: Request) {
     });
 
     const encoder = new TextEncoder();
+    // Filled as the answer streams, read by the after() callback once the
+    // response has finished, so logging never delays a visitor's answer.
+    const record = { answer: "", finishReason: null as string | null };
+
     const body = new ReadableStream<Uint8Array>({
       async start(controller) {
         try {
           let finishReason: string | undefined;
           for await (const chunk of stream) {
             const text = chunk.text;
-            if (text) controller.enqueue(encoder.encode(text));
+            if (text) {
+              controller.enqueue(encoder.encode(text));
+              record.answer += text;
+            }
             finishReason = chunk.candidates?.[0]?.finishReason ?? finishReason;
           }
+          record.finishReason = finishReason ?? null;
           /*
            * A run that ends on MAX_TOKENS stops mid-sentence, and nothing in the
            * stream says so. Presenting that as a finished answer is the worst of
@@ -177,6 +192,23 @@ export async function POST(request: Request) {
           controller.close();
         }
       },
+    });
+
+    /*
+     * after() runs once the streamed response is finished, which is when
+     * record.answer is complete. Logging inside the stream would mean a
+     * database round trip sitting between the last token and the close.
+     */
+    after(async () => {
+      if (!record.answer.trim()) return;
+      await logAsk({
+        conversationId,
+        question,
+        answer: record.answer,
+        pagePath: typeof data.path === "string" ? data.path : null,
+        finishReason: record.finishReason,
+        truncated: record.finishReason === "MAX_TOKENS",
+      });
     });
 
     return new Response(body, {

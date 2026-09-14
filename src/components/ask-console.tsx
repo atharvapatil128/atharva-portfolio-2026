@@ -114,7 +114,11 @@ export function AskConsole({
       const trimmed = question.trim();
       if (!trimmed || inFlight.current) return;
 
-      const history: Turn[] = [...readAsk().turns, { role: "user", content: trimmed }];
+      const stored = readAsk();
+      const history: Turn[] = [...stored.turns, { role: "user", content: trimmed }];
+      // writeAsk mints an id when there is none, so the first question of a
+      // thread is recorded under the same id as the rest of it.
+      if (!stored.conversationId) writeAsk({});
       inFlight.current = true;
       setTurns([...history, { role: "assistant", content: "" }]);
       setDraft("");
@@ -125,7 +129,11 @@ export function AskConsole({
         const response = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: windowed(history), path: context }),
+          body: JSON.stringify({
+            messages: windowed(history),
+            path: context,
+            conversationId: readAsk().conversationId,
+          }),
         });
 
         if (!response.ok || !response.body) {
@@ -270,7 +278,10 @@ export function AskConsole({
       </form>
 
       <div className={`${styles.foot} mono`}>
-        <span>Answers come only from this site. It will say when it does not know.</span>
+        <span>
+          Answers come only from this site. It will say when it does not know. Questions and answers
+          are kept for 90 days so Atharva can see how it is doing.
+        </span>
         {started && !streaming ? (
           <button className={styles.reset} type="button" onClick={reset}>
             Start over

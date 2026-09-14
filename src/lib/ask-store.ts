@@ -28,13 +28,27 @@ export type AskState = {
   seenAt: number;
   /** Last write, so a stale conversation can expire itself. */
   updatedAt: number;
+  /**
+   * Groups the turns of one thread together in the server-side record. Made up
+   * by the browser, not a cookie, not tied to anything, and replaced whenever
+   * the visitor starts over.
+   */
+  conversationId: string;
 };
 
 // v2: the key changes with the storage area, so anything left in sessionStorage
 // from the previous version is simply ignored rather than half-read.
 const KEY = "ask.conversation.v2";
 const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
-const EMPTY: AskState = { turns: [], answeredAt: 0, seenAt: 0, updatedAt: 0 };
+const EMPTY: AskState = { turns: [], answeredAt: 0, seenAt: 0, updatedAt: 0, conversationId: "" };
+
+const newConversationId = () => {
+  try {
+    return crypto.randomUUID();
+  } catch {
+    return Math.random().toString(36).slice(2) + Date.now().toString(36);
+  }
+};
 
 let memory: AskState = EMPTY;
 /**
@@ -72,6 +86,7 @@ export const readAsk = (): AskState => {
       answeredAt: typeof state.answeredAt === "number" ? state.answeredAt : 0,
       seenAt: typeof state.seenAt === "number" ? state.seenAt : 0,
       updatedAt,
+      conversationId: typeof state.conversationId === "string" ? state.conversationId : "",
     };
     return memory;
   } catch {
@@ -80,7 +95,13 @@ export const readAsk = (): AskState => {
 };
 
 export const writeAsk = (next: Partial<AskState>) => {
-  memory = { ...readAsk(), ...next, updatedAt: Date.now() };
+  const current = readAsk();
+  memory = {
+    ...current,
+    ...next,
+    updatedAt: Date.now(),
+    conversationId: next.conversationId ?? (current.conversationId || newConversationId()),
+  };
   try {
     window.localStorage.setItem(KEY, JSON.stringify(memory));
   } catch {
@@ -90,7 +111,10 @@ export const writeAsk = (next: Partial<AskState>) => {
   for (const listener of listeners) listener();
 };
 
-export const clearAsk = () => writeAsk({ turns: [], answeredAt: 0, seenAt: Date.now() });
+// Starting over starts a new thread in the record too, rather than appending
+// an unrelated conversation to the previous one.
+export const clearAsk = () =>
+  writeAsk({ turns: [], answeredAt: 0, seenAt: Date.now(), conversationId: newConversationId() });
 
 export const markAskSeen = () => writeAsk({ seenAt: Date.now() });
 
