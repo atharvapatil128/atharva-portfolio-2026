@@ -127,7 +127,9 @@ accounts for that through review and testing.
 - Environments where design decisions cannot be questioned or revised.
 - Work confined to isolated visual deliverables, away from the product and its
   implementation.
-- He is looking for full-time professional roles.
+- He is looking for a full-time professional role. That is what he is searching
+  for, not a description of what he is doing now: see the note on his current
+  work at Human By Design.
 
 ## Not established
 
