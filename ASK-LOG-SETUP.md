@@ -109,20 +109,20 @@ record.
 The table stores one row per turn, so reading a thread from it means matching
 conversation ids by eye. Two views in the table editor do that grouping.
 
- is one row per conversation: opening question, number of
+`ask_conversations` is one row per conversation: opening question, number of
 turns, when it started, whether any answer was cut off, and which pages it was
-opened from. Sort by  descending to see the newest first, and use
- rather than reading full uuids.
+opened from. Sort by `started_at` descending to see the newest first, and read
+`short_id` rather than full uuids.
 
- is every turn with its thread grouped. Sort by
- descending, then  ascending, and conversations
+`ask_thread` is every turn with its thread grouped. Sort by
+`thread_started_at` descending, then `turn_no` ascending, and conversations
 read in order.
 
-Both are declared . That is not optional. A
+Both are declared `with (security_invoker = true)`. That is not optional. A
 view without it runs as its owner and reads straight past the row level
-security on , which would publish the whole record to the anon key.
-Verified after creating them: the publishable key gets an empty array from the
-table and from both views.
+security on `ask_log`, which would publish the whole conversation record to the
+anon key. Verified after creating them: the publishable key gets an empty array
+from the table and from both views.
 
 ## 4. Reading it
 
