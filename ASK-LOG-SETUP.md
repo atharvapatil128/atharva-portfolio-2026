@@ -104,6 +104,26 @@ Add them to `.env.local` for local work, and in Vercel scoped to **Production
 only**, so preview deployments do not write test conversations into the real
 record.
 
+## Reading conversations, not rows
+
+The table stores one row per turn, so reading a thread from it means matching
+conversation ids by eye. Two views in the table editor do that grouping.
+
+ is one row per conversation: opening question, number of
+turns, when it started, whether any answer was cut off, and which pages it was
+opened from. Sort by  descending to see the newest first, and use
+ rather than reading full uuids.
+
+ is every turn with its thread grouped. Sort by
+ descending, then  ascending, and conversations
+read in order.
+
+Both are declared . That is not optional. A
+view without it runs as its owner and reads straight past the row level
+security on , which would publish the whole record to the anon key.
+Verified after creating them: the publishable key gets an empty array from the
+table and from both views.
+
 ## 4. Reading it
 
 ```sql
