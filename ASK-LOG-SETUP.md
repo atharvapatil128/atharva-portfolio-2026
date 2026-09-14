@@ -24,9 +24,21 @@ the visitor chose to type.
 Visitors are told, in the line under the composer, that questions and answers
 are kept for 90 days.
 
-## 1. Create the table
+## The project
 
-In the Supabase SQL editor:
+Project `portfolio-ask-log`, ref `pflzokzuiqthgvmihbsk`, us-east-1.
+URL: https://pflzokzuiqthgvmihbsk.supabase.co
+
+It is deliberately separate from `streaming-helper-beta`. The service role key
+goes into the portfolio's Vercel environment, and a service role key bypasses
+row level security for its whole project. Putting this table in the Streaming
+Helper database would have meant the portfolio holding admin access to a live
+product's user data, so a leaked variable or a bug in one became a breach in
+the other. A second project costs nothing and removes that link entirely.
+
+## 1. The table (already applied)
+
+Applied as migration `create_ask_log`. Recorded here for reference:
 
 ```sql
 create table public.ask_log (
@@ -50,9 +62,10 @@ create index ask_log_conversation_idx on public.ask_log (conversation_id, create
 alter table public.ask_log enable row level security;
 ```
 
-## 2. Set the retention job
+## 2. Retention (already applied)
 
-The UI promises 90 days, so something has to enforce it. In the SQL editor:
+Applied as migration `ask_log_retention`, and confirmed scheduled and active.
+The UI promises 90 days, and this is what makes that true:
 
 ```sql
 create extension if not exists pg_cron;
@@ -64,17 +77,26 @@ select cron.schedule(
 );
 ```
 
-If pg_cron is unavailable on the plan, run the delete by hand periodically, or
-move it to a Vercel cron route. What matters is that the promise in the UI is
-kept.
+## Verified
 
-## 3. Add the environment variables
+- A publishable key POSTing to the table is refused: 401, `new row violates
+  row-level security policy`. The log cannot be written to from a browser.
+- A publishable key selecting from the table gets an empty array.
+- The retention job shows `active = true` in `cron.job`.
+- A row matching the shape the route sends inserts and reads back correctly.
+  The test row was deleted, and the table is empty.
+
+## 3. Add the environment variables (the remaining step)
+
+The service role key is the one thing that cannot be fetched through the
+connector, by design, so it has to be copied from the dashboard:
+Project Settings > API > service_role.
 
 Both are server-only. Neither may be prefixed `NEXT_PUBLIC_`, because the
 service role key bypasses row level security and must never reach a browser.
 
 ```
-SUPABASE_URL=https://<project-ref>.supabase.co
+SUPABASE_URL=https://pflzokzuiqthgvmihbsk.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=<service role key, Project Settings > API>
 ```
 
