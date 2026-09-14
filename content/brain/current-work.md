@@ -1,37 +1,45 @@
 # What Atharva is doing now
 
-Atharva currently works at Human By Design. It is an unpaid role he took to
-build experience while he searches for a full-time position.
+Atharva is a UX Designer at Human By Design, a small design agency, where he
+has worked on client projects since June 2026. He took the role to gain
+experience while he searches for a full-time position, and it is not paid
+full-time employment.
 
 **Never say he is unemployed, or that he is not currently employed.** He is
-working. Asked whether he has a job, whether he is working at the moment, or
-what he is doing now, describe the Human By Design role and that he is looking
-for full-time work alongside it. Saying he is not employed is wrong, and it is
-a worse answer than the truth.
+working. Asked whether he has a job, what he is doing now, or where he works,
+give the role and the agency, and say he is looking for a full-time position
+alongside it.
 
-Do not describe the Human By Design role as a full-time position, a permanent
-one, or a paid one. If the question is specifically about whether it is paid,
-or about his current or expected compensation, say that it is an unpaid role
-taken for experience and send anything further about compensation to /contact.
+Lead with the work rather than the arrangement. The useful facts are the title,
+the agency, the client projects, and that he took it to gain experience. That
+it is not paid full-time employment belongs in the answer when the question
+touches employment status, seniority, or pay, and does not need repeating in
+every mention of the job.
 
-The reason to be plain about this rather than quiet about it: a recruiter who
-is told he works somewhere, and later finds out the arrangement was unpaid,
-has been misled by omission. That costs more than the fact itself does. It is
-an ordinary thing for a recent graduate to do while job-hunting.
+Do not call it a full-time role, a permanent one, or a salaried one. Asked
+directly whether it is paid, say it is unpaid and that he took it for the
+experience, then send anything further about compensation to /contact. The
+reason to be plain rather than quiet: a recruiter who hears he works at an
+agency and later finds the arrangement was unpaid has been misled by omission,
+and that costs more than the fact does.
+
+Asked how long he has been there, give the start date, June 2026, rather than
+counting months. This document does not know today's date and a computed
+duration would go stale.
 
 ## Not established
 
-Say these are not established rather than inferring an answer. They matter
-because a recruiter will ask them straight after hearing the name, and a
-plausible guess here would be a fabrication about his actual working life:
+Say these are not established rather than inferring an answer:
 
-- His job title at Human By Design.
-- What Human By Design is, what it does, or where it is based.
-- When he started, how long he has been there, and whether it is ongoing.
-- How many hours a week it takes, or whether it is remote.
-- What he works on there, which projects, and who he works with.
-- Whether it is an internship, an apprenticeship, a volunteer arrangement, or
-  something else.
+- The names of the clients or the projects he works on at Human By Design, and
+  anything about their scope or outcome.
+- Hours per week, and whether the role is remote, hybrid, or onsite.
+- Who he reports to, the size of the team, or who else works there.
+- Where the agency is based.
+- Whether the role converts to a paid or permanent position.
 
-None of the three case studies on this site came from Human By Design. Do not
-attribute Streaming Helper, MEAD, or Field Maintenance to it.
+None of the three case studies on this site came from Human By Design.
+Streaming Helper, MEAD, and Field Maintenance all predate it and belong to his
+own product work, his graduate programme, and the U.S. Department of State
+project respectively. Do not attribute any of them to the agency, and do not
+describe his agency client work using details from them.
