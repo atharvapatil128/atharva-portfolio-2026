@@ -153,6 +153,8 @@ The palette is predominantly neutral. Color appears in project media, purposeful
 - **Body** (400, 16px, 1.5): General explanations, evidence, and supporting copy. Important summaries may step up to 20px with the same measured rhythm.
 - **Label** (500, 12px, 0.015em): Functional metadata, indices, status, and interaction instructions. Use sentence case by default; reserve all caps for compact operational labels inside project-specific interfaces.
 
+**The Mono Legibility Floor.** IBM Plex Mono never renders below 10px and uses at least weight 500 at that floor. Dense evidence can become concise or progressively disclosed, but it must not become faint microtype.
+
 **The Plain-Language First Rule.** A reader encounters the meaningful statement before its technical classification. Mono labels support the message; they do not become invented eyebrow copy above every heading.
 
 **The Two-Voice Rule.** Use Instrument Sans for content and IBM Plex Mono for evidence. Do not add a third display family.
@@ -236,7 +238,7 @@ Notes uses a quieter editorial introduction with a two-sheet preview of the two 
 
 ### Selected Work Deck
 
-Desktop hover/focus changes the active column and reveals a compact, evidence-led project brief: role and period are grouped together, followed by verified project evidence, so the expanded surface reads as a case-study preview rather than decoration. Collapsed cards remain quieter but are not empty: the title leads, followed by the project claim and a restrained category/evidence line. Their artwork occupies a consistent media zone with a deliberate gap before the copy; expanded cards preserve an equivalent horizontal gap between the reading column and artifact. The deck is deliberately substantial enough to dominate the section rather than read as a compact index. Mobile and tablet use native horizontal snapping, preserve large touch-sized project canvases, keep short descriptors visible, and leave the next card peeking into view; the denser desktop brief and category/evidence line are omitted there. Each project owns a distinct media grammar rather than sharing one generic thumbnail.
+Desktop hover/focus changes the active column and reveals a compact, evidence-led project brief: role and period are grouped together, followed by verified project evidence, so the expanded surface reads as a case-study preview rather than decoration. Collapsed cards remain quieter but are not empty: the title leads, followed by the project claim and a restrained category/evidence line. Their artwork occupies a consistent media zone with a deliberate gap before the copy; expanded cards preserve an equivalent horizontal gap between the reading column and artifact. The deck is deliberately substantial enough to dominate the section rather than read as a compact index. Mobile and tablet use native horizontal snapping, preserve large touch-sized project canvases, clamp descriptors on complete lines, and leave the next card peeking into view; the denser desktop brief and category/evidence line are omitted there. Project-specific compositions adapt rather than crop mechanically: MEAD's two screens remain fully framed on touch layouts. Each project owns a distinct media grammar rather than sharing one generic thumbnail.
 
 ### Note Row
 
