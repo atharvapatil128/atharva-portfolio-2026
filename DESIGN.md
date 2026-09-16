@@ -236,7 +236,7 @@ Notes uses a quieter editorial introduction with a two-sheet preview of the two 
 
 ### Selected Work Deck
 
-Desktop hover/focus changes the active column and reveals more project context. Mobile uses native horizontal snapping and keeps short descriptors visible. Each project owns a distinct media grammar rather than sharing one generic thumbnail.
+Desktop hover/focus changes the active column and reveals more project context. The deck is deliberately substantial enough to dominate the section rather than read as a compact index: project imagery and meaning should occupy the visual center of a typical viewport. Mobile and tablet use native horizontal snapping, preserve large touch-sized project canvases, keep short descriptors visible, and leave the next card peeking into view. Each project owns a distinct media grammar rather than sharing one generic thumbnail.
 
 ### Note Row
 
