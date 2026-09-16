@@ -236,7 +236,7 @@ Notes uses a quieter editorial introduction with a two-sheet preview of the two 
 
 ### Selected Work Deck
 
-Desktop hover/focus changes the active column and reveals more project context. The deck is deliberately substantial enough to dominate the section rather than read as a compact index: project imagery and meaning should occupy the visual center of a typical viewport. Mobile and tablet use native horizontal snapping, preserve large touch-sized project canvases, keep short descriptors visible, and leave the next card peeking into view. Each project owns a distinct media grammar rather than sharing one generic thumbnail.
+Desktop hover/focus changes the active column and reveals a compact, evidence-led project brief: role and period are grouped together, followed by verified project evidence, so the expanded surface reads as a case-study preview rather than decoration. The deck is deliberately substantial enough to dominate the section rather than read as a compact index: project imagery and meaning should occupy the visual center of a typical viewport. Inactive cards stay quiet so the active case remains the clear reading target. Mobile and tablet use native horizontal snapping, preserve large touch-sized project canvases, keep short descriptors visible, and leave the next card peeking into view; the denser desktop brief is omitted there. Each project owns a distinct media grammar rather than sharing one generic thumbnail.
 
 ### Note Row
 

@@ -71,6 +71,16 @@ export function ProjectDeck() {
               <div className="project-copy">
                 <h3>{project.name}</h3>
                 <p>{project.descriptor}</p>
+                <dl className="project-brief" aria-label={`${project.name} project details`}>
+                  <div>
+                    <dt>Role / period</dt>
+                    <dd>{project.role} · {project.period}</dd>
+                  </div>
+                  <div>
+                    <dt>Evidence</dt>
+                    <dd>{project.evidence.join(" · ")}</dd>
+                  </div>
+                </dl>
               </div>
               <ProjectVisual slug={project.slug} />
             </Link>
