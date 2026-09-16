@@ -71,6 +71,9 @@ export function ProjectDeck() {
               <div className="project-copy">
                 <h3>{project.name}</h3>
                 <p>{project.descriptor}</p>
+                <span className="project-card-context mono">
+                  {project.category.split(" · ")[0]} · {project.evidence[0]}
+                </span>
                 <dl className="project-brief" aria-label={`${project.name} project details`}>
                   <div>
                     <dt>Role / period</dt>
