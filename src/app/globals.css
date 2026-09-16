@@ -416,20 +416,31 @@ p { text-wrap: pretty; }
 .project-deck[data-active="2"] .project-card:nth-child(3) .project-meta { opacity: 1; transform: translateY(0); }
 .project-copy { position: absolute; z-index: 3; right: 26px; bottom: 24px; left: 26px; }
 .project-copy h3 { font-size: 28px; line-height: 32px; font-weight: 500; letter-spacing: -.02em; }
+/*
+ * The descriptor stays closed at rest. What made this deck read as a focus
+ * mechanism was the silence of the other two cards: one speaks, two wait. With
+ * every card showing a paragraph the deck carried roughly four times the visible
+ * words and the expanded card no longer stood out from the pair beside it. The
+ * resting card is not empty, it just says less: title, then a mono metadata line.
+ */
 .project-copy p {
   display: -webkit-box;
   max-width: 100%;
-  max-height: 44px;
-  margin-top: 6px;
+  max-height: 0;
+  margin-top: 0;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   color: var(--text-secondary);
   font-size: 15px;
   line-height: 22px;
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity var(--duration-quick) var(--ease-smooth-out), transform var(--duration-fast) var(--ease-smooth-out);
+  opacity: 0;
+  transform: translateY(5px);
+  transition:
+    max-height var(--duration-fast) var(--ease-smooth-out),
+    margin-top var(--duration-fast) var(--ease-smooth-out),
+    opacity var(--duration-quick) var(--ease-smooth-out),
+    transform var(--duration-fast) var(--ease-smooth-out);
 }
 .project-card-context {
   display: block;
@@ -479,6 +490,14 @@ p { text-wrap: pretty; }
   line-height: 16px;
 }
 .project-field-maintenance .project-copy p { color: #c5c9d1; }
+/*
+ * MEAD's #eef1ff tint is lighter than the canvas these tokens were picked
+ * against, so --text-tertiary lands at 4.38:1 here and misses AA. The card
+ * already overrides its descriptor colour for the same reason; these are the
+ * two elements that were added later and missed the same treatment.
+ */
+.project-mead .project-card-context,
+.project-mead .project-brief dt { color: #5f6673; }
 .project-field-maintenance .project-card-context { color: #aeb4c0; }
 .project-field-maintenance .project-brief > div { border-color: rgba(255,255,255,.16); }
 .project-field-maintenance .project-brief dt { color: #aeb4c0; }
@@ -488,7 +507,10 @@ p { text-wrap: pretty; }
 .project-deck[data-active="2"] .project-card:nth-child(3) .project-copy p {
   max-width: clamp(220px, 17vw, 300px);
   max-height: 66px;
+  margin-top: 6px;
   -webkit-line-clamp: 3;
+  opacity: 1;
+  transform: translateY(0);
 }
 .project-deck[data-active="0"] .project-card:nth-child(1) .project-copy,
 .project-deck[data-active="1"] .project-card:nth-child(2) .project-copy,

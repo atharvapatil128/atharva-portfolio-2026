@@ -71,17 +71,24 @@ export function ProjectDeck() {
               <div className="project-copy">
                 <h3>{project.name}</h3>
                 <p>{project.descriptor}</p>
+                {/*
+                  Evidence lives here once, on the resting card, and not again in
+                  the brief below. The full list read as a wall at 12px, repeated
+                  what the case study already proves, and was the reason the brief
+                  overran its own height cap.
+                */}
                 <span className="project-card-context mono">
-                  {project.category.split(" · ")[0]} · {project.evidence[0]}
+                  {project.category.split(" · ")[0]}
+                  {project.evidence[0] ? ` · ${project.evidence[0]}` : ""}
                 </span>
-                <dl className="project-brief" aria-label={`${project.name} project details`}>
+                {/*
+                  No aria-label: dl has no reliable implicit role, so a label on it
+                  is often dropped. The dt carries the meaning instead.
+                */}
+                <dl className="project-brief">
                   <div>
                     <dt>Role / period</dt>
                     <dd>{project.role} · {project.period}</dd>
-                  </div>
-                  <div>
-                    <dt>Evidence</dt>
-                    <dd>{project.evidence.join(" · ")}</dd>
                   </div>
                 </dl>
               </div>
