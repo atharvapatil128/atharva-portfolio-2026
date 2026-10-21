@@ -379,7 +379,14 @@ p { text-wrap: pretty; }
   scroll-margin-top: 112px;
   background: var(--field-warm);
 }
-.project-deck-shell { margin-top: 40px; }
+.project-deck-shell {
+  margin-top: 40px;
+  container-type: inline-size;
+  /* Final expanded track = (deck - two gaps) * 1.9 / 3.54.
+     Its text lane stops 26px before the widest (56%) media panel.
+     Referencing the deck keeps line breaks stable during track animation. */
+  --project-reading-width: min(300px, calc((100cqw - 2 * var(--space-card-gap)) * .236158 - 76px));
+}
 .deck-controls { display: flex; justify-content: space-between; margin-bottom: 12px; }
 .project-deck {
   display: grid;
@@ -455,6 +462,8 @@ p { text-wrap: pretty; }
   max-height: 16px;
   margin-top: 12px;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   /*
    * A step darker than --text-tertiary. The face gradient lays up to 7% black
    * over the card, and these 12px labels sit in its lower half, which took the
@@ -468,7 +477,7 @@ p { text-wrap: pretty; }
   opacity: 1;
 }
 .project-brief {
-  width: clamp(220px, 17vw, 300px);
+  width: var(--project-reading-width);
   max-height: 0;
   margin-top: 0;
   overflow: hidden;
@@ -516,7 +525,7 @@ p { text-wrap: pretty; }
 .project-deck[data-active="0"] .project-card:nth-child(1) .project-copy p,
 .project-deck[data-active="1"] .project-card:nth-child(2) .project-copy p,
 .project-deck[data-active="2"] .project-card:nth-child(3) .project-copy p {
-  max-width: clamp(220px, 17vw, 300px);
+  max-width: var(--project-reading-width);
   max-height: 66px;
   margin-top: 6px;
   -webkit-line-clamp: 3;
@@ -543,7 +552,7 @@ p { text-wrap: pretty; }
 }
 .project-deck[data-active="0"] .project-card:nth-child(1) .project-copy h3,
 .project-deck[data-active="1"] .project-card:nth-child(2) .project-copy h3,
-.project-deck[data-active="2"] .project-card:nth-child(3) .project-copy h3 { max-width: clamp(220px, 17vw, 300px); }
+.project-deck[data-active="2"] .project-card:nth-child(3) .project-copy h3 { max-width: var(--project-reading-width); }
 .streaming-mini, .mead-mini, .field-mini {
   position: absolute;
   top: 22px;
@@ -559,8 +568,8 @@ p { text-wrap: pretty; }
 .project-deck[data-active="1"] .project-card:nth-child(2) .mead-mini,
 .project-deck[data-active="2"] .project-card:nth-child(3) .field-mini { width: 54%; height: calc(100% - 44px); }
 .project-deck[data-active="0"] .project-card:nth-child(1) .project-copy p,
-.project-deck[data-active="0"] .project-card:nth-child(1) .project-copy h3 { max-width: clamp(220px, 17vw, 300px); }
-.project-deck[data-active="0"] .project-card:nth-child(1) .project-brief { width: clamp(220px, 17vw, 300px); }
+.project-deck[data-active="0"] .project-card:nth-child(1) .project-copy h3 { max-width: var(--project-reading-width); }
+.project-deck[data-active="0"] .project-card:nth-child(1) .project-brief { width: var(--project-reading-width); }
 .project-deck[data-active="0"] .project-card:nth-child(1) .streaming-mini { width: 56%; }
 .streaming-mini {
   isolation: isolate;
@@ -644,7 +653,7 @@ p { text-wrap: pretty; }
   width: 54%;
 }
 .project-deck[data-active="2"] .project-card:nth-child(3) .project-copy h3,
-.project-deck[data-active="2"] .project-card:nth-child(3) .project-copy p { max-width: clamp(220px, 17vw, 300px); }
+.project-deck[data-active="2"] .project-card:nth-child(3) .project-copy p { max-width: var(--project-reading-width); }
 .project-field-maintenance .project-meta { color: white; background: rgba(17,19,24,.82); }
 .field-brand-mark { position: absolute; inset: 0; display: grid; place-items: center; background: #0b3b78; }
 .field-brand-mark img { width: min(86px, 38%); max-height: 70%; height: auto; object-fit: contain; filter: drop-shadow(0 8px 14px rgba(0,0,0,.24)); }
@@ -1341,7 +1350,7 @@ p { text-wrap: pretty; }
   .outcome-section { grid-template-columns: 1fr 320px; gap: 50px; }
 }
 
-@media (min-width: 761px) and (max-width: 1050px) {
+@media (min-width: 761px) and (max-width: 1199px) {
   .selected-work { min-height: 0; }
   .project-deck,
   .project-deck[data-active="1"],
@@ -1604,6 +1613,8 @@ p { text-wrap: pretty; }
 .identity-name { letter-spacing: .015em; }
 .nav-cta {
   min-height: 42px;
+  flex-shrink: 0;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 14px;
